@@ -1,12 +1,13 @@
 
-# TrideHive
-TrideHive (Nombre no oficial) es un software en planificación por estudiantes de la Universidad Don Bosco.
+# MiniShop
+MiniShop (Nombre oficial) es un software en planificación por estudiantes de la Universidad Don Bosco.
 
 ## Herramientas 
 * Tailwind CSS
 * HTML5
 * PHP Laravel
-* Laragon 
+* Laragon
+* MySQL
 
 ## Autores ✒️
 
@@ -21,6 +22,6 @@ La Licencia Pública General GNU Affero v3.0 (AGPL-3.0) permite la distribución
 
 ## Enlaces de interés 👀
 
-* [Tablero en Notion] https://www.notion.so/team/59a741b5-568e-456e-81af-059ccf472054/join
-* [Enlace a Diagramas] https://drive.google.com/file/d/1jxHzdAYSzc75gyoc9XVQfl3nbqgI0aAz/view?usp=sharing
-* [Enlace a Mockups] - https://drive.google.com/file/d/1Y8CDEFUA8c7Q_8eq2Rkpz6fN4bxFwjAD/view?usp=sharing
+* [Tablero en Notion] - bit.ly/MiniShopNotion
+* [Enlace a Diagramas] - bit.ly/MiniShopDiagrams
+* [Enlace a Mockups] - bit.ly/MiniShopMockups
