@@ -18,4 +18,6 @@ Route::view('/','Index')->name('Index');
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
 Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
+Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
+Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
 

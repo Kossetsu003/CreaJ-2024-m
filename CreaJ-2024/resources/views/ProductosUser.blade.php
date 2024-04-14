@@ -52,13 +52,6 @@
                 <span>Añadir al Carrito</span>
             </button>
         </div>
-    </div>
-    
-    
-      
-      
-      
-      
-    
+    </div> 
 </body>
 </html>
