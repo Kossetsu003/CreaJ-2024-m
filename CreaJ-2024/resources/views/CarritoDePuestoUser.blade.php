@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Carrito General</title>
+    <title>Carrito de un puesto</title>
 </head>
 <body>
         <div class="mx-auto max-w-lg mt-10 ">
@@ -36,8 +36,9 @@
                 </div>
                 <hr class="w-[90%] mx-auto">
 
+                
             </div>
-
+            
             <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around fixed bottom-0 left-0 right-0">
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
