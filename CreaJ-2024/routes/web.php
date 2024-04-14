@@ -21,3 +21,14 @@ Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
 Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
 Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
 
+
+
+/*Vistas de Vendedores*/
+
+
+
+
+
+/*Vistas de adminsitrador*/
+Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmin');
+Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
