@@ -20,10 +20,13 @@ Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
 Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
 Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
 Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
+Route::view('/CarritoGeneralUser','CarritoGeneralUser')->name('CarritoGeneralUser');
 
 
 
 /*Vistas de Vendedores*/
+Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
+
 
 
 
