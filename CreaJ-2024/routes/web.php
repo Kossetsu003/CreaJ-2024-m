@@ -27,6 +27,7 @@ Route::view('/CarritoDePuestoUser','CarritoDePuestoUser')->name('CarritoDePuesto
 
 /*Vistas de Vendedores*/
 Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
+Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarProductoVendedor');
 
 
 
