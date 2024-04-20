@@ -10,7 +10,7 @@
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
             <div class="text-center">
-                <h1 class="text-3xl font-bold text-black">Editor</h1>
+                <h1 class="text-3xl font-bold text-black">Editar Producto</h1>
                 <h3 class="text-sm mt-2">Nombre de Mercado</h3>
             </div>
             <div class="mt-20 space-y-4">
