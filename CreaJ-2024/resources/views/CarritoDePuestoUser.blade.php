@@ -21,40 +21,55 @@
                 </div>
             </div>
 
-            <div>
-                <div class="mt-[10%] ml-12 flex">
+                <div class="mt-[10%] mx-auto ml-12 flex ">
                     <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <div class="ml-2">
+                    <div class="ml-2 ">
                         <h3 class="text-sm">Nombre del puesto</h3> 
                         <h3 class="text-xs">No se</h3>
+                        <h3 class="text-sm font-bold">$00.00</h3> 
                     </div>
+                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">+</button>
+                        <button class="text-white">0</button>
+                        <button class="text-white">-</button>
+                    </div>
+        
                 </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-                    
-                </div>
-                <hr class="w-[90%] mx-auto">
+                <hr class="mt-5">
 
                 
+               
+
+                
+            
+
+
+
+            <div class="flex w-[90%]  mt-10 ml-5 justify-between">
+                <div >
+                    <h3>Total(0 Items)</h3>
+                    <h3>Shipping Fee</h3>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold">$00.00</span>
+                    <span class="font-bold">$00.00</span>
+                </div>
+
+            </div>
+            <hr>
+            <div class="flex w-[90%] mt-3   ml-5 justify-between">
+                <div >
+                    <h3>Sub Total</h3>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold">$00.00</span>
+                </div>
+
             </div>
             
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around fixed bottom-0 left-0 right-0">
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-        
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-        
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-            </div>
-        </div>
+            <button class="mx-auto mt-[20%] h-12 bg-black rounded-full w-[80%]  text-white flex justify-center items-center">
+                <span>Confirmar</span>
+            </button>
+            
 </body>
 </html>
