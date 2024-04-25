@@ -35,7 +35,7 @@
                 <button class="bg-red-600 w-72 h-10 text-white font-bold rounded-md">Registrar</button>
             </div>
         
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around fixed bottom-0 left-0 right-0">
+            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around mt-[20%]">
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
