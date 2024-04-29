@@ -105,7 +105,21 @@
                     
                 </div> 
                 <hr class="w-[90%] mx-auto">
-                 <div class="mt-[10%] mx-auto ml-12 flex ">
+                      <div class="mt-[10%] mx-auto ml-12 flex ">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <div class="ml-2 ">
+                        <h3 class="text-sm">Nombre del puesto</h3> 
+                        <h3 class="text-xs">No se</h3>
+                        <h3 class="text-sm font-bold">$00.00</h3> 
+                    </div>
+        
+                </div>
+                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
+                    
+                </div> 
+                <hr class="w-[90%] mx-auto">      <div class="mt-[10%] mx-auto ml-12 flex ">
                     <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
                         <h3 class="text-sm">Nombre del puesto</h3> 
