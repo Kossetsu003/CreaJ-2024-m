@@ -8,7 +8,7 @@
 </head>
 <body>
     <section>
-        <div class="w-72 h-96 mt-16 m-auto"> <!--Contenedor Principal-->
+        <div class="w-72 h-96  mx-auto mt-[50%]"> <!--Contenedor Principal-->
             <div class="text-center "> <!--Contenedor Mini Shop-->
                 <h1 class="text-[50px] font-bold ">Editar<span class="text-purple-400 font-bold m-2 ">Perfil</span> </h1>
             </div>
