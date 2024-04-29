@@ -13,13 +13,16 @@
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-
-                <div class="ml-4 bg-blue-400 rounded-lg flex justify-center">
-                    <div class="items-center">
-                         <button class="rounded-full px-2 py-1 ">
-                            <img class="w-5 mt-1 " src="{{ asset('imgs/casa2.png') }}" alt="User Icon">
-                          </button>
-                    </div>
+        
+                <div class="flex items-center">
+                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
+                </div>
+        
+                <div class="flex items-center">
+                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
+                </div>
+                <div class="flex items-center">
+                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
             </div>
         </div>
