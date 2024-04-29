@@ -14,11 +14,11 @@
     <div class="lg:ml-10"> <!-- Sección de texto -->
         <div class="font-bold text-center mb-4">Explore the App</div>
         <div class="w-full md:w-4/5 mx-auto"> <!-- Contenedor de texto -->
-            <p class="text-center mb-4 w-[90%] mx-auto">
+            <p class="text-center mb-4 w-[85%] font-bold mx-auto text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex error quia reiciendis est excepturi quasi?
-                Aperiam dolor neque fugit in repudiandae, ipsa distinctio error eius, libero autem ipsum id iste.
+                Aperiam dolor neque fugit in repudiandae, ipsa distinctio error
             </p>
-            <div class="flex justify-center">
+            <div class="flex justify-center mt-10">
                 <button class="bg-purple-400 w-[85%] rounded-md font-bold h-9">Let's Start</button>
             </div>
         </div>
