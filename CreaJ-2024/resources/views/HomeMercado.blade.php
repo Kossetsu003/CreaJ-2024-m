@@ -7,20 +7,11 @@
     <title>Home Mercado User</title>
 </head>
 <body>
-        <div class="flex justify-between mt-5 ml-5 ">
-            <div>
-              <h3 class=" text-sm ">Nombre del mercado</h3>
-              <h3 class="text-xs font-bold">Los mejores precios</h3>
-            </div>
-
-            <div>
-                <img class="w-5 mt-5 mr-5"  src="{{ asset('imgs/usuario.png') }}" valt="User Icon">
-            </div>
-        </div>
-
-        <div class="flex justify-center border-4 items-center mt-5 w-[80%] mx-auto ">
-                <div class=" w-[90%]">
-                    <input type="text" class="px-4 py-2 w-[90%] rounded-lg border" placeholder="Search Clothes">
+        <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
+        <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+            <div class="bg-gray-800 rounded-2xl w-60 h-10 flex justify-around">
+                <div class="flex items-center">
+                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
 
                 <div class="ml-4 bg-blue-400 rounded-lg flex justify-center">
@@ -30,8 +21,15 @@
                           </button>
                     </div>
                 </div>
-
+            </div>
         </div>
+
+        <div class="mt-14"> 
+            
+                <!--Pendiende para crear contenido de Home mercado-->
+              
+        </div>
+    </div>
 
 </body>
 </html>
