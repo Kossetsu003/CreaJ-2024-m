@@ -14,7 +14,7 @@
     <div class="lg:ml-10"> <!-- Sección de texto -->
         <div class="font-bold text-center mb-4">Explore the App</div>
         <div class="w-full md:w-4/5 mx-auto"> <!-- Contenedor de texto -->
-            <p class="text-center mb-4 w-[85%] font-bold mx-auto text-justify">
+            <p class="mb-4 w-[85%] font-bold mx-auto text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex error quia reiciendis est excepturi quasi?
                 Aperiam dolor neque fugit in repudiandae, ipsa distinctio error
             </p>
