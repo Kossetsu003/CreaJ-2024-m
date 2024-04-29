@@ -36,6 +36,35 @@
         
                 </div>
                 <hr class="mt-5">
+                 <div class="mt-[10%] mx-auto ml-12 flex ">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <div class="ml-2 ">
+                        <h3 class="text-sm">Nombre del puesto</h3> 
+                        <h3 class="text-xs">No se</h3>
+                        <h3 class="text-sm font-bold">$00.00</h3> 
+                    </div>
+                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">+</button>
+                        <button class="text-white">0</button>
+                        <button class="text-white">-</button>
+                    </div>
+        
+                </div>
+                <hr class="mt-5"> <div class="mt-[10%] mx-auto ml-12 flex ">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <div class="ml-2 ">
+                        <h3 class="text-sm">Nombre del puesto</h3> 
+                        <h3 class="text-xs">No se</h3>
+                        <h3 class="text-sm font-bold">$00.00</h3> 
+                    </div>
+                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">+</button>
+                        <button class="text-white">0</button>
+                        <button class="text-white">-</button>
+                    </div>
+        
+                </div>
+                <hr class="mt-5">
 
                 
                
