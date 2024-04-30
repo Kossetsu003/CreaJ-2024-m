@@ -27,9 +27,9 @@
             </div>
         </div>
 
-        <div class="mt-14 border-4 w-[90%] mx-auto"> 
+        <div class="mt-14  w-[90%] mx-auto"> 
             
-            <div class="flex justify-between"> <!--Contenedor Principal-->
+            <div class="flex justify-between border-4"> <!--Contenedor Principal-->
                 <div>
                     <div>
                         Nombre del Mercado
@@ -43,9 +43,22 @@
                     <img class="w-5 mt-[50%]" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                 </div>
             </div><!--Fin Principal-->
-                
-              
+
+        <div class="flex items-center border-4 mt-5">
+                    <!-- Campo de búsqueda con icono de lupa -->
+                <div class="relative w-[70%] ml-5">
+                    <img class="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5" src="{{ asset('imgs/lupa.png') }}" alt="Search Icon">
+                    <input class="pl-8 px-2 border-2 w-[100%] border-gray-500 py-1 focus:outline-none" type="text" placeholder="Buscar">
+                </div>
+                <!-- Botón azul -->
+                <div class="mr-5">
+                    <button class="bg-sky-600 rounded-md px-2 h-[100%]  py-1 h-[100%] ml-1"> <!-- Reduje el margen izquierdo a 1 -->
+                        <img class="w-5" src="{{ asset('imgs/casa2.png') }}" alt="User Icon">
+                    </button>
+                 </div>
         </div>
+
+
     </div>
 
 </body>
