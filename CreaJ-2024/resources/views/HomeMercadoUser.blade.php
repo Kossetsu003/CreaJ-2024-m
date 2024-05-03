@@ -75,9 +75,24 @@
             </div>
         </div>
         
-        
-        
 
+        <div>
+
+            <div class="flex">
+                <div>
+                    <img class="w-[50%]" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <h3>Nombre del producto</h3>
+                </div>
+
+                   <div>
+                    <img class="w-[50%]" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <h3>Nombre del producto</h3>
+                </div>
+            </div>
+
+        </div>
+        
+        
 
     </div>
 
