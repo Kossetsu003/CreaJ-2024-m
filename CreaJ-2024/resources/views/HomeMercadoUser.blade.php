@@ -58,16 +58,25 @@
                  </div>
         </div>
 
-        <div class="flex  border-4 ">
-
-            <div class="mx-auto border-4">
-
-                <Button></Button>
-                <Button>1</Button>
-                <Button>1</Button>
+        <div class="flex mt-5">
+            <div class="flex mx-auto">
+                <button class="flex items-center h-8 border-2 text-black px-1 py-0.5 rounded-md mr-2 text-xs hover:bg-blue-200">
+                    <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+                    <span class="ml-1">Todos Los puestos</span>
+                </button>   
+                <button class="flex items-center border-2 text-black px-1 py-0.5 rounded-md mr-2 text-xs hover:bg-blue-200">
+                    <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+                    <span class="ml-1">Otro Botón</span>
+                </button>
+                <button class="flex items-center border-2 text-black px-1 py-0.5 rounded-md text-xs hover:bg-blue-200">
+                    <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+                    <span class="ml-1">Último Botón</span>
+                </button>  
             </div>
-   
         </div>
+        
+        
+        
 
 
     </div>
