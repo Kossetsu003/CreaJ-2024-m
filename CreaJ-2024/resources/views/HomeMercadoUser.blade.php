@@ -29,7 +29,7 @@
 
         <div class="mt-14  w-[90%] mx-auto"> 
             
-            <div class="flex justify-between border-4"> <!--Contenedor Principal-->
+            <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
                 <div>
                     <div>
                         Nombre del Mercado
@@ -44,18 +44,29 @@
                 </div>
             </div><!--Fin Principal-->
 
-        <div class="flex items-center border-4 mt-5">
+        <div class="flex items-center mt-5 ">
                     <!-- Campo de búsqueda con icono de lupa -->
                 <div class="relative w-[70%] ml-5">
                     <img class="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5" src="{{ asset('imgs/lupa.png') }}" alt="Search Icon">
-                    <input class="pl-8 px-2 border-2 w-[100%] border-gray-500 py-1 focus:outline-none" type="text" placeholder="Buscar">
+                    <input class="pl-8 px-2  w-[100%] border-2 rounded-md border-gray-500 py-1 focus:outline-none" type="text" placeholder="Buscar">
                 </div>
                 <!-- Botón azul -->
-                <div class="mr-5">
-                    <button class="bg-sky-600 rounded-md px-2 h-[100%]  py-1 h-[100%] ml-1"> <!-- Reduje el margen izquierdo a 1 -->
-                        <img class="w-5" src="{{ asset('imgs/casa2.png') }}" alt="User Icon">
+                <div class="mr-5 pl-2">
+                    <button class="bg-sky-400  rounded-md px-2   py-1 h-[100%] ml-1"> <!-- Reduje el margen izquierdo a 1 -->
+                        <img class="w-6 "   src="{{ asset('imgs/casa2.png') }}" alt="User Icon">
                     </button>
                  </div>
+        </div>
+
+        <div class="flex  border-4 ">
+
+            <div class="mx-auto border-4">
+
+                <Button></Button>
+                <Button>1</Button>
+                <Button>1</Button>
+            </div>
+   
         </div>
 
 
