@@ -19,7 +19,8 @@
                 Aperiam dolor neque fugit in repudiandae, ipsa distinctio error
             </p>
             <div class="flex justify-center mt-10">
-                <button class="bg-purple-400 w-[85%] rounded-md font-bold h-9">Let's Start</button>
+                <button class="bg-purple-400 w-[85%] rounded-md font-bold h-9 hover:bg-violet-500 hover:text-purple-400 active:bg-amber-600 text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"">Let's Start</button>
+</button>
             </div>
         </div>
     </div>
