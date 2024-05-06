@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Producto Index</title>
+    <title>Registrar Usuario</title>
 </head>
 <body>
     <section>
@@ -12,7 +12,7 @@
             <div class="login">
                 <div class="flex">
                     <div class="title">
-                        <h2 class="font-bold">Register Account</h2>
+                        <h2 class="font-bold">Registrar Cuenta</h2>
                     </div>
                     <div class="icon">
                         <img class="w-4 ml-2 pt-1" src="../imgs/usuario.png" alt="">
@@ -20,7 +20,7 @@
 
                 </div>
 
-                <h3 class="text-[9px] font-bold">Welcome Back MiniShop!</h3>
+                <h3 class="text-[9px] font-bold">¡Bienvenido a MiniShop!</h3>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
 
             <div class="flex flex-col mt-6 "> <!--Contenedor De Inputs-->
                 <div class="flex  justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  border-gray-400" type="text" placeholder="Enter email ">
+                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  border-gray-400" type="text" placeholder="Ingrese su">
                 </div>
                 <div class="flex justify-center mt-2 ">
                     <input class="border-1 rounded mt-5 border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Enter Password ">
