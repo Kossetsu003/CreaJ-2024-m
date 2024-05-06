@@ -42,7 +42,7 @@
             </div>
 
             <div class="flex justify-center mt-5">
-                <button class="bg-purple-400 w-72 h-12 text-black rounded-md font-bold ">Iniciar Sesion</button>
+                <button class="bg-purple-400 w-72 h-12 text-black rounded-md font-bold btn overflow-hidden relative bg-purple-400 text-white py-2 px-4 rounded-xl -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-purple-900 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-white hover:before:animate-ping transition-all duration-300"">Iniciar Sesion</button>
             </div>
 
             <div class="mt-11">
