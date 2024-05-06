@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>LoginTest</title>
+    <title>Inicio de Sesión</title>
     
 </head>
 
@@ -14,35 +14,35 @@
         <div class="login">
             <div class="flex items-center">
                 <div class="title">
-                    <h2 class="font-bold">Login Account</h2>
+                    <h1 class="font-bold">Iniciar Sesión</h1>
                 </div>
                 <div class="icon">
                     <img class="w-4 ml-2 pt-1" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                 </div>
             </div>
-            <h3 class="text-xs font-bold">Welcome Back MiniShop!</h3>
+            <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
         </div>
 
         <div class="w-72 h-96 mt-28 mx-auto">
             <div class="text-center">
-                <h1 class="text-3xl font-bold">Mini<span class="text-purple-400 font-bold">Shop</span></h1>
+                <h1 class="text-6xl font-bold">Mini<span class="text-purple-400 font-bold">Shop</span></h1>
             </div>
 
             <div class="flex flex-col mt-6">
-                <div class="flex justify-center">
-                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="text" placeholder="Enter email">
+                <div class="flex justify-center pt-6">
+                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="text" placeholder="Ingrese su correo electronico">
                 </div>
-                <div class="flex justify-center mt-2">
-                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="password" placeholder="Enter Password">
+                <div class="flex justify-center mt-2 pt-2">
+                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="password" placeholder="Ingrese su contraseña">
                 </div>
 
-                <div class="mt-2 flex justify-end">
+                <div class=" flex justify-end">
                     <h3 class="text-xs font-bold">&nbsp;</h3>
                 </div>
             </div>
 
             <div class="flex justify-center mt-5">
-                <button class="bg-purple-400 w-72 h-10 rounded-md text-white">Iniciar Sesion</button>
+                <button class="bg-purple-400 w-72 h-12 text-black rounded-md font-bold ">Iniciar Sesion</button>
             </div>
 
             <div class="mt-11">

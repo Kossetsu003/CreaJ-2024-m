@@ -47,12 +47,12 @@
                 </div>
 
                 <div class="mt-2 flex justify-end"> <!--Contenedor de forgot password-->
-                    <h3 class="text-[10px] font-bold ">Ya tengo cuenta</h3>
+                    <h3 class="text-[15px] font-bold "><a href="./LoginUser">Ya Tengo Cuenta</a></h3>
                 </div>
             </div>
 
             <div class="flex justify-center mt-5">
-                <button class="bg-purple-400 w-72 h-10  rounded-md ">Registro</button>
+                <button class="bg-purple-400 w-72 h-10  rounded-md ">Registrarse</button>
             </div>
 
         </div>
