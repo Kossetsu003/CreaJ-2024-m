@@ -19,7 +19,7 @@
                 Aperiam dolor neque fugit in repudiandae, ipsa distinctio error
             </p>
             <div class="flex justify-center mt-10">
-                <button class="bg-purple-400 w-[85%] rounded-md font-bold h-9 hover:bg-purple-400 hover:text-black active:bg-purple-300 text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"">Let's Start</button>
+                <a href="./LoginUser" class="bg-purple-400 w-[85%] rounded-md font-bold h-9 hover:bg-purple-400 hover:text-black active:bg-purple-300 text-sm px-6 py-2 text-center  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Let's Start</a>
 </button>
             </div>
         </div>
