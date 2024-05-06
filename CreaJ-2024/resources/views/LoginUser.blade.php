@@ -37,16 +37,16 @@
                 </div>
 
                 <div class="mt-2 flex justify-end">
-                    <h3 class="text-xs font-bold">Forgot Password?</h3>
+                    <h3 class="text-xs font-bold">&nbsp;</h3>
                 </div>
             </div>
 
             <div class="flex justify-center mt-5">
-                <button class="bg-purple-400 w-72 h-10 rounded-md text-white">Login</button>
+                <button class="bg-purple-400 w-72 h-10 rounded-md text-white">Iniciar Sesion</button>
             </div>
 
             <div class="mt-11">
-                <h3 class="text-center text-sm">Not registered yet? <a href="#" class="text-blue-950 font-bold">Create Account</a></h3>
+                <h3 class="text-center text-sm">¿Aún no se ha regitrado? <a href="./RegistroUser" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
             </div>
         </div>
     </section>

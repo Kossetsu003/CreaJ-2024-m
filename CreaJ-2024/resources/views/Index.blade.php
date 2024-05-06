@@ -19,7 +19,7 @@
                 Aperiam dolor neque fugit in repudiandae, ipsa distinctio error
             </p>
             <div class="flex justify-center mt-10">
-                <button class="bg-purple-400 w-[85%] rounded-md font-bold h-9">Let's Start</button>
+                <a href="./LoginUser" class="text-center pt-2 bg-purple-400 w-[85%] rounded-md font-bold h-9">Let's Start</a>
             </div>
         </div>
     </div>

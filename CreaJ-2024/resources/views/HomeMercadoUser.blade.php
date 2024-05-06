@@ -17,7 +17,7 @@
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-        
+      
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
