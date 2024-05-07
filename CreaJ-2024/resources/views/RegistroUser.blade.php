@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
     <title>Registrar Usuario</title>
 </head>
 <body>
@@ -39,7 +40,7 @@
                 <div class="flex justify-center mt-2 ">
                     <input class="border-1 rounded mt-5  border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Ingrese su Apellido">
                 </div>
-                
+
                 <div class="flex justify-center mt-2 ">
                     <input class="border-1 rounded mt-5  border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Ingrese su Numero de Telefono">
                 </div>

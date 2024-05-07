@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
     <title>Registrar Producto Vendedor</title>
 </head>
 <body>
@@ -31,20 +32,20 @@
                     </label>
                 </div>
             </div>
-        
+
             <div class="flex justify-center mt-16">
                 <button class="bg-black w-72 h-10 text-white font-bold rounded-md">Guardar</button>
             </div>
-        
+
             <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around mt-[20%]">
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-        
+
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-        
+
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>

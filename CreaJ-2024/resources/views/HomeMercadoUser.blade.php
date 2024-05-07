@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>Home Mercado User</title>
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
@@ -13,11 +14,11 @@
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-        
+
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
-      
+
                 <div class="flex items-center">
                     <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
                 </div>
@@ -27,8 +28,8 @@
             </div>
         </div>
 
-        <div class="mt-14  w-[90%] mx-auto"> 
-            
+        <div class="mt-14  w-[90%] mx-auto">
+
             <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
                 <div>
                     <div>
@@ -62,7 +63,7 @@
                 <button class="flex items-center h-8 border-2 text-black px-1 py-0.5 rounded-md mr-2 text-xs hover:bg-blue-200">
                     <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                     <span class="ml-1">Todos Los puestos</span>
-                </button>   
+                </button>
                 <button class="flex items-center border-2 text-black px-1 py-0.5 rounded-md mr-2 text-xs hover:bg-blue-200">
                     <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                     <span class="ml-1">Otro Botón</span>
@@ -70,10 +71,10 @@
                 <button class="flex items-center border-2 text-black px-1 py-0.5 rounded-md text-xs hover:bg-blue-200">
                     <img class="w-3" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                     <span class="ml-1">Último Botón</span>
-                </button>  
+                </button>
             </div>
         </div>
-        
+
 
         <div>
 
@@ -90,8 +91,8 @@
             </div>
 
         </div>
-        
-        
+
+
 
     </div>
 
