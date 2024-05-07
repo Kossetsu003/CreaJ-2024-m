@@ -22,45 +22,45 @@
                 </div>
             </div>
 
-                <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
+                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                    <div class="ml-2 w-[70%]">
+                        <h3 class="text-sm">Ciento de Aguacates</h3>
+                        <h3 class="text-xs">Tienda de JoseMaria</h3>
+                        <h3 class="text-sm font-bold">$09.00</h3>
                     </div>
                     <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
                         <button class="text-white">+</button>
-                        <button class="text-white">0</button>
+                        <button class="text-white">1</button>
                         <button class="text-white">-</button>
                     </div>
 
                 </div>
                 <hr class="mt-5">
-                 <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                 <div class="mt-[10%] mx-auto ml-12 flex w-[80%]">
+                    <img class="w-16 rounded-lg h-16" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
+                    <div class="ml-2 w-[70%] ">
+                        <h3 class="text-sm">Ciento de Naranjas Valencia</h3>
+                        <h3 class="text-xs">Tienda de JoseMaria</h3>
+                        <h3 class="text-sm font-bold">$12.00</h3>
                     </div>
                     <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
                         <button class="text-white">+</button>
-                        <button class="text-white">0</button>
+                        <button class="text-white">2</button>
                         <button class="text-white">-</button>
                     </div>
 
                 </div>
-                <hr class="mt-5"> <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                <hr class="mt-5"> <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
+                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/TomatesQuintal.jpg') }}" alt="User Icon">
+                    <div class="ml-2 w-[70%] ">
+                        <h3 class="text-sm">Dolar de Tomates</h3>
+                        <h3 class="text-xs">Tienda de Mercedes</h3>
+                        <h3 class="text-sm font-bold">$01.00</h3>
                     </div>
                     <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
                         <button class="text-white">+</button>
-                        <button class="text-white">0</button>
+                        <button class="text-white">3</button>
                         <button class="text-white">-</button>
                     </div>
 
@@ -69,22 +69,22 @@
 
             <div class="flex w-[90%]  mt-10 ml-5 justify-between">
                 <div >
-                    <h3>Total(0 Items)</h3>
-                    <h3>Shipping Fee</h3>
+                    <h3  class="my-2">Cantidad(6 Productos)</h3>
+                    <h3>Costo de Reserva</h3>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold">$00.00</span>
-                    <span class="font-bold">$00.00</span>
+                    <span class="font-bold my-2">$48.00</span>
+                    <span class="font-bold">$00.75</span>
                 </div>
 
             </div>
             <hr>
             <div class="flex w-[90%] mt-3   ml-5 justify-between">
                 <div >
-                    <h3>Sub Total</h3>
+                    <h3 class="my-2">Total</h3>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold">$00.00</span>
+                    <span class="font-bold my-2">$48.75</span>
                 </div>
 
             </div>
