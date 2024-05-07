@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="mx-auto max-w-lg mt-10">
-        <img class="rounded-lg w-[80%] m-auto" src="{{ asset('imgs/Imagen-Test.jpg') }}" alt="User Icon">
+        <img class="rounded-lg w-[80%] m-auto" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
 
         <div class="w-[90%] ml-6">
             <div class="flex justify-between mt-5">
