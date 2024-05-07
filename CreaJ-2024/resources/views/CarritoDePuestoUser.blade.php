@@ -67,14 +67,6 @@
                 </div>
                 <hr class="mt-5">
 
-
-
-
-
-
-
-
-
             <div class="flex w-[90%]  mt-10 ml-5 justify-between">
                 <div >
                     <h3  class="my-2">Cantidad(6 Productos)</h3>
