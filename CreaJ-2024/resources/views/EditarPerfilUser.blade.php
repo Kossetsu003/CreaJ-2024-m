@@ -16,23 +16,33 @@
 
             <div class="flex flex-col mt-6 "> <!--Contenedor De Inputs-->
                 <div class="flex  justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  border-gray-400" type="text" placeholder="Enter email ">
+                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  border-gray-400" type="text" placeholder="Editar Correo Electronico ">
                 </div>
                 <div class="flex justify-center mt-2 ">
-                    <input class="border-1 rounded mt-5 border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Enter Password ">
+                    <input class="border-1 rounded mt-5 border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Editar Nombres ">
                 </div>
                 <div class="flex justify-center mt-2 ">
-                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Enter Password ">
+                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Editar Apellido">
                 </div>
                 <div class="flex justify-center mt-2 ">
-                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Enter Password ">
+                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Editar Numero Telefonico">
                 </div>
                 <div class="flex justify-center mt-2 ">
-                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Enter Password ">
+                    <select class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  text-gray-400 border-gray-400" type="text">
+                        <option value="NONE">Editar Genero</option>
+                        <option value="Masc">Masculino</option>
+                        <option value="Fem">Femenino</option>
+                    </select>
+                </div>
+                <div class="flex justify-center mt-2 ">
+                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Modificar Contraseña">
+                </div>
+                 <div class="flex justify-center mt-2 ">
+                    <input class="border-1 rounded mt-5 b border w-80 h-9 pl-5  text-xs  border-gray-400" type="text" placeholder="Escriba de nuevo su contraseña modificada">
                 </div>
             </div>
 
-            <div class="flex justify-center mt-5">
+            <div class="flex justify-center py-5">
                 <button class="bg-purple-400 w-72 h-10  rounded-md ">Guardar</button>
             </div>
 
