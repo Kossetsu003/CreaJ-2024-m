@@ -50,18 +50,24 @@
                 <button class="bg-red-600 w-72 h-10 text-white font-bold rounded-md">Guardar</button>
             </div>
 
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around mt-[20%]">
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
+             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+                    <div class="flex items-center  ">
+                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                    <div class="flex items-center">
+                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    </div>
                 </div>
 
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
             </div>
         </div>
     </section>
