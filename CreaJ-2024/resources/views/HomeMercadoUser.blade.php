@@ -75,25 +75,82 @@
             </div>
         </div>
 
-
-        <div>
-
-            <div class="flex">
-                <div>
-                    <img class="w-[50%]" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <h3>Nombre del producto</h3>
+        <div class="flex flex-wrap justify-center mt-5 text-sm">
+            <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
                 </div>
-
-                   <div>
-                    <img class="w-[50%]" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
-                    <h3>Nombre del producto</h3>
+            </div>
+            <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
                 </div>
             </div>
 
+            <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
+                </div>
+            </div> <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
+                </div>
+            </div> <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
+                </div>
+            </div> <div class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Nombre del producto</h3>
+                <h3 class="mb-2">Nombre Adicional</h3>
+                <div class="flex justify-between">
+                    <h3>Comida</h3>
+                    <div class="flex items-center">
+                        <h3 class="mr-2">5.0</h3>
+                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-
+        
+    
+        
+        
     </div>
 
 </body>
