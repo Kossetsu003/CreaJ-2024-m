@@ -28,6 +28,7 @@ Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
 /*Vistas de Vendedores*/
 Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
 Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarProductoVendedor');
+Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMercadoVendedor');
 
 
 
