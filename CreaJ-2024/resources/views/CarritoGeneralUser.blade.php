@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Carrito General</title>
+    <title>MisReservas</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
@@ -37,7 +37,7 @@
                     <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
                 </div>
                 <div>
-                    <h2>Carrito</h2>
+                    <h2><b>MisPedidos</b></h2>
                 </div>
                 <div>
 
@@ -46,11 +46,11 @@
 
             <div>
                 <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Puesto de JoseMaria</h3>
+                        <h3 class="text-xs ">Reserva realizada el 03/04/2024</h3>
+                        <h3 class="text-sm font-bold">$48.75</h3>
                     </div>
 
                 </div>
@@ -61,11 +61,11 @@
                 </div>
                 <hr class="w-[90%] mx-auto">
                  <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/PupusasFoto.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Pupuseria Niña Marta</h3>
+                        <h3 class="text-xs">Reselva realizada el 05/05/2023</h3>
+                        <h3 class="text-sm font-bold">$09.30</h3>
                     </div>
 
                 </div>
@@ -76,11 +76,11 @@
                 </div>
                 <hr class="w-[90%] mx-auto">
                  <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/PescadoFresco.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Pesqueria Don Pedro</h3>
+                        <h3 class="text-xs">Reserva realizada el 21/02/2024</h3>
+                        <h3 class="text-sm font-bold">$07.00</h3>
                     </div>
 
                 </div>
@@ -92,11 +92,11 @@
 
                  <hr class="w-[90%] mx-auto">
                  <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/AlmuerzoFoto.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Comedor Niña Carmen</h3>
+                        <h3 class="text-xs">Reserva realizada el 18/02/2023</h3>
+                        <h3 class="text-sm font-bold">$02.50</h3>
                     </div>
 
                 </div>
@@ -107,11 +107,11 @@
                 </div>
                 <hr class="w-[90%] mx-auto">
                       <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/RopaFoto.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Tienda Mayoreo Pan de Jesus</h3>
+                        <h3 class="text-xs">Reserva Realizada el 03/05/2023</h3>
+                        <h3 class="text-sm font-bold">$12.00</h3>
                     </div>
 
                 </div>
@@ -121,11 +121,11 @@
 
                 </div>
                 <hr class="w-[90%] mx-auto">      <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/Pizza.jpg') }}" alt="User Icon">
+                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/CarniceriaFoto.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm">Nombre del puesto</h3>
-                        <h3 class="text-xs">No se</h3>
-                        <h3 class="text-sm font-bold">$00.00</h3>
+                        <h3 class="text-sm font-bold">Carniceria Don Juan</h3>
+                        <h3 class="text-xs">Reserva Realizada el 06/05/2023</h3>
+                        <h3 class="text-sm font-bold">$04.75</h3>
                     </div>
 
                 </div>
