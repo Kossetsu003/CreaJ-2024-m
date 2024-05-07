@@ -10,6 +10,34 @@
 <body>
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
+
+
+            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+                <!--INICIO DE NAVBAR MOBIL-->
+                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+                    <div class="flex items-center  ">
+                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./CarritoGeneralUser"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                    <div class="flex items-center">
+                        <a href="./EditarPerfilUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/UserSelectedIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                </div>
+
+                <!--FIN DE NAVBAR MOBIL-->
+            </div>
+
+
+
+
+
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-black">Editar Producto</h1>
                 <h3 class="text-sm mt-2">En El Mercado : <span class="font-bold">Ex-Cuartel</span></h3>
@@ -45,18 +73,7 @@
                 <button class="bg-black w-72 h-10 text-white font-bold rounded-md">Guardar</button>
             </div>
 
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around mt-[20%]">
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
-
-                <div class="flex items-center">
-                    <button><img class="w-4" src="{{ asset('imgs/casa2.png') }}" alt="User Icon"></button>
-                </div>
+            
             </div>
         </div>
     </section>

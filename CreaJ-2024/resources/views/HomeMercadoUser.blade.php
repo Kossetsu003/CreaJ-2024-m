@@ -10,34 +10,25 @@
 <body>
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-
-
-
-
             <!--INICIO DE NAVBAR MOBIL-->
-
-
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 flex justify-around">
+            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                 <div class="flex items-center  ">
                     <a href="./HomeUser" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./CarritoGeneralUser"><img class="w-4" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
+                    <a href="./CarritoGeneralUser"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./EstadoPedidosUser"><img class="w-4" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    <a href="./EstadoPedidosUser" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="./EditarPerfilUser"><img class="w-4" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    <a href="./EditarPerfilUser"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                 </div>
             </div>
 
             <!--FIN DE NAVBAR MOBIL-->
-
-
-
         </div>
 
         <div class="mt-14  w-[90%] mx-auto">
@@ -76,13 +67,13 @@
         </div>
         <div class="flex mt-5">
             <div class="flex mx-auto">
-                <button class="flex items-center h-8 border text-black px-1 py-0.5 rounded-md mr-2 text-xs hover:bg-blue-200">
-                    <img class="w-5" src="{{ asset('imgs/Box.png') }}" alt="User Icon">
+                <button class="flex items-center h-8 border text-black px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
+                    <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
                     <span class="ml-1">Todos Los puestos</span>
                 </button>
 
-                <button class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
-                    <img class="w-7" src="{{ asset('imgs/ClotheIcon.png') }}" alt="User Icon">
+                <button class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs ">
+                    <img class="w-5" src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
                     <span class="ml-1">Ropa</span>
                 </button>
 
@@ -106,18 +97,18 @@
                     </div>
                 </div>
             </div>
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoShein.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Ropa de Shein</h3>
-                <h3 class="mb-2">Shein shop Ex Cuartel</h3>
+            <a href="./ProductosUser" class="w-[48%] mb-8 p-2">
+                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Venta de Naranjas Valencia</h3>
+                <h3 class="mb-2">Puesto de Don Juan</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <h3>Comida</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">3.8</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
-            </div>
+            </a>
 
             <div class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">

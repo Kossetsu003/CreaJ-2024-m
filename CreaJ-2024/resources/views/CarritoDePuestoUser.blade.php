@@ -10,6 +10,36 @@
 </head>
 <body>
         <div class="mx-auto max-w-lg mt-10 ">
+            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+
+
+
+
+                <!--INICIO DE NAVBAR MOBIL-->
+
+
+                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+                    <div class="flex items-center  ">
+                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                    <div class="flex items-center">
+                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                </div>
+
+                <!--FIN DE NAVBAR MOBIL-->
+
+
+
+            </div>
             <div class="flex justify-around ">
                 <div>
                     <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
@@ -89,7 +119,7 @@
 
             </div>
 
-            <button class="mx-auto mt-[20%]  bg-black   border-white flex justify-center items-center w-72 h-10 gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <button class="mx-auto mt-[20px] mb-[7rem]  bg-black   border-white flex justify-center items-center w-72 h-10 gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                 <span>Confirmar</span>
             </button>
 
