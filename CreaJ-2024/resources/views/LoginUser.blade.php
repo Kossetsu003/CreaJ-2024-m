@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+<form action="#" method="get">
     <section class="pl-5 pt-7">
         <div class="login">
             <div class="flex items-center">
@@ -30,10 +32,10 @@
 
             <div class="flex flex-col mt-6">
                 <div class="flex justify-center pt-6">
-                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="text" placeholder="Ingrese su correo electronico">
+                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="email" name="email" id="email" placeholder="Ingrese su correo electrónico">
                 </div>
                 <div class="flex justify-center mt-2 pt-2">
-                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="password" placeholder="Ingrese su contraseña">
+                    <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400" type="password" name="password" id="password" placeholder="Ingrese su contraseña">
                 </div>
 
                 <div class=" flex justify-end">
@@ -42,14 +44,16 @@
             </div>
 
             <div class="flex justify-center mt-5">
-                <button class="bg-purple-400 w-72 h-12 text-black rounded-md font-bold btn overflow-hidden relative bg-purple-400 text-white py-2 px-4 rounded-xl -- before:block before:absolute before:h-full before:w-1/2 before:rounded-full before:bg-purple-900 before:top-0 before:left-1/4 before:transition-transform before:opacity-0 before:hover:opacity-100 hover:text-white hover:before:animate-ping transition-all duration-300"">Iniciar Sesion</button>
+                <button class="w-72 h-12 font-bold btn overflow-hidden relative bg-purple-400 text-white py-2 px-4 rounded-xl">Iniciar Sesión</button>
             </div>
 
             <div class="mt-11">
-                <h3 class="text-center text-sm">¿Aún no se ha regitrado? <a href="./RegistroUser" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
+                <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="./RegistroUser" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
             </div>
         </div>
     </section>
+</form>
+
 </body>
 
 </html>
