@@ -15,7 +15,7 @@
         <div class="w-[90%] ml-6">
             <div class="flex justify-between mt-5">
                 <div class="font-bold">
-                    Elemento Seleccionado
+                    Ciento de Naranjas
                 </div>
                 <div class="flex items-center">
                     <button class="bg-white border w-[27px] border-black rounded-full px-2 py-1 text-xs">-</button>
@@ -35,22 +35,21 @@
             </div>
 
             <h3 class="text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, consectetur minus quaerat id nihil vero obcaecati natus ut laborum illo maxime laudantium dolorem voluptate unde harum deleniti atque fugiat in!
+                Vendo Ciento de Naranjas Valencia en El Mercado Ex-Cuartel, jugosas y acidas perfectas para fresco. Recien Cortadas desde La Libertad a $9.00 el ciento.
             </h3>
             <hr>
 
             <div>
-                <h3 class="font-bold mt-7">Tamaño</h3>
+                <h3 class="font-bold mt-7">Precio</h3>
                 <div class="flex gap-4">
-                    <button class="bg-white border border-black rounded-full w-[8%] px-2 py-1 text-xs hover:bg-gray-600">s</button>
-                    <button class="bg-white border border-black rounded-full w-[8%] px-2 py-1 text-xs hover:bg-gray-600">m</button>
-                    <button class="bg-white border border-black rounded-full w-[8%] px-2 py-1 text-xs hover:bg-gray-600">l</button>
+                   <h3>$09.00</h3>
+
                 </div>
             </div>
 
-            <button class="flex justify-center items-center bg-red-800 rounded-2xl w-full h-10 text-white mt-4">
+            <button class="flex justify-center items-center bg-red-800 rounded-2xl w-full h-10 text-white my-4">
                 <img class="w-6 h-6 mr-2" src="{{ asset('imgs/carrito-de-compras.png') }}" alt="User Icon">
-                <span>Añadir al Carrito</span>
+                <a href="./CarritoDePuestoUser">Añadir a MiCarrito</a>
             </button>
         </div>
     </div>
