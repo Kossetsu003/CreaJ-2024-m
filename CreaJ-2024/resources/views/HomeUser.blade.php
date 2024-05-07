@@ -11,7 +11,7 @@
 <body>
 
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
-        <<div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+        <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                 <div class="flex items-center  ">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Agregar un margen superior al contenido principal igual a la altura de la barra de navegación -->
-        <div class="mt-14"> <!-- Puedes ajustar este valor según sea necesario -->
+        <div class="mt-10"> <!-- Puedes ajustar este valor según sea necesario -->
             <div class="flex justify-between mt-5">
                 <div class="ml-[10%]">
                     <h1>Hola! Bienvenido &#x1F44B;</h1>
