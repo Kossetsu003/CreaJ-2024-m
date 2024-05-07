@@ -100,7 +100,7 @@
             </div>
 
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md object-cover" src="{{ asset('imgs/PupusasFoto.jpg') }}" alt="User Icon">
                 <h3 class="font-bold mt-5">Reserva de Pupuseria Mary</h3>
                 <h3 class="mb-2">08/05/2022</h3>
                 <div class="flex justify-between items-center">
