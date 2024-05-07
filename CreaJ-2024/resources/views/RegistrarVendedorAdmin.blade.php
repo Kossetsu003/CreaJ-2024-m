@@ -52,7 +52,6 @@
                 <button class="bg-red-600 w-72 h-10 text-white font-bold rounded-md">Registrar</button>
             </div>
 
-            <div class="bg-gray-800 rounded-2xl w-60 h-10 mx-auto mb-16 flex justify-around mt-[20%]">
                  <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
