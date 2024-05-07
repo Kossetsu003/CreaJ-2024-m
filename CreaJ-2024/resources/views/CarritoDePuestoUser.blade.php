@@ -67,14 +67,6 @@
                 </div>
                 <hr class="mt-5">
 
-
-
-
-
-
-
-
-
             <div class="flex w-[90%]  mt-10 ml-5 justify-between">
                 <div >
                     <h3>Total(0 Items)</h3>

@@ -22,6 +22,7 @@ Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
 Route::view('/CarritoGeneralUser','CarritoGeneralUser')->name('CarritoGeneralUser');
 Route::view('/CarritoDePuestoUser','CarritoDePuestoUser')->name('CarritoDePuestoUser');
 Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
+Route::view('/HomeUser','HomeUser')->name('HomeUser');
 
 
 
