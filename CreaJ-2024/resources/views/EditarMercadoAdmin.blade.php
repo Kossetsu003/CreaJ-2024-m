@@ -10,6 +10,7 @@
 <body>
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
+        
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-red-700">Editor de Mercado</h1>
                 <h3 class="text-sm mt-2">Mercado Ex-Cuartel <span class="font-bold">ID: #EXC07098</span></h3>
