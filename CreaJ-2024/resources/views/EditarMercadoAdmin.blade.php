@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+    <form action="" method="post">
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
             <div class="text-center">
@@ -16,30 +17,29 @@
             </div>
             <div class="mt-20 space-y-4">
                 <div class="flex justify-center">
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado">
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado" required>
                 </div>
                 <div class="flex justify-center">
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Descripción del Mercado">
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Descripción del Mercado" required>
                 </div>
                 <div class="flex justify-center">
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Distrito Ubicado">
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Distrito Ubicado" required>
                 </div>
                 <div class="flex justify-center">
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Ubicación Específica">
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Ubicación Específica" required>
                 </div>
                 <div class="flex justify-center">
                     <h4 class="text-gray-600 text-xs px-4">Hora de Entrada : </h4>
                     <h4 class="text-gray-600 text-xs px-4">Hora de Salida : </h4>
                 </div>
                 <div class="flex justify-center">
-
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Entrada" min="03:00" max="21:00" >
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Salida" >
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Entrada" min="03:00" max="21:00" required>
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Salida" required>
                 </div>
                 <div class="flex justify-between">
                     <label for="file-input" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
                         <span>Imagen del mercado</span>
-                        <input id="file-input" type="file" class="hidden">
+                        <input id="file-input" type="file" class="hidden" required>
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
                 </div>
@@ -64,5 +64,7 @@
             </div>
         </div>
     </section>
+</form>
+
 </body>
 </html>
