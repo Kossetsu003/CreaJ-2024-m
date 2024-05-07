@@ -34,7 +34,7 @@
             <div >
                 <div class="flex">
                     <div class="text-[30px] font-bold">
-                        MINI
+                        Mini
                     </div>
                     <div class="mt-3 ml-3">
                         <img class="w-8" src="{{ asset('imgs/caja.png') }}" alt="User Icon">
@@ -47,83 +47,73 @@
 
          </div>
 
-       
+         <h2 class="pt-7 text-center font-bold"> Mis Pedidos Reservados</h2>
+
+
 
          <div class="flex flex-wrap justify-center mt-5 text-sm">
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <img class="w-full h-[250px] object-cover rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Reserva del Puesto de Maria Jose</h3>
+                <h3 class="mb-2">05/06/2024</h3>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <!-- Círculo amarillo -->
                         <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
-                        <h3>Pendiente</h3>
+                        <h3>Listo para Entregar</h3>
                     </div>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
+
                 </div>
             </div>
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md object-cover" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
 
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <h3 class="font-bold mt-5">Reserva de la Tienda Michellina</h3>
+                <h3 class="mb-2">08/08/2024</h3>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <!-- Círculo amarillo -->
                         <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
-                        <h3>Pendiente</h3>
+                        <h3>Pendiente a Entregar</h3>
                     </div>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
+
                 </div>
             </div>
 
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] object-cover rounded-md" src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">
 
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <h3 class="font-bold mt-5">Reserva de Tienda Genesis</h3>
+                <h3 class="mb-2">17/01/2023</h3>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <!-- Círculo amarillo -->
-                        <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
-                        <h3>Pendiente</h3>
+                        <div class="w-3 h-3 bg-gray-400 rounded-full mr-2"></div>
+                        <h3>Entregado</h3>
                     </div>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
+
                 </div>
             </div>
 
             <div class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <h3 class="font-bold mt-5">Reserva de Pupuseria Mary</h3>
+                <h3 class="mb-2">08/05/2022</h3>
                 <div class="flex justify-between items-center">
                     <div class="flex items-center">
                         <!-- Círculo amarillo -->
-                        <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
-                        <h3>Pendiente</h3>
+                        <div class="w-3 h-3 bg-gray-400 rounded-full mr-2"></div>
+                        <h3>Entregado</h3>
                     </div>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
+                    
                 </div>
             </div>
         </div>
-        
-        
-    
-        
-        
+
+
+
+
+
     </div>
 
 </body>
