@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
-    <title>Agregar Mercado</title>
+    <title>Agregar Mercado Local</title>
 </head>
 <body>
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-purple-600">Agregar Mercado</h1>
-                <h3 class="mt-">Local</h3>
+                <h3 class="mt- "><b>LOCAL</b></h3>
             </div>
             <div class="mt-20 space-y-4">
                 <div class="flex justify-center">
@@ -38,7 +38,7 @@
                         <button class="mx-2"><img class="w-4" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
                         <h3 class="mx-2">1</h3>
                         <button class="mx-2"><img class="w-5" src="{{ asset('imgs/flechaderecha.png') }}" alt="User Icon"></button>
-                    </div>         
+                    </div>
                 </div>
 
             </div>
