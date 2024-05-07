@@ -10,14 +10,13 @@
 </head>
 <body>
         <div class="mx-auto max-w-lg mt-10 ">
+
+
+
+
+
+             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-
-
-
-
-                <!--INICIO DE NAVBAR MOBIL-->
-
-
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
                         <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
@@ -35,11 +34,12 @@
                     </div>
                 </div>
 
-                <!--FIN DE NAVBAR MOBIL-->
-
-
-
             </div>
+             <!--FIN DE NAVBAR MOBIL-->
+
+
+
+
             <div class="flex justify-around ">
                 <div>
                     <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
