@@ -95,49 +95,49 @@
 
         <div class="flex flex-wrap justify-center mt-5 text-sm">
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Venta de Mayoreo de Blusas</h3>
+                <h3 class="mb-2">Tienda Michelina</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
+                    <h3>Ropa</h3>
                     <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
+                        <h3 class="mr-2">4.2</h3>
                         <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
             </div>
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoShein.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Venta de Ropa de Shein</h3>
+                <h3 class="mb-2">Shein shop Ex Cuartel</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
+                    <h3>Ropa</h3>
                     <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
+                        <h3 class="mr-2">3.8</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
             </div>
 
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Venta de Jeans</h3>
+                <h3 class="mb-2">Venta Michelina</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
+                    <h3>Ropa</h3>
                     <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
+                        <h3 class="mr-2">3.2</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
             </div> <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Nombre del producto</h3>
-                <h3 class="mb-2">Nombre Adicional</h3>
+                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoVariado.jpg') }}" alt="User Icon">
+                <h3 class="font-bold mt-5">Venta de Ropa Variada</h3>
+                <h3 class="mb-2">Puesto de Don Juan</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
+                    <h3>Ropa</h3>
                     <div class="flex items-center">
-                        <h3 class="mr-2">5.0</h3>
+                        <h3 class="mr-2">4.6</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
