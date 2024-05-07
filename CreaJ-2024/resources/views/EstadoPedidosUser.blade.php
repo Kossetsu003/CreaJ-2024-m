@@ -51,7 +51,7 @@
 
          <div class="flex flex-wrap justify-center mt-5 text-sm">
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
                 <h3 class="font-bold mt-5">Nombre del producto</h3>
                 <h3 class="mb-2">Nombre Adicional</h3>
                 <div class="flex justify-between items-center">
@@ -67,7 +67,8 @@
                 </div>
             </div>
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+
                 <h3 class="font-bold mt-5">Nombre del producto</h3>
                 <h3 class="mb-2">Nombre Adicional</h3>
                 <div class="flex justify-between items-center">
@@ -84,7 +85,8 @@
             </div>
 
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+
                 <h3 class="font-bold mt-5">Nombre del producto</h3>
                 <h3 class="mb-2">Nombre Adicional</h3>
                 <div class="flex justify-between items-center">
@@ -101,7 +103,7 @@
             </div>
 
             <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/ElSalvador.jpg') }}" alt="User Icon">
+                <img class="w-full h-[250px] rounded-md" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
                 <h3 class="font-bold mt-5">Nombre del producto</h3>
                 <h3 class="mb-2">Nombre Adicional</h3>
                 <div class="flex justify-between items-center">
