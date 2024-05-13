@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('en_ventas', function (Blueprint $table) {
+        Schema::create('ventaproductos', function (Blueprint $table) {
             $table->id();
             $table->String('Imagen');
             $table -> String('Nombre');
@@ -21,7 +21,6 @@ return new class extends Migration
             $table -> foreign('FK_Clientes') -> references('id') -> on('clientes') -> onDelete('cascade');
             $table -> foreign('FK_Exhibicion') -> references('id') -> on('producto_en_exhibicion') -> onDelete('cascade');
             $table -> String('Estado');
-        
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('producto_en_ventas');
+        Schema::dropIfExists('ventaproductos');
     }
 };
