@@ -49,6 +49,17 @@
                 <div class="flex justify-center">
                     <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado" required>
                 </div>
+                <div class="flex justify-center">
+                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Municipio" required>
+                </div>
+                <div class="flex justify-center">
+                    <h4 class="text-gray-600 text-xs px-4">Hora de Entrada : </h4>
+                    <h4 class="text-gray-600 text-xs px-4">Hora de Salida : </h4>
+                </div>
+                <div class="flex justify-center">
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Entrada" min="03:00" max="21:00" required>
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Salida" required>
+                </div>
                 <div class="flex justify-between">
                     <label for="file-input" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
                         <span>Imagen del mercado</span>
@@ -56,16 +67,6 @@
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
                 </div>
-
-                <div>
-                    <h1 class="text-center font-bold">Imagenes</h1>
-                    <div class="flex mx-auto justify-center mt-5 ">
-                        <button class="mx-2"><img class="w-4" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
-                        <h3 class="mx-2">1</h3>
-                        <button class="mx-2"><img class="w-5" src="{{ asset('imgs/flechaderecha.png') }}" alt="User Icon"></button>
-                    </div>
-                </div>
-
             </div>
 
             <div class="flex justify-center mt-10">
