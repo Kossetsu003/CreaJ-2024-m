@@ -8,23 +8,18 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-  <div class="mt-36 flex flex-col lg:flex-row flex-wrap"> <!-- Contenedor -->
-    <div class="text-center lg:mr-10"> <!-- Sección de imagen -->
-        <img src="{{ asset('imgs/Compra.png') }}" alt="Compra">
-    </div>
-    <div class="lg:ml-10"> <!-- Sección de texto -->
-        <div class="font-bold text-center mb-4">Explora MiniShop</div>
-        <div class="w-full md:w-4/5 mx-auto"> <!-- Contenedor de texto -->
-            <p class="mb-4 w-[70%] font-bold mx-auto text-justify">
-                MiniShop es un Mercado Virtual para todos los comerciantes que se encuentaran en nuestros mercados municipales de San Salvador Centro, puedes ver y reservar los productos que quieras.
-            </p>
-            <div class="flex justify-center mt-10">
-                <a href="./LoginUser" class="bg-purple-400 w-[85%] rounded-md font-bold h-9 hover:bg-purple-400 hover:text-black active:bg-purple-300 text-sm px-6 py-2 text-center  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">Comencemos</a>
-</button>
-
-            </div>
+   <div class="flex justify-center items-center h-screen border-4">
+    <div class="border-4 p-8">
+        <div>
+            <h3 class="font-bold text-4xl text-center ">Mini <span class="text-blue-500">Shop</span></h3>
+            <h3 class="mt-3 border-4 text-center w-[90%] mx-auto">Los mejores productos en el mejor lugar</h3>
+        </div>
+        <div class="border-4 mt-4">
+            <button class="mr-2">Login</button>
+            <button>Register</button>
         </div>
     </div>
-</div> <!-- Fin del Contenedor -->
+</div>
+
 </body>
 </html>
