@@ -15,10 +15,10 @@
             <h3 class="mt-3 text-center w-[90%] mx-auto">Los mejores productos en el mejor lugar</h3>
         </div>
  <div class="mt-16 flex justify-center">
-    <button class="mr-2 bg-indigo-300 w-32 h-11 rounded-md">Login</button>
+    <button class="mr-2 bg-indigo-300 w-32 h-11 rounded-md"><a href="/LoginUser">Login</a></button>
     <button class="mr-2 border-2 border-black w-32 h-11 rounded-md relative flex items-center">
         <img class="absolute left-0 top-0 bottom-0 m-auto ml-4 mr-[10px]" src="{{ asset('imgs/play.png') }}" alt="User Icon"> <!-- Aumenté el margin-right -->
-        <span class="pl-10">Register</span> <!-- Aumenté el padding-left -->
+        <a href="/RegistroUser" class="pl-10">Register</a> <!-- Aumenté el padding-left -->
     </button>
 </div>
 
