@@ -8,11 +8,11 @@
 </head>
 <body>
     <div>
-       <div class="bg-indigo-300 h-32 flex items-center justify-center">
-            <h3 class="font-bold text-center text-2xl">Mini<span class="text-white ml-2">Shop</span></h3>
+       <div class="bg-indigo-300 h-[160px] flex items-center justify-center rounded-b-[50%] ">
+            <h3 class="font-bold text-center text-3xl">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
         <div class="flex justify-center ">
-            <img class="w-20 bg-white rounded-full shadow-md" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+            <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
         </div>
         <div class="flex justify-center mt-2 ">
             <img class="w-3 h-3 ml-1" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -28,26 +28,31 @@
             <h3 class="text-xs">corre123@gmail.com</h3>
         </div>
 
-        <div class="w-[50%] mx-auto">
-            <div class=" mx-auto flex items-center mt-5">
+        <div class="w-[50%] mx-auto mt-16">
+            <div class=" mx-auto flex items-center">
                 <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-right font-bold">Historial De pedidos</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
-            <div class=" mx-auto flex items-center mt-5">
+            <div class=" mx-auto flex items-center mt-10">
                 <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-right font-bold">Historial De pedidos</h3> <!-- Alineado a la derecha -->
-            </div>
-            
-            
-            <div class=" mx-auto flex items-center mt-5">
-                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-right font-bold">Historial De pedidos</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
-            <div class=" mx-auto flex items-center mt-5">
+
+            <div class=" mx-auto flex items-center mt-10">
+                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
+            </div>
+
+            <div class=" mx-auto flex items-center mt-10">
                 <img class="w-5" src="{{ asset('imgs/verified.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-right font-bold">Historial De pedidos</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-5">Configuracion</h3> <!-- Alineado a la derecha -->
+            </div>
+
+            <div class=" mx-auto flex items-center mt-10">
+                <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold  ml-5">Cerrar Cuenta</h3> <!-- Alineado a la derecha -->
             </div>
 
 
