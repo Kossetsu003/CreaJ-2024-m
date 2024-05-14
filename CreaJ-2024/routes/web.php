@@ -25,6 +25,7 @@ Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
 Route::view('/HomeUser','HomeUser')->name('HomeUser');
 Route::view('/EstadoPedidosUser','EstadoPedidosUser')->name('EstadoPedidosUser');
 Route::view('/Profile','Profile')->name('ProfileUser');
+Route::view('/CrudMercados','CrudMercados')->name('CrudMercados');
 
 
 
