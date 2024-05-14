@@ -19,7 +19,7 @@
                     <h1 class="font-bold">Iniciar Sesión</h1>
                 </div>
                 <div class="icon">
-                    <img class="w-4 ml-2 pt-1" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+                    <img class="w-4 ml-2 pt-1 " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
                 </div>
             </div>
             <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
@@ -53,6 +53,7 @@
         </div>
     </section>
 </form>
+
 
 </body>
 
