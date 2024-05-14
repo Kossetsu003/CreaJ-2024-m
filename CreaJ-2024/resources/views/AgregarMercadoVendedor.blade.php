@@ -8,7 +8,8 @@
     <title>Agregar Mercado Local</title>
 </head>
 <body>
-   <form action="#" method="get">
+   <form action="#" method="POST">
+   @csrf
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
 
@@ -41,31 +42,32 @@
             </div>
             <div class="mt-20 space-y-4">
                 <div class="flex justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Ubicación" required>
+                    <input name="ubicacion" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Ubicación" required>
+                </div>
+
+                <div class="flex justify-center">
+                    <input name="nombremercado" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado" value="{{old('name')}}" required>
                 </div>
                 <div class="flex justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Descripción" required>
-                </div>
-                <div class="flex justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado" required>
-                </div>
-                <div class="flex justify-center">
-                    <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Municipio" required>
+                    <input name="municipio" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Municipio" value="{{old('Municipio')}}" required>
                 </div>
                 <div class="flex justify-center">
                     <h4 class="text-gray-600 text-xs px-4">Hora de Entrada : </h4>
                     <h4 class="text-gray-600 text-xs px-4">Hora de Salida : </h4>
                 </div>
                 <div class="flex justify-center">
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Entrada" min="03:00" max="21:00" required>
-                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Salida" required>
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Entrada" value="{{ old('horaentrada')}}" required>
+                    <input class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="time" name="Salida" value="{{ old('horasalida') }}" required>
                 </div>
                 <div class="flex justify-between">
                     <label for="file-input" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
                         <span>Imagen del mercado</span>
-                        <input id="file-input" type="file" class="hidden" >
+                        <input name="imagen" id="file-input" type="file" class="hidden"  value="{{old('imagen_referencia')}}">
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
+                </div>
+                <div class="flex justify-center">
+                    <textarea name="Descripcion" rows="3" class="border-1 rounded-lg border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 resize-none" placeholder="Descripción">{{old('descripcion')}}</textarea>
                 </div>
             </div>
 

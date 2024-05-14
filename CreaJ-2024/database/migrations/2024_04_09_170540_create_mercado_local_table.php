@@ -17,7 +17,9 @@ return new class extends Migration
             $table->binary('imagen_referencia');
             $table->string('municipio');
             $table->string('ubicacion');
-            $table->string('horario');
+            $table->string('horaentrada');
+            $table->string('horasalida');
+            $table->string('descripcion');
         });
     }
 
