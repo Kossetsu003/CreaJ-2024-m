@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\MercadoLocalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +42,10 @@ Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMe
 /*Vistas de adminsitrador*/
 Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmin');
 Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
+
+
+Route::resource('mercado-locals', MercadoLocalController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
