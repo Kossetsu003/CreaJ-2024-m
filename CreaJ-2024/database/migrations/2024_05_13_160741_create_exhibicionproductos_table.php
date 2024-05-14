@@ -17,7 +17,8 @@ return new class extends Migration
             $table -> String('Nombre');
             $table -> String('Descripcion');
             $table -> Double('Precio');
-            $table -> foreign('FK_Vendedor') -> references('id') -> on('vendedor') -> onDelete('cascade');
+            $table->unsignedBigInteger('fk_vendedor');
+            $table -> foreign('fk_vendedor') -> references('id') -> on('vendedor') -> onDelete('cascade');
             $table -> String('Estado');
         });
     }

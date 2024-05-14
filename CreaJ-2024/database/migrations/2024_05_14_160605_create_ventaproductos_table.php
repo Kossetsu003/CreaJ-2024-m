@@ -16,10 +16,14 @@ return new class extends Migration
             $table->String('Imagen');
             $table -> String('Nombre');
             $table -> Double('precio');
-            $table -> Int('Cantidad');
+            $table -> Integer('Cantidad');
             $table ->String('Talla') ->nullable();
+
+            $table->unsignedBigInteger('FK_Clientes');
             $table -> foreign('FK_Clientes') -> references('id') -> on('clientes') -> onDelete('cascade');
-            $table -> foreign('FK_Exhibicion') -> references('id') -> on('producto_en_exhibicion') -> onDelete('cascade');
+
+            $table->unsignedBigInteger('FK_Exhibicion');
+            $table -> foreign('FK_Exhibicion') -> references('id') -> on('exhibicionproductos') -> onDelete('cascade');
             $table -> String('Estado');
         });
     }
