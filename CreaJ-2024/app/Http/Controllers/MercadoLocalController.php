@@ -28,7 +28,7 @@ class MercadoLocalController extends Controller
     public function create()
     {
         $mercadoLocal = new MercadoLocal();
-        return view('mercado-local.create', compact('mercadoLocal'));
+        return view('AgregarMercadoVendedor', compact('mercadoLocal'));
     }
 
     /**
