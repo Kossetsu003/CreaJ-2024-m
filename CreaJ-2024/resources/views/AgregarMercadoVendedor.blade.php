@@ -204,7 +204,7 @@
                     class="
                         btn btn-primary
 
-                        bg-purple-500 w-72 h-10 flex items-center  justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">
+                        bg-purple-500 border-transparent hover:border-purple-400 w-72 h-10 flex items-center  justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">
                     {{ __('Publicar Mercado') }}
                 </button>
             </div>
