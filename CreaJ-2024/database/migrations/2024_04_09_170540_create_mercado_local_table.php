@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mercado_local', function (Blueprint $table) {
+        Schema::create('mercado_locals', function (Blueprint $table) {
+
             $table->id();
             $table->string('nombre');
             $table->binary('imagen_referencia');
@@ -20,6 +21,9 @@ return new class extends Migration
             $table->string('horaentrada');
             $table->string('horasalida');
             $table->string('descripcion');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+
         });
     }
 

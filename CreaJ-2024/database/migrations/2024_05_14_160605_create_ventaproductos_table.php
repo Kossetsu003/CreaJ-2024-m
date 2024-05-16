@@ -25,6 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('FK_Exhibicion');
             $table -> foreign('FK_Exhibicion') -> references('id') -> on('exhibicionproductos') -> onDelete('cascade');
             $table -> String('Estado');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

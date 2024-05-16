@@ -19,7 +19,9 @@ class CreateVendedorTable extends Migration
             $table->double('telefono')->nullable();
             $table->double('numero_puesto');
             $table->unsignedBigInteger('fk_mercado'); // Cambiado a unsignedBigInteger
-            $table->foreign('fk_mercado')->references('id')->on('mercado_local');
+            $table->foreign('fk_mercado')->references('id')->on('mercado_locals');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

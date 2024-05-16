@@ -20,6 +20,8 @@ return new class extends Migration
             $table->double('telefono');
             $table->string('sexo');
             $table-> string('rol');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

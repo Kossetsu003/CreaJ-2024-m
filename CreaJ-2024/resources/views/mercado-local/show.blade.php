@@ -37,8 +37,16 @@
                             {{ $mercadoLocal->ubicacion }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Horario:</strong>
-                            {{ $mercadoLocal->horario }}
+                            <strong>Horaentrada:</strong>
+                            {{ $mercadoLocal->horaentrada }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Horasalida:</strong>
+                            {{ $mercadoLocal->horasalida }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
+                            <strong>Descripcion:</strong>
+                            {{ $mercadoLocal->descripcion }}
                         </div>
 
                     </div>

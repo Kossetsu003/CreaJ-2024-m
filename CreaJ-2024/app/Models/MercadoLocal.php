@@ -12,7 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property $imagen_referencia
  * @property $municipio
  * @property $ubicacion
- * @property $horario
+ * @property $horaentrada
+ * @property $horasalida
+ * @property $descripcion
  *
  * @property Vendedor[] $vendedors
  * @package App
@@ -29,7 +31,7 @@ class MercadoLocal extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'imagen_referencia', 'municipio', 'ubicacion', 'horario'];
+    protected $fillable = ['nombre', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
 
 
     /**

@@ -40,7 +40,9 @@
 										<th>Imagen Referencia</th>
 										<th>Municipio</th>
 										<th>Ubicacion</th>
-										<th>Horario</th>
+										<th>Horaentrada</th>
+										<th>Horasalida</th>
+										<th>Descripcion</th>
 
                                         <th></th>
                                     </tr>
@@ -54,7 +56,9 @@
 											<td>{{ $mercadoLocal->imagen_referencia }}</td>
 											<td>{{ $mercadoLocal->municipio }}</td>
 											<td>{{ $mercadoLocal->ubicacion }}</td>
-											<td>{{ $mercadoLocal->horario }}</td>
+											<td>{{ $mercadoLocal->horaentrada }}</td>
+											<td>{{ $mercadoLocal->horasalida }}</td>
+											<td>{{ $mercadoLocal->descripcion }}</td>
 
                                             <td>
                                                 <form action="{{ route('mercado-locals.destroy',$mercadoLocal->id) }}" method="POST">

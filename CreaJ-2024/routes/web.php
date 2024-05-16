@@ -38,13 +38,15 @@ Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMe
 
 
 
+
+
 /*Vistas de adminsitrador*/
 Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmin');
 Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
 
 
-Route::resource('mercado-locals', MercadoLocalController::class);
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('mercado-locals', MercadoLocalController::class);
+

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('fk_vendedor');
             $table -> foreign('fk_vendedor') -> references('id') -> on('vendedor') -> onDelete('cascade');
             $table -> String('Estado');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
