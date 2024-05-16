@@ -11,10 +11,10 @@
    <form action="#" method="POST">
    @csrf
     <section>
-        <div class="w-72 h-96 mx-auto mt-16">
+        <div class="w-72 h-auto mx-auto mt-16 ">
 
              <!--INICIO DE NAVBAR MOBIL-->
-            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+            <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
                         <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
@@ -72,10 +72,10 @@
             </div>
 
             <div class="flex justify-center mt-10">
-                <button class="bg-purple-500 w-72 h-10 flex items-center justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">Guardar</button>
+                <button class="bg-purple-500 w-72 h-10 flex items-center  justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">Guardar</button>
             </div>
 
-            
+
 
 
         </div>
