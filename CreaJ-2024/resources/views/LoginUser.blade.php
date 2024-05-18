@@ -48,7 +48,7 @@
             </div>
 
             <div class="mt-11">
-                <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="./RegistroUser" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
+                <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="./clientes/create" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
             </div>
         </div>
     </section>

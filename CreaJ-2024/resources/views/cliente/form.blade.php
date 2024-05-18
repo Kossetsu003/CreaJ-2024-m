@@ -1,9 +1,9 @@
 <div class="row padding-1 p-1">
     <div class="col-md-12">
-        
+
         <div class="form-group mb-2 mb20">
             <label for="r_o_l" class="form-label">{{ __('Rol') }}</label>
-            <input type="text" name="ROL" class="form-control @error('ROL') is-invalid @enderror" value="{{ old('ROL', $cliente?->ROL) }}" id="r_o_l" placeholder="Rol">
+            <input type="text" name="ROL" class="form-control @error('ROL') is-invalid @enderror" value="4" id="r_o_l" placeholder="Rol">
             {!! $errors->first('ROL', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">

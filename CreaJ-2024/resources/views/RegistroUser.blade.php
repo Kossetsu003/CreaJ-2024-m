@@ -50,24 +50,36 @@
 
                         <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('usuario') is-invalid @enderror" value="{{ old('usuario', $cliente?->usuario) }}">
                         {!! $errors->first('usuario', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    <input class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" type="text" placeholder="Ingrese sus Nombres" required>
-                    <input class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" type="text" placeholder="Ingrese su Apellido" required>
-                    <input class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" type="text" placeholder="Ingrese su Número de Teléfono" required>
-                    <select class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
-                        <option value="NULL" class="">Escoga su Género</option>
-                        <option value="Masc">Género: Masculino</option>
-                        <option value="Fem">Género: Femenino</option>
-                    </select>
-                    <input class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" type="password" placeholder="Escriba su Contraseña" required>
-                    <input class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" type="password" placeholder="Escriba de nuevo su Contraseña" required>
+
+                        <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $cliente?->nombre) }}">
+                         {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+                        <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class=" border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido', $cliente?->apellido) }}" >
+                        {!! $errors->first('apellido', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+                        <input required type="text" name="telefono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono', $cliente?->telefono) }}" id="telefono" placeholder="Ingrese su Número de Teléfono">
+                        {!! $errors->first('telefono', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+                        <select name="sexo" id="sexo" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400 form-control @error('sexo') is-invalid @enderror" required>
+                            <option value="{{ old('sexo', $cliente?->sexo) }}" class="">Escoga su Género</option>
+                            <option value="Masc">Género: Masculino</option>
+                            <option value="Fem">Género: Femenino</option>
+                        </select>
+                        {!! $errors->first('sexo', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+
+                        <input required type="password"  name="contrasena" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('contrasena') is-invalid @enderror" value="{{ old('contrasena', $cliente?->contrasena) }}" id="contrasena" placeholder="Escriba su Contraseña">
+                        {!! $errors->first('contrasena', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                        <input required type="password" name="confirmar_contrasena" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control" id="confirmar_contrasena" placeholder="Escriba de nuevo su Contraseña">
+
 
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
-                        <h3 class="text-sm font-bold"><a href="./LoginUser">Ya tengo cuenta</a></h3>
+                        <h3 class="text-sm font-bold"><a href="../LoginUser">Ya tengo cuenta</a></h3>
                     </div>
                     </div>
 
                 <div class="flex justify-center mt-5">
-                    <button type="submit" class="bg-purple-400 w-72 h-10 flex items-center justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">Registrarse</button>
+                    <button type="submit" class="btn btn-primary bg-purple-400 w-72 h-10 flex items-center justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">Registrarse</button>
                 </div>
                 </form>
             </div>
@@ -77,4 +89,5 @@
 
 </body>
 </html>
+<script src="../js/ComprobarContrasena.js"></script>
 @endsection

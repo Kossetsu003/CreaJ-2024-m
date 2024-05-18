@@ -26,6 +26,7 @@ class ClienteRequest extends FormRequest
 			'contrasena' => 'required|string',
 			'nombre' => 'string',
 			'apellido' => 'string',
+            'telefono' => 'nullable|string',
 			'sexo' => 'string',
         ];
     }
