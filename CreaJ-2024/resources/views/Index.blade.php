@@ -16,11 +16,20 @@
                         <h3 class="mt-3 w-[90%] mx-auto text-justify md:text-white md:text-justify md:w-[70%] md:text-lg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore quos blanditiis sed, omnis excepturi corporis sequi. Consequatur sequi evenie.</h3>
                     </div>
                     <div class="mt-16 flex justify-center">
-                        <button class="mr-2 bg-indigo-300 w-32 h-12 rounded-md">Login</button>
-                        <button class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
+                        <a href="./LoginUser">
+                            <button class="mr-2 bg-indigo-300 w-32 h-12 rounded-md">
+                                Inciar Sesion
+                            </button>
+                        </a>
+                        <a href="./clientes/create" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
                         <img class="absolute left-0 top-0 bottom-0 m-auto ml-4 mr-[10px]" src="{{ asset('imgs/play.png') }}" alt="User Icon"> <!-- Aumenté el margin-right -->
-                        <span class="pl-10">Register</span> <!-- Aumenté el padding-left -->
-                        </button>
+
+                            <span class="pl-10">
+                                Registrarse
+                            </span>
+                        </a>
+                         <!-- Aumenté el padding-left -->
+
                 </div>
             </div>
         </div>

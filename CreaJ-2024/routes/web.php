@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\MercadoLocalController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,4 +54,4 @@ Route::view('/ListadoVendedoresAdmin','ListadoVendedoresAdmin')->name('ListadoVe
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
-
+Route::resource('clientes', ClienteController::class);
