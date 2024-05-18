@@ -62,8 +62,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto">
@@ -78,8 +78,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -92,8 +92,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -106,8 +106,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -120,8 +120,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -134,8 +134,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -148,8 +148,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -162,8 +162,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
@@ -176,8 +176,8 @@
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
 
                 </div>
                 <hr class="w-[90%] mx-auto">

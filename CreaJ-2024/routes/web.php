@@ -45,6 +45,7 @@ Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmi
 Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
 Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
 Route::view('/EditarPuestoAdmin','EditarPuestoAdmin')->name('EditarPuestoAdmin');
+Route::view('/ListadoVendedoresAdmin','ListadoVendedoresAdmin')->name('ListadoVendedoresAdmin');
 
 
 // Auth::routes();
