@@ -36,6 +36,7 @@ Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarPro
 Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMercadoVendedor');
 Route::view('/PerfilVendedor','PerfilVendedor')->name('PerfilVendedor');
 Route::view('/EditarPuestoVendedor','EditarPuestoVendedor')->name('EditarPuestoVendedor');
+Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
 
 
 
