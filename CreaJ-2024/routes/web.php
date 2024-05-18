@@ -22,11 +22,11 @@ Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
 Route::view('/CarritoGeneralUser','CarritoGeneralUser')->name('CarritoGeneralUser');
 Route::view('/CarritoDePuestoUser','CarritoDePuestoUser')->name('CarritoDePuestoUser');
 Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
+Route::view('/ProductoPuesto','ProductoPuesto')->name('ProductoPuesto');
 Route::view('/HomeUser','HomeUser')->name('HomeUser');
 Route::view('/EstadoPedidosUser','EstadoPedidosUser')->name('EstadoPedidosUser');
 Route::view('/Profile','Profile')->name('ProfileUser');
 Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
-Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
 
 
 
@@ -34,10 +34,7 @@ Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
 Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
 Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarProductoVendedor');
 Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMercadoVendedor');
-
-
-
-
+Route::view('/PerfilVendedor','PerfilVendedor')->name('PerfilVendedor');
 
 
 
@@ -45,6 +42,7 @@ Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMe
 /*Vistas de adminsitrador*/
 Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmin');
 Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
+Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
 
 
 // Auth::routes();
