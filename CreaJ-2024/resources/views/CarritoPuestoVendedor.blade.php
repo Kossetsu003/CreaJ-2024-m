@@ -103,7 +103,7 @@
 
             </div>
 
-            <button class="mx-auto mt-[20px] mb-[7rem] bg-black border-white flex justify-center items-center w-72 h-14 gap-x-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+            <button class="mx-auto mt-[20px] mb-[7rem] bg-black border-white flex justify-center items-center w-72 h-12 gap-x-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
                 <span>Guardar</span>
             </button>
 
