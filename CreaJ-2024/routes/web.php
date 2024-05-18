@@ -25,6 +25,8 @@ Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
 Route::view('/HomeUser','HomeUser')->name('HomeUser');
 Route::view('/EstadoPedidosUser','EstadoPedidosUser')->name('EstadoPedidosUser');
 Route::view('/Profile','Profile')->name('ProfileUser');
+Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
+Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
 
 
 
@@ -45,7 +47,7 @@ Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmi
 Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
