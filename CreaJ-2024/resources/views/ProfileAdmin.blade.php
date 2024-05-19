@@ -7,10 +7,10 @@
     <title>Profilevendedor</title>
 </head>
 <body>
-    <div>
-       <div class="bg-red-500 h-[160px] flex items-center justify-center">
-            <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
-        </div>
+    <div class="pt-[6rem]">
+
+            <h3 class="pt-0 pb-16 font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
+
         <div class="flex justify-center mt-5">
             <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
         </div>
@@ -74,5 +74,6 @@
 
             </div>
     </div>
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[360px] h-[180px] bg-red-500 rounded-b-full z-[-3]"></div>
 </body>
 </html>
