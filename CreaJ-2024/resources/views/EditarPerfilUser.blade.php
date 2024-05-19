@@ -1,3 +1,10 @@
+@extends('layouts.app')
+
+@section('template_title')
+    {{ __('Update') }} Cliente
+@endsection
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,7 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-    <form action="#" method="get">
+
     <section>
         <div class="w-72 h-auto mx-auto mt-[15%] mb-[7em]">
             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
@@ -67,6 +74,6 @@
             </div>
         </div>
     </section>
-</form>
 </body>
 </html>
+@endsection
