@@ -36,10 +36,10 @@
             <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
                 <div>
                     <div>
-                        Mercado Ex-Cuartel
+                        Nombre Del Puesto
                     </div>
                     <div class="font-bold">
-                        Los mejores Precios
+                        Andrew Food
                     </div>
                 </div>
 
@@ -49,48 +49,13 @@
             </div><!--Fin Principal-->
 
 
-
-        <div class="flex items-center mt-5 ">
-                    <!-- Campo de búsqueda con icono de lupa -->
-                <div class="relative w-[70%] ml-5">
-                    <img class="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5" src="{{ asset('imgs/lupa.png') }}" alt="Search Icon">
-                    <input class="pl-8 px-2  w-[100%] border rounded-md border-gray-500 py-1 focus:outline-none" type="text" placeholder="Buscar">
-                </div>
-
-
-                <!-- Botón azul -->
-                <div class="mr-5 pl-2">
-                    <button class="bg-blue-600 rounded-md px-2 py-1 h-[100%] ml-1"> <!-- Reduje el margen izquierdo a 1 -->
-                        <img class="w-6 "   src="{{ asset('imgs/SettingIcon.png') }}" alt="User Icon">
-                    </button>
-                 </div>
-        </div>
-        <div class="flex mt-5">
-            <div class="flex mx-auto">
-                <button class="flex items-center h-8 border text-black px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
-                    <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
-                    <span class="ml-1">Todos Los puestos</span>
-                </button>
-
-                <button class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs ">
-                    <img class="w-5" src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
-                    <span class="ml-1">Ropa</span>
-                </button>
-
-                <button class="flex items-center border text-black px-1 py-0.5 rounded-md text-xs hover:bg-blue-200">
-                    <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
-                    <span class="ml-1">Comida</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="flex flex-wrap justify-center mt-5 text-sm">
+        <div class="flex flex-wrap justify-center mt-10 text-sm">
             <div class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
                 <h3 class="font-bold mt-5">Venta de Mayoreo de Blusas</h3>
                 <h3 class="mb-2">Tienda Michelina</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <h3 class="font-bold">$219.99</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
                         <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -102,7 +67,7 @@
                 <h3 class="font-bold mt-5">Venta de Naranjas Valencia</h3>
                 <h3 class="mb-2">Puesto de Don Juan</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
+                    <h3 class="font-bold">$219.99</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">3.8</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -115,7 +80,7 @@
                 <h3 class="font-bold mt-5">Venta de Jeans</h3>
                 <h3 class="mb-2">Venta Michelina</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <h3 class="font-bold" >$219.99</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">3.2</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -123,10 +88,10 @@
                 </div>
             </div> <div class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoVariado.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Ropa Variada</h3>
+                <h3 class="font-bold mt-5">Venta de Ropa </h3>
                 <h3 class="mb-2">Puesto de Don Juan</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <h3 class="font-bold">$219.99</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.6</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
