@@ -59,7 +59,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('cliente.edit', compact('cliente'));
+        return view('EditarPerfilUser', compact('cliente'));
     }
 
     /**

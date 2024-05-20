@@ -76,7 +76,7 @@
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
                         <h3 class="text-sm font-bold"><a href="../LoginUser">Ya tengo cuenta</a></h3>
                     </div>
-                    </div>
+                </div>
 
                 <div class="flex justify-center mt-5">
                     <button type="submit" class="btn btn-primary bg-purple-400 w-72 h-10 flex items-center justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">Registrarse</button>
