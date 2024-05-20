@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Home Mercado User</title>
+    <title>Home Admin General</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
@@ -48,23 +48,6 @@
                 </div>
             </div><!--Fin Principal-->
 
-
-
-        <div class="flex items-center mt-5 ">
-                    <!-- Campo de búsqueda con icono de lupa -->
-                <div class="relative w-[70%] ml-5">
-                    <img class="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5" src="{{ asset('imgs/lupa.png') }}" alt="Search Icon">
-                    <input class="pl-8 px-2  w-[100%] border rounded-md border-gray-500 py-1 focus:outline-none" type="text" placeholder="Buscar">
-                </div>
-
-
-                <!-- Botón azul -->
-                <div class="mr-5 pl-2">
-                    <button class="bg-blue-600 rounded-md px-2 py-1 h-[100%] ml-1"> <!-- Reduje el margen izquierdo a 1 -->
-                        <img class="w-6 "   src="{{ asset('imgs/SettingIcon.png') }}" alt="User Icon">
-                    </button>
-                 </div>
-        </div>
         <div class="flex mt-5">
             <div class="flex mx-auto">
                 <button class="flex items-center h-8 border  px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
@@ -134,11 +117,6 @@
                 </div>
 
         </div>
-
-
-
-
     </div>
-
 </body>
 </html>

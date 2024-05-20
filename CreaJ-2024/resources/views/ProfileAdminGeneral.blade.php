@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>ProfileAdmin</title>
+    <title>ProfileAdminGeneral</title>
 </head>
 <body>
     <div>
-        <div class="bg-red-500 h-36 w-full flex items-center justify-center">
+        <div class="bg-violet-500 h-40 w-full flex items-center justify-center">
             <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
 
