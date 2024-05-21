@@ -8,19 +8,30 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-    <div class="md:flex md:bg-indigo-200 border">
+    <div class="md:flex md:bg-[#BDD7FF] ">
         <div class="flex justify-center items-center h-screen md:w-[50%]">
             <div class="p-8">
                 <div>
                     <h3 class="font-bold text-6xl text-center">Mini <span class="text-blue-500">Shop</span></h3>
-                    <h3 class="mt-3 w-[90%] mx-auto text-justify md:text-white md:text-justify md:w-[70%] md:text-lg">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore quos blanditiis sed, omnis excepturi corporis sequi. Consequatur sequi evenie.
+                    
+                    <div class="hidden md:flex justify-center ml-[34%] w-[50%]">
+                        <h3 class="text-white mt-5 text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
+                        </h3>
+                    </div>
+
+                    <h3 class="mt-3 w-[90%] mx-auto text-justify md:hidden ml-6">
+                        Los mejores productos en el mejor
+                        <h3 class="text-center md:hidden">lugar</h3>
                     </h3>
+                    
+
+
                 </div>
                 <div class="mt-16 flex justify-center">
                     <a href="./LoginUser">
                         <button class="mr-2 bg-indigo-300 w-32 h-12 rounded-md">
-                            Inciar Sesion
+                            Iniciar Sesion
                         </button>
                     </a>
                     <a href="./clientes/create" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
@@ -30,13 +41,33 @@
                         </span>
                     </a>
                 </div>
+                <div>
+                    <div class="flex gap-7 justify-center mt-8">
+                        <div class="bg-black p-1 rounded-full inline-block">
+                            <img class="rounded-full w-6" src="{{ asset('imgs/facebook.png') }}" alt="User Icon">
+                        </div>
+                        <div class="bg-black p-1 rounded-full inline-block">
+                            <img class="rounded-full w-6" src="{{ asset('imgs/twitter.png') }}" alt="User Icon">
+                        </div>
+                        <div class="bg-black p-1 rounded-full inline-block">
+                            <img class="rounded-full w-6" src="{{ asset('imgs/instagram.png') }}" alt="User Icon">
+                        </div>
+                        <div class="bg-black p-1 rounded-full inline-block">
+                            <img class="rounded-full w-6" src="{{ asset('imgs/linkedin.png') }}" alt="User Icon">
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-
+        
         <!-- Ocultar la imagen en dispositivos móviles y mostrarla en escritorio -->
         <div class="md:mx-auto h-screen  items-center hidden md:flex">
             <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="User Icon">
         </div>
+
+        
     </div>
+    
 </body>
 </html>
