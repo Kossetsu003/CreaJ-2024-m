@@ -14,7 +14,7 @@
                 <div>
                     <h3 class="font-bold text-6xl text-center">Mini <span class="text-blue-500">Shop</span></h3>
                     
-                    <div class="hidden md:flex justify-center ml-[34%] w-[60%]">
+                    <div class="hidden md:flex justify-center ml-[34%] w-[50%]">
                         <h3 class="text-white mt-5 text-justify">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
                         </h3>
@@ -61,7 +61,6 @@
             </div>
         </div>
         
-
         <!-- Ocultar la imagen en dispositivos móviles y mostrarla en escritorio -->
         <div class="md:mx-auto h-screen  items-center hidden md:flex">
             <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="User Icon">
