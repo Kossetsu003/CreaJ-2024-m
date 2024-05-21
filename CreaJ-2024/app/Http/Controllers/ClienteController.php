@@ -38,7 +38,7 @@ class ClienteController extends Controller
     {
         Cliente::create($request->validated());
 
-        return redirect()->route('clientes.index')
+        return redirect()->route('HomeUser')
             ->with('success', 'Cliente created successfully.');
     }
 
