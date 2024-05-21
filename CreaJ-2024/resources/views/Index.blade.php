@@ -12,22 +12,26 @@
         <div class="flex justify-center items-center h-screen md:w-[50%]">
             <div class="p-8">
                 <div>
-                    <h3 class="font-bold text-6xl text-center">Mini <span class="text-blue-500">Shop</span></h3>
-                    
-                    <div class="hidden md:flex justify-center ml-[34%] w-[50%]">
-                        <h3 class="text-white mt-5 text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
+                    <div class=" w-[70%] mx-auto">
+                        <h3 class="font-bold text-6xl text-center flex items-center justify-center">
+                            <span class="inline">Mini</span> <span class="text-blue-500 inline pl-1">Shop</span>
                         </h3>
+
+
+                        
+                        <div class="hidden md:flex justify-center w-[90%] mx-auto">
+                            <h3 class="text-white mt-5 text-justify ">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
+                            </h3>
+                        </div>
                     </div>
 
-                    <h3 class="mt-3 w-[90%] mx-auto text-justify md:hidden ml-6">
+                    <h3 class="mt-3 w-[90%] mx-auto md:text-xs text-justify md:hidden ml-6">
                         Los mejores productos en el mejor
                         <h3 class="text-center md:hidden">lugar</h3>
                     </h3>
                     
-
-
-                </div>
+            </div>
                 <div class="mt-16 flex justify-center">
                     <a href="./LoginUser">
                         <button class="mr-2 bg-indigo-300 w-32 h-12 rounded-md">
