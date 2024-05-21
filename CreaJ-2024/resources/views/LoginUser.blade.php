@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="md:flex h-screen">
-        <div class="pt-7 md:border-4 md:bg-[#BDD7FF] md:w-[50%] md:flex md:flex-col md:justify-center">
+        <div class="pt-7  md:bg-[#BDD7FF] md:w-[50%] md:flex md:flex-col md:justify-center">
             <div class="login pl-5">
                 <div class="flex items-center">
                 <div class="md:hidden"> <!-- Oculta el título en dispositivos móviles -->
@@ -28,7 +28,7 @@
             <div class="w-72 h-96 mt-10 mx-auto">
                 <div class="text-center">
                     <h1 class="text-6xl font-bold">Mini<span class="text-[#3679F5] ml-3 font-bold">Shop</span></h1>
-                </div>
+            </div>
 
                 <div class="flex flex-col mt-5">
                     <div class="flex justify-center pt-5">
@@ -46,6 +46,27 @@
                 <div class="flex justify-center mt-5">
                     <button class="w-72 h-12 font-bold btn overflow-hidden relative bg-[#96A6E8] text-black py-2 px-4 rounded-xl">Iniciar Sesión</button>
                 </div>
+
+                <div class="hidden md:flex items-center mt-8">
+                    <div class="flex-grow border-t border-gray-400"></div>
+                    <span class="px-4 text-xs">Or sign up with</span>
+                    <div class="flex-grow border-t border-gray-400"></div>
+                </div>
+
+                <div class="hidden md:flex gap-3 justify-center mt-10">
+                    <div class="bg-white rounded-md w-16 p-2">
+                        <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="User Icon">
+                    </div>
+
+                    <div class="bg-white rounded-md w-16 p-2">
+                        <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="User Icon">
+                    </div>
+
+                    <div class="bg-white rounded-md w-16 p-2">
+                        <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="User Icon">
+                    </div>
+                </div>
+
 
                 <div class="mt-11">
                     <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="./clientes/create" class="text-blue-950 font-bold">Crear Cuenta</a></h3>

@@ -14,7 +14,7 @@
                 <div>
                     <div class=" w-[70%] mx-auto">
                         <h3 class="font-bold text-6xl text-center flex items-center justify-center">
-                            <span class="inline">Mini</span> <span class="text-blue-500 inline pl-1">Shop</span>
+                            <span class="inline md:text-white">Mini</span> <span class="text-blue-500 inline pl-2">Shop</span>
                         </h3>
 
 
