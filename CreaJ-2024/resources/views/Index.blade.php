@@ -13,15 +13,18 @@
             <div class="p-8">
                 <div>
                     <h3 class="font-bold text-6xl text-center">Mini <span class="text-blue-500">Shop</span></h3>
+                    
+                    <div class="hidden md:flex justify-center ml-[34%] w-[60%]">
+                        <h3 class="text-white mt-5 text-justify">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
+                        </h3>
+                    </div>
+
                     <h3 class="mt-3 w-[90%] mx-auto text-justify md:hidden ml-6">
                         Los mejores productos en el mejor
                         <h3 class="text-center md:hidden">lugar</h3>
                     </h3>
-                    <div class="hidden md:flex justify-center ml-[34%] w-[60%]">
-    <h3 class="text-white mt-5 text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem, magni non reprehenderit nulla dolore. Possimus eligendi ex dignissimos amet explicabo?
-    </h3>
-</div>
+                    
 
 
                 </div>
