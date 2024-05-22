@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class ClienteController
@@ -38,6 +39,8 @@ class ClienteController extends Controller
     {
        $cliente = Cliente::create($request->validated());
 
+       Session::put('id',$cliente->id);
+
         return redirect()->route('clientes.index')
             ->with('success', 'Cliente created successfully.');
     }
@@ -49,7 +52,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('cliente.show', compact('cliente'));
+        return view('Profile', compact('cliente'));
     }
 
     /**
