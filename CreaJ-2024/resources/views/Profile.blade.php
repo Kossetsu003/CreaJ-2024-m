@@ -29,7 +29,7 @@
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
-            <a href="{{ route('clientes.edit',$cliente->id) }}">
+            <a href="">
                 <div class=" mx-auto flex items-center">
                     <img class="w-5" src="{{ asset('imgs/editicon.png') }}" alt="User Icon">
                     <h3 class="flex-grow text-left font-bold ml-3">Editar Mi Perfil</h3> <!-- Alineado a la derecha -->
