@@ -38,10 +38,6 @@ class ClienteController extends Controller
     {
        $cliente = Cliente::create($request->validated());
 
-       //sesion activada
-       session(['id' => $cliente->id]);
-
-       //redicerccion
         return redirect()->route('clientes.index')
             ->with('success', 'Cliente created successfully.');
     }
