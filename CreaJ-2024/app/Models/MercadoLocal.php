@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property $horaentrada
  * @property $horasalida
  * @property $descripcion
+ * @property $created_at
+ * @property $updated_at
  *
  * @property Vendedor[] $vendedors
  * @package App
