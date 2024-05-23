@@ -2,6 +2,7 @@
 use App\Http\Controllers\MercadoLocalController;
 use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,4 @@ Route::view('/AdminGeneralPerfilVendedor','AdminGeneralPerfilVendedor')->name('A
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('clientes', ClienteController::class);
+Route::resource('vendedor', VendedorController::class);
