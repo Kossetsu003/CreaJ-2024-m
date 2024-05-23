@@ -1,3 +1,11 @@
+@extends('layouts.app')
+
+@section('template_title')
+    {{ __('Create') }} Mercado Local
+@endsection
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,70 +16,107 @@
     <title>Agregar Mercado Local</title>
 </head>
 <body>
-   <form action="#" method="POST">
-   @csrf
+
     <section>
-        <div class="w-72 h-auto mx-auto mt-16 ">
+        <div class="w-72 mx-auto mt-16 ">
 
-             <!--INICIO DE NAVBAR MOBIL-->
-            <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center">
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center  ">
-                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                    </div>
 
-                    <div class="flex items-center">
-                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                </div>
-
-            </div>
-             <!--FIN DE NAVBAR MOBIL-->
 
 
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-purple-600">Agregar Mercado</h1>
                 <h3 class="mt- "><b>LOCAL</b></h3>
             </div>
+            <form method="POST" action="{{ route('mercado-locals.store') }}"  role="form" enctype="multipart/form-data">
+                @csrf
             <div class="mt-20 space-y-4">
-                <div class="flex justify-center">
-                    <input name="ubicacion" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Ubicación" required>
-                </div>
-
-                <div class="flex justify-center">
-                    <input name="nombremercado" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Nombre del Mercado" value="{{old('name')}}" required>
-                </div>
-                <div class="flex justify-center">
-                    <input name="municipio" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" placeholder="Municipio" value="{{old('Municipio')}}" required>
-                </div>
-                
-             
                 <div class="flex justify-between">
-                    <label for="file-input" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
-                        <span>Imagen del mercado</span>
-                        <input name="imagen" id="file-input" type="file" class="hidden"  value="{{old('imagen_referencia')}}">
+                    <label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
+                        <span class="text-gray-400 text-xs">Imagen del mercado</span>
+                        <input required type="file" name="imagen_referencia" class="hidden border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('imagen_referencia') is-invalid @enderror" value="{{ old('imagen_referencia', $mercadoLocal?->imagen_referencia) }}" id="imagen_referencia" placeholder="Imagen Referencia">
+                        {!! $errors->first('imagen_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
                 </div>
-                
+
+
+                <div class="flex justify-center">
+
+                    <input required type="text" name="nombre" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $mercadoLocal?->nombre) }}" id="nombre" placeholder="Nombre Registrado del Mercado">
+                    {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                </div>
+
+
+                <div class="flex justify-center">
+
+                    <input required type="text" name="municipio" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('municipio') is-invalid @enderror" value="{{ old('municipio', $mercadoLocal?->municipio) }}" id="municipio" placeholder="Municipio Ubicado">
+                    {!! $errors->first('municipio', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                </div>
+                <div class="flex justify-center">
+
+                    <input required type="text" name="ubicacion" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('ubicacion') is-invalid @enderror" value="{{ old('ubicacion', $mercadoLocal?->ubicacion) }}" id="ubicacion" placeholder="Ubicacion Especifica del Mercado">
+                    {!! $errors->first('ubicacion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                </div>
+                <div class="flex justify-center">
+                    <span class="text-xs text-gray-400 px-6">Hora de Entrada</span>
+                    <span class="px-6 text-xs text-gray-400">Hora de Salida</span>
+                </div>
+                <div class="flex justify-center">
+
+                    <input required type="time" name="horaentrada" class=" border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('horaentrada') is-invalid @enderror" value="{{ old('horaentrada', $mercadoLocal?->horaentrada) }}" id="horaentrada" placeholder="Horaentrada">
+                    {!! $errors->first('horaentrada', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
+                    <input required type="time" name="horasalida" class=" border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('horasalida') is-invalid @enderror" value="{{ old('horasalida', $mercadoLocal?->horasalida) }}" id="horasalida" placeholder="Horasalida">
+                    {!! $errors->first('horasalida', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                </div>
+                <div class="flex justify-center">
+                    <span class="text-xs text-gray-400 px-6">Descripcion del Mercado</span>
+
+                </div>
+                <div class="flex justify-center">
+                    <textarea required name="descripcion" class="border-1 rounded border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"  id="descripcion" >{{ old('descripcion', $mercadoLocal?->descripcion) }}
+                    </textarea>
+                    {!! $errors->first('descripcion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                </div>
+
+
+
+
+
 
             <div class="flex justify-center ">
-                <button class="bg-purple-500 w-72 h-10 flex items-center mt-28 justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">Guardar</button>
+                <button class="btn btn-primary bg-purple-500 w-72 h-10 flex items-center mt-10 mb-20 justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">Guardar</button>
             </div>
 
 
 
 
         </div>
+    </form>
+    <!--INICIO DE NAVBAR MOBIL-->
+    <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center">
+        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+            <div class="flex items-center  ">
+                <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+            </div>
+
+            <div class="flex items-center">
+                <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+            </div>
+
+            <div class="flex items-center">
+                <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+            </div>
+        </div>
+
+    </div>
+     <!--FIN DE NAVBAR MOBIL-->
     </section>
-</form>
+
 
 </body>
 </html>
+@endsection
