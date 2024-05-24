@@ -39,6 +39,7 @@ Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPues
 Route::view('/EditPuestoVendedor','EditPuestoVendedor')->name('EditPuestoVendedor');
 Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
 Route::view('/ProductoVendedor','ProductoVendedor')->name('ProductoVendedor');
+Route::view('/HomeVendedor','HomeVendedor')->name('HomeVendedor');
 
 
 
