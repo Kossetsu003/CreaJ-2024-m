@@ -14,18 +14,18 @@
             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserCarritoGeneral"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                     <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
                 </div>
                 <div>
-                    <h2><b>Mini</b>Carrito</h2>
+                    <h2 class="font-bold">MiCarrito</h2>
                 </div>
                 <div>
                     <img src="{{ asset('imgs/menu.png') }}" alt="User Icon">
@@ -50,43 +50,36 @@
                         <h3 class="text-xs">Tienda de JoseMaria</h3>
                         <h3 class="text-sm font-bold">$09.00</h3>
                     </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">1</button>
-                        <button class="text-white">-</button>
+                    <div class="mx-auto mt-[15px] h-8 bg-red-500 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">Negar</button>
                     </div>
-
                 </div>
-                <hr class="mt-5">
-                 <div class="mt-[10%] mx-auto ml-12 flex w-[80%]">
-                    <img class="w-16 rounded-lg h-16" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 w-[70%] ">
-                        <h3 class="text-sm">Ciento de Naranjas Valencia</h3>
+
+                <hr class="mt-5 w-[90%]">
+                <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
+                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                    <div class="ml-2 w-[70%]">
+                        <h3 class="text-sm">Ciento de Aguacates</h3>
                         <h3 class="text-xs">Tienda de JoseMaria</h3>
-                        <h3 class="text-sm font-bold">$12.00</h3>
+                        <h3 class="text-sm font-bold">$09.00</h3>
                     </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">2</button>
-                        <button class="text-white">-</button>
+                    <div class="mx-auto mt-[15px] h-8 bg-red-500 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">Negar</button>
                     </div>
-
                 </div>
-                <hr class="mt-5"> <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
-                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/TomatesQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 w-[70%] ">
-                        <h3 class="text-sm">Dolar de Tomates</h3>
-                        <h3 class="text-xs">Tienda de Mercedes</h3>
-                        <h3 class="text-sm font-bold">$01.00</h3>
+                <hr class="mt-5 w-[90%]"><div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
+                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+                    <div class="ml-2 w-[70%]">
+                        <h3 class="text-sm">Ciento de Aguacates</h3>
+                        <h3 class="text-xs">Tienda de JoseMaria</h3>
+                        <h3 class="text-sm font-bold">$09.00</h3>
                     </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">3</button>
-                        <button class="text-white">-</button>
+                    <div class="mx-auto mt-[15px] h-8 bg-red-500 rounded-md w-20 flex justify-around ">
+                        <button class="text-white">Negar</button>
                     </div>
-
                 </div>
-                <hr class="mt-5">
+                <hr class="mt-5 w-[90%]">
+
 
             <div class="flex w-[90%]  mt-10 ml-5 justify-between">
                 <div >
@@ -110,8 +103,8 @@
 
             </div>
 
-            <button class="mx-auto mt-[20px] mb-[7rem]  bg-black   border-white flex justify-center items-center w-72 h-10 gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                <span>Confirmar</span>
+            <button class="mx-auto mt-[20px] mb-[7rem] bg-black border-white flex justify-center items-center w-72 h-12 gap-x-2 rounded-2xl px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                <span>Guardar</span>
             </button>
 
 </body>

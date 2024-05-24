@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Profilevendedor</title>
+    <title>MercadoProfileVista</title>
 </head>
 <body>
     <div>
-       <div class="bg-zinc-700 h-[160px] flex items-center justify-center">
-            <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
+        <div class="bg-red-500 h-36 w-full flex items-center justify-center">
+            <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
+
+
         <div class="flex justify-center mt-5">
             <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
         </div>
@@ -57,22 +59,23 @@
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserCarritoGeneral"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                     </div>
                 </div>
 
             </div>
     </div>
+
 </body>
 </html>

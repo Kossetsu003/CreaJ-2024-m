@@ -15,15 +15,15 @@
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                 <div class="flex items-center  ">
-                    <a href="./HomeUser" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./CarritoGeneralUser"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserCarritoGeneral"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./EstadoPedidosUser" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
                     <a href="./Profile"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
@@ -72,7 +72,7 @@
 
             <div class="flex justify-center mt-5 flex-col items-center">
 
-                <a href="./HomeMercadoUser" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
+                <a href="./UserPuestosVendedores" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
                 <div>
                     <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="User Icon">
                     <div class="text-center mt-2">

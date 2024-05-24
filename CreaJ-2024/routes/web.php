@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\MercadoLocalController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VendedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,57 +15,72 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Vistas de usuarios*/
+
+/*Vistas Principales*/
 Route::view('/','Index')->name('Index');
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
-Route::view('/ProductosUser','ProductosUser')->name('ProductosUser');
-Route::view('/EditarPerfilUser','EditarPerfilUser')->name('EditarPerfilUser');
-Route::view('/CarritoGeneralUser','CarritoGeneralUser')->name('CarritoGeneralUser');
-Route::view('/CarritoDePuestoUser','CarritoDePuestoUser')->name('CarritoDePuestoUser');
-Route::view('/HomeMercadoUser','HomeMercadoUser')->name('HomeMercadoUser');
-Route::view('/ProductoPuesto','ProductoPuesto')->name('ProductoPuesto');
-Route::view('/HomeUser','HomeUser')->name('HomeUser');
-Route::view('/EstadoPedidosUser','EstadoPedidosUser')->name('EstadoPedidosUser');
-Route::view('/Profile','Profile')->name('ProfileUser');
-Route::view('/HistorialPedidosUser','HistorialPedidosUser')->name('HistorialPedidosUser');
+Route::view('/borrar','borrar')->name('borrar');
+
+
+
+/*Vistas de Clientes*/
+Route::view('/UserProductoEnEspecifico','UserProductoEnEspecifico')->name('UserProductoEnEspecifico');
+Route::view('/UserEditarPerfil','UserEditarPerfil')->name('UserEditarPerfil');
+Route::view('/UserCarritoGeneral','UserCarritoGeneral')->name('UserCarritoGeneral');
+Route::view('/UserCarritoDePuesto','UserCarritoDePuesto')->name('UserCarritoDePuesto');
+Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestosVendedores');
+Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
+Route::view('/UserHome','UserHome')->name('UserHome');
+Route::view('/UserEstadoPedidos','UserEstadoPedidos')->name('UserEstadoPedidos');
+Route::view('/UserProfileVista','UserProfileVista')->name('UserProfileVista');
+Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
 
 
 
 /*Vistas de Vendedores*/
-Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
-Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarProductoVendedor');
-Route::view('/EditarPuestoVendedor','EditarPuestoVendedor')->name('EditarPuestoVendedor');
-Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
-Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
-Route::view('/EditPuestoVendedor','EditPuestoVendedor')->name('EditPuestoVendedor');
-Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
-Route::view('/ProductoVendedor','ProductoVendedor')->name('ProductoVendedor');
-Route::view('/HomeVendedor','HomeVendedor')->name('HomeVendedor');
+
+Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');
+Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto');
+Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
+Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');
+Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
+Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto');
+Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
 
 
 
 
 
-/*Vistas de adminsitrador*/
-Route::view('/EditarMercadoAdmin','EditarMercadoAdmin')->name('EditarMercadoAdmin');
-Route::view('/RegistrarVendedorAdmin','RegistrarVendedorAdmin')->name('RegistrarVendedorAdmin');
-Route::view('/ProfileAdmin','ProfileAdmin')->name('ProfileAdmin');
-Route::view('/EditarPuestoAdmin','EditarPuestoAdmin')->name('EditarPuestoAdmin');
-Route::view('/ListadoVendedoresAdmin','ListadoVendedoresAdmin')->name('ListadoVendedoresAdmin');
-Route::view('/PerfilVendedor','PerfilVendedor')->name('PerfilVendedor');
-// Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMercadoVendedor');
+/*Vistas de Mercado*/
 
-/*Administrador General*/ 
-Route::view('/ProfileAdminGeneral','ProfileAdminGeneral')->name('ProfileAdminGeneral');
-Route::view('/HomeAdminGeneral','HomeAdminGeneral')->name('HomeAdminGeneral');
-Route::view('/HomeAdminGeneral','HomeAdminGeneral')->name('HomeAdminGeneral');
-Route::view('/ListadoVendedoresAdminGeneral','ListadoVendedoresAdminGeneral')->name('ListadoVendedoresAdminGeneral');
-Route::view('/HomeMercadoAdminGeneral','HomeMercadoAdminGeneral')->name('HomeMercadoAdminGeneral');
-Route::view('/AgregarMercadoAdminGeneral','AgregarMercadoAdminGeneral')->name('AgregarMercadoAdminGeneral');
-Route::view('/HistorialPedidosAdminGeneral','HistorialPedidosAdminGeneral')->name('HistorialPedidosAdminGeneral');
-Route::view('/EstadoPedidosAdminGeneral','EstadoPedidosAdminGeneral')->name('EstadoPedidosAdminGeneral');
-Route::view('/PerfilVendedorAdminGeneral','PerfilVendedorAdminGeneral')->name('PerfilVendedorAdminGeneral');
+Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
+Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
+Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
+Route::view('/MercadoVista','MercadoVista')->name('MercadoVista');
+Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores');
+Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor');
+
+
+/*Administrador General*/
+
+Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
+Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');
+Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista');
+Route::view('/AdminHome','AdminHome')->name('AdminHome');
+Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');
+Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
+Route::view('/AdminAgregarMercado','AdminAgregarMercado')->name('AdminAgregarMercado');
+Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
+Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
+Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
+Route::view('/AdminListadoMercados','AdminListadoMercados')->name('AdminListadoMercados');
+Route::view('/AdminHistorialPedidos','AdminHistorialPedidos')->name('AdminHistorialPedidos');
+Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
+
+
+
+
 
 
 
@@ -71,4 +88,5 @@ Route::view('/PerfilVendedorAdminGeneral','PerfilVendedorAdminGeneral')->name('P
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
-
+Route::resource('clientes', ClienteController::class);
+Route::resource('vendedor', VendedorController::class);

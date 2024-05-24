@@ -16,15 +16,15 @@
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                 <div class="flex items-center  ">
-                    <a href="./HomeUser" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./CarritoGeneralUser"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserCarritoGeneral"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./EstadoPedidosUser" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    <a href="./UserEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
                     <a href="./Profile"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
@@ -75,7 +75,7 @@
 
             <button class="flex justify-center items-center bg-red-800 rounded-2xl w-full h-10 text-white my-4">
                 <img class="w-6 h-6 mr-2" src="{{ asset('imgs/carrito-de-compras.png') }}" alt="User Icon">
-                <a href="./CarritoDePuestoUser">Añadir a MiCarrito</a>
+                <a href="./UserCarritoDePuesto">Añadir a MiCarrito</a>
             </button>
         </div>
     </div>

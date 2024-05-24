@@ -52,7 +52,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('Profile', compact('cliente'));
+        return view('UserProfileVista', compact('cliente'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('EditarPerfilUser', compact('cliente'));
+        return view('UserEditarPerfil', compact('cliente'));
     }
 
     /**

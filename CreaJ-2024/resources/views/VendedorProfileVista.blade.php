@@ -1,21 +1,14 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ $cliente->name ?? __('Show') . " " . __('Cliente') }}
-@endsection
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>ProfileUser</title>
+    <title>VendedorProfileVista</title>
 </head>
 <body>
     <div>
-       <div class="bg-indigo-300 h-[160px] flex items-center justify-center">
+       <div class="bg-zinc-700 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
         <div class="flex justify-center mt-5">
@@ -30,9 +23,9 @@
             <h3 class="text-[10px]"> <span class="ml-2">5.0</span></h3>
         </div>
         <div class="text-center mt-3">
-            <h3 class="text-xs"><b>{{  $cliente->nombre }}&nbsp;{{ $cliente->apellido }}</b></h3>
-            <h3 class="font-bold"><b>Numero Telefonico : </b>{{ $cliente->telefono }}</h3>
-            <h3 class="text-xs"><b>Correo Electronico : </b>{{ $cliente->usuario }}</h3>
+            <h3 class="text-xs">Puesto de Comida</h3>
+            <h3 class="font-bold">Andrew Food</h3>
+            <h3 class="text-xs">corre123@gmail.com</h3>
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
@@ -83,4 +76,3 @@
     </div>
 </body>
 </html>
-@endsection
