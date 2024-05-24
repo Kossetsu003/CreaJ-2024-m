@@ -26,6 +26,7 @@ Route::view('/ProductoPuesto','ProductoPuesto')->name('ProductoPuesto');
 Route::view('/HomeUser','HomeUser')->name('HomeUser');
 Route::view('/EstadoPedidosUser','EstadoPedidosUser')->name('EstadoPedidosUser');
 Route::view('/Profile','Profile')->name('ProfileUser');
+Route::view('/HistorialPedidosUser','HistorialPedidosUser')->name('HistorialPedidosUser');
 
 
 
@@ -37,6 +38,7 @@ Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPues
 Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
 Route::view('/EditPuestoVendedor','EditPuestoVendedor')->name('EditPuestoVendedor');
 Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
+Route::view('/ProductoVendedor','ProductoVendedor')->name('ProductoVendedor');
 
 
 

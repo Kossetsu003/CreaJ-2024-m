@@ -7,74 +7,72 @@
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
-<body>
-        <section>
-            <div class="mt-10 ml-3">
-                <div class="flex">
-                    <div>
-                        <h3 class="text-3xl font-bold">Mini</h3>
-                    </div>
-                    <div>
-                        <img class="w-6 mt-2 ml-3" src="{{ asset('imgs/shop.png') }}" alt="User Icon">
-                    </div>
+<body class="flex flex-col h-screen">
+    <section class="flex-1 overflow-y-auto mb-20">
+        <div class="mt-10 ml-3">
+            <div class="flex">
+                <div>
+                    <h3 class="text-3xl font-bold">Mini</h3>
                 </div>
-                <div class="w-[30%]">
-                    <h3 class="font-bold text-xl text-end">Shop</h3>
+                <div>
+                    <img class="w-6 mt-2 ml-3" src="{{ asset('imgs/shop.png') }}" alt="User Icon">
                 </div>
+            </div>
+            <div class="w-[30%]">
+                <h3 class="font-bold text-xl text-end">Shop</h3>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <div>
+                <h3 class="text-center font-bold text-lg">Nombre del mercado</h3>
+            </div>
+            <div class="flex justify-center mt-14">
+                <img class="w-[60%] h-40 overflow-hidden object-cover rounded-2xl" src="{{ asset('imgs/img.png') }}" alt="User Icon">
             </div>
 
             <div class="mt-5">
-                <div>
-                    <h3 class="text-center font-bold text-lg">Nombre del mercado</h3>
-                </div>
-                <div class="flex justify-center mt-14">
-                    <img class="w-[60%] h-40 overflow-hidden object-cover rounded-2xl" src="{{ asset('imgs/img.png') }}" alt="User Icon">
-                </div>
-
-                <div class="mt-5">
-                    <div class="text-center font-bold">
-                        Descripcion;
-                    </div>
-                    
-                    <div class="bg-neutral-700 w-[80%] mx-auto">
-                        <div class="text-white text-center">
-                            Cambiar Categoria
-                        </div>
-                        <div>
-                            
-                        </div>
-
-                    </div>
+                <div class="text-center font-bold">
+                    Descripcion
+                    <h3 class="w-[80%] text-xs text-justify mx-auto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate hic illum mollitia quos a assumenda dolor perspiciatis consequuntur voluptatibus nostrum, quaerat non sit? Labore nulla itaque</h3>
                 </div>
                 
-                <div class="mt-36 flex justify-center">
-                    <button class="bg-gray-900 w-[70%] rounded-xl h-10 text-white">Editar</button>
-                </div>
-            </div>
-
-        
-                <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                    <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                        <div class="flex items-center  ">
-                            <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                        </div>
-    
-                        <div class="flex items-center">
-                            <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                        </div>
-    
-                        <div class="flex items-center">
-                            <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                        </div>
-                        <div class="flex items-center">
-                            <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                        </div>
+                <div class="bg-neutral-700 w-[75%] max-w-sm mx-auto mt-5 p-4 text-center rounded-md">
+                    <div class="text-white">
+                        Cambiar Categoria
                     </div>
-
-                    
-    
+                    <ul class="text-white list-none">
+                        <li class="my-2">Comida</li>
+                        <li class="my-2">Comida</li>
+                        <li class="my-2">Comida</li>
+                    </ul>
+                    <div>
+                        <button class="text-black bg-white rounded-md w-[90%] px-4 py-2">Confirmar</button>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <div class="mt-10 flex justify-center">
+                <button class="bg-gray-900 w-[70%] rounded-xl h-10 text-white">Editar</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-bar fixed bottom-5 left-0 right-0 flex justify-center">
+        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+            <div class="flex items-center">
+                <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="./CarritoGeneralUser" class="bg-white rounded-full p-[0.25rem]"><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
