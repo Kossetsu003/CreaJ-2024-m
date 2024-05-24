@@ -18,13 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Vendedor[] $vendedors
+ * @property Vendedor[] $vendedores
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class MercadoLocal extends Model
 {
-    
+
 
     protected $perPage = 20;
 
@@ -39,10 +39,10 @@ class MercadoLocal extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vendedors()
+    public function vendedores()
     {
         return $this->hasMany(\App\Models\Vendedor::class, 'id', 'fk_mercado');
     }
-    
+
 
 }

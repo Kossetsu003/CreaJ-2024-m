@@ -17,8 +17,8 @@ return new class extends Migration
             $table -> String('Nombre');
             $table -> String('Descripcion');
             $table -> Double('Precio');
-            $table->unsignedBigInteger('fk_vendedor');
-            $table -> foreign('fk_vendedor') -> references('id') -> on('vendedor') -> onDelete('cascade');
+            $table->unsignedBigInteger('fk_vendedores');
+            $table -> foreign('fk_vendedores') -> references('id') -> on('vendedores') -> onDelete('cascade');
             $table -> String('Estado');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

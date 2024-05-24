@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $updated_at
  *
  * @property MercadoLocal $mercadoLocal
- * @property Exhibicionproducto[] $exhibicionproductos
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -43,14 +42,6 @@ class Vendedor extends Model
     public function mercadoLocal()
     {
         return $this->belongsTo(\App\Models\MercadoLocal::class, 'fk_mercado', 'id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function exhibicionproductos()
-    {
-        return $this->hasMany(\App\Models\Exhibicionproducto::class, 'id', 'fk_vendedor');
     }
     
 

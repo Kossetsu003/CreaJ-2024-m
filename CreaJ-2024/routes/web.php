@@ -88,5 +88,6 @@ Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedido
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
-Route::resource('clientes', ClienteController::class);
-Route::resource('vendedor', VendedorController::class);
+Route::resource('vendedors', VendedorController::class);
+
+
