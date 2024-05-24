@@ -32,11 +32,11 @@ Route::view('/Profile','Profile')->name('ProfileUser');
 /*Vistas de Vendedores*/
 Route::view('/RegistroProductoVendedor','RegistroProductoVendedor')->name('RegistroProductoVendedor');
 Route::view('/EditarProductoVendedor','EditarProductoVendedor')->name('EditarProductoVendedor');
-
 Route::view('/EditarPuestoVendedor','EditarPuestoVendedor')->name('EditarPuestoVendedor');
 Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
 Route::view('/CarritoPuestoVendedor','CarritoPuestoVendedor')->name('CarritoPuestoVendedor');
 Route::view('/EditPuestoVendedor','EditPuestoVendedor')->name('EditPuestoVendedor');
+Route::view('/ProfileVendedor','ProfileVendedor')->name('ProfileVendedor');
 
 
 
@@ -50,6 +50,16 @@ Route::view('/EditarPuestoAdmin','EditarPuestoAdmin')->name('EditarPuestoAdmin')
 Route::view('/ListadoVendedoresAdmin','ListadoVendedoresAdmin')->name('ListadoVendedoresAdmin');
 Route::view('/PerfilVendedor','PerfilVendedor')->name('PerfilVendedor');
 // Route::view('/AgregarMercadoVendedor','AgregarMercadoVendedor')->name('AgregarMercadoVendedor');
+
+/*Administrador General*/ 
+Route::view('/ProfileAdminGeneral','ProfileAdminGeneral')->name('ProfileAdminGeneral');
+Route::view('/HomeAdminGeneral','HomeAdminGeneral')->name('HomeAdminGeneral');
+Route::view('/HomeAdminGeneral','HomeAdminGeneral')->name('HomeAdminGeneral');
+Route::view('/ListadoVendedoresAdminGeneral','ListadoVendedoresAdminGeneral')->name('ListadoVendedoresAdminGeneral');
+Route::view('/HomeMercadoAdminGeneral','HomeMercadoAdminGeneral')->name('HomeMercadoAdminGeneral');
+Route::view('/AgregarMercadoAdminGeneral','AgregarMercadoAdminGeneral')->name('AgregarMercadoAdminGeneral');
+Route::view('/HistorialPedidosAdminGeneral','HistorialPedidosAdminGeneral')->name('HistorialPedidosAdminGeneral');
+Route::view('/EstadoPedidosAdminGeneral','EstadoPedidosAdminGeneral')->name('EstadoPedidosAdminGeneral');
 
 
 
