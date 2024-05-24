@@ -62,6 +62,7 @@ Route::view('/HomeMercadoAdminGeneral','HomeMercadoAdminGeneral')->name('HomeMer
 Route::view('/AgregarMercadoAdminGeneral','AgregarMercadoAdminGeneral')->name('AgregarMercadoAdminGeneral');
 Route::view('/HistorialPedidosAdminGeneral','HistorialPedidosAdminGeneral')->name('HistorialPedidosAdminGeneral');
 Route::view('/EstadoPedidosAdminGeneral','EstadoPedidosAdminGeneral')->name('EstadoPedidosAdminGeneral');
+Route::view('/PerfilVendedorAdminGeneral','PerfilVendedorAdminGeneral')->name('PerfilVendedorAdminGeneral');
 
 
 
