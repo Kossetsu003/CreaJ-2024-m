@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Profilevendedor</title>
+    <title>ProfileAdmin</title>
 </head>
 <body>
     <div>
-       <div class="bg-red-500 h-[160px] flex items-center justify-center">
-            <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
+        <div class="bg-red-500 h-36 w-full flex items-center justify-center">
+            <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
+
+
         <div class="flex justify-center mt-5">
             <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
         </div>
@@ -74,5 +76,6 @@
 
             </div>
     </div>
+   
 </body>
 </html>

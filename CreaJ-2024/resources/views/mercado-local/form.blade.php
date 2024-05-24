@@ -8,7 +8,7 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="imagen_referencia" class="form-label">{{ __('Imagen Referencia') }}</label>
-            <input type="file" name="imagen_referencia"  accept=".png" class="form-control @error('imagen_referencia') is-invalid @enderror" value="{{ old('imagen_referencia', $mercadoLocal?->imagen_referencia) }}" id="imagen_referencia" placeholder="Imagen Referencia">
+            <input type="text" name="imagen_referencia" class="form-control @error('imagen_referencia') is-invalid @enderror" value="{{ old('imagen_referencia', $mercadoLocal?->imagen_referencia) }}" id="imagen_referencia" placeholder="Imagen Referencia">
             {!! $errors->first('imagen_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
@@ -23,12 +23,12 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="horaentrada" class="form-label">{{ __('Horaentrada') }}</label>
-            <input type="time" name="horaentrada" class="form-control @error('horaentrada') is-invalid @enderror" value="{{ old('horaentrada', $mercadoLocal?->horaentrada) }}" id="horaentrada" placeholder="Horaentrada">
+            <input type="text" name="horaentrada" class="form-control @error('horaentrada') is-invalid @enderror" value="{{ old('horaentrada', $mercadoLocal?->horaentrada) }}" id="horaentrada" placeholder="Horaentrada">
             {!! $errors->first('horaentrada', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
             <label for="horasalida" class="form-label">{{ __('Horasalida') }}</label>
-            <input type="time" name="horasalida" class="form-control @error('horasalida') is-invalid @enderror" value="{{ old('horasalida', $mercadoLocal?->horasalida) }}" id="horasalida" placeholder="Horasalida">
+            <input type="text" name="horasalida" class="form-control @error('horasalida') is-invalid @enderror" value="{{ old('horasalida', $mercadoLocal?->horasalida) }}" id="horasalida" placeholder="Horasalida">
             {!! $errors->first('horasalida', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">

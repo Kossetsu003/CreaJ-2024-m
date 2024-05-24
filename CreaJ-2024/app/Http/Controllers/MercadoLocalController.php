@@ -28,7 +28,7 @@ class MercadoLocalController extends Controller
     public function create()
     {
         $mercadoLocal = new MercadoLocal();
-        return view('mercado-local.create', compact('mercadoLocal'));
+        return view('AdminGeneralAgregarMercado', compact('mercadoLocal'));
     }
 
     /**
@@ -59,7 +59,7 @@ class MercadoLocalController extends Controller
     {
         $mercadoLocal = MercadoLocal::find($id);
 
-        return view('mercado-local.edit', compact('mercadoLocal'));
+        return view('EditarMercadoAdmin', compact('mercadoLocal'));
     }
 
     /**

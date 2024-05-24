@@ -24,7 +24,7 @@
                     <a href="./EstadoPedidosUser" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/FavSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="./EditarPerfilUser"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    <a href="./Profile"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                 </div>
             </div>
 

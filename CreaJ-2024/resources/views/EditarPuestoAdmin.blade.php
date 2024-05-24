@@ -9,7 +9,7 @@
 </head>
 <body>
         <section>
-            <div class="mt-10 ml-3">
+            <div class="mt-4 ml-3">
                 <div class="flex">
                     <div>
                         <h3 class="text-3xl font-bold">Mini</h3>
@@ -36,26 +36,26 @@
                         Descripcion;
                     </div>
                     <div class="w-[80%] text-justify mx-auto text-sm mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo velit, natus accusantium, magnam ad doloribus 
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo velit, natus accusantium, magnam ad doloribus
                     </div>
                 </div>
-                
+
                 <div class="mt-36 flex justify-center">
                     <button class="bg-red-400 w-[70%] rounded-xl h-10 text-white">Editar</button>
                 </div>
             </div>
 
-        
+
                 <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                     <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                         <div class="flex items-center  ">
                             <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
                         </div>
-    
+
                         <div class="flex items-center">
                             <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
                         </div>
-    
+
                         <div class="flex items-center">
                             <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
                         </div>
@@ -64,8 +64,8 @@
                         </div>
                     </div>
 
-                    
-    
+
+
                 </div>
             </div>
         </section>
