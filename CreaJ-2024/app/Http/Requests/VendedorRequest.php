@@ -26,6 +26,7 @@ class VendedorRequest extends FormRequest
 			'contrasena' => 'required|string',
 			'nombre' => 'required|string',
 			'apellidos' => 'string',
+			'telefono' => 'string',
 			'numero_puesto' => 'required',
 			'fk_mercado' => 'required',
         ];

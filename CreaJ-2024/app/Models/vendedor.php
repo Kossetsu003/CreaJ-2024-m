@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $usuario
+ * @property $ROL
  * @property $contrasena
  * @property $nombre
  * @property $apellidos
@@ -33,7 +34,7 @@ class Vendedor extends Model
      *
      * @var array
      */
-    protected $fillable = ['usuario', 'contrasena', 'nombre', 'apellidos', 'telefono', 'numero_puesto', 'fk_mercado'];
+    protected $fillable = ['usuario', 'ROL', 'contrasena', 'nombre', 'apellidos', 'telefono', 'numero_puesto', 'fk_mercado'];
 
 
     /**

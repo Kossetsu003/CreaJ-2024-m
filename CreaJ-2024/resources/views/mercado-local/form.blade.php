@@ -1,10 +1,15 @@
 <div class="row padding-1 p-1">
     <div class="col-md-12">
-
+        
         <div class="form-group mb-2 mb20">
             <label for="nombre" class="form-label">{{ __('Nombre') }}</label>
             <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $mercadoLocal?->nombre) }}" id="nombre" placeholder="Nombre">
             {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+        </div>
+        <div class="form-group mb-2 mb20">
+            <label for="r_o_l" class="form-label">{{ __('Rol') }}</label>
+            <input type="text" name="ROL" class="form-control @error('ROL') is-invalid @enderror" value="{{ old('ROL', $mercadoLocal?->ROL) }}" id="r_o_l" placeholder="Rol">
+            {!! $errors->first('ROL', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
             <label for="imagen_referencia" class="form-label">{{ __('Imagen Referencia') }}</label>

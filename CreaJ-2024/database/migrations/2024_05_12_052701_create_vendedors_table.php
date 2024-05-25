@@ -14,16 +14,18 @@ return new class extends Migration
         Schema::create('vendedors', function (Blueprint $table) {
             $table->id();
             $table->string('usuario');
+            $table->double('ROL')->unsigned()->nullable()->default(3);
             $table->string('contrasena');
             $table->string('nombre');
             $table->string('apellidos')->nullable();
-            $table->double('telefono')->nullable();
-            $table->double('numero_puesto');
+            $table->string('telefono')->nullable();
+            $table->Integer('numero_puesto');
             $table->unsignedBigInteger('fk_mercado'); // Cambiado a unsignedBigInteger
             $table->foreign('fk_mercado')->references('id')->on('mercado_locals')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
+
     }
 
     /**

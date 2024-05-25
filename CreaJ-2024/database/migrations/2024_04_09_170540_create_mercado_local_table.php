@@ -15,6 +15,7 @@ return new class extends Migration
 
             $table->id();
             $table->string('nombre');
+            $table->double('ROL')->unsigned()->nullable()->default(2);
             $table->binary('imagen_referencia');
             $table->string('municipio');
             $table->string('ubicacion');

@@ -25,6 +25,10 @@
                             {{ $mercadoLocal->nombre }}
                         </div>
                         <div class="form-group mb-2 mb20">
+                            <strong>Rol:</strong>
+                            {{ $mercadoLocal->ROL }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
                             <strong>Imagen Referencia:</strong>
                             {{ $mercadoLocal->imagen_referencia }}
                         </div>

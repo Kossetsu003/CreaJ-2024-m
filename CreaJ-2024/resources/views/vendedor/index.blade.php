@@ -37,6 +37,7 @@
                                         <th>No</th>
                                         
 										<th>Usuario</th>
+										<th>Rol</th>
 										<th>Contrasena</th>
 										<th>Nombre</th>
 										<th>Apellidos</th>
@@ -53,6 +54,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $vendedor->usuario }}</td>
+											<td>{{ $vendedor->ROL }}</td>
 											<td>{{ $vendedor->contrasena }}</td>
 											<td>{{ $vendedor->nombre }}</td>
 											<td>{{ $vendedor->apellidos }}</td>

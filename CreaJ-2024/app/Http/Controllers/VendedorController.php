@@ -28,7 +28,7 @@ class VendedorController extends Controller
     public function create()
     {
         $vendedor = new Vendedor();
-        return view('vendedor.create', compact('vendedor'));
+        return view('MercadoRegistrarVendedor', compact('vendedor'));
     }
 
     /**

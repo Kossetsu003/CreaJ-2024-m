@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $nombre
+ * @property $ROL
  * @property $imagen_referencia
  * @property $municipio
  * @property $ubicacion
@@ -18,13 +19,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Vendedor[] $vendedores
+ * @property Vendedor[] $vendedors
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class MercadoLocal extends Model
 {
-
+    
 
     protected $perPage = 20;
 
@@ -33,16 +34,16 @@ class MercadoLocal extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
+    protected $fillable = ['nombre', 'ROL', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function vendedores()
+    public function vendedors()
     {
         return $this->hasMany(\App\Models\Vendedor::class, 'id', 'fk_mercado');
     }
-
+    
 
 }

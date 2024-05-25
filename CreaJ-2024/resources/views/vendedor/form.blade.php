@@ -7,6 +7,11 @@
             {!! $errors->first('usuario', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
+            <label for="r_o_l" class="form-label">{{ __('Rol') }}</label>
+            <input type="text" name="ROL" class="form-control @error('ROL') is-invalid @enderror" value="{{ old('ROL', $vendedor?->ROL) }}" id="r_o_l" placeholder="Rol">
+            {!! $errors->first('ROL', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+        </div>
+        <div class="form-group mb-2 mb20">
             <label for="contrasena" class="form-label">{{ __('Contrasena') }}</label>
             <input type="text" name="contrasena" class="form-control @error('contrasena') is-invalid @enderror" value="{{ old('contrasena', $vendedor?->contrasena) }}" id="contrasena" placeholder="Contrasena">
             {!! $errors->first('contrasena', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}

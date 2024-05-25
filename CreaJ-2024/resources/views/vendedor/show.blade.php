@@ -25,6 +25,10 @@
                             {{ $vendedor->usuario }}
                         </div>
                         <div class="form-group mb-2 mb20">
+                            <strong>Rol:</strong>
+                            {{ $vendedor->ROL }}
+                        </div>
+                        <div class="form-group mb-2 mb20">
                             <strong>Contrasena:</strong>
                             {{ $vendedor->contrasena }}
                         </div>

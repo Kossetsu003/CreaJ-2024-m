@@ -37,6 +37,7 @@
                                         <th>No</th>
                                         
 										<th>Nombre</th>
+										<th>Rol</th>
 										<th>Imagen Referencia</th>
 										<th>Municipio</th>
 										<th>Ubicacion</th>
@@ -53,6 +54,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $mercadoLocal->nombre }}</td>
+											<td>{{ $mercadoLocal->ROL }}</td>
 											<td>{{ $mercadoLocal->imagen_referencia }}</td>
 											<td>{{ $mercadoLocal->municipio }}</td>
 											<td>{{ $mercadoLocal->ubicacion }}</td>
