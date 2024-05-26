@@ -16,18 +16,21 @@
                 <!--INICIO DE NAVBAR MOBIL-->
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                        <a href="./VendedorHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
+                    </div>
+
+                    <div class="flex items-center">
+                        <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./UserCarritoGeneral"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserEditarPerfil" class="bg-white rounded-full p-[0.25rem]"><img class="w-6" src="{{ asset('imgs/UserSelectedIcon.png') }}" alt="User Icon"></a>
+                        <a href="./VendedorProfileVista"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                     </div>
                 </div>
+
                 <!--FIN DE NAVBAR MOBIL-->
             </div>
             <div class="text-center">

@@ -7,7 +7,7 @@
     <title>VendedorProfileVista</title>
 </head>
 <body>
-    <div>
+    <div class="pb-[7rem]">
        <div class="bg-zinc-700 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
@@ -29,50 +29,67 @@
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
-            <div class=" mx-auto flex items-center">
-                <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
-            </div>
-
             <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
+                <img class="w-5" src="{{ asset('imgs/AddSelectedICon.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Agregar Productos</h3> <!-- Alineado a la derecha -->
             </div>
+            <a href="./VendedorMiBuzon">
+                <div class=" mx-auto flex items-center mt-10">
+                    <img class="w-5" src="{{ asset('imgs/EditSelectedIcon.png') }}" alt="User Icon">
+                    <h3 class="flex-grow text-left font-bold ml-5">Editar Mi Puesto</h3> <!-- Alineado a la derecha -->
+                </div>
+            </a>
+            <a href="./VendedorMiBuzon">
+                <div class=" mx-auto flex items-center mt-10">
+                    <img class="w-5" src="{{ asset('imgs/BuzonSelectedIcon.png') }}" alt="User Icon">
+                    <h3 class="flex-grow text-left font-bold ml-5">Ver Mi Buzon</h3> <!-- Alineado a la derecha -->
+
+                </div>
+            </a>
+            <a href="">
+                <div class=" mx-auto flex items-center mt-10">
+                    <img class="w-5" src="{{ asset('imgs/ReservasSelectedIcon.png') }}" alt="User Icon">
+                    <h3 class="flex-grow text-left font-bold ml-5">Ver Mis Reservas</h3> <!-- Alineado a la derecha -->
+                </div>
+            </a>
 
 
-            <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
-            </div>
+
+
+
+
+
 
 
             <div class=" mx-auto flex items-center mt-10">
                 <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold  ml-5">Cerrar Cuenta</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold  ml-5">Cerrar Sesion</h3> <!-- Alineado a la derecha -->
             </div>
 
 
         </div>
 
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center  ">
-                        <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./CarritoGeneralUser"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                    </div>
+            <!--INICIO DE NAVBAR MOBIL-->
+            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+                <div class="flex items-center  ">
+                    <a href="./VendedorHome" ><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
                 </div>
 
+                <div class="flex items-center">
+                    <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
+                </div>
+
+                <div class="flex items-center">
+                    <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./VendedorProfileVista" class=" bg-white rounded-full p-[0.25rem] " ><img class="w-6" src="{{ asset('imgs/UserSelectedIcon.png') }}" alt="User Icon"></a>
+                </div>
             </div>
+
+            <!--FIN DE NAVBAR MOBIL-->
+        </div>
     </div>
 </body>
 </html>

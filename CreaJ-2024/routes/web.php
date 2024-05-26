@@ -46,8 +46,8 @@ Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
 Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
 Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto');
+Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
 Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
-
 
 
 
@@ -91,3 +91,7 @@ Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

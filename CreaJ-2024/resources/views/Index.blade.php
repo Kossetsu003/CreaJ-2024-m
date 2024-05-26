@@ -18,7 +18,7 @@
                         </h3>
 
 
-                        
+
                         <div class="hidden md:flex justify-center w-[90%] mx-auto">
                             <h3 class="text-white mt-5 text-justify ">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
@@ -30,7 +30,7 @@
                         Los mejores productos en el mejor
                         <h3 class="text-center md:hidden">lugar</h3>
                     </h3>
-                    
+
             </div>
                 <div class="mt-16 flex justify-center">
                     <a href="./LoginUser">
@@ -38,7 +38,7 @@
                             Iniciar Sesion
                         </button>
                     </a>
-                    <a href="./clientes/create" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
+                    <a href="{{ route('clientes.create') }}" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
                         <img class="absolute left-0 top-0 bottom-0 m-auto ml-4 mr-[10px]" src="{{ asset('imgs/play.png') }}" alt="User Icon">
                         <span class="pl-10">
                             Registrarse
@@ -56,6 +56,7 @@
                         <div class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/instagram.png') }}" alt="User Icon">
                         </div>
+                        
                         <div class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/linkedin.png') }}" alt="User Icon">
                         </div>
@@ -64,14 +65,14 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Ocultar la imagen en dispositivos móviles y mostrarla en escritorio -->
         <div class="md:mx-auto h-screen  items-center hidden md:flex">
             <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="User Icon">
         </div>
 
-        
+
     </div>
-    
+
 </body>
 </html>

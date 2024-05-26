@@ -22,14 +22,14 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::paginate();
 
-        return view('AdminListadoClientes', compact('clientes'))
+        return view('cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function AdminCreate()
+    public function create()
     {
         $cliente = new Cliente();
         return view('RegistroUser', compact('cliente'));
@@ -38,7 +38,7 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function AdminStore(ClienteRequest $request)
+    public function store(ClienteRequest $request)
     {
        $cliente = Cliente::create($request->validated());
 
@@ -51,7 +51,7 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function AdminShow($id)
+    public function show($id)
     {
         $cliente = Cliente::find($id);
 
@@ -61,7 +61,7 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function AdminEdit($id)
+    public function edit($id)
     {
         $cliente = Cliente::find($id);
 
@@ -71,7 +71,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function AdminUpdate(ClienteRequest $request, Cliente $cliente)
+    public function update(ClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
 
@@ -79,7 +79,7 @@ class ClienteController extends Controller
             ->with('success', 'Cliente updated successfully');
     }
 
-    public function Destroy($id)
+    public function destroy($id)
     {
         Cliente::find($id)->delete();
 

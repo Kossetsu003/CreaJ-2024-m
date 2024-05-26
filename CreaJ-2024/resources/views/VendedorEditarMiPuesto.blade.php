@@ -36,7 +36,7 @@
                     Descripcion
                     <h3 class="w-[80%] text-xs text-justify mx-auto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate hic illum mollitia quos a assumenda dolor perspiciatis consequuntur voluptatibus nostrum, quaerat non sit? Labore nulla itaque</h3>
                 </div>
-                
+
                 <div class="bg-neutral-700 w-[75%] max-w-sm mx-auto mt-5 p-4 text-center rounded-md">
                     <div class="text-white">
                         Cambiar Categoria
@@ -58,21 +58,27 @@
         </div>
     </section>
 
-    <div class="bottom-bar fixed bottom-5 left-0 right-0 flex justify-center">
+    <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+        <!--INICIO DE NAVBAR MOBIL-->
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
+            <div class="flex items-center  ">
+                <a href="./VendedorHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+            </div>
+
             <div class="flex items-center">
-                <a href="./HomeUser"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
+            </div>
+
+            <div class="flex items-center">
+                <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
             </div>
             <div class="flex items-center">
-                <a href="./CarritoGeneralUser" class="bg-white rounded-full p-[0.25rem]"><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-            </div>
-            <div class="flex items-center">
-                <a href="./EstadoPedidosUser"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-            </div>
-            <div class="flex items-center">
-                <a href="./EditarPerfilUser"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                <a href="./VendedorProfileVista"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
             </div>
         </div>
+
+        <!--FIN DE NAVBAR MOBIL-->
+    </div>
     </div>
 </body>
 </html>

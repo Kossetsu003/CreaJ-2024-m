@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('sexo')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->rememberToken();
         });
 
         DB::insert('insert into clientes (id, ROL, usuario, contrasena, nombre, apellido, telefono, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)', [1, 1, 'MiniShopAdmin1', 'MiniShop1', 'Administrador', 'De MiniShop', NULL, NULL]);
