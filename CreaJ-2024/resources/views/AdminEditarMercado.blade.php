@@ -15,18 +15,19 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-    <form action="" method="post">
+
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
 
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-red-700">Editor de Mercado</h1>
-                <h3 class="text-sm mt-2">{{ old('nombre', $mercadoLocal?->nombre) }} <span class="font-bold">ID:{{ old('nombre', $mercadoLocal?->nombre) }}</span></h3>
+                <h3 class="text-sm mt-2">{{ old('nombre', $mercadoLocal?->nombre) }} <span class="font-bold">ID: #{{ old('ROL', $mercadoLocal?->id) }}</span></h3>
             </div>
             <form method="POST" action="{{ route('mercado-locals.update', $mercadoLocal->id) }}"  role="form" enctype="multipart/form-data">
                 {{ method_field('PATCH') }}
                 @csrf
-            <div class="mt-20 space-y-4">
+
+                <div class="mt-20 space-y-4">
 
 
 
@@ -81,14 +82,15 @@
             </div>
 
 
-            <div class="flex justify-center mt-16">
-                <button class="btn btn-primarymt-10 mb-24 bg-red-600 w-72 h-10 text-white font-bold rounded-md">Actualizar</button>´´
+            <div class="flex justify-center mt-2 mb-20">
+
                 <div class="flex justify-center ">
-                    <button class="btn btn-primary bg-purple-500 w-72 h-10 flex items-center mt-10 mb-20 justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-opacity-50">Guardar</button>
+                    <button class="py-5 px-10 bg-red-500" type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+
                 </div>
 
             </div>
-            </form>
+        </form>
 
              <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
@@ -111,7 +113,7 @@
             </div>
         </div>
     </section>
-</form>
+
 
 </body>
 </html>
