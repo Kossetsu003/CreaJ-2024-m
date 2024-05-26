@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Session;
  */
 class ClienteController extends Controller
 {
+
+
+    //ADMINISTRADOR
     /**
      * Display a listing of the resource.
      */
@@ -19,14 +22,14 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::paginate();
 
-        return view('cliente.index', compact('clientes'))
+        return view('AdminListadoClientes', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function AdminCreate()
     {
         $cliente = new Cliente();
         return view('RegistroUser', compact('cliente'));
@@ -35,7 +38,7 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ClienteRequest $request)
+    public function AdminStore(ClienteRequest $request)
     {
        $cliente = Cliente::create($request->validated());
 
@@ -48,7 +51,7 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function AdminShow($id)
     {
         $cliente = Cliente::find($id);
 
@@ -58,7 +61,7 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function AdminEdit($id)
     {
         $cliente = Cliente::find($id);
 
@@ -68,7 +71,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ClienteRequest $request, Cliente $cliente)
+    public function AdminUpdate(ClienteRequest $request, Cliente $cliente)
     {
         $cliente->update($request->validated());
 
@@ -76,7 +79,77 @@ class ClienteController extends Controller
             ->with('success', 'Cliente updated successfully');
     }
 
-    public function destroy($id)
+    public function Destroy($id)
+    {
+        Cliente::find($id)->delete();
+
+        return redirect()->route('clientes.index')
+            ->with('success', 'Cliente deleted successfully');
+    }
+
+    //CLIENTE
+    public function indexCliente()
+    {
+        $clientes = Cliente::paginate();
+
+        return view('cliente.index', compact('clientes'))
+            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function createCliente()
+    {
+        $cliente = new Cliente();
+        return view('RegistroUser', compact('cliente'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeCliente(ClienteRequest $request)
+    {
+       $cliente = Cliente::create($request->validated());
+
+       Session::put('id',$cliente->id);
+
+        return redirect()->route('clientes.index')
+            ->with('success', 'Cliente created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function showCliente($id)
+    {
+        $cliente = Cliente::find($id);
+
+        return view('UserProfileVista', compact('cliente'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function editCliente($id)
+    {
+        $cliente = Cliente::find($id);
+
+        return view('UserEditarPerfil', compact('cliente'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateCliente(ClienteRequest $request, Cliente $cliente)
+    {
+        $cliente->update($request->validated());
+
+        return redirect()->route('clientes.index')
+            ->with('success', 'Cliente updated successfully');
+    }
+
+    public function destroyCliente($id)
     {
         Cliente::find($id)->delete();
 

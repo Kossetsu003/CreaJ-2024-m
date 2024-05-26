@@ -115,7 +115,7 @@
             </div>
         </div>
     </div>
-
+    {!! $mercadoLocals->links() !!}
 </body>
 </html>
 @endsection

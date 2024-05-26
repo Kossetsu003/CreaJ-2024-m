@@ -30,7 +30,7 @@
                 <div class="mt-20 space-y-4">
 
 
-
+<!--
                 <div class="flex justify-between">
                     <label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
                         <span class="text-gray-400 text-xs">Imagen del mercado</span>
@@ -39,6 +39,7 @@
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
                 </div>
+            -->
 
 
                 <div class="flex justify-center">

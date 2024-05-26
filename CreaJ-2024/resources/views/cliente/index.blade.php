@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Rol</th>
 										<th>Usuario</th>
 										<th>Contrasena</th>
@@ -51,7 +51,7 @@
                                     @foreach ($clientes as $cliente)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $cliente->ROL }}</td>
 											<td>{{ $cliente->usuario }}</td>
 											<td>{{ $cliente->contrasena }}</td>

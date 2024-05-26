@@ -1,3 +1,11 @@
+@extends('layouts.app')
+
+@section('template_title')
+    Cliente
+@endsection
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,139 +56,34 @@
         </div>
 
         <div class="mt-10">
-                    <h2 class="text-center text-xl"><b>Listado de vendedores</b></h2>
+                    <h2 class="text-center text-xl"><b>Listado de Clientes</b></h2>
         </div>
 
             <div>
+                @foreach ($clientes as $cliente)
                 <div class="mt-[10%] mx-auto ml-12 flex ">
                     <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
+                        <h3 class="text-sm font-bold">Vendedor :{{ $cliente->nombre }} {{ $cliente->apellido }}</h3>
+                        <h3 class="text-xs ">Con Correo Electronico : {{ $cliente->usuario }}</h3>
+                        <h3 class="text-xs ">Numero de Telefono : {{ $cliente->telefono }}</h3>
                     </div>
 
                 </div>
                 <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
+                    <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
+
+                        @csrf
+                         @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm bg-red-500 text-white text-xs px-2 py-1 rounded">Negar</button>
+                    </form>
 
                 </div>
                 <hr class="w-[90%] mx-auto">
+                @endforeach
 
-                <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
 
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
 
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Negar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Aceptar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
 
 
 
@@ -189,3 +92,4 @@
 
 </body>
 </html>
+@endsection
