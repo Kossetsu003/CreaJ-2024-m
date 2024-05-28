@@ -17,7 +17,7 @@ use App\Http\Controllers\VendedorController;
 
 
 /*Vistas Principales*/
-Route::view('/','Index')->name('Index');
+Route::view('/','2Index')->name('Index');
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
 Route::view('/borrar','borrar')->name('borrar');
@@ -74,8 +74,8 @@ Route::view('/AdminAgregarMercado','AdminAgregarMercado')->name('AdminAgregarMer
 Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
 Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
-Route::view('/AdminListadoMercados','AdminListadoMercados')->name('AdminListadoMercados');
-Route::view('/AdminHistorialPedidos','AdminHistorialPedidos')->name('AdminHistorialPedidos');
+Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListadoMercados');
+Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 
 

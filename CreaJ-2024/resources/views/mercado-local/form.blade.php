@@ -44,6 +44,6 @@
 
     </div>
     <div class="col-md-12 mt20 mt-2">
-        <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <button type="submit" class="">{{ __('Submit') }}</button>
     </div>
 </div>

@@ -1,107 +1,121 @@
-@extends('layouts.app')
-
-@section('template_title')
-    {{ __('Update') }} Cliente
-@endsection
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>Producto Editar</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <title>Editar Perfil</title>
 </head>
-<body>
+<body class="bg-gray-100 mb-24 md:mb-0">
+    <!-- Desktop Navbar -->
+    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
+        <div class="flex gap-8">
+            <a href="./UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
+            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
+            <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
+            <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+        </div>
+    </div>
 
-    <section>
-        <div class="w-72 h-auto mx-auto mt-[15%] mb-[7em]">
+    <!-- Mobile Navbar -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+            <div class="flex items-center">
+                <a href="./UserHome" class="bg-white rounded-full p-1">
+                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="./UserCarritoGeneral">
+                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="./UserEstadoPedidos">
+                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="./UserProfileVista">
+                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                </a>
+            </div>
+        </div>
+    </div>
 
-
-            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                <!--INICIO DE NAVBAR MOBIL-->
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center">
-                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserCarritoGeneral"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserEditarPerfil"  class="bg-white rounded-full p-[0.25rem]"><img class="w-6" src="{{ asset('imgs/UserSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                </div>
-                <!--FIN DE NAVBAR MOBIL-->
+    <!-- Main Section -->
+    <section class="flex justify-center md:mt-4 p-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-4xl bg-white p-4 md:p-8 rounded-lg shadow-md">
+            <div class="text-center mb-2">
+                <h1 class="text-3xl font-bold text-gray-800">Editar <span class="text-purple-500">Perfil</span></h1>
             </div>
 
-
-            <!--Contenedor Principal-->
-            <div class="text-center">
-                <!--Contenedor Mini Shop-->
-                <h1 class="text-[50px] font-bold">Editar<span class="text-purple-400 font-bold m-2">Perfil</span></h1>
-            </div>
-
-              <form method="POST" action="{{ route('clientes.update', $cliente->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+            <form method="POST" role="form" enctype="multipart/form-data">
+                {{ method_field('PATCH') }}
                 @csrf
 
-                <div class="flex flex-col mt-6">
-                            <!--Contenedor De Inputs-->
+                <input type="hidden" name="ROL" value="4" id="r_o_l" class="form-control @error('ROL') is-invalid @enderror">
 
-                    <!--ROL ES INVISIBLE-->
-                        <input type="hidden" name="ROL" placeholder="Rol" value="4" id="r_o_l" class="form-control @error('ROL') is-invalid @enderror">
-                        {!! $errors->first('ROL', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    <!--FIN DEL ROL-->
+                <!-- Información Personal -->
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Información Personal</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gray-700">Nombres</label>
+                            <input required type="text" name="nombre" id="nombre" placeholder="Nombres" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('nombre') is-invalid @enderror">
+                        </div>
 
+                        <div>
+                            <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
+                            <input required type="text" name="apellido" id="apellido" placeholder="Apellido" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('apellido') is-invalid @enderror">
+                        </div>
 
-                    <div class="flex justify-center">
-                       <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('usuario') is-invalid @enderror" value="{{ old('usuario', $cliente?->usuario) }}">
-                        {!! $errors->first('usuario', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                        <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $cliente?->nombre) }}">
-                         {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                        <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class=" border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('apellido') is-invalid @enderror" value="{{ old('apellido', $cliente?->apellido) }}" >
-                        {!! $errors->first('apellido', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                          <input required type="text" name="telefono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono', $cliente?->telefono) }}" id="telefono" placeholder="Ingrese su Número de Teléfono">
-                        {!! $errors->first('telefono', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                        <select name="sexo" id="sexo" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400 form-control @error('sexo') is-invalid @enderror" required>
-                            <option value="{{ old('sexo', $cliente?->sexo) }}" class="">Escoga su Género</option>
-                            <option value="Masc">Género: Masculino</option>
-                            <option value="Fem">Género: Femenino</option>
-                        </select>
-                        {!! $errors->first('sexo', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                         <input required type="password"  name="contrasena" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control @error('contrasena') is-invalid @enderror" value="{{ old('contrasena', $cliente?->contrasena) }}" id="contrasena" placeholder="Escriba su Contraseña">
-                        {!! $errors->first('contrasena', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                    </div>
-                    <div class="flex justify-center mt-2">
-                       <input required type="password" name="confirmar_contrasena" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 form-control" id="confirmar_contrasena" placeholder="Escriba de nuevo su Contraseña">
+                        <div>
+                            <label for="telefono" class="block text-sm font-medium text-gray-700">Número de Teléfono</label>
+                            <input required type="text" name="telefono" id="telefono" placeholder="Número de Teléfono" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('telefono') is-invalid @enderror">
+                        </div>
+
+                        <div>
+                            <label for="sexo" class="block text-sm font-medium text-gray-700">Género</label>
+                            <select name="sexo" id="sexo" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm text-gray-500 focus:ring focus:ring-purple-200 form-control @error('sexo') is-invalid @enderror" required>
+                                <option value="" disabled selected>Escoga su Género</option>
+                                <option value="Masc">Masculino</option>
+                                <option value="Fem">Femenino</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex justify-center py-5">
-                    <button type="submit" class="btn btn-primary bg-purple-400 w-72 h-10 flex items-center justify-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">Actualizarse</button>
+                <!-- Información de Acceso -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Información de Acceso</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="usuario" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                            <input required type="email" name="usuario" id="usuario" placeholder="Correo Electrónico" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('usuario') is-invalid @enderror">
+                        </div>
+
+                        <div>
+                            <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                            <input required type="password" name="contrasena" id="contrasena" placeholder="Contraseña" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('contrasena') is-invalid @enderror">
+                        </div>
+
+                        <div>
+                            <label for="confirmar_contrasena" class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+                            <input required type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirmar Contraseña" class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control">
+                        </div>
+                    </div>
                 </div>
 
+                <div class="flex justify-center py-6">
+                    <button type="submit" class="bg-purple-500 w-full h-12 flex items-center justify-center rounded-lg text-sm font-semibold text-white shadow-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
+                        Actualizar Perfil
+                    </button>
+                </div>
             </form>
-
-
-
         </div>
     </section>
 </body>
 </html>
-@endsection

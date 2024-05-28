@@ -5,152 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>MisReservas</title>
+    <title>Mis Reservas</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
-<body>
-
-     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
-        <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-
-
-
-
-            <!--INICIO DE NAVBAR MOBIL-->
-
-
-            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                <div class="flex items-center  ">
-                    <a href="./UserHome" ><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                </div>
-
-                <div class="flex items-center">
-                    <a href="./UserCarritoGeneral" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                </div>
-
-                <div class="flex items-center">
-                    <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                </div>
-                <div class="flex items-center">
-                    <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                </div>
-            </div>
-
-            <!--FIN DE NAVBAR MOBIL-->
-
-
-
+<body class="bg-gray-100">
+    <!-- Desktop Navbar -->
+    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
+        <div class="flex gap-8">
+            <a href="./UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
+            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
+            <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
+            <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
         </div>
-
-        <!-- Agregar un margen superior al contenido principal igual a la altura de la barra de navegación -->
-        <div class="mt-14"> <!-- Puedes ajustar este valor según sea necesario -->
-             <div class="flex justify-around ">
-                <div>
-                    <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
-                </div>
-                <div>
-                    <h2><b>MisPedidos</b></h2>
-                </div>
-                <div>
-
-                </div>
+    </div>
+    <!-- Mobile Navbar -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+            <div class="flex items-center">
+                <a href="./UserHome" class="bg-white rounded-full p-1">
+                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                </a>
             </div>
-
-            <div>
-                <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Puesto de JoseMaria</h3>
-                        <h3 class="text-xs ">Reserva realizada el 03/04/2024</h3>
-                        <h3 class="text-sm font-bold">$48.75</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-                 <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/PupusasFoto.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Pupuseria Niña Marta</h3>
-                        <h3 class="text-xs">Reselva realizada el 05/05/2023</h3>
-                        <h3 class="text-sm font-bold">$09.30</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-                 <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/PescadoFresco.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Pesqueria Don Pedro</h3>
-                        <h3 class="text-xs">Reserva realizada el 21/02/2024</h3>
-                        <h3 class="text-sm font-bold">$07.00</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-
-                 <hr class="w-[90%] mx-auto">
-                 <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/AlmuerzoFoto.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Comedor Niña Carmen</h3>
-                        <h3 class="text-xs">Reserva realizada el 18/02/2023</h3>
-                        <h3 class="text-sm font-bold">$02.50</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-                      <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/RopaFoto.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Tienda Mayoreo Pan de Jesus</h3>
-                        <h3 class="text-xs">Reserva Realizada el 03/05/2023</h3>
-                        <h3 class="text-sm font-bold">$12.00</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">      <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs/CarniceriaFoto.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Carniceria Don Juan</h3>
-                        <h3 class="text-xs">Reserva Realizada el 06/05/2023</h3>
-                        <h3 class="text-sm font-bold">$04.75</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Confirmar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Cancelar</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-
-
+            <div class="flex items-center">
+                <a href="./UserCarritoGeneral">
+                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="./UserEstadoPedidos">
+                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="./UserProfileVista">
+                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                </a>
+            </div>
         </div>
     </div>
 
+    <main class="p-4">
+        <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Pedidos</h1>
+
+            <div class="space-y-4">
+              <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <div class="flex items-center">
+                  <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
+                  <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Pedido #1</h2>
+                    <p class="text-sm text-gray-600">Fecha: 25 de Mayo, 2024</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
+                </div>
+              </div>
+          
+              <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <div class="flex items-center">
+                  <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
+                  <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Pedido #2</h2>
+                    <p class="text-sm text-gray-600">Fecha: 23 de Mayo, 2024</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+    </main>
 </body>
 </html>

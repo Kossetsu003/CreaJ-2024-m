@@ -7,6 +7,37 @@
     <title>VendedorProfileVista</title>
 </head>
 <body>
+</div>
+<!-- Desktop Navbar -->
+<div
+class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
+>
+<h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+    MiniShop
+</h1>
+<div class="flex gap-8">
+    <a
+        href="./VendedorHome"
+        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        >Home</a
+    >
+    <a
+        href="./VendedorMiBuzon"
+        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        >Buzon</a
+    >
+    <a
+        href="./VendedorMisReservas"
+        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        >Reservas</a
+    >
+    <a
+        href="./VendedorProfileVista"
+        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        >Perfil</a
+    >
+</div>
+</div>
     <div class="pb-[7rem]">
        <div class="bg-zinc-700 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
@@ -67,29 +98,48 @@
             </div>
 
 
-        </div>
 
-        <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-            <!--INICIO DE NAVBAR MOBIL-->
-            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                <div class="flex items-center  ">
-                    <a href="./VendedorHome" ><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                </div>
-
-                <div class="flex items-center">
-                    <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
-                </div>
-
-                <div class="flex items-center">
-                    <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
-                </div>
-                <div class="flex items-center">
-                    <a href="./VendedorProfileVista" class=" bg-white rounded-full p-[0.25rem] " ><img class="w-6" src="{{ asset('imgs/UserSelectedIcon.png') }}" alt="User Icon"></a>
-                </div>
-            </div>
-
-            <!--FIN DE NAVBAR MOBIL-->
-        </div>
+     <!-- Mobile Navbar -->
+     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+         <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+             <div class="flex items-center">
+                 <a href="./VendedorHome" class="bg-white rounded-full p-1">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/HomeSelectedIcon.png') }}"
+                         alt="Home Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorMiBuzon">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/BuzonIcon.png') }}"
+                         alt="Cart Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorMisReservas">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/ReservasIcon.png') }}"
+                         alt="Favorites Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorProfileVista">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/UserIcon.png') }}"
+                         alt="Profile Icon"
+                     />
+                 </a>
+             </div>
+         </div>
+     </div>
     </div>
 </body>
 </html>
