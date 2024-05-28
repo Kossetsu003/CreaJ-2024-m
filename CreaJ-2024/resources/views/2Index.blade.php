@@ -38,7 +38,7 @@
                             Iniciar Sesion
                         </button>
                     </a>
-                    <a href="{{ route('clientes.create') }}" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
+                    <a href="" class="mr-2 border border-black w-32 h-12 rounded-md relative flex items-center">
                         <img class="absolute left-0 top-0 bottom-0 m-auto ml-4 mr-[10px]" src="{{ asset('imgs/play.png') }}" alt="User Icon">
                         <span class="pl-10">
                             Registrarse

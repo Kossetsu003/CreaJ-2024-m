@@ -1,8 +1,8 @@
 <?php
 use App\Http\Controllers\MercadoLocalController;
-use App\Http\Controllers\ClienteController;
+// use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VendedorController;
+// use App\Http\Controllers\VendedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +41,11 @@ Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorial
 /*Vistas de Vendedores*/
 
 Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');
-Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto');
+Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto'); //
 Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
 Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
-Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto');
+Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //
 Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
 Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
 
@@ -57,7 +57,7 @@ Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
 Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
 Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
-Route::view('/MercadoVista','MercadoVista')->name('MercadoVista');
+Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
 Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores');
 Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor');
 
@@ -86,12 +86,12 @@ Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedido
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('mercado-locals', MercadoLocalController::class);
-Route::resource('vendedors', VendedorController::class);
-Route::resource('clientes', ClienteController::class);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::resource('mercado-locals', MercadoLocalController::class);
+// Route::resource('vendedors', VendedorController::class);
+// Route::resource('clientes', ClienteController::class);
 
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
