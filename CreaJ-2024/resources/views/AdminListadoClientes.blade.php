@@ -60,33 +60,20 @@
         </div>
 
             <div>
-                @foreach ($clientes as $cliente)
+                <!-- Frontend sin backend -->
                 <div class="mt-[10%] mx-auto ml-8 mr-8 flex ">
                     <img class="w-28 rounded-lg h-28" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
                     <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor :{{ $cliente->nombre }} {{ $cliente->apellido }}</h3>
-                        <h3 class="text-xs ">Con Correo Electronico : {{ $cliente->usuario }}</h3>
-                        <h3 class="text-xs ">Numero de Telefono : {{ $cliente->telefono }}</h3>
+                        <h3 class="text-sm font-bold">Vendedor :Nombre Apellido</h3>
+                        <h3 class="text-xs ">Con Correo Electronico : correo@example.com</h3>
+                        <h3 class="text-xs ">Numero de Telefono : 1234567890</h3>
                         <div class="mt-1 mr-5 gap-2 mb-2 ">
-                            <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
-
-                                @csrf
-                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm bg-red-500 text-white text-xs px-3 py-2 rounded">Eliminar Usuario</button>
-                            </form>
-
+                            <button class="btn btn-danger btn-sm bg-red-500 text-white text-xs px-3 py-2 rounded">Eliminar Usuario</button>
                         </div>
                     </div>
-
                 </div>
 
                 <hr class="w-[90%] mx-auto">
-                @endforeach
-
-
-
-
-
 
         </div>
     </div>
