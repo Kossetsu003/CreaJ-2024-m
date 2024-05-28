@@ -67,10 +67,18 @@ class MercadoLocalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(MercadoLocalRequest $request, MercadoLocal $mercadoLocal)
+    public function update(MercadoLocal $_, $id)
     {
-        $mercadoLocal->update($request->validated());
+        $mercadoLocal = MercadoLocal::find($id);
 
+        $mercadoLocal->nombre = request()->get("nombre");
+        $mercadoLocal->municipio = request()->get("municipio");
+        $mercadoLocal->ubicacion = request()->get("ubicacion");
+        $mercadoLocal->horaentrada = request()->get("horaentrada");
+        $mercadoLocal->horasalida = request()->get("horasalida");
+        $mercadoLocal->descripcion = request()->get("descripcion");
+
+        $mercadoLocal->save();
         return redirect()->route('mercado-locals.index')
             ->with('success', 'MercadoLocal updated successfully');
     }

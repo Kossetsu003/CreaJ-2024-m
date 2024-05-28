@@ -8,6 +8,43 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+    <div class="w-full bg-white text-gray-900">
+        <header class="bg-gray-200 py-4 px-8 flex flex-col md:flex-row justify-between md:items-center">
+            <div class="flex items-center gap-2">
+                <div>
+                    <img class="w-12 rounded-full " src="{{ asset('imgs/PerfilJuana.jpg') }}" alt="User Icon">
+                </div>
+                <h2 href="#" class="text-lg font-semibold">
+                    Andrew Food
+                </h2>
+            </div>
+            
+        </header>
+    
+    
+        <main class="py-8 px-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="bg-gray-100 rounded-md shadow-md">
+                <img src="https://picsum.photos/200" alt="Product Image" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold">Producto 1</h3>
+                    <p class="text-gray-600">
+                        Descripcion del prodcuto
+                    </p>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="flex items-center">
+                            <img class="w-5 h-5 mr-1" src="{{ asset('imgs/estrella.png') }}" alt="Rating Icon"/>
+                            <span class="text-sm text-gray-600">4.5 (123 reviews)</span>
+                        </div>
+                        <span class="text-lg font-bold">$1,299</span>
+                    </div>
+                    <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
+                        Comprar
+                    </button>
+                </div>
+            </div>
+            <!-- Repite la misma estructura para cada producto -->
+        </main>
+    </div>
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
             <!--INICIO DE NAVBAR MOBIL-->
@@ -30,79 +67,6 @@
 
             <!--FIN DE NAVBAR MOBIL-->
         </div>
-
-        <div class="mt-14  w-[90%] mx-auto">
-
-            <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
-                <div>
-                    <div>
-                        Puesto de comida
-                    </div>
-                    <div class="font-bold">
-                        Nombre de Vendedor
-                    </div>
-                </div>
-
-                <div class="mt-3">
-                    <img class="w-4 rounded-full " src="{{ asset('imgs/flecha-izquierda.png') }}" alt="User Icon">
-                </div>
-            </div><!--Fin Principal-->
-
-
-        <div class="flex flex-wrap justify-center mt-10 text-sm">
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Mayoreo de Blusas</h3>
-                <h3 class="mb-2">Tienda Michelina</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.2</h3>
-                        <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div>
-            <a href="./UserProductoEnEspecifico" class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Naranjas Valencia</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
-                <div class="flex justify-between">
-                    <h3>Comida</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.8</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </a>
-
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Jeans</h3>
-                <h3 class="mb-2">Venta Michelina</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.2</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div> <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoVariado.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Ropa Variada</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.6</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-
-        </div>
-
-
-
-
     </div>
 
 </body>

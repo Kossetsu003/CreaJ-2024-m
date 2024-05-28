@@ -9,110 +9,122 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-        <div class="mx-auto max-w-lg mt-10 ">
-            <!--INICIO DE NAVBAR MOBIL-->
-            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center  ">
-                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                    </div>
+    
 
-                    <div class="flex items-center">
-                        <a href="./UserCarritoGeneral"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                </div>
-
+    <!-- Desktop Navbar -->
+    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
+        <div class="flex gap-8">
+            <a href="./UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
+            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
+            <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
+            <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+        </div>
+    </div>
+    <!-- Mobile Navbar -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+            <div class="flex items-center">
+                <a href="./UserHome" class="bg-white rounded-full p-1">
+                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                </a>
             </div>
-             <!--FIN DE NAVBAR MOBIL-->
-            <div class="flex justify-around ">
-                <div>
-                    <button><img class="w-5" src="{{ asset('imgs/Flecha3.png') }}" alt="User Icon"></button>
-                </div>
-                <div>
-                    <h2><b>Mini</b>Carrito</h2>
-                </div>
-                <div>
-                    <img src="{{ asset('imgs/menu.png') }}" alt="User Icon">
-                </div>
+            <div class="flex items-center">
+                <a href="./UserCarritoGeneral">
+                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                </a>
             </div>
-
-                <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
-                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 w-[70%]">
-                        <h3 class="text-sm">Ciento de Aguacates</h3>
-                        <h3 class="text-xs">Tienda de JoseMaria</h3>
-                        <h3 class="text-sm font-bold">$09.00</h3>
-                    </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">1</button>
-                        <button class="text-white">-</button>
-                    </div>
-
-                </div>
-                <hr class="mt-5">
-                 <div class="mt-[10%] mx-auto ml-12 flex w-[80%]">
-                    <img class="w-16 rounded-lg h-16" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 w-[70%] ">
-                        <h3 class="text-sm">Ciento de Naranjas Valencia</h3>
-                        <h3 class="text-xs">Tienda de JoseMaria</h3>
-                        <h3 class="text-sm font-bold">$12.00</h3>
-                    </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">2</button>
-                        <button class="text-white">-</button>
-                    </div>
-
-                </div>
-                <hr class="mt-5"> <div class="mt-[10%] mx-auto ml-12 flex w-[80%] ">
-                    <img class="w-16 h-16 rounded-lg " src="{{ asset('imgs/TomatesQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 w-[70%] ">
-                        <h3 class="text-sm">Dolar de Tomates</h3>
-                        <h3 class="text-xs">Tienda de Mercedes</h3>
-                        <h3 class="text-sm font-bold">$01.00</h3>
-                    </div>
-                    <div class="mx-auto mt-[15px] h-8 bg-blue-400 rounded-md w-20 flex justify-around ">
-                        <button class="text-white">+</button>
-                        <button class="text-white">3</button>
-                        <button class="text-white">-</button>
-                    </div>
-
-                </div>
-                <hr class="mt-5">
-
-            <div class="flex w-[90%]  mt-10 ml-5 justify-between">
-                <div >
-                    <h3  class="my-2">Cantidad(6 Productos)</h3>
-                    <h3>Costo de Reserva</h3>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-bold my-2">$48.00</span>
-                    <span class="font-bold">$00.75</span>
-                </div>
-
+            <div class="flex items-center">
+                <a href="./UserEstadoPedidos">
+                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
             </div>
-            <hr>
-            <div class="flex w-[90%] mt-3   ml-5 justify-between">
-                <div >
-                    <h3 class="my-2">Total</h3>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-bold my-2">$48.75</span>
-                </div>
-
+            <div class="flex items-center">
+                <a href="./UserProfileVista">
+                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                </a>
             </div>
+        </div>
+    </div>
 
-            <button class="mx-auto mt-[20px] mb-[7rem]  bg-black   border-white flex justify-center items-center w-72 h-10 gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                <span>Confirmar</span>
-            </button>
-
+    <div class="container mx-auto px-4">
+        <!-- Lista de productos -->
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold mb-4">Lista de Productos</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Producto 1 -->
+            <div class="p-4 rounded-lg border">
+              <div class="flex items-center justify-between">
+                <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Producto 1" class="w-16 h-16 object-cover rounded">
+                <div class="h-8 font-bold bg-slate-900 rounded-md w-20 flex items-center justify-between px-2">
+                  <button class="text-white">-</button>
+                  <span class="text-white">1</span>
+                  <button class="text-white">+</button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <p class="text-sm text-gray-600">Nombre del Producto</p>
+                <p class="text-xs text-gray-500">Vendedor</p>
+                <p class="text-lg font-semibold mt-2">$100</p>
+              </div>
+            </div>
+       <!-- Producto 1 -->
+            <div class="p-4 rounded-lg border">
+              <div class="flex items-center justify-between">
+                <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Producto 1" class="w-16 h-16 object-cover rounded">
+                <div class="h-8 font-bold bg-slate-900 rounded-md w-20 flex items-center justify-between px-2">
+                  <button class="text-white">-</button>
+                  <span class="text-white">1</span>
+                  <button class="text-white">+</button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <p class="text-sm text-gray-600">Nombre del Producto</p>
+                <p class="text-xs text-gray-500">Vendedor</p>
+                <p class="text-lg font-semibold mt-2">$100</p>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg border">
+              <div class="flex items-center justify-between">
+                <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Producto 1" class="w-16 h-16 object-cover rounded">
+                <div class="h-8 font-bold bg-slate-900 rounded-md w-20 flex items-center justify-between px-2">
+                  <button class="text-white">-</button>
+                  <span class="text-white">1</span>
+                  <button class="text-white">+</button>
+                </div>
+              </div>
+              <div class="mt-4">
+                <p class="text-sm text-gray-600">Nombre del Producto</p>
+                <p class="text-xs text-gray-500">Vendedor</p>
+                <p class="text-lg font-semibold mt-2">$100</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      
+        <!-- Resumen de la compra -->
+        <div class="mt-8">
+          <h2 class="text-xl font-semibold mb-4">Resumen de la Compra</h2>
+          <div class="bg-white p-4 border rounded-lg shadow-md">
+            <div class="flex justify-between mb-4">
+              <p class="text-sm text-gray-600">Subtotal (3 productos)</p>
+              <p class="text-sm font-semibold">$300</p>
+            </div>
+            <div class="flex justify-between mb-4">
+              <p class="text-sm text-gray-600">Costo de Reserva</p>
+              <p class="text-sm font-semibold">$10</p>
+            </div>
+            <hr class="my-2">
+            <div class="flex justify-between">
+              <p class="text-lg font-semibold">Total a Pagar</p>
+              <p class="text-lg font-semibold">$310</p>
+            </div>
+            <button class="mt-4 bg-slate-800 hover:bg-slate-600 text-white py-2 w-full rounded-md focus:outline-none">Comprar</button>
+          </div>
+        </div>
+      </div>
+      
+      
 </body>
 </html>

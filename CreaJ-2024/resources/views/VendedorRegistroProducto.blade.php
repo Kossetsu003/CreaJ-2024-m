@@ -8,30 +8,82 @@
     <title>Registrar Producto Vendedor</title>
 </head>
 <body>
+         <!-- Desktop Navbar -->
+         <div
+         class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
+     >
+         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+             MiniShop
+         </h1>
+         <div class="flex gap-8">
+             <a
+                 href="./VendedorHome"
+                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+                 >Home</a
+             >
+             <a
+                 href="./VendedorMiBuzon"
+                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+                 >Buzon</a
+             >
+             <a
+                 href="./VendedorMisReservas"
+                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+                 >Reservas</a
+             >
+             <a
+                 href="./VendedorProfileVista"
+                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+                 >Perfil</a
+             >
+         </div>
+     </div>
+     <!-- Mobile Navbar -->
+     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+         <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+             <div class="flex items-center">
+                 <a href="./VendedorHome" class="bg-white rounded-full p-1">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/HomeSelectedIcon.png') }}"
+                         alt="Home Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorMiBuzon">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/BuzonIcon.png') }}"
+                         alt="Cart Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorMisReservas">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/ReservasIcon.png') }}"
+                         alt="Favorites Icon"
+                     />
+                 </a>
+             </div>
+             <div class="flex items-center">
+                 <a href="./VendedorProfileVista">
+                     <img
+                         class="w-6"
+                         src="{{ asset('imgs/UserIcon.png') }}"
+                         alt="Profile Icon"
+                     />
+                 </a>
+             </div>
+         </div>
+     </div>
+    
     <form action="#" method="get">
     <section>
         <div class="w-72 h-96 mx-auto mt-16">
-            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                <!--INICIO DE NAVBAR MOBIL-->
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center  ">
-                        <a href="./VendedorHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./VendedorProfileVista"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                </div>
-
-                <!--FIN DE NAVBAR MOBIL-->
-            </div>
+        
 
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-black">Registrar Producto</h1>

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
+     <div class="mx-auto max-w-lg"> <!-- Añadido un margen inferior -->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
@@ -32,160 +32,44 @@
 
             <!--FIN DE NAVBAR MOBIL-->
         </div>
-
-        <div class="ml-2">
-            <div class="flex">
-                <div class="font-bold text-4xl">
-                    Mini
-                </div>
-                <div>
-                    <img class="w-6 ml-3 mt-3" src="{{ asset('imgs/shop.png') }}" alt="User Icon">
-                </div>
-            </div>
-            <div class="font-bold text-xl  text-end w-[34%]">
-                Shop
-            </div>
-        </div>
-
-        <div class="mt-10">
-                    <h2 class="text-center text-xl"><b>Listado de vendedores</b></h2>
-        </div>
-
-            <div>
-                <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-
-                <div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto"><div class="mt-[10%] mx-auto ml-12 flex ">
-                    <img class="w-14 rounded-lg h-auto" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor:Andrew</h3>
-                        <h3 class="text-xs ">Descripcion del vendedor</h3>
-                        <h3 class="text-sm font-bold">Comida</h3>
-                    </div>
-
-                </div>
-                <div class="mt-1 mr-5 gap-2 mb-2 flex justify-end">
-                    <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">Eliminar</button>
-                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">Ver</button>
-
-                </div>
-                <hr class="w-[90%] mx-auto">
-
-
-
-        </div>
     </div>
+
+    <main class="p-4">
+        <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Vendedores</h1>
+
+            <div class="space-y-4">
+              <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <div class="flex items-center">
+                  <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
+                  <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Pedido #1</h2>
+                    <p class="text-sm text-gray-600">Fecha: 25 de Mayo, 2024</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Ver</button>
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Eliminar</button>
+                </div>
+              </div>
+          
+              <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <div class="flex items-center">
+                  <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
+                  <div>
+                    <h2 class="text-lg font-semibold text-gray-800">Pedido #2</h2>
+                    <p class="text-sm text-gray-600">Fecha: 23 de Mayo, 2024</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Ver</button>
+                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+    </main>
 
 </body>
 </html>

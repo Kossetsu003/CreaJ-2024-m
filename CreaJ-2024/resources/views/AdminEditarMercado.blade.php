@@ -86,14 +86,14 @@
             <div class="flex justify-center mt-2 mb-20">
 
                 <div class="flex justify-center ">
-                    <button class="py-5 px-10 bg-red-500" type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                    <button class="bg-red-500 px-5 text-white py-1 rounded mt-4" type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
 
                 </div>
 
             </div>
         </form>
 
-             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+             <!-- <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
                         <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </section>
 
