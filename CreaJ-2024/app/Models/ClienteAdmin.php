@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Cliente extends Model
+class ClienteAdmin extends Model
 {
 
 
