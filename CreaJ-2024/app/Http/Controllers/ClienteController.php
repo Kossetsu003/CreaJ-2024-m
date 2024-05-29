@@ -20,9 +20,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = ClienteAdmin::paginate();
+        $clientes = Cliente::paginate();
 
-        return view('clienteadmin.index', compact('clientes'))
+        return view('cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 

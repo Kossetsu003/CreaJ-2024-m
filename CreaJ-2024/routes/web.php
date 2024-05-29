@@ -78,7 +78,6 @@ Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListad
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 
-Route::resource('clientesadmin', ClienteAdminController::class);
 
 
 
