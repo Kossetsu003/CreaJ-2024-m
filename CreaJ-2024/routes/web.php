@@ -3,7 +3,7 @@ use App\Http\Controllers\MercadoLocalController;
 use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedorController;
-use App\Http\Controllers\AdminClienteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,7 +78,7 @@ Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListad
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 
-Route::resource('admin-cliente', AdminClienteController::class);
+Route::resource('clientesadmin', ClienteAdminController::class);
 
 
 

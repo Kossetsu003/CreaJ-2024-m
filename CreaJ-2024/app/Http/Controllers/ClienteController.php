@@ -20,9 +20,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::paginate();
+        $clientes = ClienteAdmin::paginate();
 
-        return view('cliente.index', compact('clientes'))
+        return view('clienteadmin.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
@@ -32,7 +32,7 @@ class ClienteController extends Controller
     public function create()
     {
         $cliente = new Cliente();
-        return view('cliente.RegistroUser', compact('cliente'));
+        return view('RegistroUser', compact('cliente'));
     }
 
     /**
@@ -55,7 +55,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('cliente.UserProfileVista', compact('cliente'));
+        return view('UserProfileVista', compact('cliente'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
 
-        return view('cliente.UserEditarPerfil', compact('cliente'));
+        return view('UserEditarPerfil', compact('cliente'));
     }
 
     /**
