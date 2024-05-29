@@ -93,6 +93,6 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

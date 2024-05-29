@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+    
     <div class="md:flex h-screen">
         <div class="pt-7  md:bg-[#BDD7FF] md:w-[50%] md:flex md:flex-col md:justify-center">
             <div class="login pl-5">

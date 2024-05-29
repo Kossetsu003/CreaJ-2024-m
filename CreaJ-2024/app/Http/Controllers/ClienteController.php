@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ClienteController
@@ -40,12 +41,40 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-       $cliente = Cliente::create($request->validated());
 
-       Session::put('id',$cliente->id);
+        
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:clientes',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:clientes',
+            'sexo' => 'required|string',
+            'contrasena' => 'required|string|min:8|confirmed',
+        ]);
+        
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        // Crear cliente si la validación pasa
+        $cliente = Cliente::create([
+            'usuario' => $request->usuario,
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'telefono' => $request->telefono,
+            'sexo' => $request->sexo,
+            'contrasena' => bcrypt($request->contrasena), // Asegúrate de encriptar la contraseña
+        ]);
+        
+        // Guardar el ID del cliente en la sesión
+        Session::put('id', $cliente->id);
+        
+        return redirect()->route('LoginUser', ['success' => true]);
 
-        return redirect()->route('clientes.index')
-            ->with('success', 'Cliente created successfully.');
+        
     }
 
     /**
