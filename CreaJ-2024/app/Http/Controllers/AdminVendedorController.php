@@ -39,7 +39,7 @@ class AdminVendedorController extends Controller
     {
         Vendedor::create($request->validated());
 
-        return redirect()->route('AdminListadoVendedores')
+        return redirect()->route('admin-vendedors.index')
             ->with('success', 'Vendedor created successfully.');
     }
 

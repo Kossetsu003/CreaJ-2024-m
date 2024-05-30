@@ -26,7 +26,7 @@ class ClienteController extends Controller
         $mercadoLocals = MercadoLocal::paginate();
 
 
-        return view('UserHome', compact('clientes','mercadolocals'))
+        return view('UserHome', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 

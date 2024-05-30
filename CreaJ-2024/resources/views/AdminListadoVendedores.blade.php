@@ -42,6 +42,7 @@
     <main class="p-4">
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
             <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Vendedores</h1>
+            <a class="bg-orange-500 text-white text-xs px-8 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin-vendedors.create') }}">Agregar Vendedores</a>
 
             <div class="space-y-4">
                 @foreach ($vendedors as $vendedor)
