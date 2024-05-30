@@ -17,7 +17,7 @@ class AdminClienteController extends Controller
     {
         $clientes = Cliente::paginate();
 
-        return view('admin-cliente.index', compact('clientes'))
+        return view('AdminListadoClientes', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 

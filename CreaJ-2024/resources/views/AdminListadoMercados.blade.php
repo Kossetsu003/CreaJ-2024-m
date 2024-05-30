@@ -1,3 +1,11 @@
+@extends('layouts.app')
+
+@section('template_title')
+    {{ $mercadoLocal->name ?? __('Show') . " " . __('Mercado Local') }}
+@endsection
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +43,11 @@
 
             <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
                 <div>
-                    <div>
-                        Mercado Ex-Cuartel
-                    </div>
-                    <div class="font-bold">
-                        Los mejores Precios
+                    <h1><?php echo $mercadoLocal;  ?>
+                        {{ $mercadoLocal->nombre }}
+                    </h1>
+                    <div >
+                        <b>{{ $mercadoLocal->municipio }}</b>, <br> {{ $mercadoLocal->ubicacion }}
                     </div>
                 </div>
 
@@ -142,3 +150,4 @@
 
 </body>
 </html>
+@endsection
