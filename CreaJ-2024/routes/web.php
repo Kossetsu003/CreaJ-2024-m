@@ -4,6 +4,7 @@ use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\AdminClienteController;
+use App\Http\Controllers\AdminVendedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +92,7 @@ Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
-
+Route::resource('admin-vendedors', AdminVendedorController::class);
 
 // Auth::routes();
 

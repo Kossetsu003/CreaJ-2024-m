@@ -7,7 +7,7 @@ use Illuminate\Http\Request\VendedorRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class AdminVendedorController extends Controller
+class VendedorController extends Controller
 {
  /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class AdminVendedorController extends Controller
     {
         $vendedors = Vendedor::paginate();
 
-        return view('vendedor.index', compact('vendedors'))
+        return view('admin-vendedor.index', compact('vendedors'))
             ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
     }
 

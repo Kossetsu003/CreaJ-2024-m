@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
 use App\Http\Requests\VendedorRequest;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class VendedorController
