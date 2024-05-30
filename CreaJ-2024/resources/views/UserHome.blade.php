@@ -11,8 +11,7 @@
 <body class="">
      <!-- Desktop Navbar -->
      <div
-     class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
- >
+     class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
      <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
          MiniShop
      </h1>
