@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +23,18 @@
                     <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
                 </div>
             </div>
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login-submit') }}" method="POST">
                 @csrf
-                @if ($errors->any())
-                    <div class="bg-red-500 text-white p-2 rounded mt-1 text-[10px] text-center">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="w-72 h-96 mt-10 mx-auto">
                     <div class="text-center">
                         <h1 class="text-6xl font-bold">Mini<span class="text-[#3679F5] ml-3 font-bold">Shop</span></h1>
                     </div>
                     <div class="flex flex-col mt-5">
                         <div class="flex justify-center pt-5">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="email" id="usuario" placeholder="Ingrese su correo electrónico">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
                         </div>
                         <div class="flex justify-center mt-2">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="password" name="password" id="password" placeholder="Ingrese su contraseña">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="password" name="contrasena" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
                         <div class="flex justify-end mt-3 pr-2">
                             <h3 class="text-xs font-bold">Forgot Password?</h3>
@@ -72,24 +60,8 @@
                         </div>
                     </div>
                     <div class="mt-11">
-                        <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="./clientes/create" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
+                        <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('clientes.create') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="hidden md:flex md:flex-col md:items-center md:justify-center md:w-[50%]">
-            <div class="text-center mb-4">
-                <h3 class="font-bold text-3xl">Login Account</h3>
-            </div>
-            <div class="flex justify-center">
-                <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
-            </div>
-            <div>
-                <h3 class="font-bold text-xl">Welcome Back</h3>
-                <h3 class="font-bold text-center text-xl">Mini Shop!</h3>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-@endsection
+    

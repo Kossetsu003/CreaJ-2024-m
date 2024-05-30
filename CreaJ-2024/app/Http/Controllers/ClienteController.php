@@ -40,9 +40,7 @@ class ClienteController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ClienteRequest $request)
-    {
-
-        
+    { 
         $validator = Validator::make($request->all(), [
             'usuario' => 'required|email|unique:clientes',
             'nombre' => 'required|string|max:255',

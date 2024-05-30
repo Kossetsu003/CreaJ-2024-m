@@ -8,37 +8,36 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-
 class LoginController extends Controller
 {
     public function login()
     {
-        return view('login');
-}
-
-public function loginpost(ClienteRequest $request){
-
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+        return view('UserHome');
     }
-    
-    $credentials = [
-        'usuario' => $request->usuario,
-        'password' => $request->password,
 
-    ];
+    public function loginpost(ClienteRequest $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email',
+            'contrasena' => 'required',
+        ]);
 
-    if(Auth::attempt($credentials)){
-        return redirect('/home')->with('success', 'Bienvenido a Minishop');
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $credentials = [
+            'usuario' => $request->usuario,
+            'password' => $request->contrasena, // Asegúrate de que el nombre del campo coincida
+        ];
+
+        // Intentar autenticarse con las credenciales proporcionadas
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect('/home')->with('success', 'Bienvenido a Minishop');
+        } else {
+            return redirect('login')->with('error', 'Usuario o contraseña incorrecta');
+        }
     }
-    else{
-        return redirect('login')->with('error', 'Usuario o contraseña incorrecta');
 }
-}}

@@ -24,7 +24,6 @@ use App\Http\Controllers\AdminMercadoLocalController;
 Route::view('/','2Index')->name('Index');
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
-Route::view('/borrar','borrar')->name('borrar');
 
 
 
@@ -45,11 +44,11 @@ Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorial
 /*Vistas de Vendedores*/
 
 Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');
-Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto');
+Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto'); //
 Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
 Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
-Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto');
+Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //
 Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
 Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
 
@@ -61,16 +60,16 @@ Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
 Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
 Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
-Route::view('/MercadoVista','MercadoVista')->name('MercadoVista');
-Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores');
-Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor');
+Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
+Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores'); //
+Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor'); //
 
 
 /*Administrador General*/
 
 Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
 Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');
-Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista');
+Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); //
 Route::view('/AdminHome','AdminHome')->name('AdminHome');
 Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
@@ -95,8 +94,12 @@ Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
+
+
 Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::post('login', [LoginController::class, 'loginpost'])->name('login');
+Route::post('login-submit', [LoginController::class, 'loginpost'])->name('login-submit');
+
+
 Route::resource('admin-mercado-locals', AdminMercadoLocalController::class);
 
 // Auth::routes();
