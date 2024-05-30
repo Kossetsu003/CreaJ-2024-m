@@ -1,5 +1,5 @@
 <!-- !extends('layouts.app') -->
-<!-- 
+<!--
 !section('template_title')
     {{ $cliente->name ?? __('Show') . " " . __('Cliente') }}
 !endsection -->
@@ -19,9 +19,15 @@
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
         <div class="flex gap-8">
             <a href="../UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
+<<<<<<< HEAD
             <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
             <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
             <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+=======
+            <a href="../UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
+            <a href="../UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
+            <a href="../UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+>>>>>>> d5fde225d4c51f1d3534dafa2a95be073863da41
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -68,7 +74,7 @@
             <!-- <h3 class="text-xs"><b>{  $cliente->nombre }&nbsp;{ $cliente->apellido }}</b></h3> -->
             <!-- <h3 class="font-bold"><b>Numero Telefonico : </b>{ $cliente->telefono }}</h3> -->
             <!-- <h3 class="text-xs"><b>Correo Electronico : </b>{ $cliente->usuario }}</h3> -->
-            
+
             <h3 class="text-xs"><b>xd&nbsp;XD</b></h3>
             <h3 class="font-bold"><b>Numero Telefonico : </b>7777-7777</h3>
             <h3 class="text-xs"><b>Correo Electronico : </b>juan@juan.com</h3>

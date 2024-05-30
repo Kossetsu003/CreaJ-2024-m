@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\AdminClienteRequest;
 use App\Models\Cliente;
-use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 
-/**
- * Class ClienteController
- * @package App\Http\Controllers
- */
-class ClienteController extends Controller
+class AdminClienteController extends Controller
 {
 
-
-    //CLIENTE
+    //ADMINISTRADOR
     /**
      * Display a listing of the resource.
      */
@@ -23,7 +17,7 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::paginate();
 
-        return view('cliente.index', compact('clientes'))
+        return view('admin-cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
@@ -41,40 +35,12 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
+       $cliente = Cliente::create($request->validated());
 
-        
-        $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email|unique:clientes',
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20|unique:clientes',
-            'sexo' => 'required|string',
-            'contrasena' => 'required|string|min:8|confirmed',
-        ]);
-        
-        // Verificar si la validación falla
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-        
-        // Crear cliente si la validación pasa
-        $cliente = Cliente::create([
-            'usuario' => $request->usuario,
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'telefono' => $request->telefono,
-            'sexo' => $request->sexo,
-            'contrasena' => bcrypt($request->contrasena), // Asegúrate de encriptar la contraseña
-        ]);
-        
-        // Guardar el ID del cliente en la sesión
-        Session::put('id', $cliente->id);
-        
-        return redirect()->route('LoginUser', ['success' => true]);
+       Session::put('id',$cliente->id);
 
-        
+        return redirect()->route('clientes.index')
+            ->with('success', 'Cliente created successfully.');
     }
 
     /**

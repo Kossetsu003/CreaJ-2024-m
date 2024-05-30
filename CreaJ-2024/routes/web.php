@@ -3,6 +3,7 @@ use App\Http\Controllers\MercadoLocalController;
 use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedorController;
+use App\Http\Controllers\AdminClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +79,6 @@ Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListad
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 
-Route::resource('clientesadmin', ClienteAdminController::class);
 
 
 
@@ -90,8 +90,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
+Route::resource('admin-clientes', AdminClienteController::class);
 
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
