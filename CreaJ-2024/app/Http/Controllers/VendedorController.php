@@ -38,11 +38,52 @@ class VendedorController extends Controller
      */
     public function store(VendedorRequest $request)
     {
-        Vendedor::create($request->validated());
+         // Validar los datos del formulario
+         $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:vendedors',
+            'nombre' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:vendedors',
+            'numero_puesto' => 'required|string|max:255',
+            'contrasena' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Verificar si ya existen datos iguales en la base de datos
+        if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
+        }
+
+        // Crear vendedor si la validación pasa y no hay datos repetidos
+        $vendedor = Vendedor::create([
+            'usuario' => $request->usuario,
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'telefono' => $request->telefono,
+            'numero_puesto' => $request->numero_puesto,
+            'fk_mercado' => 1, // Valor predeterminado
+            'contrasena' => Hash::make($request->contrasena), // Encriptar la contraseña
+        ]);
+
+        // Verificar si ya existen datos iguales en la base de datos
+        if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
+            }
 
         return redirect()->route('admin-vendedors.index')
-            ->with('success', 'Vendedor created successfully.');
-    }
+            ->with('success', 'Vendedor creado exitosamente.');
+
+}
 
     /**
      * Display the specified resource.
