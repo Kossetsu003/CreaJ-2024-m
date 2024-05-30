@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Vendedor;
 use Illuminate\Http\Request\VendedorRequest;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 
-class VendedorController extends Controller
+
+class AdminVendedorController extends Controller
 {
  /**
      * Display a listing of the resource.
