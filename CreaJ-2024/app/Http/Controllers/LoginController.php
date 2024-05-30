@@ -7,6 +7,7 @@ use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -39,5 +40,13 @@ class LoginController extends Controller
         } else {
             return redirect('login')->with('error', 'Usuario o contraseña incorrecta');
         }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('LoginUser')->with('success', 'Has cerrado sesión correctamente.');
     }
 }

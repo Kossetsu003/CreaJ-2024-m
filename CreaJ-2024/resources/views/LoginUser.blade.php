@@ -16,7 +16,7 @@
                         <h1 class="font-bold">Iniciar Sesión</h1>
                     </div>
                     <div class="md:hidden">
-                        <img class="w-4 ml-2 pt-1" src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+                            <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -64,4 +64,19 @@
                     </div>
                 </div>
             </form>
-    
+        </div>
+        <div class="hidden md:flex md:flex-col md:items-center md:justify-center md:w-[50%]">
+            <div class="text-center mb-4">
+                <h3 class="font-bold text-3xl">Login Account</h3>
+            </div>
+            <div class="flex justify-center">
+                <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
+            </div>
+            <div>
+                <h3 class="font-bold text-xl">Welcome Back</h3>
+                <h3 class="font-bold text-center text-xl">Mini Shop!</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

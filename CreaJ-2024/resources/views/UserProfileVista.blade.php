@@ -127,11 +127,13 @@
                 <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
             </div>
 
-
-            <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold  ml-5">Cerrar Cuenta</h3> <!-- Alineado a la derecha -->
-            </div>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <div class="mx-auto flex items-center mt-10">
+                    <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
+                    <button type="submit" class="flex-grow text-left font-bold ml-5">Cerrar Cuenta</button> <!-- Alineado a la derecha -->
+                </div>
+            </form>
 
 
         </div>

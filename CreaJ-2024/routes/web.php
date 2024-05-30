@@ -84,7 +84,7 @@ Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedido
 
 
 
-
+ 
 
 // Auth::routes();
 
@@ -98,6 +98,7 @@ Route::resource('admin-vendedors', AdminVendedorController::class);
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login-submit', [LoginController::class, 'loginpost'])->name('login-submit');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::resource('admin-mercado-locals', AdminMercadoLocalController::class);
