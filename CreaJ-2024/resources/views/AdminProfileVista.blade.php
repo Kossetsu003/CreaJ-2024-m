@@ -25,8 +25,8 @@
             <h3 class="text-[10px]"> <span class="ml-2">5.0</span></h3>
         </div>
         <div class="text-center mt-3">
-            <h3 class="text-xs">Puesto de Comida</h3>
-            <h3 class="font-bold">Andrew Food</h3>
+            <h3 class="text-xs">Administrador de MiniShop</h3>
+            <h3 class="font-bold">{{ $cliente->nombre }}</h3>
             <h3 class="text-xs">corre123@gmail.com</h3>
         </div>
 

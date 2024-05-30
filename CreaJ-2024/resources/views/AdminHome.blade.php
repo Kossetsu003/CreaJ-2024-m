@@ -25,14 +25,20 @@
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./UserCarritoGeneral"><img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin-vendedor.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./UserEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                    <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="./Profile"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+
+                    <a href="
+                    "  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+
                 </div>
             </div>
 
@@ -63,7 +69,7 @@
                 <a href="{{ route('admin-mercado-locals.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
 
                     <span class="flex items-center px-3 py-2  rounded-md">
-                        <img class="w-7 mr-2" src="{{ asset('imgs/NosotrosIcon.png') }}" alt="User Icon">
+                        <img class="w-7 mr-2" src="{{ asset('imgs/AddIcon.png') }}" alt="User Icon">
                         Agregar Mercado
                     </span>
                 </a>

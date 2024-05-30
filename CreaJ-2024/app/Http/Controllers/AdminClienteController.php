@@ -48,6 +48,7 @@ class AdminClienteController extends Controller
      */
     public function show($id)
     {
+        $id = 1;
         $cliente = Cliente::find($id);
 
         return view('UserProfileVista', compact('cliente'));
