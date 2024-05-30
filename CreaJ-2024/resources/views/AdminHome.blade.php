@@ -49,10 +49,10 @@
             <div class="flex justify-between mt-5">
                 <div class="ml-[10%]">
                     <h1>Hola! Bienvenido &#x1F44B;</h1>
-                    <h3 class="text-blue-800 font-bold">Sra. Maria Mercedes </h3>
+                    <h3 class="text-blue-800 font-bold">Administrador General</h3>
                 </div>
                 <div class="mr-[10%] mt-4">
-                    <img class=" rounded-full w-12" src="{{ asset('imgs/PerfilJuana.jpg') }}" alt="User Icon">
+                    <img class=" rounded-full w-12" src="{{ asset('imgs/MiCarritoUser.png') }}" alt="User Icon">
                 </div>
             </div>
 

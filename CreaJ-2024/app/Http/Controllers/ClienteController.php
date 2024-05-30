@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MercadoLocal;
 use App\Models\Cliente;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Session;
@@ -22,8 +23,10 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::paginate();
+        $mercadoLocals = MercadoLocal::paginate();
 
-        return view('cliente.index', compact('clientes'))
+
+        return view('UserHome', compact('clientes','mercadolocals'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 
@@ -40,7 +43,7 @@ class ClienteController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(ClienteRequest $request)
-    { 
+    {
         $validator = Validator::make($request->all(), [
             'usuario' => 'required|email|unique:clientes',
             'nombre' => 'required|string|max:255',
@@ -49,14 +52,14 @@ class ClienteController extends Controller
             'sexo' => 'required|string',
             'contrasena' => 'required|string|min:8|confirmed',
         ]);
-        
+
         // Verificar si la validación falla
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         // Crear cliente si la validación pasa
         $cliente = Cliente::create([
             'usuario' => $request->usuario,
@@ -66,13 +69,13 @@ class ClienteController extends Controller
             'sexo' => $request->sexo,
             'contrasena' => bcrypt($request->contrasena), // Asegúrate de encriptar la contraseña
         ]);
-        
+
         // Guardar el ID del cliente en la sesión
         Session::put('id', $cliente->id);
-        
+
         return redirect()->route('LoginUser', ['success' => true]);
 
-        
+
     }
 
     /**
