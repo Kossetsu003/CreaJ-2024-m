@@ -2,47 +2,49 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-/**
- * Class Cliente
- *
- * @property $id
- * @property $ROL
- * @property $usuario
- * @property $contrasena
- * @property $nombre
- * @property $apellido
- * @property $telefono
- * @property $sexo
- * @property $created_at
- * @property $updated_at
- *
- * @property Ventaproducto[] $ventaproductos
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
-class Cliente extends Model
+class Cliente extends Authenticatable
 {
-
-
-    protected $perPage = 20;
+    use Notifiable;
 
     /**
-     * Attributes that should be mass-assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['ROL', 'usuario', 'contrasena', 'nombre', 'apellido', 'telefono', 'sexo'];
-
+    protected $fillable = [
+        'ROL', 'usuario', 'contrasena', 'nombre', 'apellido', 'telefono', 'sexo',
+    ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
      */
-    public function ventaproductos()
+    protected $hidden = [
+        'contrasena', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
     {
-        return $this->hasMany(\App\Models\Ventaproducto::class, 'id', 'FK_Clientes');
+        return $this->contrasena;
     }
 
-
+    // Relaciones y otros métodos de tu modelo Cliente...
 }

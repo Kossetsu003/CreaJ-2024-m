@@ -4,6 +4,8 @@
     {{ $cliente->name ?? __('Show') . " " . __('Cliente') }}
 !endsection -->
 
+
+
 <!-- !section('content') -->
 <!DOCTYPE html>
 <html lang="en">
@@ -105,9 +107,19 @@
             <!-- <h3 class="font-bold"><b>Numero Telefonico : </b>{ $cliente->telefono }}</h3> -->
             <!-- <h3 class="text-xs"><b>Correo Electronico : </b>{ $cliente->usuario }}</h3> -->
 
-            <h3 class="text-xs"><b>xd&nbsp;XD</b></h3>
-            <h3 class="font-bold"><b>Numero Telefonico : </b>7777-7777</h3>
-            <h3 class="text-xs"><b>Correo Electronico : </b>juan@juan.com</h3>
+            <div class="text-center mt-3">
+                @if(Auth::check())
+                    <h3 class="font-bold"><b>ID de Usuario: </b>{{ session('usuario_id') }}</h3>
+                    <h3 class="font-bold"><b>Nombre de Usuario: </b>{{ session('usuario_nombre') }}</h3>
+                    <h3 class="font-bold"><b>Teléfono: </b>{{ session('telefono') }}</h3>
+                @else
+                    <p>No hay sesión activa.</p>
+                @endif  
+            </div>
+            
+
+
+
         </div>
 
         <div class="w-[50%] mx-auto m-16">
