@@ -39,7 +39,7 @@ class AdminClienteController extends Controller
 
        Session::put('id',$cliente->id);
 
-        return redirect()->route('clientes.index')
+        return redirect()->route('admin-clientes.index')
             ->with('success', 'Cliente created successfully.');
     }
 
@@ -71,7 +71,7 @@ class AdminClienteController extends Controller
     {
         $cliente->update($request->validated());
 
-        return redirect()->route('clientes.index')
+        return redirect()->route('admin-clientes.index')
             ->with('success', 'Cliente updated successfully');
     }
 
@@ -79,7 +79,7 @@ class AdminClienteController extends Controller
     {
         Cliente::find($id)->delete();
 
-        return redirect()->route('clientes.index')
+        return redirect()->route('admin-clientes.index')
             ->with('success', 'Cliente deleted successfully');
     }
 

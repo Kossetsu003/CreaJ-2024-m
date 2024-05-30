@@ -1,68 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>ProductoUser</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
-
-<body class="bg-gray-100 mb-24">
-    <!-- Desktop Navbar -->
-    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
-        <div class="flex gap-8">
-            <a href="./UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-            <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-            <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
-        </div>
-    </div>
-
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div
-            class="bg-gray-900 rounded-2xl h-14 flex justify-around lg:w-auto lg:h-auto lg:bg-transparent lg:flex-row lg:space-x-4"
+<body>
+            <!-- Desktop Navbar -->
+            <div
+            class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
         >
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+                MiniShop
+            </h1>
             <div class="flex items-center">
-                <a
-                    href="./UserHome"
-                    class="bg-white rounded-full p-1 lg:p-2"
-                    ><img
-                        class="w-6 lg:w-8"
-                        src="{{ asset('imgs/HomeSelectedIcon.png') }}"
-                        alt="User Icon"
-                /></a>
-            </div>
+                    <a href="./UserHome" class="bg-white rounded-full p-1">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/HomeSelectedIcon.png') }}"
+                            alt="Home Icon"
+                        />
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserCarritoGeneral">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/CarritoIcon.png') }}"
+                            alt="Cart Icon"
+                        />
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserEstadoPedidos">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/FavIcon.png') }}"
+                            alt="Favorites Icon"
+                        />
+                    </a>c
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserProfileVista">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/UserIcon.png') }}"
+                            alt="Profile Icon"
+                        />
+                    </a>
+                </div>
+        </div>
+        <!-- Mobile Navbar -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+            <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral"
-                    ><img
-                        class="w-6 lg:w-8"
-                        src="{{ asset('imgs/CarritoIcon.png') }}"
-                        alt="User Icon"
-                /></a>
-            </div>
-            <div class="flex items-center">
-                <a href="./UserEstadoPedidos"
-                    ><img
-                        class="w-6 lg:w-8"
-                        src="{{ asset('imgs/FavIcon.png') }}"
-                        alt="User Icon"
-                /></a>
-            </div>
-            <div class="flex items-center">
-                <a href="./UserProfileVista"
-                    ><img
-                        class="w-6 lg:w-8"
-                        src="{{ asset('imgs/UserIcon.png') }}"
-                        alt="User Icon"
-                /></a>
+                    <a href="./UserHome" class="bg-white rounded-full p-1">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/HomeSelectedIcon.png') }}"
+                            alt="Home Icon"
+                        />
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserCarritoGeneral">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/CarritoIcon.png') }}"
+                            alt="Cart Icon"
+                        />
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserEstadoPedidos">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/FavIcon.png') }}"
+                            alt="Favorites Icon"
+                        />
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <a href="./UserProfileVista">
+                        <img
+                            class="w-6"
+                            src="{{ asset('imgs/UserIcon.png') }}"
+                            alt="Profile Icon"
+                        />
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Product Section -->
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <img class="rounded-lg w-full shadow-lg" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="Naranjas Quintal">

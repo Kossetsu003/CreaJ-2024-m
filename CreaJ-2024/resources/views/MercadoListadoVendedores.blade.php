@@ -36,6 +36,22 @@
 
     <main class="p-4">
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+        <div class="pb-4">
+            <div >
+                <div class="flex">
+                    <div class="text-[30px] font-bold">
+                        Mini
+                    </div>
+                    <div class="mt-3 ml-3">
+                        <img class="w-8" src="{{ asset('imgs/caja.png') }}" alt="User Icon">
+                    </div>
+                </div>
+            </div>
+            <div class="ml-16 w-[20%]">
+                <h3 class="text-blue-600 text-[25px] font-bold">Shop</h3>
+            </div>
+
+         </div>
             <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Vendedores</h1>
 
             <div class="space-y-4">

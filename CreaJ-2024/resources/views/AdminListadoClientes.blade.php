@@ -66,7 +66,7 @@
                         <h3 class="text-xs ">Con Correo Electronico : {{ $cliente->usuario }}</h3>
                         <h3 class="text-xs ">Numero de Telefono : {{ $cliente->telefono }}</h3>
                         <div class="mt-1 mr-5 gap-2 mb-2 ">
-                            <form action="{{ route('clientes.destroy',$cliente->id) }}" method="POST">
+                            <form action="{{ route('admin-clientes.destroy',$cliente->id) }}" method="POST">
 
                                 @csrf
                                  @method('DELETE')

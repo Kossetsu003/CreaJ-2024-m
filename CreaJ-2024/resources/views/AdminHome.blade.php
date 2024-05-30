@@ -1,7 +1,4 @@
 
-@section('template_title')
-    Mercado Local
-@endsection
 
 
 <!DOCTYPE html>
@@ -98,10 +95,10 @@
                     </div>
                     <div class="flex justify-center item-center">
                         <!--EDITAR-->
-                        <a class="bg-orange-500 text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('mercado-locals.edit',$mercadoLocal->id) }}">Editar</a>
+                        <a class="bg-orange-500 text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin-mercado-locals.edit',$mercadoLocal->id) }}">Editar</a>
 
                     <!--ELIMINAR-->
-                        <form action="{{ route('mercado-locals.destroy',$mercadoLocal->id) }}" method="POST" class="relative">
+                        <form action="{{ route('admin-mercado-locals.destroy',$mercadoLocal->id) }}" method="POST" class="relative">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class=" bg-red-500 text-white text-xs px-3 py-2 rounded btn btn-danger btn-sm z-[3] "><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>

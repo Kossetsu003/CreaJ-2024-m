@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="flex">
-                    <form action="{{ route('vendedors.destroy',$vendedor->id) }}" method="POST">
+                    <form action="{{ route('admin-vendedors.destroy',$vendedor->id) }}" method="POST">
 
                   <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('admin-vendedors.show',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
 

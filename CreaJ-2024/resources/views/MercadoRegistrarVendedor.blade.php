@@ -1,10 +1,4 @@
-@extends('layouts.app')
 
-@section('template_title')
-    {{ __('Create') }} Vendedor
-@endsection
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,4 +68,3 @@
     </section>
 </body>
 </html>
-@endsection

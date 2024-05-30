@@ -41,7 +41,7 @@ class AdminMercadoLocalController extends Controller
      {
          MercadoLocal::create($request->validated());
 
-         return redirect()->route('mercado-locals.index')
+         return redirect()->route('admin-mercado-locals.index')
              ->with('success', 'MercadoLocal created successfully.');
      }
 
@@ -88,7 +88,7 @@ class AdminMercadoLocalController extends Controller
          $mercadoLocal->descripcion = request()->get("descripcion");
 
          $mercadoLocal->save();
-         return redirect()->route('mercado-locals.index')
+         return redirect()->route('admin-mercado-locals.index')
              ->with('success', 'MercadoLocal updated successfully');
      }
 
@@ -96,7 +96,7 @@ class AdminMercadoLocalController extends Controller
     {
         MercadoLocal::find($id)->delete();
 
-        return redirect()->route('mercado-locals.index')
+        return redirect()->route('admin-mercado-locals.index')
             ->with('success', 'Mercado Local deleted successfully');
     }
 }

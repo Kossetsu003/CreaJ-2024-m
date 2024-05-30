@@ -18,7 +18,7 @@
                     <div class="md:hidden">
                         <h1 class="font-bold">Iniciar Sesión</h1>
                     </div>
-                    <div class="md:hidden">
+                    <div class="hidden">
                             <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
                     </div>
                 </div>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div>
-        <div class="bg-violet-500 h-40 w-full flex items-center justify-center">
+        <div class="bg-violet-500 h-auto pb-[4rem] pt-[2rem] w-full flex items-center justify-center">
             <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
 

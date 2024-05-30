@@ -1,10 +1,4 @@
-@extends('layouts.app')
 
-@section('template_title')
-    {{ __('Create') }} Cliente
-@endsection
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,4 +78,3 @@
 </html>
 <script src="../js/ComprobarContrasena.js"></script>
 
-@endsection

@@ -17,7 +17,7 @@
                 <h1 class="text-3xl font-bold text-red-700">Editor de Mercado</h1>
                 <h3 class="text-sm mt-2">{{ old('nombre', $mercadoLocal?->nombre) }} <span class="font-bold">ID: #{{ old('ROL', $mercadoLocal?->id) }}</span></h3>
             </div>
-            <form method="POST" action="{{ route('mercado-locals.update', $mercadoLocal->id) }}"  role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin-mercado-locals.update', $mercadoLocal->id) }}"  role="form" enctype="multipart/form-data">
                 {{ method_field('PATCH') }}
                 @csrf
 

@@ -1,9 +1,4 @@
-@extends('layouts.app')
 
-@section('template_title')
-    {{ $mercadoLocal->name ?? __('Show') . " " . __('Mercado Local') }}
-@endsection
-@section('content')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,4 +121,4 @@
 
 </body>
 </html>
-@endsection
+

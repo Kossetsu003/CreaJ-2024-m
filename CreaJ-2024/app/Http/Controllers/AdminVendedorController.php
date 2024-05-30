@@ -111,7 +111,7 @@ class AdminVendedorController extends Controller
     {
         $vendedor->update($request->validated());
 
-        return redirect()->route('AdminListadoVendedores')
+        return redirect()->route('admin-vendedors.index')
             ->with('success', 'Vendedor updated successfully');
     }
 
@@ -119,7 +119,7 @@ class AdminVendedorController extends Controller
     {
         Vendedor::find($id)->delete();
 
-        return redirect()->route('AdminListadoVendedores')
+        return redirect()->route('admin-vendedors.index')
             ->with('success', 'Vendedor deleted successfully');
     }
 }
