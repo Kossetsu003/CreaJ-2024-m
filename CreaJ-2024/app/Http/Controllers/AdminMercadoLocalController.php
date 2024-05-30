@@ -14,8 +14,9 @@ class AdminMercadoLocalController extends Controller
      public function index()
      {
          $mercadoLocals = MercadoLocal::paginate();
+         $vendedors = Vendedor::paginate();
 
-         return view('AdminHome ', compact('mercadoLocals'))
+         return view('AdminHome ', compact('mercadoLocals','vendedors'))
              ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
      }
 
@@ -45,13 +46,13 @@ class AdminMercadoLocalController extends Controller
      public function show($id)
      {
          $mercadoLocal = MercadoLocal::find($id);
+         $vendedors = Vendedor::where('Fk_Mercado', $id)->get();
 
-         return view('AdminListadoMercados', compact('mercadoLocal'));
+         return view('AdminListadoMercados', compact('mercadoLocal','vendedors'));
 
-         $vendedores = Vendedor::where('Fk_Mercado', 12)->get();
 
-        // Pasar los datos a la vista
-        return view('vendedores.index', compact('vendedores'));
+
+
      }
 
      /**
