@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MercadoLocal;
+use App\Models\Vendedor;
 use App\Http\Requests\MercadoLocalRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -14,7 +15,7 @@ class AdminMercadoLocalController extends Controller
      {
          $mercadoLocals = MercadoLocal::paginate();
 
-         return view('admin-mercado-local.index ', compact('mercadoLocals'))
+         return view('AdminHome ', compact('mercadoLocals'))
              ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
      }
 
@@ -45,7 +46,12 @@ class AdminMercadoLocalController extends Controller
      {
          $mercadoLocal = MercadoLocal::find($id);
 
-         return view('mercado-local.show', compact('mercadoLocal'));
+         return view('AdminListadoMercados', compact('mercadoLocal'));
+
+         $vendedores = Vendedor::where('Fk_Mercado', 12)->get();
+
+        // Pasar los datos a la vista
+        return view('vendedores.index', compact('vendedores'));
      }
 
      /**
@@ -76,4 +82,12 @@ class AdminMercadoLocalController extends Controller
          return redirect()->route('mercado-locals.index')
              ->with('success', 'MercadoLocal updated successfully');
      }
+
+     public function destroy($id)
+    {
+        MercadoLocal::find($id)->delete();
+
+        return redirect()->route('mercado-locals.index')
+            ->with('success', 'Mercado Local deleted successfully');
+    }
 }

@@ -37,7 +37,7 @@
                  >Perfil</a
              >
          </div>
-     </div>
+     </div>flibfo
      <!-- Mobile Navbar -->
      <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
          <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
@@ -79,7 +79,7 @@
              </div>
          </div>
      </div>
-           
+
 
      <div class="w-full bg-white text-gray-900">
         <header class="bg-gray-200 py-4 px-8 flex flex-col md:flex-row justify-between md:items-center">
@@ -96,7 +96,7 @@
                 </button>
             </div>
         </header>
-    
+
         <nav class="bg-gray-300 py-4 px-8 grid grid-cols-[1fr_max-content] gap-2 justify-between items-center">
             <div class="flex overflow-auto min-w-full gap-4 items-center">
                 <button class="min-w-max px-3 flex items-center gap-2 py-2 rounded-md text-sm bg-gray-200 hover:bg-gray-400">
@@ -118,7 +118,7 @@
                 </button>
             </div>
         </nav>
-    
+
         <main class="py-8 px-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div class="bg-gray-100 rounded-md shadow-md">
                 <img src="https://picsum.photos/200" alt="Product Image" class="w-full h-48 object-cover">
@@ -130,7 +130,7 @@
                     <div class="flex justify-between items-center mt-2">
                         <div class="flex items-center">
                             <img class="w-5 h-5 mr-1" src="{{ asset('imgs/estrella.png') }}" alt="Rating Icon"/>
-                            <span class="text-sm text-gray-600">4.5 (123 reviews)</span>
+                    e        <span class="text-sm text-gray-600">4.5 (123 reviews)</span>
                         </div>
                     </div>
                     <button class="block w-full mt-4 px-3 py-2 rounded-md bg-green-500 text-white hover:bg-green-600">
