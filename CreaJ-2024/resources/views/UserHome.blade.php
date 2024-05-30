@@ -18,7 +18,7 @@
      </h1>
      <div class="flex gap-8">
          <a
-             href="./UserHome"
+             href="../UserHome"
              class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
              >Home</a
          >
@@ -123,7 +123,7 @@
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
-                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">Ver Mercado</button>
+                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"> <a href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
                     </div>
                     <div>
                         <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
@@ -140,7 +140,7 @@
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
-                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">Ver Mercado</button>
+                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
-                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">Ver Mercado</button>
+                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
                     </div>
                     <div>
                         <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
@@ -166,7 +166,7 @@
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
-                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">Ver Mercado</button>
+                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
                     </div>
                 </div>
             </div>
