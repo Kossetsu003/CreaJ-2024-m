@@ -18,6 +18,8 @@ use App\Http\Controllers\AdminMercadoLocalController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//use App\Http\Controllers\MercadoLocalController;
+
 
 
 /*Vistas Principales*/

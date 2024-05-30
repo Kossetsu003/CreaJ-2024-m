@@ -1,10 +1,4 @@
-@extends('layouts.app')
 
-@section('template_title')
-    {{ __('Update') }} Mercado Local
-@endsection
-
-@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +11,7 @@
 <body>
 
     <section>
-        <div class="w-72 h-96 mx-auto mt-16">
+        <div class="w-72 h-auto mx-auto mt-16 pb-[3rem]">
 
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-red-700">Editor de Mercado</h1>
@@ -93,29 +87,34 @@
             </div>
         </form>
 
-             <!-- <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
+              <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                        <a href="./UserHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./UserCarritoGeneral"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                        <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                        <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                        <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                    <div class="flex items-center">
+    <?php $id = 1; ?>
+                        <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+
                     </div>
                 </div>
 
-            </div> -->
+            </div>
         </div>
     </section>
 
 
 </body>
 </html>
-@endsection
+

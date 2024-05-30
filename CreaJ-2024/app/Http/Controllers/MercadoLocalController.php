@@ -22,7 +22,7 @@ class MercadoLocalController extends Controller
     {
         $mercadoLocals = MercadoLocal::paginate();
 
-        return view('AdminHome ', compact('mercadoLocals'))
+        return view('mercado-local.index ', compact('mercadoLocals'))
             ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
     }
 
@@ -32,6 +32,8 @@ class MercadoLocalController extends Controller
     public function create()
     {
         $mercadoLocal = new MercadoLocal();
+
+
         return view('AdminAgregarMercado', compact('mercadoLocal'));
     }
 
@@ -43,6 +45,7 @@ class MercadoLocalController extends Controller
         MercadoLocal::create($request->validated());
 
         return redirect()->route('mercado-locals.index')
+
             ->with('success', 'MercadoLocal created successfully.');
     }
 
@@ -89,7 +92,7 @@ class MercadoLocalController extends Controller
     {
         MercadoLocal::find($id)->delete();
 
-        return redirect()->route('mercado-local.index')
+        return redirect()->route('mercado-locals.index')
             ->with('success', 'Mercado Local deleted successfully');
     }
 

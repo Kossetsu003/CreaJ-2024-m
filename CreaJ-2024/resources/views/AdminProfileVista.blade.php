@@ -25,26 +25,27 @@
             <h3 class="text-[10px]"> <span class="ml-2">5.0</span></h3>
         </div>
         <div class="text-center mt-3">
-            <h3 class="text-xs">Puesto de Comida</h3>
-            <h3 class="font-bold">Andrew Food</h3>
-            <h3 class="text-xs">corre123@gmail.com</h3>
+            <h3 class="text-xs">Administrador de MiniShop</h3>
+            <h3 class="font-bold">Administrador General</h3>
+            <h3 class="text-xs">administracion@minishop.sv</h3>
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
+
             <div class=" mx-auto flex items-center">
-                <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
+                <img class="w-5" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon">
                 <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
             <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
+                <img class="w-5" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon">
                 <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
 
             <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
+                <img class="w-5" src="{{ asset('imgs/addIcon.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Agregar Mercado</h3> <!-- Alineado a la derecha -->
             </div>
 
 
@@ -59,18 +60,23 @@
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="./UserHome"><img class="w-6" src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
+                        <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./UserCarritoGeneral"  class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
+                        <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="User Icon"></a>
+                        <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                        <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                    </div>
+                    <div class="flex items-center">
+    <?php $id = 1; ?>
+                        <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+
                     </div>
                 </div>
 

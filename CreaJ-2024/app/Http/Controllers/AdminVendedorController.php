@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
+use App\Models\Cliente;
 use Illuminate\Http\Request\VendedorRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -14,7 +15,9 @@ class AdminVendedorController extends Controller
      */
     public function index()
     {
+
         $vendedors = Vendedor::paginate();
+
 
         return view('AdminListadoVendedores', compact('vendedors'))
             ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());

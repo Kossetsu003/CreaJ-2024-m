@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MercadoLocal;
 use App\Models\Vendedor;
+use App\Models\Cliente;
 use App\Http\Requests\MercadoLocalRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -12,13 +13,17 @@ class AdminMercadoLocalController extends Controller
 {
      //CONTROLADORES PARA ADMINISTRADOR
      public function index()
-     {
-         $mercadoLocals = MercadoLocal::paginate();
-         $vendedors = Vendedor::paginate();
+{
+    $id = 1;
+    $mercadoLocals = MercadoLocal::paginate();
+    $vendedors = Vendedor::paginate();
+    $clientes = Cliente::where('id', $id)->get();
 
-         return view('AdminHome ', compact('mercadoLocals','vendedors'))
-             ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
-     }
+
+    return view('AdminHome', compact('mercadoLocals', 'vendedors', 'clientes'))
+        ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
+}
+
 
      /**
       * Show the form for creating a new resource.
@@ -45,8 +50,10 @@ class AdminMercadoLocalController extends Controller
       */
      public function show($id)
      {
+
          $mercadoLocal = MercadoLocal::find($id);
          $vendedors = Vendedor::where('Fk_Mercado', $id)->get();
+
 
          return view('AdminListadoMercados', compact('mercadoLocal','vendedors'));
 
@@ -54,6 +61,7 @@ class AdminMercadoLocalController extends Controller
 
 
      }
+
 
      /**
       * Show the form for editing the specified resource.
