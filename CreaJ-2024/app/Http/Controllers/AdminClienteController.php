@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\ClienteRequest;
-use App\Models\AdminCliente;
+use Illuminate\Http\AdminClienteRequest;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Session;
 
 class AdminClienteController extends Controller
@@ -17,7 +17,7 @@ class AdminClienteController extends Controller
     {
         $clientes = Cliente::paginate();
 
-        return view('cliente.index', compact('clientes'))
+        return view('admin-cliente.index', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
     }
 

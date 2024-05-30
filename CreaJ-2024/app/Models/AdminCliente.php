@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class AdminCliente extends Model
+class Cliente extends Model
 {
     protected $perPage = 20;
 
