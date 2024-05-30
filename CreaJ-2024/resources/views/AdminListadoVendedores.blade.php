@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,37 +39,38 @@
             <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Vendedores</h1>
 
             <div class="space-y-4">
+                @foreach ($vendedors as $vendedor)
               <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                 <div class="flex items-center">
                   <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
                   <div>
-                    <h2 class="text-lg font-semibold text-gray-800">Pedido #1</h2>
-                    <p class="text-sm text-gray-600">Descripcion del vendedor</p>
+                    <h2 class="text-lg font-semibold text-gray-800">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h2>
+                    <p >Puesto N {{ $vendedor->numero_puesto }}</p>
+                    <h2 class="text-sm text-gray-600"><b>Numero de Telefono:</b> {{ $vendedor->telefono }}</h2>
+                    <p class="text-sm text-gray-600"><b>Correo Electronico : </b>{{ $vendedor->usuario }}</p>
                   </div>
                 </div>
                 <div class="flex">
-                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Ver</button>
-                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Eliminar</button>
+                    <form action="{{ route('vendedors.destroy',$vendedor->id) }}" method="POST">
+
+                  <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('admin-vendedors.show',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+
+                  <a class="btn btn-sm btn-success px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('admin-vendedors.edit',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger btn-sm px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                    </form>
                 </div>
               </div>
-          
-              <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-                <div class="flex items-center">
-                  <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
-                  <div>
-                    <h2 class="text-lg font-semibold text-gray-800">Pedido #2</h2>
-                    <p class="text-sm text-gray-600">Descripcion del vendedor</p>
-                  </div>
-                </div>
-                <div class="flex">
-                  <button class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Ver</button>
-                  <button class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Eliminar</button>
-                </div>
-              </div>
+              @endforeach
+
+
             </div>
           </div>
-          
+
     </main>
 
 </body>
 </html>
+

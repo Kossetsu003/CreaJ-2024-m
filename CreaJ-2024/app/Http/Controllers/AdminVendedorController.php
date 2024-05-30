@@ -16,7 +16,7 @@ class AdminVendedorController extends Controller
     {
         $vendedors = Vendedor::paginate();
 
-        return view('admin-vendedor.index', compact('vendedors'))
+        return view('AdminListadoVendedores', compact('vendedors'))
             ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
     }
 
@@ -36,7 +36,7 @@ class AdminVendedorController extends Controller
     {
         Vendedor::create($request->validated());
 
-        return redirect()->route('vendedors.index')
+        return redirect()->route('AdminListadoVendedores')
             ->with('success', 'Vendedor created successfully.');
     }
 
@@ -67,7 +67,7 @@ class AdminVendedorController extends Controller
     {
         $vendedor->update($request->validated());
 
-        return redirect()->route('vendedors.index')
+        return redirect()->route('AdminListadoVendedores')
             ->with('success', 'Vendedor updated successfully');
     }
 
@@ -75,7 +75,7 @@ class AdminVendedorController extends Controller
     {
         Vendedor::find($id)->delete();
 
-        return redirect()->route('vendedors.index')
+        return redirect()->route('AdminListadoVendedores')
             ->with('success', 'Vendedor deleted successfully');
     }
 }

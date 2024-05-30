@@ -83,7 +83,16 @@ class MercadoLocalController extends Controller
         $mercadoLocal->save();
         return redirect()->route('mercado-locals.index')
             ->with('success', 'MercadoLocal updated successfully');
+
     }
+    public function destroy($id)
+    {
+        MercadoLocal::find($id)->delete();
+
+        return redirect()->route('mercado-local.index')
+            ->with('success', 'Mercado Local deleted successfully');
+    }
+
 
 
 }

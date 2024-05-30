@@ -1,3 +1,10 @@
+@extends('layouts.app')
+
+@section('template_title')
+    {{ $mercadoLocal->name ?? __('Show') . " " . __('Mercado Local') }}
+@endsection
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +42,11 @@
 
             <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
                 <div>
-                    <div>
-                        Mercado Ex-Cuartel
-                    </div>
-                    <div class="font-bold">
-                        Los mejores Precios
+                    <h1>
+                        {{ $mercadoLocal->nombre }}
+                    </h1>
+                    <div >
+                        <b>{{ $mercadoLocal->municipio }}</b>, <br> {{ $mercadoLocal->ubicacion }}
                     </div>
                 </div>
 
@@ -65,6 +72,7 @@
                     </button>
                  </div>
         </div>
+        <h1 class="justify-center text-bold text-center pt-6 text-[1.5rem]">Vendedores en {{ $mercadoLocal->nombre }} : </h1>
         <div class="flex mt-5">
             <div class="flex mx-auto">
                 <button class="flex items-center h-8 border  px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
@@ -85,53 +93,22 @@
         </div>
 
         <div class="flex flex-wrap justify-center mt-5 text-sm">
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Mayoreo de Blusas</h3>
-                <h3 class="mb-2">Tienda Michelina</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.2</h3>
-                        <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div>
+
+          @foreach ($vendedors as $vendedor)
             <a href="./ProductosUser" class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Naranjas Valencia</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
+                <h3 class="font-bold mt-5">Puesto de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
+                <h3 class="mb-2">Puesto #N {{ $vendedor->numero_puesto }}</h3>
                 <div class="flex justify-between">
-                    <h3>Comida</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.8</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
+                    <h3>Correo : {{ $vendedor->usuario }}</h3>
+
                 </div>
             </a>
+            @endforeach
 
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Jeans</h3>
-                <h3 class="mb-2">Venta Michelina</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.2</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div> <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/MercadoVariado.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Ropa Variada</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.6</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
+
+
+
 
         </div>
 
@@ -139,6 +116,9 @@
 
 
     </div>
+<!-- Paginación -->
+
 
 </body>
 </html>
+@endsection

@@ -1,10 +1,7 @@
-@extends('layouts.app')
 
 @section('template_title')
     Mercado Local
 @endsection
-
-@section('content')
 
 
 <!DOCTYPE html>
@@ -63,7 +60,7 @@
             </div>
 
             <div class="flex mt-5 justify-around w-[90%] mx-auto">
-                <a href="{{ route('mercado-locals.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                <a href="{{ route('admin-mercado-locals.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
 
                     <span class="flex items-center px-3 py-2  rounded-md">
                         <img class="w-7 mr-2" src="{{ asset('imgs/NosotrosIcon.png') }}" alt="User Icon">
@@ -80,7 +77,7 @@
                 @foreach ($mercadoLocals as $mercadoLocal)
                 <!--INICIO DE PLANTILLA-->
 
-                <a href="{{ route('mercado-locals.show',$mercadoLocal->id) }}" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
+                <a href="{{ route('admin-mercado-locals.show',$mercadoLocal->id) }}" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
                     <div>
                         <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="User Icon">
                         <div class="text-center mt-2">
@@ -118,4 +115,3 @@
     {!! $mercadoLocals->links() !!}
 </body>
 </html>
-@endsection
