@@ -24,8 +24,9 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->rememberToken();
         });
-
-        DB::insert('insert into clientes (id, ROL, usuario, contrasena, nombre, apellido, telefono, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)', [1, 1, 'MiniShopAdmin1', 'MiniShop1', 'Administrador', 'De MiniShop', NULL, NULL]);
+        $contrasena = '123';
+        $hash = Hash::make($contrasena);
+        DB::insert('insert into clientes (id, ROL, usuario, contrasena, nombre, apellido, telefono, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)', [1, 1, 'admin@minishop.sv', $hash, 'Administrador', 'De MiniShop', NULL, NULL]);
 
     }
 
