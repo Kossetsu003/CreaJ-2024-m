@@ -1,10 +1,7 @@
-@extends('layouts.app')
 
 @section('template_title')
     Mercado Local
 @endsection
-
-@section('content')
 
 
 <!DOCTYPE html>
@@ -118,4 +115,3 @@
     {!! $mercadoLocals->links() !!}
 </body>
 </html>
-@endsection
