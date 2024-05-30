@@ -45,7 +45,7 @@ class LoginController extends Controller
 
             // Redirigir al cliente según su rol
             if ($cliente->ROL == 1) {
-                return redirect()->route('AdminHome')->with('success', 'Bienvenido al Panel de Administración');
+                return redirect()->route('admin-mercado-locals.index')->with('success', 'Bienvenido al Panel de Administración');
             } elseif ($cliente->ROL == 4) {
                 return redirect()->route('UserHome')->with('success', 'Bienvenido a MiniShop');
             } else {

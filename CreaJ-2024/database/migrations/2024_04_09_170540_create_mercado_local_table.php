@@ -26,6 +26,8 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
 
         });
+
+        DB::insert('insert into mercado_locals (id, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion) values (?, ?, ?, ?, ?, ?, ?, ?,?)', [1, 'Mercado Central', 2, 'foto', 'San Salvador Centro', '3av norte y 1a calle poniente, san salvador centro', '0850','2030','El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.']);
     }
 
     /**
