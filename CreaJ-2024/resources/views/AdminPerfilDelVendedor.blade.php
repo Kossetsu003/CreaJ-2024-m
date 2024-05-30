@@ -64,7 +64,7 @@
                     <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-<?php $id = 1; ?>
+
                     <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
 
                 </div>

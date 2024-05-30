@@ -31,20 +31,21 @@
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
+
             <div class=" mx-auto flex items-center">
-                <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
+                <img class="w-5" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon">
                 <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
             <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
+                <img class="w-5" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon">
                 <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
             </div>
 
 
             <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
+                <img class="w-5" src="{{ asset('imgs/addIcon.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Agregar Mercado</h3> <!-- Alineado a la derecha -->
             </div>
 
 
