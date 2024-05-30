@@ -47,7 +47,7 @@
 
                 <!-- Mostrar mensajes de error -->
                 @if ($errors->any())
-                    <div class="bg-red-500 text-white p-2 rounded">
+                    <div class="bg-red-500 text-white p-2 rounded mt-1 text-[10px] text-center">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
