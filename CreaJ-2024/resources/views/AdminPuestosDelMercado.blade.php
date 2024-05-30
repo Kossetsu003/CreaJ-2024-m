@@ -38,34 +38,39 @@
      </div>
  </div>
 
-    
+
 
      <!-- Inicio de nav movil-->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center md:hidden">
 
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
-                <div class="flex items-center  ">
-                    <a href="./VendedorHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                <<div class="flex items-center  ">
+                    <a href="{{ route('UserHome')}}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="./VendedorMisReservas" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="./VendedorProfileVista"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                    <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+<?php $id = 1; ?>
+                    <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+
                 </div>
             </div>
 
             <!--FIN DE NAVBAR MOBIL-->
         </div>
 
-      
-     
+
+
 
     <div class="mt-14  w-[90%] mx-auto ">
 
@@ -103,7 +108,7 @@
                 </button>
             </div>
         </div>
-     
+
      <!--Comienzo de las cartas -->
 
         <div class="flex flex-wrap justify-center mt-5 text-sm gap-[10px]  lg:gap-[40px]">
@@ -172,8 +177,8 @@
                     </div>
                     <div>
                         <h2>Sobre nosotros</h2>
-                        <p>Informacion que un no tenemos 
-                            pero que supongo que sera de vital 
+                        <p>Informacion que un no tenemos
+                            pero que supongo que sera de vital
                             importancia para el futuro</p>
                     </div>
                     <div class="md:self-end md:justify-self-end pb-4">
@@ -194,13 +199,13 @@
                             <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                                 <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">
                             </div>
-                      
+
                         </div>
                     </div>
                 </div>
                 <div class="w-full h-[2px] bg-white"></div>
             </footer>
 
-    
+
 </body>
 </html>
