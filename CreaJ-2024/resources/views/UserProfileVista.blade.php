@@ -16,9 +16,9 @@
 <body>
      <!-- Desktop Navbar -->
      <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
         <div class="flex gap-8">
-            <a href="./UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
+            <a href="../UserHome" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
             <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
             <a href="./UserEstadoPedidos" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
             <a href="./UserProfileVista" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
