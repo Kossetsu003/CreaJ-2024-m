@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
+    <title>Registrar Vendedor</title>
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+</head>
+<body>
+    <section class="pt-[3rem]">
+        <div class="w-72 mx-auto pt-[3rem]">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-blue-500">Editor de Vendedores</h1>
+                <h3><b>Vendedor : </b>{{ old('nombre',$vendedor?->nombre) }}&nbsp;{{ old('apellidos',$vendedor?->apellidos) }}</h3>
+            </div>
+            <form method="POST" action="{{ route('admin-vendedors.update',$vendedor->id) }}" role="form" enctype="multipart/form-data">
+                {{ method_field('PATCH') }}
+                @csrf
+                <div class="pb-[7rem] mt-10 space-y-4">
+                @if ($errors->any())
+                    <div class="bg-blue-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+
+                    <div class="flex justify-center">
+                        <input required type="email" name="usuario" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('usuario') is-invalid @enderror" value="{{ old('usuario',$vendedor?->usuario) }}" id="usuario" placeholder="Escriba el correo electrónico">
+
+                    </div>
+                    
+                        <input type="hidden" name="contrasena" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('contrasena') is-invalid @enderror" value="{{ old('contrasena',$vendedor?->contrasena) }}" id="contrasena" placeholder="Escriba su Contraseña">
+
+
+
+                        <input type="hidden" name="contrasena_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('contrasena_confirmation') is-invalid @enderror" value="{{ old('contrasena_confirmation',$vendedor?->contrasena) }}" id="contrasena_confirmation" placeholder="Confirme su Contraseña">
+
+
+                    <div class="flex justify-center">
+                        <input required type="text" name="nombre" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre',$vendedor?->nombre) }}" id="nombre" placeholder="Escriba el Nombre del Vendedor">
+
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('apellidos') is-invalid @enderror" value="{{ old('apellidos',$vendedor?->apellidos) }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
+
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="text" name="telefono" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono',$vendedor?->telefono) }}" id="telefono" placeholder="Digite el Teléfono del Vendedor">
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('numero_puesto') is-invalid @enderror" value="{{ old('numero_puesto',$vendedor?->numero_puesto) }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
+
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="hidden" name="fk_mercado" value="1" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('fk_mercado') is-invalid @enderror" value="{{ old('fk_mercado') }}" id="fk_mercado">
+
+                    </div>
+                    <div class="flex justify-center mt-16">
+                        <button class="btn btn-primary bg-blue-600 w-72 h-10 text-white font-bold rounded-md">Editar Vendedor</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

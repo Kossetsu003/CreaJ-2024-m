@@ -20,7 +20,7 @@
                 <h1 class="text-3xl font-bold text-purple-600">Agregar Mercado</h1>
                 <h3 class="mt- "><b>LOCAL</b></h3>
             </div>
-            <form method="POST" action="{{ route('mercado-locals.store') }}"  role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin-mercado-locals.store') }}"  role="form" enctype="multipart/form-data">
                 @csrf
             <div class="mt-20 space-y-4">
                 <div class="flex justify-between">
@@ -67,8 +67,7 @@
 
                 </div>
                 <div class="flex justify-center">
-                    <textarea required name="descripcion" class="border-1 rounded border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"  id="descripcion" >{{ old('descripcion', $mercadoLocal?->descripcion) }}
-                    </textarea>
+                    <textarea required name="descripcion" class="border-1 rounded border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"  id="descripcion" >{{ old('descripcion', $mercadoLocal?->descripcion) }}</textarea>
                     {!! $errors->first('descripcion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                 </div>
 

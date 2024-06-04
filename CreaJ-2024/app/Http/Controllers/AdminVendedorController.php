@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
 use App\Models\Cliente;
-use Illuminate\Http\Request\VendedorRequest;
+use App\Http\Requests\VendedorRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 
 class AdminVendedorController extends Controller
@@ -29,7 +30,7 @@ class AdminVendedorController extends Controller
     public function create()
     {
         $vendedor = new Vendedor();
-        return view('MercadoRegistrarVendedor', compact('vendedor'));
+        return view('AdminRegistrarVendedor', compact('vendedor'));
     }
 
     /**
@@ -43,7 +44,7 @@ class AdminVendedorController extends Controller
                 'nombre' => 'required|string|max:255',
                 'apellidos' => 'required|string|max:255',
                 'telefono' => 'required|string|max:20|unique:vendedors',
-                'numero_puesto' => 'required|string|max:255',
+                'numero_puesto' => 'required|string|max:255|unique:vendedors',
                 'contrasena' => 'required|string|min:8|confirmed',
             ]);
 
@@ -55,10 +56,10 @@ class AdminVendedorController extends Controller
             }
 
             // Verificar si ya existen datos iguales en la base de datos
-            if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
+            if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists() || Vendedor::where('numero_puesto', $request->numero_puesto)->exists()) {
                 return redirect()->back()
                     ->withInput()
-                    ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
+                    ->with('error', 'Ya existe un vendedor con el mismo Correo Electrónico, Teléfono o con ese mismo Numero de Puesto.');
             }
 
             // Crear vendedor si la validación pasa y no hay datos repetidos
@@ -69,15 +70,11 @@ class AdminVendedorController extends Controller
                 'telefono' => $request->telefono,
                 'numero_puesto' => $request->numero_puesto,
                 'fk_mercado' => 1, // Valor predeterminado
-                'contrasena' => Hash::make($request->contrasena), // Encriptar la contraseña
+                'contrasena' => bcrypt($request->contrasena), // Encriptar la contraseña
             ]);
 
             // Verificar si ya existen datos iguales en la base de datos
-            if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
-                return redirect()->back()
-                    ->withInput()
-                    ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
-                }
+
 
             return redirect()->route('admin-vendedors.index')
                 ->with('success', 'Vendedor creado exitosamente.');
@@ -101,15 +98,23 @@ class AdminVendedorController extends Controller
     {
         $vendedor = Vendedor::find($id);
 
-        return view('vendedor.edit', compact('vendedor'));
+        return view('AdminEditarVendedor', compact('vendedor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(VendedorRequest $request, Vendedor $vendedor)
+    public function update(Vendedor $_, $id)
     {
-        $vendedor->update($request->validated());
+        $vendedor = Vendedor::find($id);
+
+        $vendedor->usuario = request()->get("usuario");
+        $vendedor->nombre = request()->get("nombre");
+        $vendedor->apellidos = request()->get("apellidos");
+        $vendedor->telefono = request()->get("telefono");
+        $vendedor->numero_puesto = request()->get("numero_puesto");
+        $vendedor->fk_mercado = request()->get("fk_mercado");
+        $vendedor->save();
 
         return redirect()->route('admin-vendedors.index')
             ->with('success', 'Vendedor updated successfully');
