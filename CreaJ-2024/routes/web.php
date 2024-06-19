@@ -98,9 +98,11 @@ Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 
 
-Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::post('login-submit', [LoginController::class, 'loginpost'])->name('login-submit'); // Cambiado a POST
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('login', [LoginController::class, 'loginuser'])->name('loginuser');
+Route::post('register', [LoginController::class, 'register'])->name('register');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::view('privada', 'privada')->middleware('auth')->name('privada');
+
 
 
 

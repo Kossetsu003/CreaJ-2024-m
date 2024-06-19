@@ -34,21 +34,13 @@
             </div>
 
             <!-- FORMULARIO -->
-            <form method="POST" action="{{ route('clientes.store') }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{route('register-form') }}" role="form" enctype="multipart/form-data">
                 @csrf
                 <!--ROL ES INVISIBLE-->
                 <input type="hidden" name="ROL" value="4">
 
                 <!-- Mostrar mensajes de error -->
-                @if ($errors->any())
-                    <div class="bg-red-500 text-white p-2 rounded mt-1 text-[10px] text-center">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+             
 
                 <div class="flex flex-col mt-6"> <!-- Contenedor De Inputs -->
                     <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" value="{{ old('usuario') }}">

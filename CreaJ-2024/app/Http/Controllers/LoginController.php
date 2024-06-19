@@ -16,88 +16,50 @@ class LoginController extends Controller
         return view('LoginUser');
     }
 
-    public function loginpost(Request $request)
+    public function register(Request $request)
     {
-        // Validar los datos del formulario
-        $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email',
-            'contrasena' => 'required',
-        ]);
+        $cliente = new Cliente();
 
-        // Verificar si la validación falla
-        if ($validator->fails()) {
-            return redirect()->route('login')
-                ->withErrors($validator)
-                ->withInput();
-        }
-        /*$cliente = Cliente::where('usuario', $request->usuario)->first();
+        $cliente->usuario = $request->usuario;
+        $cliente->contrasena = $request->contrasena;
+        $cliente->nombre = $request->nombre;
+        $cliente->apellido = $request->apellido;
+        $cliente->telefono = $request->telefono;
+        $cliente->sexo = $request->sexo;
 
-        if ($cliente && Hash::check($request->contrasena, $cliente->contrasena)) {
-            // Si el cliente es encontrado y la contraseña es correcta
-            Auth::login($cliente);
+        $cliente->save();
 
-            // Almacenar los datos del cliente en la sesión
-            $request->session()->put('cliente_id', $cliente->id);
-            $request->session()->put('cliente_nombre', $cliente->nombre);
-            $request->session()->put('cliente_telefono', $cliente->telefono);
+        Auth::login($cliente);
 
-            // Redirigir al cliente según su rol
-            return $this->redireccionarSegunRol($cliente);
-        } else {
-            // Si no se encuentra en Cliente, buscar en MercadoLocal
-            $mercadolocal = MercadoLocal::where('usuario', $request->usuario)->first();
-
-            if ($mercadolocal && Hash::check($request->contrasena, $mercadolocal->contrasena)) {
-                // Si MercadoLocal es encontrado y la contraseña es correcta
-                Auth::login($cliente);
-
-                // Almacenar los datos del mercadolocal en la sesión
-                $request->session()->put('mercado_id', $cliente->id);
-                $request->session()->put('mercado_nombre', $cliente->nombre);
-                $request->session()->put('mercado_usuario', $cliente->telefono);
-
-                // Redirigir según el rol
-                return $this->redireccionarSegunRol($cliente);
-            } else {
-                // Redirigir a una página genérica si el rol no es reconocido
-                return redirect()->route('DefaultHome')->with('success', 'Bienvenido');
-            }*/
-        // Buscar al cliente en la base de datos
-        $cliente = Cliente::where('usuario', $request->usuario)->first();
+        return redirect(route('privada'));
         
-        // Verificar si se encontró al cliente y la contraseña coincide
-        if (($cliente && Hash::check($request->contrasena, $cliente->contrasena))) {
-            // Autenticación exitosa
-            Auth::login($cliente);
 
-            // Almacenar los datos del cliente en la sesión
-            $request->session()->put('cliente_id', $cliente->id);
-            $request->session()->put('cliente_nombre', $cliente->nombre);
-            $request->session()->put('cliente_telefono', $cliente->telefono);
-
-            // Redirigir al cliente según su rol
-            if ($cliente->ROL == 1) {
-                return redirect()->route('admin-mercado-locals.index')->with('success', 'Bienvenido al Panel de Administración');
-            } elseif ($cliente->ROL == 4) {
-                return redirect()->route('clientes.index')->with('success', 'Bienvenido a MiniShop');
-            } else {
-                // Redirigir a una página genérica si el rol no es reconocido
-                return redirect()->route('DefaultHome')->with('success', 'Bienvenido');
-            }
-        }
-
-        // Autenticación fallida
-        return redirect()->route('login')->with('error', 'Usuario o contraseña incorrecta');
     }
+    public function loginuser(Request $request)
+    {
+        $credentials = [
+            'usuario' => $request->usuario,
+            'password' => $request->contrasena,
+        ];
+
+        $remember = $request->has('remember') ? true : false;
+
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('privada'));
+        } else {
+            return redirect()->route('LoginUser')->with('error', 'Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+        }
+    }
+  
 
     public function logout(Request $request)
     {
         Auth::logout();
 
-        // Invalidar y regenerar la sesión
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('LoginUser')->with('success', 'Has cerrado sesión correctamente.');
+        return redirect(route('LoginUser'));
     }
 }
