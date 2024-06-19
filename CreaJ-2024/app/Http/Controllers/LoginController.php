@@ -36,19 +36,19 @@ class LoginController extends Controller
 
     }
     public function loginuser(Request $request)
-    {
+    {  
         $credentials = [
-            'usuario' => $request->usuario,
-            'password' => $request->contrasena,
+            "usuario"=>$request->usuario,
+            "contrasena"=>$request->contrasena,
         ];
 
-        $remember = $request->has('remember') ? true : false;
+        $remember = ($request->has('remember')?true:false);
 
-        if (Auth::attempt($credentials, $remember)) {
+        if(Auth::attempt($credentials,$remember)){
             $request->session()->regenerate();
             return redirect()->intended(route('privada'));
-        } else {
-            return redirect()->route('LoginUser')->with('error', 'Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+        }else{
+            return redirect('LoginUser');
         }
     }
   
