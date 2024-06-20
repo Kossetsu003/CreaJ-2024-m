@@ -22,7 +22,7 @@ class LoginController extends Controller
     public function register(Request $request){
         $user = new User();
 
-        $user->usuario = $request->usuario;
+        $user->email = $request->email;
         $user->password = $request->password;
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
@@ -38,7 +38,7 @@ class LoginController extends Controller
 
      public function loginuser(Request $request){
         $credentials = [
-            "usuario"=>$request->usuario,
+            "email"=>$request->email,
             "password"=>$request->password,
         ];
 

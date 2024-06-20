@@ -43,7 +43,7 @@
              
 
                 <div class="flex flex-col mt-6"> <!-- Contenedor De Inputs -->
-                    <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
+                    <input required type="email" name="email" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
