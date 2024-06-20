@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+   'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -156,6 +156,8 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
+
+        
         /*
          * Package Service Providers...
          */

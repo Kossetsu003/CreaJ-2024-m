@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\AdminVendedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMercadoLocalController;
+use App\Http\Controllers\ExhibicionproductoController;
 
 
 /*
@@ -32,6 +33,8 @@ Route::view('privada', 'privada')->middleware('auth')->name('privado');
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [LoginController::class, 'loginuser'])->name('inicia-sesion');
+Route::post('/loginuser', [LoginController::class, 'loginuser'])->name('loginuser');
+
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
@@ -108,7 +111,8 @@ Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 
 
-
+//PROUDUCTOS DEL VENDEDOR
+Route::resource('exhibicionproductos', ExhibicionproductoController::class);
 
 
 
