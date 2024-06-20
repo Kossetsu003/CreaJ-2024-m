@@ -19,33 +19,33 @@
                         <h1 class="font-bold">Iniciar Sesión</h1>
                     </div>
                     <div class="hidden">
-                            <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
+                        <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
                     </div>
                 </div>
                 <div class="md:hidden">
                     <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
                 </div>
             </div>
-            <form method="post" action="{{route('loginuser') }}" >
-                    @csrf
-                    <div class="w-72 h-96 mt-10 mx-auto">
-                        <div class="text-center">
-                            <h1 class="text-6xl font-bold">Mini<span class="text-[#3679F5] ml-3 font-bold">Shop</span></h1>
+            <form action="{{route('inicia-sesion') }}" method="POST">
+                @csrf
+                <div class="w-72 h-96 mt-10 mx-auto">
+                    <div class="text-center">
+                        <h1 class="text-6xl font-bold">Mini<span class="text-[#3679F5] ml-3 font-bold">Shop</span></h1>
+                    </div>
+                    <div class="flex flex-col mt-5">
+                        <div class="flex justify-center pt-5">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
                         </div>
-                        <div class="flex flex-col mt-5">
-                            <div class="flex justify-center pt-5">
-                                <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
-                            </div>
-                            <div class="flex justify-center mt-2">
-                                <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="password" name="contrasena" id="contrasena" placeholder="Ingrese su contraseña">
-                            </div>
-                            <div class="flex justify-end mt-3 pr-2">
-                                <h3 class="text-xs font-bold">Forgot Password?</h3>
-                            </div>
+                        <div class="flex justify-center mt-2">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="password" name="contrasena" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
-                        <div class="flex justify-center mt-5">
-                            <button type="submit" class="w-72 h-12 font-bold btn overflow-hidden relative bg-[#96A6E8] text-black py-2 px-4 rounded-xl">Iniciar Sesión</button>
+                        <div class="flex justify-end mt-3 pr-2">
+                            <h3 class="text-xs font-bold">Forgot Password?</h3>
                         </div>
+                    </div>
+                    <div class="flex justify-center mt-5">
+                        <button type="submit" class="w-72 h-12 font-bold btn overflow-hidden relative bg-[#96A6E8] text-black py-2 px-4 rounded-xl">Iniciar Sesión</button>
+                    </div>
             </form>
                     <div class="hidden md:flex items-center mt-8">
                         <div class="flex-grow border-t border-gray-400"></div>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="mt-11">
-                        <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('clientes.create') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
+                        <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('RegistroUser') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
                     </div>
                 </div>
           

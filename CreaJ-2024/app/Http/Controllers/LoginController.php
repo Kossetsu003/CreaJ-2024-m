@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use App\Models\User;
 use App\Models\MercadoLocal;
 use App\Models\Vendedor;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Cliente;
+
 
 class LoginController extends Controller
 {
@@ -17,40 +19,37 @@ class LoginController extends Controller
         return view('LoginUser');
     }
 
-    public function register(Request $request)
-    {
-        $cliente = new Cliente();
+    public function register(Request $request){
+        $user = new User();
 
-        $cliente->usuario = $request->usuario;
-        $cliente->contrasena = $request->contrasena;
-        $cliente->nombre = $request->nombre;
-        $cliente->apellido = $request->apellido;
-        $cliente->telefono = $request->telefono;
-        $cliente->sexo = $request->sexo;
+        $user->usuario = $request->usuario;
+        $user->contrasena = $request->contrasena;
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->telefono = $request->telefono;
+        $user->sexo = $request->sexo;
 
-        $cliente->save();
+        $user->save();
 
-        Auth::login($cliente);
+        Auth::login($user);
 
-        return redirect(route('privada'));
-
-
+        return redirect(route('privado'));
     }
-    public function loginuser(Request $request)
-    {
+
+     public function loginuser(Request $request){
         $credentials = [
             "usuario"=>$request->usuario,
-            "contrasena"=>$request->contrasena,
+            "password"=>$request->password,
         ];
 
-        $remember = ($request->has('remember')?true:false);
-
+        $remember = ($request->has('remember') ? true:false);
         if(Auth::attempt($credentials,$remember)){
             $request->session()->regenerate();
-            return redirect()->intended(route('privada'));
+            return redirect()->intended('privado');
         }else{
-            return redirect('LoginUser');
+            return redirect('login');
         }
+
     }
 
 

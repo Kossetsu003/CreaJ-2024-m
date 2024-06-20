@@ -43,10 +43,10 @@
              
 
                 <div class="flex flex-col mt-6"> <!-- Contenedor De Inputs -->
-                    <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" value="{{ old('usuario') }}">
-                    <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" value="{{ old('nombre') }}">
-                    <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" value="{{ old('apellido') }}">
-                    <input required type="text" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" value="{{ old('telefono') }}">
+                    <input required type="email" name="usuario" id="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
+                    <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
+                    <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
+                    <input required type="text" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
                     <select name="sexo" id="sexo" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
                         <option value="">Escoga su Género</option>
                         <option value="Masc" {{ old('sexo') == 'Masc' ? 'selected' : '' }}>Género: Masculino</option>

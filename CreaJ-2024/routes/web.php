@@ -25,8 +25,15 @@ use App\Http\Controllers\AdminMercadoLocalController;
 
 /*Vistas Principales*/
 Route::view('/','2Index')->name('Index');
+
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
+Route::view('privada', 'privada')->middleware('auth')->name('privado');
+
+Route::post('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/login', [LoginController::class, 'loginuser'])->name('inicia-sesion');
+
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
@@ -41,6 +48,7 @@ Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoPedidos','UserEstadoPedidos')->name('UserEstadoPedidos');
 Route::view('/UserProfileVista','UserProfileVista')->name('UserProfileVista');
 Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
+
 
 
 
@@ -101,10 +109,6 @@ Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 
 
-Route::post('login', [LoginController::class, 'loginuser'])->name('loginuser');
-Route::post('register', [LoginController::class, 'register'])->name('register');
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::view('privada', 'privada')->middleware('auth')->name('privada');
 
 
 
