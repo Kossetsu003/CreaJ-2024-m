@@ -26,7 +26,7 @@
         <div id="registroExitoso" class="bg-green-500 text-white p-2 rounded text-center mt-4" style="display: none;">
             ¡Registro exitoso!
         </div>
-        
+
         <!-- TITULO DE MINISHOP -->
         <div class="w-72 h-96 mt-16 mx-auto"> <!-- Contenedor Principal -->
             <div class="text-center"> <!-- Contenedor Mini Shop -->
@@ -40,10 +40,10 @@
                 <input type="hidden" name="ROL" value="4">
 
                 <!-- Mostrar mensajes de error -->
-             
+
 
                 <div class="flex flex-col mt-6"> <!-- Contenedor De Inputs -->
-                    <input required type="email" name="email" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
+                    <input required type="email" name="usuario" placeholder="Ingrese su Correo Electrónico" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="nombre" id="nombre" placeholder="Ingrese sus Nombres" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="apellido" id="apellido" placeholder="Ingrese su Apellido" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2" >
                     <input required type="text" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
@@ -54,7 +54,7 @@
                     </select>
                     <input required type="password" name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
                     <input required type="password" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
-                    
+
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
                         <h3 class="text-sm font-bold"><a href="../LoginUser">Ya tengo cuenta</a></h3>
                     </div>

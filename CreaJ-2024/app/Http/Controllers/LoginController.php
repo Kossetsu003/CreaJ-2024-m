@@ -22,23 +22,23 @@ class LoginController extends Controller
     public function register(Request $request){
         $user = new User();
 
-        $user->email = $request->email;
+        $user->usuario = $request->usuario;
         $user->password = Hash::make($request->password); // Asegúrate de usar Hash::make()
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->telefono = $request->telefono;
         $user->sexo = $request->sexo;
-    
+
         $user->save();
-    
+
         Auth::login($user);
-    
+
         return redirect(route('UserProfileVista'));
     }
 
      public function loginuser(Request $request){
         $credentials = [
-            "email"=>$request->email,
+            "usuario"=>$request->usuario,
             "password"=>$request->password,
         ];
 
