@@ -23,17 +23,17 @@ class LoginController extends Controller
         $user = new User();
 
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password); // Asegúrate de usar Hash::make()
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->telefono = $request->telefono;
         $user->sexo = $request->sexo;
-
+    
         $user->save();
-
+    
         Auth::login($user);
-
-        return redirect(route('privado'));
+    
+        return redirect(route('UserProfileVista'));
     }
 
      public function loginuser(Request $request){
@@ -47,7 +47,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('privado');
         }else{
-            return redirect('login');
+            return redirect('LoginUser');
         }
 
     }

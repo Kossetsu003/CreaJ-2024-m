@@ -34,7 +34,7 @@
             </div>
 
             <!-- FORMULARIO -->
-            <form method="POST" action="{{route('register') }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{route('validar-registro') }}" role="form" enctype="multipart/form-data">
                 @csrf
                 <!--ROL ES INVISIBLE-->
                 <input type="hidden" name="ROL" value="4">

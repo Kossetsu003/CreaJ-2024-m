@@ -18,7 +18,7 @@
 <body>
        <!-- Desktop Navbar -->
        <div
-     class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
+     class="hidden md:flex p-4 bg-white items-center fjustify-between shadow-md"
  >
      <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
          MiniShop
@@ -108,14 +108,12 @@
             <!-- <h3 class="text-xs"><b>Correo Electronico : </b>{ $cliente->usuario }}</h3> -->
 
             <div class="text-center mt-3">
-                @if(Auth::check())
-                    <h3 class="font-bold"><b>ID de Usuario: </b>{{ session('usuario_id') }}</h3>
-                    <h3 class="font-bold"><b>Nombre de Usuario: </b>{{ session('usuario_nombre') }}</h3>
-                    <h3 class="font-bold"><b>Teléfono: </b>{{ session('telefono') }}</h3>
-                @else
-                    <p>No hay sesión activa.</p>
-                @endif  
-            </div>
+                    @auth
+                    <div> {{Auth::user()->nombre}}
+                     {{Auth::user()->apellido}} </div>
+                    <div> {{Auth::user()->telefono}} </div>
+                    @endauth
+                </div>
             
 
 
@@ -139,7 +137,7 @@
                 <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
             </div>
 
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('logout') }}" method="GET">
                 @csrf
                 <div class="mx-auto flex items-center mt-10">
                     <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
