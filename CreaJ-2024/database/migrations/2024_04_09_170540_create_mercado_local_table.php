@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('mercado_locals', function (Blueprint $table) {
 
             $table->id();
+            $table->string('usuario');
+            $table->string('contrasena');
             $table->string('nombre');
             $table->double('ROL')->unsigned()->nullable()->default(2);
             $table->binary('imagen_referencia')->nullable();
@@ -21,13 +23,31 @@ return new class extends Migration
             $table->string('ubicacion');
             $table->string('horaentrada');
             $table->string('horasalida');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
         });
+        $contrasena = 'MercadoCentral1';
+        $hash = Hash::make($contrasena);
 
-        DB::insert('insert into mercado_locals (id, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion) values (?, ?, ?, ?, ?, ?, ?, ?,?)', [1, 'Mercado Central', 2, 'foto', 'San Salvador Centro', '3av norte y 1a calle poniente, san salvador centro', '0850','2030','El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.']);
+DB::insert('insert into mercado_locals (id, usuario, contrasena, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+    1,
+    'MercadoCentral@SanSalvadorCentro.sv',
+    $hash,
+    'Mercado Central',
+    2,
+    'foto',
+    'San Salvador Centro',
+    '3av norte y 1a calle poniente, san salvador centro',
+    '0850',
+    '2030',
+    'El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.',
+    now(),
+    now()
+]);
+
+        
     }
 
     /**

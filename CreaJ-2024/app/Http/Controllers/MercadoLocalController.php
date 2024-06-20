@@ -42,8 +42,18 @@ class MercadoLocalController extends Controller
      */
     public function store(MercadoLocalRequest $request)
     {
+        //YO lo que hago es validar y guardar los datos en $MercadoLocal
         MercadoLocal::create($request->validated());
+        $UsuarioMercadoLocal = $request->nombre . '_' . $request->municipio;
 
+        //Aqui me los une
+        MercadoLocal::create([
+          
+            'usuario' => $UsuarioMercadoLocal . '@minishop.sv', // Generar un correo basado en el username
+           
+        ]);
+       
+//Aqui me los manda
         return redirect()->route('mercado-locals.index')
 
             ->with('success', 'MercadoLocal created successfully.');

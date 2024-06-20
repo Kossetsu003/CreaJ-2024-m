@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MercadoLocal extends Model
 {
-    
+
 
     protected $perPage = 20;
 
@@ -34,8 +34,11 @@ class MercadoLocal extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'ROL', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
+    protected $fillable = ['usuario','contrasena','nombre', 'ROL', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
 
+    protected $hidden = [
+        'contrasena',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -44,6 +47,6 @@ class MercadoLocal extends Model
     {
         return $this->hasMany(\App\Models\Vendedor::class, 'id', 'fk_mercado');
     }
-    
+
 
 }

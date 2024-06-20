@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\MercadoLocal;
+use App\Models\Vendedor;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -32,11 +33,11 @@ class LoginController extends Controller
         Auth::login($cliente);
 
         return redirect(route('privada'));
-        
+
 
     }
     public function loginuser(Request $request)
-    {  
+    {
         $credentials = [
             "usuario"=>$request->usuario,
             "contrasena"=>$request->contrasena,
@@ -51,7 +52,7 @@ class LoginController extends Controller
             return redirect('LoginUser');
         }
     }
-  
+
 
     public function logout(Request $request)
     {

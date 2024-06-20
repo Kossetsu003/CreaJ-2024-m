@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminVendedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMercadoLocalController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,6 +83,8 @@ Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerf
 Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListadoMercados');
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
+Route::view('/AdminConfirmacionMercado','AdminConfirmacionMercado')->name('AdminConfirmacionMercado');
+Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::class, 'confirmation'])->name('admin-mercado-locals.confirmation');
 
 
 
@@ -89,7 +92,7 @@ Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedido
 
 
 // Auth::routes();
-
+//ROUTES POR CONTROLADORES
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
