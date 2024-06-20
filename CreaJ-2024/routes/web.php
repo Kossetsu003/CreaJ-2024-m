@@ -32,7 +32,6 @@ Route::view('privada', 'privada')->middleware('auth')->name('privado');
 
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/login', [LoginController::class, 'loginuser'])->name('inicia-sesion');
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 

@@ -23,7 +23,7 @@ class LoginController extends Controller
         $user = new User();
 
         $user->usuario = $request->usuario;
-        $user->contrasena = $request->contrasena;
+        $user->password = $request->password;
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->telefono = $request->telefono;

@@ -52,7 +52,7 @@
                         <option value="Masc" {{ old('sexo') == 'Masc' ? 'selected' : '' }}>Género: Masculino</option>
                         <option value="Fem" {{ old('sexo') == 'Fem' ? 'selected' : '' }}>Género: Femenino</option>
                     </select>
-                    <input required type="password" name="contrasena" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
+                    <input required type="password" name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
                     <input required type="password" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
                     
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
