@@ -29,7 +29,6 @@ Route::view('/','2Index')->name('Index');
 
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
-Route::view('privada', 'privada')->middleware('auth')->name('privado');
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [LoginController::class, 'loginuser'])->name('inicia-sesion');
@@ -48,7 +47,7 @@ Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestos
 Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
 Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoPedidos','UserEstadoPedidos')->name('UserEstadoPedidos');
-Route::view('/UserProfileVista','UserProfileVista')->name('UserProfileVista');
+Route::view('/UserProfileVista','UserProfileVista')->middleware('auth')->name('UserProfileVista');
 Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
 
 

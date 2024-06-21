@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\MercadoLocal;
-use App\Models\Vendedor;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Cliente;
-
 
 class LoginController extends Controller
 {
@@ -19,7 +14,8 @@ class LoginController extends Controller
         return view('LoginUser');
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $user = new User();
 
         $user->usuario = $request->usuario;
@@ -36,22 +32,22 @@ class LoginController extends Controller
         return redirect(route('UserProfileVista'));
     }
 
-     public function loginuser(Request $request){
+    public function loginuser(Request $request)
+    {
         $credentials = [
-            "usuario"=>$request->usuario,
-            "password"=>$request->password,
+            'usuario' => $request->usuario,
+            'password' => $request->password,
         ];
 
-        $remember = ($request->has('remember') ? true:false);
-        if(Auth::attempt($credentials,$remember)){
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('privado');
-        }else{
-            return redirect('LoginUser');
+            return redirect()->intended('UserProfileVista');
+        } else {
+            return redirect('LoginUser')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
         }
-
     }
-
 
     public function logout(Request $request)
     {

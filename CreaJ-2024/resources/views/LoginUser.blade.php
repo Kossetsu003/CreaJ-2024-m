@@ -34,10 +34,10 @@
                     </div>
                     <div class="flex flex-col mt-5">
                         <div class="flex justify-center pt-5">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="email" id="usuario" placeholder="Ingrese su correo electrónico">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
                         </div>
                         <div class="flex justify-center mt-2">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="password" name="password" id="contrasena" placeholder="Ingrese su contraseña">
+                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="text" name="password" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
                         <div class="flex justify-end mt-3 pr-2">
                             <h3 class="text-xs font-bold">Forgot Password?</h3>

@@ -18,12 +18,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'usuario', 
-        'contrasena', 
-        'nombre', 
-        'apellido', 
-        'telefono', 
-        'sexo'
+        'usuario',
+        'password',
+        'nombre',
+        'apellido',
+        'telefono',
+        'sexo',
     ];
 
     /**
@@ -32,13 +32,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'contrasena'
+        'password',
+        'remember_token',
     ];
 
-    public function getAuthPassword()
-    {
-        return $this->contrasena;
-    }
     /**
      * The attributes that should be cast.
      *
@@ -46,6 +43,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
 }
