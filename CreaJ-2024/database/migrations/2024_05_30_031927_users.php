@@ -24,6 +24,11 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
             $table->rememberToken();
         });
+
+        $password = 'minishop1';
+        $hash = Hash::make($password);
+        DB::insert('insert into users (id, ROL, usuario, password, nombre, apellido, telefono, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)', [1, 1, 'admin@minishop.sv', $hash, 'Administrador', 'De MiniShop', NULL, NULL]);
+
     }
 
     /**
@@ -32,6 +37,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        
+
     }
 };

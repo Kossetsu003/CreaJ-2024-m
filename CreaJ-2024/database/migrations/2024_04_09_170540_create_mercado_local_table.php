@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->id();
             $table->string('usuario');
-            $table->string('contrasena');
+            $table->string('password');
             $table->string('nombre');
             $table->double('ROL')->unsigned()->nullable()->default(2);
             $table->binary('imagen_referencia')->nullable();
@@ -28,10 +28,10 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
 
         });
-        $contrasena = 'MercadoCentral1';
-        $hash = Hash::make($contrasena);
+        $password = 'MercadoCentral1';
+        $hash = Hash::make($password);
 
-DB::insert('insert into mercado_locals (id, usuario, contrasena, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+DB::insert('insert into mercado_locals (id, usuario, password, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
     1,
     'MercadoCentral@SanSalvadorCentro.sv',
     $hash,
@@ -47,7 +47,7 @@ DB::insert('insert into mercado_locals (id, usuario, contrasena, nombre, ROL, im
     now()
 ]);
 
-        
+
     }
 
     /**

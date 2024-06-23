@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('usuario');
             $table->double('ROL')->unsigned()->nullable()->default(3);
-            $table->string('contrasena');
+            $table->string('password');
             $table->string('nombre');
             $table->string('apellidos')->nullable();
             $table->string('telefono')->nullable();

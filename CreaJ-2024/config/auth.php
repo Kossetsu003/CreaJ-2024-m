@@ -36,11 +36,16 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users', // Guard por defecto para usuarios normales
     ],
+
+    'vendedor' => [
+        'driver' => 'session',
+        'provider' => 'vendedors', // Guard para vendedores
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -65,11 +70,12 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'vendedors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Vendedor::class,
+            ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

@@ -50,6 +50,7 @@
                  />
              </a>
          </div>
+
          <div class="flex items-center">
              <a href="./UserCarritoGeneral">
                  <img
@@ -79,10 +80,10 @@
          </div>
      </div>
  </div>
-     
+
 
         <!-- Agregar un margen superior al contenido principal igual a la altura de la barra de navegación -->
-        <!-- <div class="mt-10"> 
+        <!-- <div class="mt-10">
             <div class="flex justify-between mt-5">
                 <div class="ml-[10%]">
                     <h1>Hola! Bienvenido &#x1F44B;</h1>
@@ -99,7 +100,7 @@
             <div class="h-[70vh] bg-no-repeat bg-cover bg-center lg:bg-[center_top_-25rem]" style="background-image: url({{ asset('imgs/PortadaMiniShop.png') }});">
 
             </div>
-         
+
             <div class="flex my-8 justify-around w-[90%]  mx-auto">
                 <button class="flex items-center px-3 py-2  rounded-md">
                     <img class="w-7 mr-2" src="{{ asset('imgs/NosotrosIcon.png') }}" alt="User Icon">
@@ -121,7 +122,8 @@
                 <div class="flex flex-col-reverse p-4 border rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
+                        <p> {{Auth::user()->nombre}}
+                            {{Auth::user()->apellido}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
                         <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"> <a href="./UserPuestosVendedores">Ver Mercado</a></button>
                     </div>
                     <div>
@@ -132,7 +134,7 @@
 
             <div class="md:p-0 p-4 bg-[#334765] text-white">
                 <div class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
-                  
+
                     <div>
                         <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
                     </div>
@@ -158,7 +160,7 @@
 
             <div class="md:p-0 p-4 bg-[#334765] text-white">
                 <div class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
-                  
+
                     <div>
                         <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
                     </div>
@@ -213,8 +215,8 @@
                     </div>
                     <div>
                         <h2>Sobre nosotros</h2>
-                        <p>Informacion que un no tenemos 
-                            pero que supongo que sera de vital 
+                        <p>Informacion que un no tenemos
+                            pero que supongo que sera de vital
                             importancia para el futuro</p>
                     </div>
                     <div class="md:self-end md:justify-self-end pb-4">
@@ -235,7 +237,7 @@
                             <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                                 <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">
                             </div>
-                      
+
                         </div>
                     </div>
                 </div>

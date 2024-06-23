@@ -34,19 +34,23 @@ class LoginController extends Controller
 
     public function loginuser(Request $request)
     {
-        $credentials = [
-            'usuario' => $request->usuario,
-            'password' => $request->password,
-        ];
+        $credentials = $request->only('usuario', 'password');
+        $remember = $request->filled('remember');
 
-        $remember = $request->has('remember');
-
-        if (Auth::attempt($credentials, $remember)) {
+        // Intentar autenticar como usuario normal
+        if (Auth::guard('web')->attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('UserProfileVista');
-        } else {
-            return redirect('LoginUser')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
+            return redirect()->intended('UserProfileVista'); // Ruta para usuarios normales
         }
+
+        // Intentar autenticar como vendedor
+        else if (Auth::guard('vendedor')->attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended('VendedorProfileVista'); // Ruta para vendedores
+        }
+
+        // Si ninguna autenticación tiene éxito
+        return redirect('LoginUser')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
     }
 
     public function logout(Request $request)
