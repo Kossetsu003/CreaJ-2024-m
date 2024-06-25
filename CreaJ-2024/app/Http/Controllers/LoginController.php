@@ -46,7 +46,7 @@ class LoginController extends Controller
         // Intentar autenticar como vendedor
         else if (Auth::guard('vendedor')->attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('VendedorProfileVista'); // Ruta para vendedores
+            return redirect()->intended('UserProductoEnEspecifico'); // Ruta para vendedores
         }
 
         // Si ninguna autenticación tiene éxito

@@ -32,7 +32,9 @@ Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
 
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [LoginController::class, 'loginuser'])->name('inicia-sesion');
-Route::post('/loginuser', [LoginController::class, 'loginuser'])->name('loginuser');
+
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('loginuser', [LoginController::class, 'loginuser']);
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

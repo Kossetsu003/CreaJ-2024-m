@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class Vendedor
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $id
  * @property $usuario
  * @property $ROL
- * @property $contrasena
+ * @property $password
  * @property $nombre
  * @property $apellidos
  * @property $telefono
@@ -23,9 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Vendedor extends Model
+class Vendedor extends Authenticatable
 {
-    
+    use HasApiTokens, Notifiable;
 
     protected $perPage = 20;
 
@@ -34,8 +36,16 @@ class Vendedor extends Model
      *
      * @var array
      */
-    protected $fillable = ['usuario', 'ROL', 'contrasena', 'nombre', 'apellidos', 'telefono', 'numero_puesto', 'fk_mercado'];
-
+    protected $fillable = [
+        'usuario',
+        'ROL',
+        'password', // Cambiado de 'contrasena' a 'password'
+        'nombre',
+        'apellidos',
+        'telefono',
+        'numero_puesto',
+        'fk_mercado'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -44,6 +54,4 @@ class Vendedor extends Model
     {
         return $this->belongsTo(\App\Models\MercadoLocal::class, 'fk_mercado', 'id');
     }
-    
-
 }

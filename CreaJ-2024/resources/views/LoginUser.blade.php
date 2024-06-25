@@ -26,7 +26,7 @@
                     <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
                 </div>
             </div>
-            <form action="{{route('inicia-sesion') }}" method="POST">
+            <form action="{{route('loginuser') }}" method="POST">
                 @csrf
                 <div class="w-72 h-96 mt-10 mx-auto">
                     <div class="text-center">
@@ -67,7 +67,7 @@
                         <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('RegistroUser') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
                     </div>
                 </div>
-          
+
         </div>
         <div class="hidden md:flex md:flex-col md:items-center md:justify-center md:w-[50%]">
             <div class="text-center mb-4">
