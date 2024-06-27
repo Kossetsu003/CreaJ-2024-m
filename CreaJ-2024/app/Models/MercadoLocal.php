@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class MercadoLocal
@@ -23,9 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class MercadoLocal extends Model
+class MercadoLocal extends Authenticatable
 {
 
+    protected $table = 'mercado_locals';
 
     protected $perPage = 20;
 
@@ -34,10 +35,12 @@ class MercadoLocal extends Model
      *
      * @var array
      */
-    protected $fillable = ['usuario','contrasena','nombre', 'ROL', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'];
+    protected $fillable = [
+        'usuario','password','nombre', 'ROL', 'imagen_referencia', 'municipio', 'ubicacion', 'horaentrada', 'horasalida', 'descripcion'
+    ];
 
     protected $hidden = [
-        'contrasena',
+        'password',
     ];
 
     /**
@@ -45,7 +48,7 @@ class MercadoLocal extends Model
      */
     public function vendedors()
     {
-        return $this->hasMany(\App\Models\Vendedor::class, 'id', 'fk_mercado');
+        return $this->hasMany(\App\Models\Vendedor::class, 'fk_mercado', 'id');
     }
 
 

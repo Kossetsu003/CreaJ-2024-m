@@ -1,7 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MercadoLocalController;
 use App\Http\Controllers\ClienteController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendedorController;
 use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\AdminVendedorController;

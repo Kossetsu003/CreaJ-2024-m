@@ -36,16 +36,21 @@ return [
     */
 
     'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'users', // Guard por defecto para usuarios normales
-    ],
 
-    'vendedor' => [
-        'driver' => 'session',
-        'provider' => 'vendedors', // Guard para vendedores
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users', // Guard por defecto para usuarios normales
+        ],
+
+        'vendedor' => [
+            'driver' => 'session',
+            'provider' => 'vendedors', // Guard para vendedores
+        ],
+        'mercadolocal' =>[
+            'driver' => 'session',
+            'provider' => 'mercadolocals'
+        ]
     ],
-],
 
     /*
     |--------------------------------------------------------------------------
@@ -74,6 +79,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Vendedor::class,
             ],
+        'mercadolocals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MercadoLocal::class,
+        ]
     ],
 
 
@@ -110,6 +119,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'mercadolocals' => [
+            'provider' => 'mercadolocals',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*
