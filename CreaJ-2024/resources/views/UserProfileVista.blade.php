@@ -87,7 +87,7 @@
          </div>
      </div>
  </div>
-     
+
        <div class="bg-indigo-300 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
@@ -114,12 +114,14 @@
                     <div> {{Auth::user()->telefono}} </div>
                     @endauth
                 </div>
-            
+
 
 
 
         </div>
-
+<h1><a href="{{ route('products.index') }}">Productos</a>
+    <a href="{{ route('cart.index') }}">Carrito</a>
+</h1>
         <div class="w-[50%] mx-auto m-16">
             <div class=" mx-auto flex items-center">
                 <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
@@ -162,8 +164,8 @@
                     </div>
                     <div>
                         <h2>Sobre nosotros</h2>
-                        <p>Informacion que un no tenemos 
-                            pero que supongo que sera de vital 
+                        <p>Informacion que un no tenemos
+                            pero que supongo que sera de vital
                             importancia para el futuro</p>
                     </div>
                     <div class="md:self-end md:justify-self-end pb-4">
@@ -184,7 +186,7 @@
                             <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                                 <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">
                             </div>
-                      
+
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,12 @@ use App\Http\Controllers\AdminVendedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMercadoLocalController;
 use App\Http\Controllers\ExhibicionproductoController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 
 /*
@@ -25,7 +31,7 @@ use App\Http\Controllers\ExhibicionproductoController;
 
 
 /*Vistas Principales*/
-Route::view('/','2Index')->name('Index');
+//Route::view('/','2Index')->name('Index');
 
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
@@ -104,7 +110,7 @@ Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::c
 
 // Auth::routes();
 //ROUTES POR CONTROLADORES
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
@@ -122,4 +128,26 @@ Route::resource('admin-mercado-locals', AdminMercadoLocalController::class);
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//CARRITOOOO
+Route::get('/', function () {
+    return view('layout');
+});
+
+
+//Route::resource('users', UserController::class);
+
+
+
+
+//CARRITOO
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove');
+});
+
