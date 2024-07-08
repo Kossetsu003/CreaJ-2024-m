@@ -10,7 +10,8 @@ class Cart extends Model
 
     protected $fillable = [
         'product_id',
-        'fk_users', // Añadimos fk_users a los campos fillable
+        'fk_users',
+        'subtotal', // Añadimos fk_users a los campos fillable
         'quantity',
     ];
 
