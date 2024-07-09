@@ -25,28 +25,46 @@ class CartController extends Controller
     public function add(Request $request, Product $product)
     {
         $request->validate([
-            'quantity' => 'required|integer|min:1'
+            'quantity' => 'required|integer|min:1',
+            'subtotal' => 'subtotal|integer|min:1'
         ]);
 
         $quantity = $request->input('quantity');
+        $subtotal = $request->input('subtotoal');
 
+//VERIFICACION
         // Verificar si el producto ya está en el carrito del usuario actual
         $cartItem = Cart::where('product_id', $product->id)
                         ->where('fk_users', Auth::id())
+                        //al utilizar GET lo que se hace es agarrar el objeto
                         ->first();
 
+
+
+               
+
+                        
         if ($cartItem) {
             // Si existe, actualizar la cantidad sumando la nueva cantidad
             $cartItem->quantity += $quantity;
+            $cartItem->subtotal = $cartItem->quantity * $cartItem->product->price;
             $cartItem->save();
+            //AQUI SE CREA LA CARRETILLA
         } else {
             // Si no existe, crear uno nuevo en el carrito del usuario actual
             Cart::create([
                 'product_id' => $product->id,
                 'fk_users' => Auth::id(), // Asignar el ID del usuario actual
-                'quantity' => $quantity
+                'quantity' => $quantity,
+                'subtotal' => $quantity * $product->price
             ]);
         }
+
+        $cartItems = Cart::where('fk_users', Auth::id())->get();
+        //SUBTOTAL
+                    $subtotal = $cartItems->reduce(function ($carry, $item){
+                        return $carry +($item->product->price * $item->quantity);
+                    },);
 
         return redirect()->route('cart.index')->with('success', 'Producto agregado al carrito correctamente.');
     }

@@ -10,8 +10,8 @@ class CreateCartsTable extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->integer('quantity')->default(1);
-            $table->integer('subtotal')->default(0.01);
+            $table->integer('quantity')->nulleable()->default(1);
+            $table->doubleval('subtotal')->nulleable()->default(0.01);
             $table->timestamps();
             $table->unsignedBigInteger('fk_users');
             $table -> foreign('fk_users') -> references('id') -> on('users') -> onDelete('cascade');
