@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable;
-            $table->decimal('price',8,2);
+            $table->decimal('total');
+            $table->unsignedBigInteger('FK_users');
+            $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
-            $table->unsignedBigInteger('fk_vendedors');
-            $table -> foreign('fk_vendedors') -> references('id') -> on('vendedors') -> onDelete('cascade');
+            $table->string('estado')->default("enviado");
         });
+
+
     }
 
     /**
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('reservations');
     }
 };

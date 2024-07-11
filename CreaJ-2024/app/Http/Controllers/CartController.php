@@ -1,20 +1,21 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reservation;
+use App\Models\ReservationItem;
 
 class CartController extends Controller
 {
     public function index()
     {
-        // Obtener los ítems del carrito del usuario autenticado
         $cartItems = Cart::with('product')->where('fk_users', Auth::id())->get();
 
-        // Calcular el total del carrito
         $total = $cartItems->reduce(function ($carry, $item) {
             return $carry + ($item->product->price * $item->quantity);
         }, 0);
@@ -26,63 +27,79 @@ class CartController extends Controller
     {
         $request->validate([
             'quantity' => 'required|integer|min:1',
-            'subtotal' => 'subtotal|integer|min:1'
         ]);
 
         $quantity = $request->input('quantity');
-        $subtotal = $request->input('subtotoal');
 
-//VERIFICACION
-        // Verificar si el producto ya está en el carrito del usuario actual
-        $cartItem = Cart::where('product_id', $product->id)
+        $cartItem = Cart::where('fk_product', $product->id)
                         ->where('fk_users', Auth::id())
-                        //al utilizar GET lo que se hace es agarrar el objeto
                         ->first();
 
-
-
-               
-
-                        
         if ($cartItem) {
-            // Si existe, actualizar la cantidad sumando la nueva cantidad
             $cartItem->quantity += $quantity;
             $cartItem->subtotal = $cartItem->quantity * $cartItem->product->price;
             $cartItem->save();
-            //AQUI SE CREA LA CARRETILLA
         } else {
-            // Si no existe, crear uno nuevo en el carrito del usuario actual
             Cart::create([
-                'product_id' => $product->id,
-                'fk_users' => Auth::id(), // Asignar el ID del usuario actual
+                'fk_product' => $product->id,
+                'fk_users' => Auth::id(),
                 'quantity' => $quantity,
                 'subtotal' => $quantity * $product->price
             ]);
         }
 
-        $cartItems = Cart::where('fk_users', Auth::id())->get();
-        //SUBTOTAL
-                    $subtotal = $cartItems->reduce(function ($carry, $item){
-                        return $carry +($item->product->price * $item->quantity);
-                    },);
-
         return redirect()->route('cart.index')->with('success', 'Producto agregado al carrito correctamente.');
     }
 
+
+    //FUNCION DE GUARDAR COMO RESERVA
+    public function checkout()
+{
+    $user = Auth::user();
+    $cartItems = Cart::where('fk_users', $user->id)->get();
+
+    if ($cartItems->isEmpty()) {
+        return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
+    }
+
+    $total = $cartItems->reduce(function ($carry, $item) {
+        return $carry + ($item->product->price * $item->quantity);
+    }, 0);
+
+    // Crear la reserva
+    $reservation = Reservation::create([
+        'fk_users' => $user->id,
+        'total' => $total,
+    ]);
+
+    // Crear los items de la reserva
+    foreach ($cartItems as $item) {
+        ReservationItem::create([
+            'fk_reservation' => $reservation->id,
+            'fk_product' => $item->fk_product,
+            'quantity' => $item->quantity,
+            'subtotal' => $item->subtotal,
+        ]);
+    }
+
+    // Vaciar el carrito
+    Cart::where('fk_users', $user->id)->delete();
+
+    return redirect()->route('reservations.index')->with('success', 'Reserva creada exitosamente.');
+}
+
     public function remove(Product $product)
     {
-        // Buscar el ítem del carrito del producto específico del usuario actual
-        $cartItem = Cart::where('product_id', $product->id)
+        $cartItem = Cart::where('fk_product', $product->id)
                         ->where('fk_users', Auth::id())
                         ->first();
 
         if ($cartItem) {
             if ($cartItem->quantity > 1) {
-                // Si la cantidad es mayor que 1, reducir la cantidad
                 $cartItem->quantity--;
+                $cartItem->subtotal = $cartItem->quantity * $cartItem->product->price;
                 $cartItem->save();
             } else {
-                // Si la cantidad es 1 o menos, eliminar el ítem del carrito
                 $cartItem->delete();
             }
         }

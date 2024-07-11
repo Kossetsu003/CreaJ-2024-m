@@ -11,6 +11,8 @@ use App\Http\Controllers\ExhibicionproductoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationItemController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -150,4 +152,23 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove');
 });
+
+
+//RESERVAAAS
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+// routes/web.php
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+
+
+//RESERVA
+
+
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::get('/reservations/{reservation}', [ReservationController::class, 'show'])->name('reservations.show');
+Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+Route::put('/reservations/{reservation}', [ReservationController::class, 'update'])->name('reservations.update');
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 
