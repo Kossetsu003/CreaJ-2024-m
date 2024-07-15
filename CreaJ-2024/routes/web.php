@@ -25,6 +25,10 @@ use App\Http\Controllers\ExhibicionproductoController;
 
 
 /*Vistas Principales*/
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'LoginUser'])->name('inicia-sesion');
+
+
 Route::view('/','2Index')->name('Index');
 
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
@@ -34,7 +38,7 @@ Route::post('/validar-registro', [LoginController::class, 'register'])->name('va
 Route::post('/inicia-sesion', [LoginController::class, 'loginuser'])->name('inicia-sesion');
 
 Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::post('loginuser', [LoginController::class, 'loginuser']);
+Route::get('LoginUser', [LoginController::class, 'LoginUser']);
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

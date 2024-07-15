@@ -34,7 +34,7 @@ class LoginController extends Controller
         return redirect(route('UserProfileVista'));
     }
 
-    public function loginuser(Request $request)
+    public function LoginUser(Request $request)
     {
         $credentials = $request->only('usuario', 'password');
         $remember = $request->filled('remember');
