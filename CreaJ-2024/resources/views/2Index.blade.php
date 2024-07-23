@@ -33,7 +33,7 @@
 
             </div>
                 <div class="mt-16 flex justify-center">
-                    <a href="./LoginUser">
+                    <a href="{{ route('login') }}">
                         <button class="mr-2 bg-indigo-300 w-32 h-12 rounded-md">
                             Iniciar Sesion
                         </button>

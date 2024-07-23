@@ -56,7 +56,7 @@
                     <input required type="password" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2">
 
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
-                        <h3 class="text-sm font-bold"><a href="../LoginUser">Ya tengo cuenta</a></h3>
+                        <h3 class="text-sm font-bold"><a href="{{ route('login') }}">Ya tengo cuenta</a></h3>
                     </div>
                 </div>
 
