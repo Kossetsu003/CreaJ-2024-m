@@ -1,0 +1,66 @@
+body {
+	padding: 16px;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+body::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+body::-webkit-scrollbar {
+	width: 0;
+	background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+div[data-pf-type="Layout"] > div:not(:last-child) {
+	margin-bottom: 16px;
+}
+
+div[data-pf-type="Column"] {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #D1D5DB;
+	border-radius: 2px;
+	padding: 16px;
+	cursor: pointer;
+	height: 120px;
+}
+
+div[data-pf-type="Column"] {
+	background-color: #fafbfb;
+}
+
+div[data-pf-type="Column"]:hover {
+	background-color: #f0f2f3;
+}
+
+div[data-pf-type="Column"] > * {
+	margin: 0;
+}
+
+div[data-pf-type="Column"] > div[data-pf-type="Paragraph"] {
+	font-size: 12px;
+}
+
+div[data-pf-type="Column"] > picture[data-pf-type="Image"] {
+	width: 96px;
+	pointer-events: none;
+}
+
+div[data-pf-type="Column"] > a[data-pf-type="Button"] {
+	width: 124px;
+	height: 44px;
+	line-height: 24px;
+	font-size: 20px;
+}
+
+div[data-pf-type="Column"] > i[data-pf-type="Icon"] {
+	font-size: 32px;
+}

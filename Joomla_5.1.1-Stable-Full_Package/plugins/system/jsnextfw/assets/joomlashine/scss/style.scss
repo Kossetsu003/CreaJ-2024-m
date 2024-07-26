@@ -1,0 +1,97 @@
+.jsn-bootstrap4 {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 17px;
+	@import "general";
+	@import "themes";
+}
+
+/**
+ * Reset.
+ */
+body.jsn-adminbar-pinned .fade.show {
+	z-index: 9999;
+}
+
+#status p {
+	line-height: 21px;
+}
+
+/**
+ * Header bar.
+ */
+body.tmpl-hathor.jsn-has-header-bar {
+	padding-top: 26px;
+}
+
+body.tmpl-isis.jsn-has-header-bar {
+	padding-top: 57px;
+}
+body.tmpl-isis.jsn-has-header-bar .navbar-fixed-top {
+	top: 26px;
+}
+body.tmpl-isis.jsn-has-header-bar .subhead.subhead-fixed {
+	top: 58px;
+}
+body.tmpl-isis.jsn-has-header-bar .nav-collapse .nav-empty {
+	margin-top: -24px;
+}
+
+/**
+ * Footer bar.
+ */
+body.tmpl-hathor.jsn-has-footer-bar {
+	padding-bottom: 30px;
+}
+
+body.tmpl-isis.jsn-has-footer-bar .jsn-footer-bar {
+	bottom: 30px;
+}
+
+/* Badge */
+.badge.badge-pro {
+	margin-left: .5em;
+	background: crimson;
+	vertical-align: inherit;
+}
+
+/* Joomla 4 */
+body.tmpl-atum {
+	&.jsn-has-footer-bar #sidebar-wrapper + .container-main .jsn-footer-bar {
+		left: 250px;
+	}
+	&.jsn-has-footer-bar .closed > #sidebar-wrapper + .container-main .jsn-footer-bar {
+		left: 48px;
+	}
+
+	.jsn-bootstrap4 {
+		background: inherit;
+
+		.jsn-pages {
+			background: #fff;
+		}
+
+		.jsn-settings {
+			.nav.nav-tabs {
+				flex-wrap: wrap;
+				align-items: initial;
+				justify-content: initial;
+				background: initial;
+				margin-bottom: 0;
+
+				.nav-item {
+					width: initial;
+					margin-bottom: -1px;
+
+					.nav-link {
+						box-shadow: none;
+					}
+				}
+			}
+
+			.tab-content {
+				background: #fff;
+			}
+		}
+	}
+}

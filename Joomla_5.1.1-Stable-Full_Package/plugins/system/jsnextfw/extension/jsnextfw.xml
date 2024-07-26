@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="extension" method="upgrade">
+	<name>plg_extension_jsnextfw</name>
+	<version>1.2.0</version>
+	<creationDate>02/08/2022</creationDate>
+	<author>JoomlaShine.com</author>
+	<authorEmail>admin@joomlashine.com</authorEmail>
+	<authorUrl>www.joomlashine.com</authorUrl>
+	<copyright>Copyright (C) 2013 JoomlaShine.com. All Rights Reserved.</copyright>
+	<license>GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<description>PLG_EXTENSION_JSNEXTFW_XML_DESCRIPTION</description>
+	<updateservers>
+		<server type="extension" priority="1" name="JSN Ext. Framework 2 - Extension Updates">https://www.joomlashine.com/versioning/extensions/jsnextfw-extension.xml</server>
+	</updateservers>
+	<files>
+		<folder>language</folder>
+		<filename>index.html</filename>
+		<filename plugin="jsnextfw">jsnextfw.php</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_extension_jsnextfw.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_extension_jsnextfw.sys.ini</language>
+	</languages>
+	<config />
+</extension>

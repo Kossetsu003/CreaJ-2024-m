@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>PageBuilder4</name>
+	<version>1.4.0</version>
+	<creationDate>02/23/2022</creationDate>
+	<author>JoomlaShine.com</author>
+	<authorEmail>support@joomlashine.com</authorEmail>
+	<authorUrl>http://www.joomlashine.com</authorUrl>
+	<copyright>Copyright (C) 2013 JoomlaShine.com. All Rights Reserved.</copyright>
+	<license>GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<description>JSN_PAGEBUILDER4_XML_DESCRIPTION</description>
+	<group>jsnextfw</group>
+	<scriptfile>subinstall.php</scriptfile>
+  	<updateservers>
+        <server type="collection" name="JSN PageBuilder 4 Update Server">https://www.joomlashine.com/versioning/extensions/com_pagebuilder4.xml</server>
+    </updateservers>
+	<subinstall>
+		<!-- Install required dependencies for JSN PageBuilder G4 -->
+		<!-- <extension type="plugin" folder="system" name="jsnextfw" identified_name="ext_framework2" client="site" publish="1" lock="1">
+			JSN Extension Framework G2 System Plugin
+		</extension> -->
+		<extension
+			type="plugin"
+			folder="editors"
+			name="pagebuilder4"
+			publish="1"
+			lock="1"
+			dir="plugins/editors/pagebuilder4"
+			client="site"
+		>
+			JSN PageBuilder 4 Editor Plugin
+		</extension>
+		<extension
+			type="plugin"
+			folder="editors-xtd"
+			name="pagebuilder4"
+			publish="1"
+			lock="1"
+			dir="plugins/editors-xtd/pagebuilder4"
+			client="site"
+		>
+			JSN PageBuilder 4 Editor Button Plugin
+		</extension>
+		<extension
+			type="plugin"
+			folder="pagebuilder4"
+			name="integration"
+			publish="1"
+			lock="1"
+			dir="plugins/pagebuilder4/integration"
+			client="site"
+		>
+			JSN PageBuilder 4 Integration Plugin
+		</extension>
+		<extension
+			type="plugin"
+			folder="search"
+			name="pb4content"
+			publish="1"
+			lock="1"
+			dir="plugins/search/pb4content"
+			client="site"
+		>
+			JSN PageBuilder 4 Content Search Plugin
+		</extension>
+		<extension
+				type="plugin"
+				folder="search"
+				name="pb4k2items"
+				publish="1"
+				lock="1"
+				dir="plugins/search/pb4k2items"
+				client="site"
+		>
+			JSN PageBuilder 4 K2 Items Search Plugin
+		</extension>
+		<extension
+			type="plugin"
+			folder="system"
+			name="pagebuilder4"
+			publish="1"
+			lock="1"
+			dir="plugins/system/pagebuilder4"
+			client="site"
+		>
+			JSN PageBuilder 4 System Plugin
+		</extension>
+	</subinstall>
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">database/mysql/install.mysql.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">database/mysql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">database/mysql/updates</schemapath>
+		</schemas>
+	</update>
+	<files folder="components/com_pagebuilder4">
+		<folder>layouts</folder>
+	</files>
+	<administration>
+		<menu link="option=com_pagebuilder4" option="com_pagebuilder4" alt="JSN_PAGEBUILDER4_MENU_TEXT">
+			JSN_PAGEBUILDER4_MENU_TEXT
+		</menu>
+		<submenu>
+			<menu link="option=com_pagebuilder4" alt="JSN_PAGEBUILDER4_MENU_MANAGE_TEXT">
+				JSN_PAGEBUILDER4_MENU_MANAGE_TEXT
+			</menu>
+			<menu link="option=com_pagebuilder4&amp;view=config" alt="JSN_PAGEBUILDER4_MENU_SETTINGS_TEXT">
+				JSN_PAGEBUILDER4_MENU_SETTINGS_TEXT
+			</menu>
+			<menu link="option=com_pagebuilder4&amp;view=about" alt="JSN_PAGEBUILDER4_MENU_ABOUT_TEXT">
+				JSN_PAGEBUILDER4_MENU_ABOUT_TEXT
+			</menu>
+			<menu link="option=com_pagebuilder4&amp;view=help" alt="JSN_PAGEBUILDER4_MENU_HELP_TEXT">
+				JSN_PAGEBUILDER4_MENU_HELP_TEXT
+			</menu>
+		</submenu>
+		<files folder="administrator/components/com_pagebuilder4">
+			<folder>assets</folder>
+			<folder>config</folder>
+			<folder>controllers</folder>
+			<folder>database</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>libraries</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>bootstrap.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>dependency.php</filename>
+			<filename>jsninstaller.php</filename>
+			<filename>pagebuilder4.php</filename>
+			<filename>pagebuilder4.defines.php</filename>
+		</files>
+		<languages folder="administrator/components/com_pagebuilder4/language/admin">
+			<language tag="en-GB">en-GB/en-GB.com_pagebuilder4.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_pagebuilder4.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors_pagebuilder4.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors_pagebuilder4.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_pagebuilder4.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_editors-xtd_pagebuilder4.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_pagebuilder4_integration.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_pagebuilder4_integration.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_system_pagebuilder4.ini</language>
+			<language tag="en-GB">en-GB/en-GB.plg_system_pagebuilder4.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="JSN_PAGEBUILDER4_FILTER_SEARCH_LABEL"
+			description="JSN_PAGEBUILDER4_FILTER_SEARCH_DESC"
+			hint="JSEARCH_FILTER"
+		/>
+
+		<field
+			name="extension"
+			type="extensions"
+			label="JSN_PAGEBUILDER4_FILTER_EXTENSION"
+			description="JSN_PAGEBUILDER4_FILTER_EXTENSION_DESC"
+			multiple="true"
+			class="multipleExtensions"
+			onchange="this.form.submit();"
+		>
+			<option value="0">JNONE</option>
+		</field>
+
+		<field
+			name="author_id"
+			type="authors"
+			label="JSN_PAGEBUILDER4_FILTER_AUTHOR"
+			description="JSN_PAGEBUILDER4_FILTER_AUTHOR_DESC"
+			multiple="true"
+			class="multipleAuthors"
+			onchange="this.form.submit();"
+		>
+			<option value="0">JNONE</option>
+		</field>
+
+		<field
+			name="editor_id"
+			type="editors"
+			label="JSN_PAGEBUILDER4_FILTER_EDITOR"
+			description="JSN_PAGEBUILDER4_FILTER_EDITOR_DESC"
+			multiple="true"
+			class="multipleEditors"
+			onchange="this.form.submit();"
+		>
+			<option value="0">JNONE</option>
+		</field>
+
+		<input type="hidden" name="form_submitted" value="1"/>
+	</fields>
+
+	<fields name="list">
+		<field
+			name="fullordering"
+			type="list"
+			label="JSN_PAGEBUILDER4_LIST_FULL_ORDERING"
+			description="JSN_PAGEBUILDER4_LIST_FULL_ORDERING_DESC"
+			onchange="this.form.submit();"
+			default="a.id DESC"
+		>
+			<option value="state ASC">JSN_PAGEBUILDER4_STATE_ASC</option>
+			<option value="state DESC">JSN_PAGEBUILDER4_STATE_DESC</option>
+			<option value="title ASC">JSN_PAGEBUILDER4_TITLE_ASC</option>
+			<option value="title DESC">JSN_PAGEBUILDER4_TITLE_DESC</option>
+			<option value="a.extension ASC">JSN_PAGEBUILDER4_EXTENSION_ASC</option>
+			<option value="a.extension DESC">JSN_PAGEBUILDER4_EXTENSION_DESC</option>
+			<option value="author_name ASC">JSN_PAGEBUILDER4_CREATED_BY_ASC</option>
+			<option value="author_name DESC">JSN_PAGEBUILDER4_CREATED_BY_DESC</option>
+			<option value="a.created ASC">JSN_PAGEBUILDER4_CREATED_ASC</option>
+			<option value="a.created DESC">JSN_PAGEBUILDER4_CREATED_DESC</option>
+			<option value="editor_name ASC">JSN_PAGEBUILDER4_MODIFIED_BY_ASC</option>
+			<option value="editor_name DESC">JSN_PAGEBUILDER4_MODIFIED_BY_DESC</option>
+			<option value="a.modified ASC">JSN_PAGEBUILDER4_MODIFIED_ASC</option>
+			<option value="a.modified DESC">JSN_PAGEBUILDER4_MODIFIED_DESC</option>
+			<option value="revisions ASC">JSN_PAGEBUILDER4_REVISIONS_ASC</option>
+			<option value="revisions DESC">JSN_PAGEBUILDER4_REVISIONS_DESC</option>
+			<option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
+			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
+		</field>
+
+		<field
+			name="limit"
+			type="limitbox"
+			label="JSN_PAGEBUILDER4_LIST_LIMIT"
+			description="JSN_PAGEBUILDER4_LIST_LIMIT_DESC"
+			class="input-mini"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

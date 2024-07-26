@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="editors-xtd" method="upgrade">
+	<name>PLG_EDITORSXTD_PAGEBUILDER4</name>
+	<version>1.4.0</version>
+	<creationDate>02/23/2022</creationDate>
+	<author>JoomlaShine.com</author>
+	<authorEmail>admin@joomlashine.com</authorEmail>
+	<authorUrl>www.joomlashine.com</authorUrl>
+	<copyright>Copyright (C) 2013 JoomlaShine.com. All Rights Reserved.</copyright>
+	<license>GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<description>PLG_EDITORSXTD_PAGEBUILDER4_XML_DESCRIPTION</description>
+	<scriptfile>subinstall.php</scriptfile>
+  	<updateservers>
+        <server type="collection" name="JSN PageBuilder 4 Update Server">https://www.joomlashine.com/versioning/extensions/com_pagebuilder4.xml</server>
+    </updateservers>	
+	<files>
+		<folder>assets</folder>
+		<filename>index.html</filename>
+		<filename plugin="pagebuilder4">pagebuilder4.php</filename>
+		<filename>pagebuilder4.xml</filename>
+		<filename>subinstall.php</filename>
+	</files>
+</extension>
