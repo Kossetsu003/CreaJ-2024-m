@@ -99,19 +99,22 @@
     <footer class="bg-[#292526] pb-16">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
             <div>
-                <h2>Contact Us</h2>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
+                <b>
+                    <h2>Contact Us</h2>
+                </b>
+                <p>Whatsapp: wa.me/50369565421</p>
+                <p>Correo Electronico: contacto@minishop.sv</p>
+                <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
             </div>
             <div>
-                <h2>Sobre nosotros</h2>
-                <p>Informacion que un no tenemos
-                    pero que supongo que sera de vital
-                    importancia para el futuro</p>
+                <b>
+                    <b>
+                        <h2>Sobre nosotros</h2>
+                    </b>
+                </b>
+                <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el área
+                    metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
+                    locales.</p>
             </div>
             <div class="md:self-end md:justify-self-end pb-4">
                 <p class="font-black text-5xl mb-4">Mini <span class="text-blue-600">Shop</span></p>

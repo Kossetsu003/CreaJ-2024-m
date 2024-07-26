@@ -91,41 +91,54 @@
         </button>
     </div>
     @foreach ($mercadoLocals as $mercadoLocal)
-        <!--INICIO DE MERCADO-->
-        <div class="md:p-0 p-4">
-            <div
-                class="flex flex-col-reverse p-4 border rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
-                <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
-                    <h2 class="text-center font-bold text-3xl">{{ $mercadoLocal->nombre }}</h2>
-                    <p> {{ $mercadoLocal->descripcion }}</p>
-                    <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"> <a
-                            href="./UserPuestosVendedores">Ver Mercado</a></button>
-                </div>
-                <div>
-                    <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+        @if ($mercadoLocal->id % 2 != 0)
+            <!--INICIO DE MERCADO-->
+            <div class="md:p-0 p-4">
+                <div
+                    class="flex flex-col-reverse p-4 border rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
+                    <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
+                        <h2 class="text-center font-bold text-3xl">{{ $mercadoLocal->nombre }}</h2>
+                        <p> {{ $mercadoLocal->descripcion }}. Los horarios disponibles son:
+                            <b>{{ $mercadoLocal->horaentrada }}</b> hasta <b>{{ $mercadoLocal->horasalida }}</b>. Nos
+                            podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
+                            {{ $mercadoLocal->municipio }}
+                        </p>
+                        <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
+                            <a href="./UserPuestosVendedores">Ver Mercado</a></button>
+                    </div>
+                    <div>
+                        <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endforeach
     <!--FIN DE MERCADO-->
     <!--INICIO DE MERCADO-->
-    <div class="md:p-0 p-4 bg-[#334765] text-white">
-        <div
-            class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
+    @foreach ($mercadoLocals as $mercadoLocal)
+        @if ($mercadoLocal->id % 2 != 1)
+            <div class="md:p-0 p-4 bg-[#334765] text-white">
+                <div
+                    class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
 
-            <div>
-                <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                    <div>
+                        <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                    </div>
+                    <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
+                        <h2 class="text-center font-bold text-3xl">{{ $mercadoLocal->nombre }}</h2>
+                        <p> {{ $mercadoLocal->descripcion }}. Los horarios disponibles son:
+                            <b>{{ $mercadoLocal->horaentrada }}</b> hasta <b>{{ $mercadoLocal->horasalida }}</b>. Nos
+                            podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
+                            {{ $mercadoLocal->municipio }}
+                        </p>
+                        <button
+                            class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a
+                                href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
+                    </div>
+                </div>
             </div>
-            <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
-                <h2 class="text-center font-bold text-3xl">Mercado Excuartel</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi maecenas quis interdum enim enim
-                    molestie faucibus. Pretium non non massa eros, nunc, urna. Ac laoreet sagittis donec vel. Amet, duis
-                    justo, quam quisque egestas. Quam enim at dictum condimentum. Suspendisse.</p>
-                <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a
-                        href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
-            </div>
-        </div>
-    </div>
+        @endif
+    @endforeach
     <!--FIN DE MERCADO-->
 
 
@@ -134,49 +147,41 @@
     <div class="mt-6 p-4">
         <h2 class="text-center font-bold mb-4 text-3xl">Puestos Populares</h2>
         <div class="flex flex-col md:grid grid-cols-3 gap-6">
+            <!--INICIO DE VENDEDOR-->
+            @foreach ($vendedors->take(3) as $vendedor)
             <div>
                 <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
-                <h3 class="font-bold text-lg">Puesto 1</h3>
+                <h3 class="font-bold text-lg">Puesto de {{ $vendedor->nombre }} en {{ $vendedor->mercadoLocal->nombre }}</h3>
                 <div class="flex gap-2 items-center">
                     <p>Ver Puesto </p>
                     <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">
                 </div>
             </div>
-            <div>
-                <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
-                <h3 class="font-bold text-lg">Puesto 1</h3>
-                <div class="flex gap-2 items-center">
-                    <p>Ver Puesto </p>
-                    <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">
-                </div>
-            </div>
-            <div>
-                <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
-                <h3 class="font-bold text-lg">Puesto 1</h3>
-                <div class="flex gap-2 items-center">
-                    <p>Ver Puesto </p>
-                    <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">
-                </div>
-            </div>
+            <!--FIN DE VENDEDOR-->
+            @endforeach
+
         </div>
     </div>
 
     <footer class="bg-[#292526] pb-16">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
             <div>
-                <h2>Contact Us</h2>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
-                <p>Misiones a Futuro</p>
+                <b><b>
+                        <h2>Contact Us</h2>
+                    </b></b>
+
+                <p>Whatsapp: wa.me/50369565421</p>
+                <p>Correo Electronico: contacto@minishop.sv</p>
+                <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
+
             </div>
             <div>
-                <h2>Sobre nosotros</h2>
-                <p>Informacion que un no tenemos
-                    pero que supongo que sera de vital
-                    importancia para el futuro</p>
+                <b>
+                    <h2>Sobre nosotros</h2>
+                </b>
+                <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el área
+                    metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
+                    locales.</p>
             </div>
             <div class="md:self-end md:justify-self-end pb-4">
                 <p class="font-black text-5xl mb-4">Mini <span class="text-blue-600">Shop</span></p>

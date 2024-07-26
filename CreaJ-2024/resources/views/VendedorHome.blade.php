@@ -253,7 +253,9 @@
                     <footer class="bg-[#292526] pb-16">
                         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
                             <div>
-                                <h2>Contact Us</h2>
+                                <b>
+                                    <h2>Contact Us</h2>
+                                </b>
                                 <p>Misiones a Futuro</p>
                                 <p>Misiones a Futuro</p>
                                 <p>Misiones a Futuro</p>
@@ -262,7 +264,11 @@
                                 <p>Misiones a Futuro</p>
                             </div>
                             <div>
-                                <h2>Sobre nosotros</h2>
+                                <b>
+                                    <b>
+                                        <h2>Sobre nosotros</h2>
+                                    </b>
+                                </b>
                                 <p>Informacion que un no tenemos
                                     pero que supongo que sera de vital
                                     importancia para el futuro</p>

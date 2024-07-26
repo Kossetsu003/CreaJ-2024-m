@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vendedor;
 use App\Models\MercadoLocal;
 use App\Http\Requests\MercadoLocalRequest;
 use Illuminate\Support\Facades\Session;
@@ -21,9 +22,15 @@ class MercadoLocalController extends Controller
     public function index()
     {
         $mercadoLocals = MercadoLocal::paginate();
+        $vendedors = Vendedor::paginate();
 
-        return view('UserHome ', compact('mercadoLocals'))
-            ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
+        $iVendedors = (request()->input('page', 1) - 1) * $vendedors->perPage();
+        $iMercadoLocals = (request()->input('page', 1) - 1) * $mercadoLocals->perPage();
+
+        // Retorna la vista 'UserHome' con los datos paginados
+        return view('UserHome', compact('vendedors', 'mercadoLocals'))
+        ->with('iVendedors', $iVendedors)
+        ->with('iMercadoLocals', $iMercadoLocals);
     }
 
     /**
