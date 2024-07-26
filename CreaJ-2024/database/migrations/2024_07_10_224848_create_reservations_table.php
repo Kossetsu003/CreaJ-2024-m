@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->decimal('total');
+            //Usuario perteneciente
             $table->unsignedBigInteger('FK_users');
             $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->string('estado')->default("enviado");
+            $table->string('retiro')->default("Entrada del Mercado");
         });
 
 

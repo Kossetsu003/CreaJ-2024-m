@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('reservation_items', function (Blueprint $table) {
             $table->id();
+            //reservation
             $table->unsignedBigInteger('fk_reservation');
+            //product anclado
            $table->unsignedBigInteger('fk_product');
+           $table->unsignedBigInteger('fk_vendedors');
            $table->string('product_name')->nullable();
            $table->integer('quantity');
            $table->decimal('subtotal',10,2)->default(1);
-
+            $table->foreign('fk_vendedors')->references('id')->on('vendedors')->onDelete('cascade');
            $table->foreign('fk_reservation')->references('id')->on('reservations')->onDelete('cascade');
            $table->foreign('fk_product')->references('id')->on('products')->onDelete('cascade');
+           $table->string('esstado')->default("no listo");
             $table->timestamps();
         });
     }

@@ -33,7 +33,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 
 /*Vistas Principales*/
-//Route::view('/','2Index')->name('Index');
+Route::view('/','2Index')->name('Index');
 
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
@@ -112,7 +112,7 @@ Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::c
 
 // Auth::routes();
 //ROUTES POR CONTROLADORES
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
@@ -129,15 +129,14 @@ Route::resource('exhibicionproductos', ExhibicionproductoController::class);
 Route::resource('admin-mercado-locals', AdminMercadoLocalController::class);
 
 // Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
 //CARRITOOOO
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('layout');
-});
+});*/
 
 
 //Route::resource('users', UserController::class);
