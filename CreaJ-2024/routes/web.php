@@ -33,7 +33,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 
 /*Vistas Principales*/
-Route::view('/','2Index')->name('Index');
+Route::view('/','Index')->name('Index');
 
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
