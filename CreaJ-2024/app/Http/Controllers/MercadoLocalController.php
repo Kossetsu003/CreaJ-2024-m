@@ -22,7 +22,7 @@ class MercadoLocalController extends Controller
     {
         $mercadoLocals = MercadoLocal::paginate();
 
-        return view('mercado-local.index ', compact('mercadoLocals'))
+        return view('UserHome ', compact('mercadoLocals'))
             ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
     }
 
@@ -48,11 +48,11 @@ class MercadoLocalController extends Controller
 
         //Aqui me los une
         MercadoLocal::create([
-          
+
             'usuario' => $UsuarioMercadoLocal . '@minishop.sv', // Generar un correo basado en el username
-           
+
         ]);
-       
+
 //Aqui me los manda
         return redirect()->route('mercado-locals.index')
 
@@ -64,6 +64,7 @@ class MercadoLocalController extends Controller
      */
     public function show($id)
     {
+        $id = 1;
         $mercadoLocal = MercadoLocal::find($id);
 
         return view('mercado-local.show', compact('mercadoLocal'));
