@@ -15,7 +15,7 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            MiniShop
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"

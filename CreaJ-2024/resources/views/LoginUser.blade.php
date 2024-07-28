@@ -49,23 +49,15 @@
             </form>
                     <div class="hidden md:flex items-center mt-8">
                         <div class="flex-grow border-t border-gray-400"></div>
-                        <span class="px-4 text-xs">Or sign up with</span>
+                        <span class="px-4 text-xs">O</span>
                         <div class="flex-grow border-t border-gray-400"></div>
-                    </div>
-                    <div class="hidden md:flex gap-3 justify-center mt-10">
-                        <div class="bg-white rounded-md w-16 p-2">
-                            <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="Google Icon">
-                        </div>
-                        <div class="bg-white rounded-md w-16 p-2">
-                            <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="Google Icon">
-                        </div>
-                        <div class="bg-white rounded-md w-16 p-2">
-                            <img class="w-5 mx-auto" src="{{ asset('imgs/google.png') }}" alt="Google Icon">
-                        </div>
+
                     </div>
                     <div class="mt-11">
                         <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('RegistroUser') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
                     </div>
+                    
+
                 </div>
 
         </div>

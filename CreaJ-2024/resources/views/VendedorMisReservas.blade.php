@@ -8,13 +8,13 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
- 
+
         <!-- Desktop Navbar -->
         <div
         class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
     >
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            MiniShop
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         <div class="flex gap-8">
             <a
@@ -106,7 +106,7 @@
                 </div>
                 <span class="px-3 w-fit py-1 text-sm font-semibold bg-gray-200 text-gray-800 rounded-full">Entregado</span>
               </div>
-          
+
               <div class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                 <div class="flex items-center">
                   <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto" class="w-16 h-16 rounded-md mr-4">
@@ -119,7 +119,7 @@
               </div>
             </div>
           </div>
-          
+
     </main>
 </body>
 </html>
