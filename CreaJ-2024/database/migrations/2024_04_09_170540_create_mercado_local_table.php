@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nombre');
             $table->double('ROL')->unsigned()->nullable()->default(2);
-            $table->binary('imagen_referencia')->nullable();
+            $table->string('imagen_referencia')->nullable();
             $table->string('municipio');
             $table->string('ubicacion');
             $table->string('horaentrada');

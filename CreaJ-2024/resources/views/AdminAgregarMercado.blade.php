@@ -80,7 +80,7 @@
 
                 </div>
                 <div class="flex justify-center">
-                    <textarea required name="descripcion" class="border-1 rounded border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"  id="descripcion" >{{ old('descripcion', $mercadoLocal?->descripcion) }}</textarea>
+                    <textarea maxlength="220" required name="descripcion" class="border-1 rounded border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"  id="descripcion" >{{ old('descripcion', $mercadoLocal?->descripcion) }}</textarea>
                     {!! $errors->first('descripcion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                 </div>
 

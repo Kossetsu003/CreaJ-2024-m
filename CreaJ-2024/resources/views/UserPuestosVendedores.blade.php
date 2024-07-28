@@ -55,7 +55,7 @@
     </div>
     <!-- INICIO BANNER -->
     <div class="w-screen hidden md:block">
-        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/banner2.png') }}" alt="Banner Image">
+        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="Banner Image">
     </div>
     <!-- FIN BANNER -->
 

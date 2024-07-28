@@ -115,22 +115,19 @@
                         </a>
                     </div>
                     <div>
-                        <img class="w-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                        <img class="w-full object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="">
                     </div>
                 </div>
             </div>
         @endif
-    @endforeach
-    <!--FIN DE MERCADO-->
-    <!--INICIO DE MERCADO-->
-    @foreach ($mercadoLocals as $mercadoLocal)
+
         @if ($mercadoLocal->id % 2 != 1)
             <div class="md:p-0 p-4 bg-[#334765] text-white">
                 <div
                     class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
 
                     <div>
-                        <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                        <img class="h-full w-full object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="">
                     </div>
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">{{ $mercadoLocal->nombre }}</h2>

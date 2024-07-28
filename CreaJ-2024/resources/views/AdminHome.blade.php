@@ -81,7 +81,7 @@
 
                 <a href="{{ route('admin-mercado-locals.show',$mercadoLocal->id) }}" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
                     <div>
-                        <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="User Icon">
+                        <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="{{ $mercadoLocal->imagen_referencia }}">
                         <div class="text-center mt-2">
                             <h1 class="text-sm font-bold">{{ $mercadoLocal->nombre }}</h1>
                             <h3 class="w-[85%] mx-auto text-xs text-justify pb-5">El {{ $mercadoLocal->nombre }} se encuentra en {{ $mercadoLocal->ubicacion }}, en el municipio de {{ $mercadoLocal->municipio }}. En el horario siguiente: {{ $mercadoLocal->horaentrada }} - {{ $mercadoLocal->horasalida }}. {{ $mercadoLocal->descripcion }}</h3>
