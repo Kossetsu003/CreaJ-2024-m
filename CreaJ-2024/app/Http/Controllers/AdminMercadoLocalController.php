@@ -55,14 +55,14 @@ class AdminMercadoLocalController extends Controller
 
         $nombreLimpio = str_replace(' ', '', $request->nombre);
         $usuario = strtolower($nombreLimpio) . '@minishop.sv';
-        $contrasena = '1' . strtolower($nombreLimpio) . '!';
+        $password = '1' . strtolower($nombreLimpio) . '!';
 
         $mercadolocal = new MercadoLocal();
 
         $mercadolocal->usuario = $usuario;
 
 
-        $mercadolocal ->contrasena = Hash::make($contrasena);
+        $mercadolocal ->password = Hash::make($password);
 
         $mercadolocal->nombre = $request->nombre;
         $mercadolocal->imagen_referencia = $request->imagen_referencia;
@@ -78,7 +78,7 @@ class AdminMercadoLocalController extends Controller
 
         return redirect()->route('admin-mercado-locals.confirmation')->with([
             'usuario' => $usuario,
-            'contrasena' => $contrasena,
+            'password' => $password,
         ]);
 
         }

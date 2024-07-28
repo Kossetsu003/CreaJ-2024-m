@@ -22,15 +22,28 @@
             </div>
             <form method="POST" action="{{ route('admin-mercado-locals.store') }}"  role="form" enctype="multipart/form-data">
                 @csrf
+
+
             <div class="mt-20 space-y-4">
+
+                <!--INICIO DE INPUT DE LA FOTO-->
                 <div class="flex justify-between">
-                    <!--<label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
-                        <span class="text-gray-400 text-xs">Imagen del mercado</span>-->
-                        <input required type="hidden" name="imagen_referencia" class="hidden border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('imagen_referencia') is-invalid @enderror" value="FOTO" id="imagen_referencia" placeholder="Imagen Referencia">
+                    <label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
+                        <span id="file-name" class="text-gray-400 text-xs">Imagen del mercado</span>
+                        <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_referencia" class="hidden" id="imagen_referencia">
                         {!! $errors->first('imagen_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-                       <!-- <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
-                    </label>-->
+                        <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
+                    </label>
                 </div>
+
+                <!--INICIO DE LA PREVIEW-->
+                <div>
+                    <p class="text-gray-400 text-xs text-center">Su foto se veria asi: </p>
+                </div>
+                <div class="mt-4">
+                    <img id="img-preview" class="max-w-xs max-h-xs hidden rounded-md border" src="#" alt="Vista Previa de Imagen">
+                </div>
+
 
 
                 <div class="flex justify-center">
@@ -112,8 +125,31 @@
     </div>
      <!--FIN DE NAVBAR MOBIL-->
     </section>
+    <script>
+        document.getElementById('imagen_referencia').addEventListener('change', function(event) {
+            const input = event.target;
+            const preview = document.getElementById('img-preview');
+            const fileNameSpan = document.getElementById('file-name');
 
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+
+                // Mostrar el nombre del archivo seleccionado
+                fileNameSpan.textContent = input.files[0].name;
+            } else {
+                preview.src = '#';
+                preview.classList.add('hidden');
+                fileNameSpan.textContent = 'Imagen del mercado';
+            }
+        });
+    </script>
 
 </body>
 </html>
+
 

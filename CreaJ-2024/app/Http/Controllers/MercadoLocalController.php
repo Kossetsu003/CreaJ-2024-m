@@ -70,12 +70,17 @@ class MercadoLocalController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    {
-        $id = 1;
-        $mercadoLocal = MercadoLocal::find($id);
+{
+    // Buscar el mercado local por ID
+    $mercadoLocal = MercadoLocal::find($id);
 
-        return view('mercado-local.show', compact('mercadoLocal'));
-    }
+    // Obtener los vendedores con fk_mercado igual al ID del mercado local con paginación
+    $vendedors = Vendedor::where('fk_mercado', $id)->paginate();
+
+    // Retornar la vista con ambos datos
+    return view('UserPuestosVendedores', compact('mercadoLocal', 'vendedors'))
+        ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
+}
 
     /**
      * Show the form for editing the specified resource.

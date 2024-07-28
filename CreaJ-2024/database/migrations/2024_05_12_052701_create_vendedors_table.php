@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('ROL')->unsigned()->nullable()->default(3);
             $table->string('password');
             $table->string('nombre');
+            $table->string('nombredellocal')->nullable();
             $table->string('apellidos')->nullable();
             $table->string('telefono')->nullable();
             $table->Integer('numero_puesto');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->foreign('fk_mercado')->references('id')->on('mercado_locals')->onDelete('cascade');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->string('clasificacion')->nullable();
         });
 
     }

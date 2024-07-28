@@ -104,7 +104,7 @@
                             {{ $mercadoLocal->municipio }}
                         </p>
                         <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
-                            <a href="./UserPuestosVendedores">Ver Mercado</a></button>
+                            <a href="{{ route('mercado-locals.show',$mercadoLocal->id) }}">Ver Mercado</a></button>
                     </div>
                     <div>
                         <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
@@ -133,7 +133,7 @@
                         </p>
                         <button
                             class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a
-                                href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
+                                href="{{ route('mercado-locals.show',$mercadoLocal->id) }}">Ver Mercado</a></button>
                     </div>
                 </div>
             </div>
