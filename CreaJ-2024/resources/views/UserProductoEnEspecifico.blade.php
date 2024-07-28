@@ -13,9 +13,11 @@
 <body>
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <a href="{{ route('mercado-locals.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
+        </a>
         <div class="flex items-center">
             <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
                 <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />

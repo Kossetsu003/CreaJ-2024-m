@@ -17,12 +17,13 @@
         </h1>
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="./UserCarritoGeneral"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
             <a href="./UserEstadoPedidos"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="./UserProfileVista"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
 
