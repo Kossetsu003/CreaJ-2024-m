@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,14 +61,14 @@
     <!-- FIN BANNER -->
 
     <div class="mt-14 w-full mx-auto md:text-[30px]">
-        <div class="flex justify-center w-full mx-auto">
+        <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">
             <!-- Contenedor Principal -->
             <div>
                 <!-- TITULO -->
-                <div class="font-bold text-[4rem]">
+                <div class="md:font-bold text-[2rem] md:text-[4rem] ">
                     {{ $mercadoLocal->nombre }}
                 </div>
-                <div class="text-center font-semibold">
+                <div class="md:text-center md:font-semibold font-bold">
                     Ubicado En: {{ $mercadoLocal->municipio }}
                 </div>
             </div>
@@ -79,7 +80,7 @@
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
 
             @foreach ($vendedors as $vendedor)
-            <div class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2">
+            <a href="{{ route('vendedors.show',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:bg-gray-100 hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
                     src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
                 <h3 class="font-bold mt-5">{{ $vendedor->nombredellocal }}</h3>
@@ -91,7 +92,7 @@
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
 
         </div>
@@ -135,6 +136,9 @@
         </div>
         <div class="w-full h-[2px] bg-white"></div>
     </footer>
+    <!-- Paginación -->
+
+
 </body>
 
 </html>
