@@ -14,6 +14,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $ROL
  * @property $password
  * @property $nombre
+ * @property $nombre_del_local
+ * @property $imagen_de_referencia
+ * @property $clasificacion
  * @property $apellidos
  * @property $telefono
  * @property $numero_puesto
@@ -39,8 +42,11 @@ class Vendedor extends Authenticatable
     protected $fillable = [
         'usuario',
         'ROL',
-        'password', // Cambiado de 'contrasena' a 'password'
+        'password',
         'nombre',
+        'nombre_del_local',
+        'imagen_de_referencia',
+        'clasificacion',
         'apellidos',
         'telefono',
         'numero_puesto',

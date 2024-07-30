@@ -56,7 +56,7 @@
     <div class="mt-14 w-full mx-auto md:text-[30px]">
 
         <div class="w-screen hidden md:block object-center">
-            <img class="w-[15rem] h-[15rem] object-cover object-center rounded-full mx-auto" src="{{ asset('imgs/'.$vendedor->imagen_referencia) }}" alt="Banner Image">
+            <img class="w-[15rem] h-[15rem] object-cover object-center rounded-full mx-auto" src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="Banner Image">
         </div>
 
         <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">

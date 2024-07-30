@@ -82,11 +82,11 @@
             @foreach ($vendedors as $vendedor)
             <a href="{{ route('vendedors.show',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:bg-gray-100 hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">{{ $vendedor->nombre_del_local }}</h3>
+                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="{{ $vendedor->imagen_de_referencia) }}">
+                <h3 class="font-bold mt-5 text-[1.5rem]">{{ $vendedor->nombre_del_local }}</h3>
                 <h3 class="mb-2">Tienda de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <b><h3>{{ $vendedor->clasificacion }}</h3></b>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">

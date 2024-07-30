@@ -157,7 +157,7 @@
             <!--INICIO DE VENDEDOR-->
             @foreach ($vendedors->take(3) as $vendedor)
             <div>
-                <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                <img src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="">
                 <h3 class="font-bold text-lg">Puesto de {{ $vendedor->nombre }} en {{ $vendedor->mercadoLocal->nombre }}</h3>
             <a href="{{ route('vendedors.show',$vendedor->id) }}">
                 <div class="flex gap-2 items-center">

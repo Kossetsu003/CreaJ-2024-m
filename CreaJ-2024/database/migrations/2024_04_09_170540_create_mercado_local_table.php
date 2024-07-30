@@ -31,23 +31,35 @@ return new class extends Migration
         $password = 'MercadoCentral1';
         $hash = Hash::make($password);
 
-DB::insert('insert into mercado_locals (id, usuario, password, nombre, ROL, imagen_referencia, municipio, ubicacion, horaentrada, horasalida, descripcion, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-    1,
-    'MercadoCentral@SanSalvadorCentro.sv',
-    $hash,
-    'Mercado Central',
-    2,
-    'foto',
-    'San Salvador Centro',
-    '3av norte y 1a calle poniente, san salvador centro',
-    '0850',
-    '2030',
-    'El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.',
-    now(),
-    now()
-]);
-
-
+        DB::insert('insert into mercado_locals (
+            id,
+            usuario,
+            password,
+            nombre,
+            ROL,
+            imagen_referencia,
+            municipio,
+            ubicacion,
+            horaentrada,
+            horasalida,
+            descripcion,
+            created_at,
+            updated_at)
+            values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            1,
+            'MercadoCentral@SanSalvadorCentro.sv',
+            $hash,
+            'Mercado Central',
+            2,
+            'mercadocentral.png',
+            'San Salvador Centro',
+            '3av norte y 1a calle poniente, san salvador centro',
+            '0850',
+            '2030',
+            'El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.',
+            now(),
+            now()
+        ]);
     }
 
     /**

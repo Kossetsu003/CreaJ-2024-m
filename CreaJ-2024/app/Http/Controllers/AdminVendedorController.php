@@ -36,53 +36,65 @@ class AdminVendedorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(VendedorRequest $request)
     {
-       // Validar los datos del formulario
-            $validator = Validator::make($request->all(), [
-                'usuario' => 'required|email|unique:vendedors',
-                'nombre' => 'required|string|max:255',
-                'apellidos' => 'required|string|max:255',
-                'telefono' => 'required|string|max:20|unique:vendedors',
-                'numero_puesto' => 'required|string|max:255|unique:vendedors',
-                'contrasena' => 'required|string|min:8|confirmed',
-            ]);
+        // Validar los datos del formulario
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:vendedors',
+            'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nombre' => 'required|string|max:255',
+            'nombre_del_local' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:vendedors',
+            'numero_puesto' => 'required|integer|unique:vendedors',
+            'contrasena' => 'required|string|min:8|confirmed',
+            'clasificacion' => 'required|string|max:255',
+            'fk_mercado' => 'required|exists:mercado_locals,id',
+        ]);
 
-            // Verificar si la validación falla
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-            // Verificar si ya existen datos iguales en la base de datos
-            if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists() || Vendedor::where('numero_puesto', $request->numero_puesto)->exists()) {
-                return redirect()->back()
-                    ->withInput()
-                    ->with('error', 'Ya existe un vendedor con el mismo Correo Electrónico, Teléfono o con ese mismo Numero de Puesto.');
-            }
+        // Verificar si ya existen datos iguales en la base de datos
+        if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists() || Vendedor::where('numero_puesto', $request->numero_puesto)->exists()) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Ya existe un vendedor con el mismo Correo Electrónico, Teléfono o con ese mismo Numero de Puesto.');
+        }
 
-            // Crear vendedor si la validación pasa y no hay datos repetidos
-            $vendedor = Vendedor::create([
-                'usuario' => $request->usuario,
-                'nombre' => $request->nombre,
-                'apellidos' => $request->apellidos,
-                'telefono' => $request->telefono,
-                'numero_puesto' => $request->numero_puesto,
-                'fk_mercado' => 1, // Valor predeterminado
-                'contrasena' => bcrypt($request->contrasena), // Encriptar la contraseña
-            ]);
+        // Crear vendedor si la validación pasa y no hay datos repetidos
+        $vendedor = new Vendedor();
+        $vendedor->usuario = $request->usuario;
+        $vendedor->nombre = $request->nombre;
+        $vendedor->nombre_del_local = $request->nombre_del_local;
+        $vendedor->apellidos = $request->apellidos;
+        $vendedor->telefono = $request->telefono;
+        $vendedor->numero_puesto = $request->numero_puesto;
+        $vendedor->fk_mercado = $request->fk_mercado;
+        $vendedor->password = Hash::make($request->contrasena); // Encriptar la contraseña
+        $vendedor->clasificacion = $request->clasificacion;
 
-            // Verificar si ya existen datos iguales en la base de datos
+        // Manejar la carga de la imagen
+        if ($request->hasFile('imagen_referencia')) {
+            $file = $request->file('imagen_referencia');
+            $imageName = $request->nombre . '_' . $request->nombre_del_local . '.png';
+            $file->move(public_path('imgs'), $imageName);
+            $vendedor->imagen_referencia = $imageName;
+        }
 
+        $vendedor->save();
 
-            return redirect()->route('admin-vendedors.index')
-                ->with('success', 'Vendedor creado exitosamente.');
-
+        return redirect()->route('admin-vendedors.index')
+            ->with('success', 'Vendedor creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
+    /* Display the specified resource.
      */
     public function show($id)
     {
