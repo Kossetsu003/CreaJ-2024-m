@@ -159,10 +159,12 @@
             <div>
                 <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
                 <h3 class="font-bold text-lg">Puesto de {{ $vendedor->nombre }} en {{ $vendedor->mercadoLocal->nombre }}</h3>
+            <a href="{{ route('vendedors.show',$vendedor->id) }}">
                 <div class="flex gap-2 items-center">
                     <p>Ver Puesto </p>
                     <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">
                 </div>
+            </a>
             </div>
             <!--FIN DE VENDEDOR-->
             @endforeach

@@ -31,7 +31,7 @@
     </div>
     <!-- Mobile Navbar -->
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+        <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
@@ -83,7 +83,7 @@
             <a href="{{ route('vendedors.show',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:bg-gray-100 hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
                     src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">{{ $vendedor->nombredellocal }}</h3>
+                <h3 class="font-bold mt-5">{{ $vendedor->nombre_del_local }}</h3>
                 <h3 class="mb-2">Tienda de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
                 <div class="flex justify-between">
                     <h3>Ropa</h3>

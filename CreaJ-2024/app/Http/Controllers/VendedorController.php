@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
+use App\Models\MercadoLocal;
+use App\Models\Product;
 use App\Http\Requests\VendedorRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -92,7 +94,17 @@ class VendedorController extends Controller
     {
         $vendedor = Vendedor::find($id);
 
-        return view('vendedor.show', compact('vendedor'));
+        if(!$vendedor) {
+            return redirect()->back()->with('error','Vendedor no encontrado');
+        }
+
+        //Esta variable es para sacar el nombre del fk__mercadolocal
+        $mercadoLocal = $vendedor->mercadoLocal;
+
+        //esta varaible es para sacar los productos
+        $products = Product::where('fk_vendedors',$id)->paginate();
+
+        return view('UserProductosDeUnPuesto', compact('vendedor','mercadoLocal','products'))->with('i',(request()->input('page',1) - 1) * $products->perPage());
     }
 
     /**

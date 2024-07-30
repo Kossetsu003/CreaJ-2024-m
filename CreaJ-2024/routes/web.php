@@ -7,7 +7,6 @@ use App\Http\Controllers\AdminClienteController;
 use App\Http\Controllers\AdminVendedorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminMercadoLocalController;
-use App\Http\Controllers\ExhibicionproductoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
@@ -124,9 +123,6 @@ Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 
 
-//PROUDUCTOS DEL VENDEDOR
-Route::resource('exhibicionproductos', ExhibicionproductoController::class);
-
 
 
 
@@ -149,7 +145,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //CARRITOO
-
+Route::resource('products', ProductController::class);
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');

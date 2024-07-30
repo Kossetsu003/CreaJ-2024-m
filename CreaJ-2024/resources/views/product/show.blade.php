@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $exhibicionproducto->name ?? __('Show') . " " . __('Exhibicionproducto') }}
+    {{ $product->name ?? __('Show') . " " . __('Product') }}
 @endsection
 
 @section('content')
@@ -11,38 +11,30 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Exhibicionproducto</span>
+                            <span class="card-title">{{ __('Show') }} Product</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('exhibicionproductos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('products.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body bg-white">
                         
                         <div class="form-group mb-2 mb20">
-                            <strong>Imagen:</strong>
-                            {{ $exhibicionproducto->Imagen }}
+                            <strong>Name:</strong>
+                            {{ $product->name }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Nombre:</strong>
-                            {{ $exhibicionproducto->Nombre }}
+                            <strong>Description:</strong>
+                            {{ $product->description }}
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Descripcion:</strong>
-                            {{ $exhibicionproducto->Descripcion }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Precio:</strong>
-                            {{ $exhibicionproducto->Precio }}
+                            <strong>Price:</strong>
+                            {{ $product->price }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Fk Vendedors:</strong>
-                            {{ $exhibicionproducto->fk_vendedors }}
-                        </div>
-                        <div class="form-group mb-2 mb20">
-                            <strong>Estado:</strong>
-                            {{ $exhibicionproducto->Estado }}
+                            {{ $product->fk_vendedors }}
                         </div>
 
                     </div>
