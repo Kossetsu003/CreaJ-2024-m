@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable;
             $table->decimal('price',8,2);
+            $table->string('imagen_referencia')->nullable();
+            $table->string('categoria');
             $table->timestamps();
             $table->unsignedBigInteger('fk_vendedors');
             $table -> foreign('fk_vendedors') -> references('id') -> on('vendedors') -> onDelete('cascade');

@@ -79,9 +79,10 @@
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
 
             @foreach ($products as $product)
-            <div class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:bg-gray-100 hover:ease-in-out rounded-md">
+
+            <a href="{{ route('products.show', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
+                    src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                 <div class="flex ">
                     <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
                         {{ $product->name }}
@@ -98,7 +99,9 @@
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
-            </div>
+            </a>
+
+
             @endforeach
 
         </div>

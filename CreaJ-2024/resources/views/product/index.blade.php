@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Name</th>
 										<th>Description</th>
 										<th>Price</th>
@@ -48,7 +48,7 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $product->name }}</td>
 											<td>{{ $product->description }}</td>
 											<td>{{ $product->price }}</td>

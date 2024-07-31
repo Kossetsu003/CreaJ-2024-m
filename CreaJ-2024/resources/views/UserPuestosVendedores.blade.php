@@ -80,9 +80,9 @@
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
 
             @foreach ($vendedors as $vendedor)
-            <a href="{{ route('vendedors.show',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:bg-gray-100 hover:ease-in-out rounded-md">
+            <a href="{{ route('vendedors.show',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="{{ $vendedor->imagen_de_referencia) }}">
+                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="{{ $vendedor->imagen_de_referencia }}">
                 <h3 class="font-bold mt-5 text-[1.5rem]">{{ $vendedor->nombre_del_local }}</h3>
                 <h3 class="mb-2">Tienda de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
                 <div class="flex justify-between">

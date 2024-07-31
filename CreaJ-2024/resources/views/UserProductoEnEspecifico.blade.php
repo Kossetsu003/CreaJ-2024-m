@@ -18,30 +18,20 @@
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
-        <div class="flex items-center">
-            <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
-                <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
-            </a>
-        </div>
-        <div class="flex items-center">
-            <a href="./UserCarritoGeneral">
-                <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
-            </a>
-        </div>
-        <div class="flex items-center">
-            <a href="./UserEstadoPedidos">
-                <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
-            </a>c
-        </div>
-        <div class="flex items-center">
-            <a href="./UserProfileVista">
-                <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
-            </a>
+        <div class="flex gap-8">
+            <a href="{{ route('mercado-locals.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="./UserCarritoGeneral"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+            <a href="./UserEstadoPedidos"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+            <a href="./UserProfileVista"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+        <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
@@ -64,13 +54,14 @@
             </div>
         </div>
     </div>
+
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <img class="rounded-lg w-full shadow-lg" src="{{ asset('imgs/NaranjasQuintal.jpg') }}"
-                alt="Naranjas Quintal">
+            <img class="rounded-lg w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
+                alt="{{ $product->imagen_referencia }}">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="font-bold text-2xl lg:text-3xl text-gray-800">Ciento de Naranjas</h2>
+                    <h2 class="font-bold text-2xl lg:text-3xl text-gray-800"> {{ $product->name }}</h2>
                     <div class="flex items-center space-x-2">
                         <button
                             class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">-</button>
@@ -90,14 +81,13 @@
                 </div>
 
                 <p class="text-gray-600 mb-4 text-lg">
-                    Vendo Ciento de Naranjas Valencia en El Mercado Ex-Cuartel, jugosas y ácidas perfectas para fresco.
-                    Recién cortadas desde La Libertad a $9.00 el ciento.
+                    {{ $product->description }}
                 </p>
                 <hr class="my-4">
 
                 <div class="mb-6">
                     <h3 class="font-bold text-xl lg:text-2xl text-gray-800">Precio</h3>
-                    <p class="text-xl lg:text-2xl text-gray-900">$9.00</p>
+                    <p class="text-xl lg:text-2xl text-gray-900">${{ $product->price }}</p>
                 </div>
 
                 <button
@@ -112,24 +102,18 @@
         <div class="mt-16">
             <h2 class="text-2xl lg:text-3xl font-bold text-gray-800 mb-8">Productos Recomendados</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($products as $product)
                 <!-- Product Card 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/RopaFoto.jpg') }}" alt="Producto 1">
-                    <h3 class="font-bold text-lg text-gray-800">Producto 1</h3>
-                    <p class="text-gray-600 mb-4">Descripción breve del producto 1. Precio: $5.00</p>
-                </div>
+                <a href="{{ route('products.show', $product->id) }}" class="bg-white p-6 rounded-lg shadow-lg">
+                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="Producto 1">
+                    <h3 class="font-bold text-lg text-gray-800">{{ $product->name }}</h3>
+                    <p class="text-gray-600 mb-4">{{ $product->vendedor->nombre_del_local }}. Precio: ${{ $product->price }}</p>
+                </a>
+                @endforeach
                 <!-- Product Card 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/RopaFoto.jpg') }}" alt="Producto 2">
-                    <h3 class="font-bold text-lg text-gray-800">Producto 2</h3>
-                    <p class="text-gray-600 mb-4">Descripción breve del producto 2. Precio: $7.50</p>
-                </div>
+
                 <!-- Product Card 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/RopaFoto.jpg') }}" alt="Producto 3">
-                    <h3 class="font-bold text-lg text-gray-800">Producto 3</h3>
-                    <p class="text-gray-600 mb-4">Descripción breve del producto 3. Precio: $6.00</p>
-                </div>
+
             </div>
         </div>
     </div>

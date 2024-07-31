@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Vendedor;
 use App\Http\Requests\ProductRequest;
 
 /**
@@ -46,11 +47,19 @@ class ProductController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    {
-        $product = Product::find($id);
+{
+    // Obtener el producto específico por su ID
+    $product = Product::find($id);
 
-        return view('product.show', compact('product'));
-    }
+    // Obtener todos los productos con paginación
+    $products = Product::where('id', '!=', $id)->paginate();
+    $vendedor = $product->vendedor;
+
+    // Retornar la vista con ambos datos
+    return view('UserProductoEnEspecifico', compact('product', 'products','vendedor'))
+        ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+}
+
 
     /**
      * Show the form for editing the specified resource.
