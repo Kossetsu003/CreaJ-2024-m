@@ -10,6 +10,27 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+     <!-- Desktop Navbar -->
+     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+
+        <a href="{{ route('admin-mercado-locals.index') }}">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+            Admin <span class="text-blue-600"><b>Shop</b></span>
+        </h1>
+        </a>
+
+        <div class="flex gap-8">
+            <a href="{{ route('admin-mercado-locals.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="{{ route('admin-vendedors.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
+            <a href="{{ route('admin-clientes.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Clientes</a>
+            <a href="{{ route('AdminProfileVista')}}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+        </div>
+    </div>
+    
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
             <!--INICIO DE NAVBAR MOBIL-->

@@ -26,8 +26,8 @@
     </div>
 
     <!-- Mobile Navbar -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />

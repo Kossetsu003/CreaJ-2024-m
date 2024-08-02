@@ -35,6 +35,7 @@
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
                 </div>
+                <!--FIN DEL INPUT DE LA IMG-->
 
                 <!--INICIO DE LA PREVIEW-->
                 <div>
@@ -43,6 +44,8 @@
                 <div class="mt-4">
                     <img id="img-preview" class="max-w-xs max-h-xs hidden rounded-md border" src="#" alt="Vista Previa de Imagen">
                 </div>
+
+                <!---FIN DE LA PREVIEW-->
 
 
 

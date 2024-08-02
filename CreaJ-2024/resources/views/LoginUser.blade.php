@@ -34,14 +34,15 @@
                     </div>
                     <div class="flex flex-col mt-5">
                         <div class="flex justify-center pt-5">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
+                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
                         </div>
                         <div class="flex justify-center mt-2">
-                            <input class="border rounded w-80 h-9 pl-5 text-sm border-gray-400 bg-transparent" type="text" name="password" id="contrasena" placeholder="Ingrese su contraseña">
+                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="text" name="password" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
+                        <!--DEBERIAMOS PONERLO?
                         <div class="flex justify-end mt-3 pr-2">
                             <h3 class="text-xs font-bold">Forgot Password?</h3>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="flex justify-center mt-5">
                         <button type="submit" class="w-72 h-12 font-bold btn overflow-hidden relative bg-[#96A6E8] text-black py-2 px-4 rounded-xl">Iniciar Sesión</button>
@@ -56,7 +57,7 @@
                     <div class="mt-11">
                         <h3 class="text-center text-sm">¿Aún no se ha registrado? <a href="{{ route('RegistroUser') }}" class="text-blue-950 font-bold">Crear Cuenta</a></h3>
                     </div>
-                    
+
 
                 </div>
 
