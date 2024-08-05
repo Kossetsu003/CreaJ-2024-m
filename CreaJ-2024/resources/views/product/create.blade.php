@@ -18,7 +18,7 @@
 <ul>
     @foreach ($products as $product)
         <li>
-            <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a> - ${{ $product->price }}
+            <a href="{{ route('usuarios.producto', $product) }}">{{ $product->name }}</a> - ${{ $product->price }}
             <form action="{{ route('cart.add', $product) }}" method="POST">
                 @csrf
                 <input type="number" name="quantity" value="1" min="1">

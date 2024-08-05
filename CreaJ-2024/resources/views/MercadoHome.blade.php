@@ -13,13 +13,13 @@
 <body class="overflow-x-hidden">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('mercado-locals.index') }}">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-red-600 uppercase"><b>Mercado</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
+            <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
@@ -33,7 +33,7 @@
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
         <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>

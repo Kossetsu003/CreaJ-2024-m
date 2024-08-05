@@ -12,13 +12,13 @@
 <body>
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('mercado-locals.index') }}">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
+            <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
@@ -32,7 +32,7 @@
    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -80,7 +80,7 @@
 
             @foreach ($products as $product)
 
-            <a href="{{ route('products.show', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
+            <a href="{{ route('usuarios.producto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
                     src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                 <div class="flex ">

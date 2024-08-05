@@ -13,13 +13,13 @@
 <body>
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('mercado-locals.index') }}">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
+            <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
@@ -33,7 +33,7 @@
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
         <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -120,7 +120,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($products as $product)
                 <!-- Product Card 1 -->
-                <a href="{{ route('products.show', $product->id) }}" class="bg-white p-6 rounded-lg shadow-lg">
+                <a href="{{ route('usuarios.producto', $product->id) }}" class="bg-white p-6 rounded-lg shadow-lg">
                     <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="Producto 1">
                     <h3 class="font-bold text-lg text-gray-800">{{ $product->name }}</h3>
                     <p class="text-gray-600 mb-4">{{ $product->vendedor->nombre_del_local }}. Precio: ${{ $product->price }}</p>

@@ -13,7 +13,7 @@
         <div
         class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
     >
-        <a href="{{ route('mercado-locals.index') }}">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>

@@ -14,14 +14,14 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
 
-        <a href="{{ route('mercado-locals.index') }}">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
 
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
+            <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
@@ -35,7 +35,7 @@
     <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -110,7 +110,7 @@
                             podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
                             {{ $mercadoLocal->municipio }}
                         </p>
-                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('mercado-locals.show',$mercadoLocal->id) }}">
+                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('usuarios.mercado',$mercadoLocal->id) }}">
                         <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
                            Ver Mercado
                         </button>
@@ -138,7 +138,7 @@
                             podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
                             {{ $mercadoLocal->municipio }}
                         </p>
-                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('mercado-locals.show',$mercadoLocal->id) }}">
+                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('usuarios.mercado',$mercadoLocal->id) }}">
                             <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
                                 Ver Mercado
                             </button>
@@ -161,7 +161,7 @@
             <div>
                 <img src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="">
                 <h3 class="font-bold text-lg">Puesto de {{ $vendedor->nombre }} en {{ $vendedor->mercadoLocal->nombre }}</h3>
-            <a href="{{ route('vendedors.show',$vendedor->id) }}">
+            <a href="{{ route('usuarios.vendedor',$vendedor->id) }}">
                 <div class="flex gap-2 items-center">
                     <p>Ver Puesto </p>
                     <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">

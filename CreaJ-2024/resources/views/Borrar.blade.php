@@ -19,7 +19,7 @@
                 <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center">
                     <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                         <div class="flex items-center  ">
-                            <a href="{{ route('mercado-locals.index') }}"><img class="w-6"
+                            <a href="{{ route('usuarios.index') }}"><img class="w-6"
                                     src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
                         </div>
 
