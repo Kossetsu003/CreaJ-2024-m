@@ -26,7 +26,7 @@
                     <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
                 </div>
             </div>
-            <form action="{{route('login') }}" method="GET">
+            <form action="{{route('login') }}" method="POST">
                 @csrf
                 <div class="w-72 h-96 mt-10 mx-auto">
                     <div class="text-center">

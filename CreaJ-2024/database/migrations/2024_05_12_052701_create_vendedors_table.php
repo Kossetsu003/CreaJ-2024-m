@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,19 +12,17 @@ return new class extends Migration
     {
         Schema::create('vendedors', function (Blueprint $table) {
             $table->id();
-            $table->string('usuario');
-            $table->double('ROL')->unsigned()->nullable()->default(3);
+            $table->string('usuario')->unique();
+            $table->unsignedDouble('ROL')->nullable()->default(3);
             $table->string('password');
             $table->string('nombre');
             $table->string('apellidos')->nullable();
             $table->string('telefono')->nullable();
-            $table->Integer('numero_puesto');
-            $table->unsignedBigInteger('fk_mercado'); // Cambiado a unsignedBigInteger
+            $table->integer('numero_puesto')->unique();
+            $table->unsignedBigInteger('fk_mercado');
             $table->foreign('fk_mercado')->references('id')->on('mercado_locals')->onDelete('cascade');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
         });
-
     }
 
     /**
@@ -36,3 +33,4 @@ return new class extends Migration
         Schema::dropIfExists('vendedors');
     }
 };
+
