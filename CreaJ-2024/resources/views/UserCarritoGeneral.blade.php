@@ -1,51 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Mis Reservas</title>
+    <title>Mi Carrito</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            MiniShop
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
+        </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-            <a href="./UserEstadoPedidos"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-            <a href="./UserProfileVista"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+            <a href="{{ route('usuarios.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="{{ route('cart.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+            <a href="{{ route('reservations.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('reservations.index') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -54,45 +57,53 @@
 
     <main class="p-4">
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Pedidos</h1>
+            <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
+                Mi Carrito
+            </div>
+            @if (session('success'))
+            <div class="bg-green-500  w-[50%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
+                <span class="md:ml-[1rem]">{{ session('success') }}</span>
+            </div>
+            @endif
+
 
             <div class="space-y-4">
-                <div
-                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-                    <div class="flex items-center">
-                        <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto"
-                            class="w-16 h-16 rounded-md mr-4">
-                        <div>
-                            <h2 class="text-lg font-semibold text-gray-800">Pedido #1</h2>
-                            <p class="text-sm text-gray-600">Fecha: 25 de Mayo, 2024</p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
-                    </div>
-                </div>
 
+                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Productos</span>
+                @foreach ($cartItems as $cartItem)
+                <!--INICIO DE LA CARTA-->
                 <div
-                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
                     <div class="flex items-center">
-                        <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto"
-                            class="w-16 h-16 rounded-md mr-4">
+                        <!--INFO DEL PRODCUT-->
+                        <img src="{{ asset('imgs/'. $cartItem->product->imagen_referencia) }}" alt="Imagen del producto"
+                            class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
-                            <h2 class="text-lg font-semibold text-gray-800">Pedido #2</h2>
-                            <p class="text-sm text-gray-600">Fecha: 23 de Mayo, 2024</p>
+                            <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"> {{ $cartItem->product->name }}</h2>
+                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-semibold mb-[8px]">Precio: ${{ $cartItem->product->price }} c/u</p>
+
+                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold">Cantidad: {{ $cartItem->quantity }} - Subtotal: ${{ $cartItem->product->price * $cartItem->quantity }} </p>
                         </div>
                     </div>
+                    <!--BOTNOES-->
                     <div class="flex">
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
+                        <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="md:px-[2rem] md:py-[1rem] md:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600" type="submit">Cancelar</button>
                     </div>
                 </div>
+            </form>
+                @endforeach
+                <!--FIN DE LA CARTA-->
+                <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
+                <form action="{{ route('usuarios.reservar') }}" method="POST">
+                    @csrf
+                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-green-500 rounded-md ml-2 hover:bg-green-600"  type="submit">Guardar Reserva</button>
+                </form>
             </div>
+
         </div>
 
     </main>

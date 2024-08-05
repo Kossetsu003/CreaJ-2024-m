@@ -27,60 +27,87 @@ class AdminVendedorController extends Controller
      */
     public function create()
     {
+
         $vendedor = new Vendedor();
-        return view('AdminRegistrarVendedor', compact('vendedor'));
+        $mercados = MercadoLocal::all(); // Suponiendo que tu modelo de mercados se llama MercadoLocal
+        return view('AdminRegistrarVendedor', compact('vendedor', 'mercados'));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // Validar los datos del formulario
-        $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email|unique:vendedors,usuario|unique:users,usuario',
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20|unique:vendedors,telefono|unique:users,telefono',
-            'numero_puesto' => 'required|string|max:255|unique:vendedors,numero_puesto',
-            'contrasena' => 'required|string|min:8|confirmed',
-            'fk_mercado' => 'required|exists:mercado_locals,id',
-        ]);
 
-        // Verificar si la validación falla
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
 
-        // Crear el usuario en la tabla `users`
-        User::create([
-            'usuario' => $request->usuario,
-            'password' => Hash::make($request->contrasena),
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellidos,
-            'telefono' => $request->telefono,
-            'ROL' => 3, // Rol de vendedor
-        ]);
+     public function store(VendedorRequest $request)
+     {
+         // Validar los datos del formulario
+         $validator = Validator::make($request->all(), [
+             'usuario' => 'required|email|unique:vendedors',
+             'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+             'nombre' => 'required|string|max:255',
+             'nombre_del_local' => 'required|string|max:255',
+             'apellidos' => 'required|string|max:255',
+             'telefono' => 'required|string|max:20|unique:vendedors',
+             'numero_puesto' => 'required|integer',
+             'password' => 'required|string|min:8|confirmed',
+             'clasificacion' => 'required|string|max:255',
+             'fk_mercado' => 'required|exists:mercado_locals,id',
+         ]);
 
-        // Crear vendedor si la validación pasa y no hay datos repetidos
-        Vendedor::create([
-            'usuario' => $request->usuario,
-            'nombre' => $request->nombre,
-            'apellidos' => $request->apellidos,
-            'telefono' => $request->telefono,
-            'numero_puesto' => $request->numero_puesto,
-            'fk_mercado' => $request->fk_mercado,
-            'contrasena' => bcrypt($request->contrasena), // Encriptar la contraseña
-        ]);
+         // Verificar si la validación falla
+         if ($validator->fails()) {
+             return redirect()->back()
+                 ->withErrors($validator)
+                 ->withInput();
+         }
 
-        return redirect()->route('admin-vendedors.index')
-            ->with('success', 'Vendedor creado exitosamente.');
-    }
+         // Verificar si ya existen datos iguales en la base de datos
+         if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
+             return redirect()->back()
+                 ->withInput()
+                 ->with('error', 'Ya existe un vendedor con el mismo Correo Electrónico o Teléfono.');
+         }
 
-    /**
-     * Display the specified resource.
+         // Verificar si el numero_puesto ya existe en el mismo mercado
+         if (Vendedor::where('fk_mercado', $request->fk_mercado)->where('numero_puesto', $request->numero_puesto)->exists()) {
+             return redirect()->back()
+                 ->withInput()
+                 ->with('error', 'Ya existe un vendedor con el mismo Numero de Puesto en este Mercado.');
+         }
+
+
+         // Crear vendedor si la validación pasa y no hay datos repetidos
+         $vendedor = new Vendedor();
+         $vendedor->usuario = $request->usuario;
+         $vendedor->nombre = $request->nombre;
+         $vendedor->nombre_del_local = $request->nombre_del_local;
+         $vendedor->apellidos = $request->apellidos;
+         $vendedor->telefono = $request->telefono;
+         $vendedor->numero_puesto = $request->numero_puesto;
+         $vendedor->fk_mercado = $request->fk_mercado;
+         $vendedor->password = Hash::make($request->password); // Encriptar la contraseña
+         $vendedor->clasificacion = $request->clasificacion;
+
+         // Manejar la carga de la imagen
+         if ($request->hasFile('imagen_de_referencia')) {
+             $file = $request->file('imagen_de_referencia');
+             $imageName = $request->nombre . '_' . $request->nombre_del_local . '.png';
+
+             // Movimiento
+             $file->move(public_path('imgs'), $imageName);
+             // Guardar
+             $vendedor->imagen_de_referencia = $imageName;
+         }
+
+         $vendedor->save();
+
+         return redirect()->route('admin-vendedors.index')
+             ->with('success', 'Vendedor creado exitosamente.');
+     }
+
+
+    /* Display the specified resource.
      */
     public function show($id)
     {

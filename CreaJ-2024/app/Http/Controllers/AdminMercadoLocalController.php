@@ -44,23 +44,25 @@ class AdminMercadoLocalController extends Controller
     {
        // Validar los datos del formulario
        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'imagen_referencia' => 'required|string|max:255',
-            'municipio' => 'required|string|max:255',
-            'ubicacion' => 'required|string|max:255',
-            'horaentrada' => 'required|string|max:255',
-            'horasalida' => 'required|string|max:255',
-            'descripcion' => 'required|string|max:500',
-       ]);
+        'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+        'nombre' => 'required|string|max:255',
+        'municipio' => 'required|string|max:255',
+        'ubicacion' => 'required|string|max:255',
+        'horaentrada' => 'required|string|max:255',
+        'horasalida' => 'required|string|max:255',
+       'descripcion' => 'required|string|max:500',
+
+    ]);
 
         $nombreLimpio = str_replace(' ', '', $request->nombre);
         $usuario = strtolower($nombreLimpio) . '@minishop.sv';
-        $contrasena = '1' . strtolower($nombreLimpio) . '!';
+        $password = '1' . strtolower($nombreLimpio) . '!';
 
         $mercadolocal = new MercadoLocal();
 
+        //INSTANCIAS, significa guardar variables en $variables
         $mercadolocal->usuario = $usuario;
-        $mercadolocal->contrasena = Hash::make($contrasena);
+        $mercadolocal ->password = Hash::make($password);
         $mercadolocal->nombre = $request->nombre;
         $mercadolocal->imagen_referencia = $request->imagen_referencia;
         $mercadolocal->municipio = $request->municipio;
@@ -69,19 +71,25 @@ class AdminMercadoLocalController extends Controller
         $mercadolocal->horasalida = $request->horasalida;
         $mercadolocal->descripcion = $request->descripcion;
 
+        //if para la imagen
+        if ($request->hasFile('imagen_referencia')) {
+            // Construir el nuevo nombre del archivo
+            $nombre = str_replace(' ', '_', strtolower($request->input('nombre')));
+            $municipio = str_replace(' ', '_', strtolower($request->input('municipio')));
+            $imageName = "{$nombre}_{$municipio}.png";
+
+            // Mover el archivo a la carpeta 'imagenes' con el nuevo nombre
+            $request->imagen_referencia->move(public_path('imgs'), $imageName);
+
+            // Guardar el nombre del archivo en la base de datos
+            $mercadolocal->imagen_referencia = $imageName;
+        }
+
         $mercadolocal->save();
 
-        // Registrar el admin de mercado en la tabla users
-        User::create([
+        return redirect()->route('admin-mercado-locals.index')->with([
             'usuario' => $usuario,
-            'password' => Hash::make($contrasena),
-            'nombre' => $request->nombre,
-            'ROL' => 2, // Rol de admin de mercado
-        ]);
-
-        return redirect()->route('admin-mercado-locals.confirmation')->with([
-            'usuario' => $usuario,
-            'contrasena' => $contrasena,
+            'password' => $password,
         ]);
     }
 

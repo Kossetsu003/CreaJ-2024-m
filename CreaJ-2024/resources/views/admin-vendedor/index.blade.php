@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Usuario</th>
 										<th>Rol</th>
 										<th>Contrasena</th>
@@ -52,7 +52,7 @@
                                     @foreach ($vendedors as $vendedor)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $vendedor->usuario }}</td>
 											<td>{{ $vendedor->ROL }}</td>
 											<td>{{ $vendedor->contrasena }}</td>
@@ -64,7 +64,7 @@
 
                                             <td>
                                                 <form action="{{ route('vendedors.destroy',$vendedor->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('vendedors.show',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.vendedor',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('vendedors.edit',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')

@@ -16,13 +16,14 @@
             MiniShop
         </h1>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-            <a href="./UserEstadoPedidos"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-            <a href="./UserProfileVista"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+            <a href="{{ route('usuarios.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="{{ route('cart.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+            <a href="{{ route('reservations.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
 
@@ -34,7 +35,7 @@
         <!--INICIO DE NAVBAR MOBIL-->
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
             <<div class="flex items-center  ">
-                <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
+                <a href="{{ route('admin-usuarios.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
                         class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
         </div>
 

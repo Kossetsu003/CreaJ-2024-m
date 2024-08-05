@@ -23,7 +23,7 @@ class VendedoreRequest extends FormRequest
     {
         return [
 			'usuario' => 'required|string',
-			'contrasena' => 'required|string',
+			'password' => 'required|string',
 			'nombre' => 'required|string',
 			'apellidos' => 'string',
 			'numero_puesto' => 'required',

@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Nombre</th>
 										<th>Rol</th>
 										<th>Imagen Referencia</th>
@@ -52,7 +52,7 @@
                                     @foreach ($mercadoLocals as $mercadoLocal)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $mercadoLocal->nombre }}</td>
 											<td>{{ $mercadoLocal->ROL }}</td>
 											<td>{{ $mercadoLocal->imagen_referencia }}</td>
@@ -64,7 +64,7 @@
 
                                             <td>
                                                 <form action="{{ route('mercado-locals.destroy',$mercadoLocal->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('mercado-locals.show',$mercadoLocal->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.mercado',$mercadoLocal->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('mercado-locals.edit',$mercadoLocal->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')

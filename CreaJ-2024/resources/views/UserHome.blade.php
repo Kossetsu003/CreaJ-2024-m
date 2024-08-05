@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -13,40 +13,45 @@
 <body class="">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            MiniShop
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
+        </a>
+
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-            <a href="./UserEstadoPedidos"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-            <a href="./UserProfileVista"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+            <a href="{{ route('usuarios.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="{{ route('cart.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+            <a href="{{ route('reservations.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
 
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('reservations.index') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -90,6 +95,8 @@
             Mision
         </button>
     </div>
+
+
     @foreach ($mercadoLocals as $mercadoLocal)
         @if ($mercadoLocal->id % 2 != 0)
             <!--INICIO DE MERCADO-->
@@ -103,26 +110,26 @@
                             podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
                             {{ $mercadoLocal->municipio }}
                         </p>
+                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('usuarios.mercado',$mercadoLocal->id) }}">
                         <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
-                            <a href="./UserPuestosVendedores">Ver Mercado</a></button>
+                           Ver Mercado
+                        </button>
+                        </a>
                     </div>
                     <div>
-                        <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                        <img class="w-full object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="">
                     </div>
                 </div>
             </div>
         @endif
-    @endforeach
-    <!--FIN DE MERCADO-->
-    <!--INICIO DE MERCADO-->
-    @foreach ($mercadoLocals as $mercadoLocal)
+
         @if ($mercadoLocal->id % 2 != 1)
             <div class="md:p-0 p-4 bg-[#334765] text-white">
                 <div
                     class="flex flex-col p-4 border border-gray-200 rounded md:border-none md:p-0 md:grid md:grid-cols-2 items-center">
 
                     <div>
-                        <img class="h-full object-cover" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                        <img class="h-full w-full object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="">
                     </div>
                     <div class="p-4 space-y-4 max-w-lg mx-auto flex flex-col items-center">
                         <h2 class="text-center font-bold text-3xl">{{ $mercadoLocal->nombre }}</h2>
@@ -131,9 +138,11 @@
                             podes encontrar en <b>{{ $mercadoLocal->ubicacion }}</b>, en el municipio de
                             {{ $mercadoLocal->municipio }}
                         </p>
-                        <button
-                            class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600"><a
-                                href="./MercadoPuestoDelVendedor">Ver Mercado</a></button>
+                        <a class="block w-full mt-4 px-3 py-2" href="{{ route('usuarios.mercado',$mercadoLocal->id) }}">
+                            <button class="block w-full mt-4 px-3 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600">
+                                Ver Mercado
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -150,12 +159,14 @@
             <!--INICIO DE VENDEDOR-->
             @foreach ($vendedors->take(3) as $vendedor)
             <div>
-                <img src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="">
+                <img src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="">
                 <h3 class="font-bold text-lg">Puesto de {{ $vendedor->nombre }} en {{ $vendedor->mercadoLocal->nombre }}</h3>
+            <a href="{{ route('usuarios.vendedor',$vendedor->id) }}">
                 <div class="flex gap-2 items-center">
                     <p>Ver Puesto </p>
                     <img width="18" src="{{ asset('imgs/arrow_left.png') }}" alt="">
                 </div>
+            </a>
             </div>
             <!--FIN DE VENDEDOR-->
             @endforeach

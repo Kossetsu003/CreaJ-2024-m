@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,147 +10,131 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon" />
 </head>
 
-<body>
+<body class="overflow-x-hidden">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            MiniShop
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
+        </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-            <a href="./UserCarritoGeneral" class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-            <a href="./UserEstadoPedidos"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-            <a href="./UserProfileVista"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
+            <a href="{{ route('usuarios.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+            <a href="{{ route('cart.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+            <a href="{{ route('reservations.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+        <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercado-locals.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('reservations.index') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
     </div>
+    <!-- INICIO BANNER -->
+    <div class="w-screen hidden md:block">
+        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="Banner Image">
+    </div>
+    <!-- FIN BANNER -->
 
-
-
-
-    <div class="mt-14  w-[90%] mx-auto md:text-[30px]">
-
-        <div class="flex justify-between  w-[90%] mx-auto"> <!--Contenedor Principal-->
+    <div class="mt-14 w-full mx-auto md:text-[30px]">
+        <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">
+            <!-- Contenedor Principal -->
             <div>
-                <div>
-                    Puesto de comida
+                <!-- TITULO -->
+                <div class="md:font-bold text-[2rem] md:text-[4rem] ">
+                    {{ $mercadoLocal->nombre }}
                 </div>
-                <div class="font-bold">
-                    Nombre de Vendedor
+                <div class="md:text-center md:font-semibold font-bold">
+                    Ubicado En: {{ $mercadoLocal->municipio }}
                 </div>
-            </div>
-
-            <div class="mt-3 md:hidden">
-                <img class="w-4 rounded-full " src="{{ asset('imgs/flecha-izquierda.png') }}" alt="User Icon">
             </div>
         </div>
-        <!--Fin Principal-->
 
 
-        <div class="flex flex-wrap justify-center mt-10 text-sm md:gap-[50px]">
-            <div class="w-[48%] mb-8 p-2">
+        <!--CATEGORIAS-->
+
+     <div class="flex my-5">
+        <div class="flex mx-auto">
+            <button class="flex items-center h-[3rem] border  px-1 py-0.5 rounded-md mr-2 text-[1.5rem] bg-blue-300 border-blue-300 text-white font-bold">
+                <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
+                <span class="ml-1">Todos Los puestos</span>
+            </button>
+
+            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
+                <img class="w-5 " src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
+                <span class="ml-1">Ropa</span>
+            </button>
+
+            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
+                <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
+                <span class="ml-1">Comedor</span>
+            </button>
+        </div>
+    </div>
+
+    <!--FIN DE CATEGORIAS-->
+
+
+
+        <!-- Fin Principal -->
+
+        <!-- CARTAS -->
+        <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
+
+            @foreach ($vendedors as $vendedor)
+            <a href="{{ route('usuarios.vendedor',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/MercadoMujer.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Mayoreo de Blusas</h3>
-                <h3 class="mb-2">Tienda Michelina</h3>
+                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="{{ $vendedor->imagen_de_referencia }}">
+                <h3 class="font-bold mt-5 text-[1.5rem]">{{ $vendedor->nombre_del_local }}</h3>
+                <h3 class="mb-2">Tienda de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
                 <div class="flex justify-between">
-                    <h3>Ropa</h3>
+                    <b><h3>{{ $vendedor->clasificacion }}</h3></b>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
-                        <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div>
-            <a href="./UserProductoEnEspecifico" class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/NaranjasQuintal.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Naranjas Valencia</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
-                <div class="flex justify-between">
-                    <h3>Comida</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.8</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
             </a>
+            @endforeach
 
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/MercadoJeans.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Jeans</h3>
-                <h3 class="mb-2">Venta Michelina</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">3.2</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-            </div>
-            <div class="w-[48%] mb-8 p-2">
-                <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/MercadoVariado.jpg') }}" alt="User Icon">
-                <h3 class="font-bold mt-5">Venta de Ropa Variada</h3>
-                <h3 class="mb-2">Puesto de Don Juan</h3>
-                <div class="flex justify-between">
-                    <h3>Ropa</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.6</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
-                    </div>
-                </div>
-
-            </div>
         </div>
-
-
-
-
+        <!-- FIN CARTAS -->
     </div>
+
     <footer class="bg-[#292526] pb-16">
-        <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
+        <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white p-12">
             <div>
-                <b>
-                    <h2>Contact Us</h2>
-                </b>
+                <h2 class="font-bold">Contact Us</h2>
                 <p>Whatsapp: wa.me/50369565421</p>
                 <p>Correo Electronico: contacto@minishop.sv</p>
                 <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
             </div>
             <div>
-                <b>
-                    <b>
-                        <h2>Sobre nosotros</h2>
-                    </b>
-                </b>
+                <h2 class="font-bold">Sobre nosotros</h2>
                 <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el área
                     metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
                     locales.</p>
@@ -160,7 +145,7 @@
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                         <img width="18" class="invert" src="{{ asset('imgs/facebook.png') }}" alt="">
                     </div>
-                    <div class="w-8 aspect-square  flex justify-center items-center bg-white rounded-full">
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                         <img width="18" class="invert" src="{{ asset('imgs/google.png') }}" alt="">
                     </div>
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
@@ -172,12 +157,15 @@
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                         <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">
                     </div>
-
                 </div>
             </div>
         </div>
         <div class="w-full h-[2px] bg-white"></div>
     </footer>
+    <!-- Paginación -->
+
+
 </body>
 
 </html>
+

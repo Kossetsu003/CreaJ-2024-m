@@ -10,19 +10,19 @@
 </head>
 
 <body>
-    <<<<<<< HEAD <!-- Desktop Navbar -->
+   <!-- Desktop Navbar -->
         <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-black font-bold">
                 MiniShop
             </h1>
             <div class="flex gap-8">
-                <a href="{{ route('mercado-locals.index') }}"
+                <a href="{{ route('usuarios.index') }}"
                     class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Home</a>
-                <a href="./UserCarritoGeneral"
+                <a href="{{ route('cart.index') }}"
                     class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Cart</a>
-                <a href="./UserEstadoPedidos"
+                <a href="{{ route('reservations.index') }}"
                     class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Favorites</a>
-                <a href="./UserProfileVista"
+                <a href="{{ route('UserProfileVista') }}"
                     class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Profile</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
                 <div class="flex items-center">
                     <a href="./VendedorProfileVista"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}"
                             alt="User Icon"></a>
-                    =======
+
                     <!-- Desktop Navbar -->
                     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
                         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
@@ -67,34 +67,8 @@
                             <a href="./VendedorProfileVista"
                                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
                         </div>
-                    </div>flibfo
-                    <!-- Mobile Navbar -->
-                    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-                        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
-                            <div class="flex items-center">
-                                <a href="./VendedorHome" class="bg-white rounded-full p-1">
-                                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}"
-                                        alt="Home Icon" />
-                                </a>
-                            </div>
-                            <div class="flex items-center">
-                                <a href="./VendedorMiBuzon">
-                                    <img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}" alt="Cart Icon" />
-                                </a>
-                            </div>
-                            <div class="flex items-center">
-                                <a href="./VendedorMisReservas">
-                                    <img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}"
-                                        alt="Favorites Icon" />
-                                </a>
-                            </div>
-                            <div class="flex items-center">
-                                <a href="./VendedorProfileVista">
-                                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
-                                </a>
-                            </div>
-                        </div>
                     </div>
+
 
 
                     <div class="w-full bg-white text-gray-900">
@@ -163,7 +137,7 @@
                                         class="block w-full mt-4 px-3 py-2 rounded-md bg-green-500 text-white hover:bg-green-600">
                                         Ver produuctos
                                     </button>
-                                    >>>>>>> bfdc3ee39cecdc7d21ac2aa8419a0db9c5fd112d
+
                                 </div>
                             </div>
 
