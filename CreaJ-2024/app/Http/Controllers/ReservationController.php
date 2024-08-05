@@ -22,7 +22,7 @@ class ReservationController extends Controller
         // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
         $reservations = Reservation::where('fk_users', Auth::id())->with('items.product')->get();
 
-        return view('reservations.index', compact('reservations'));
+        return view('UserEstadoReservas', compact('reservations'));
     }
 
     /**

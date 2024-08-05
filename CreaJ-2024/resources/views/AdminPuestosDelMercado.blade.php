@@ -20,7 +20,7 @@
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('UserEstadoPedidos') }}"
+            <a href="{{ route('reservations.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>

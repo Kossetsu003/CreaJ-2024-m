@@ -23,7 +23,7 @@
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('UserEstadoPedidos') }}"
+            <a href="{{ route('reservations.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -43,7 +43,7 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('UserEstadoPedidos') }}">
+                <a href="{{ route('reservations.index') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
@@ -61,8 +61,8 @@
                 Mi Carrito
             </div>
             @if (session('success'))
-            <div class="bg-green-500 w-[50%] px-[1rem] py-[0.5rem] text-[1.25rem]  uppercase font-semibold rounded text-white mb-[1.5rem]">
-                <span class="ml-[1rem]">{{ session('success') }}</span>
+            <div class="bg-green-500  w-[50%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
+                <span class="md:ml-[1rem]">{{ session('success') }}</span>
             </div>
             @endif
 
@@ -98,7 +98,7 @@
                 @endforeach
                 <!--FIN DE LA CARTA-->
                 <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
-                <form action="{{ route('reservations.store') }}" method="POST">
+                <form action="{{ route('usuarios.reservar') }}" method="POST">
                     @csrf
                     <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-green-500 rounded-md ml-2 hover:bg-green-600"  type="submit">Guardar Reserva</button>
                 </form>

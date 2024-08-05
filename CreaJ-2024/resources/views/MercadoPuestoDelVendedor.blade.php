@@ -20,7 +20,7 @@
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('UserEstadoPedidos') }}"
+            <a href="{{ route('reservations.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -29,33 +29,7 @@
 
 
 
-    <!-- Inicio de nav movil-->
-    <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center md:hidden">
-
-        <!--INICIO DE NAVBAR MOBIL-->
-        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
-            <div class="flex items-center  ">
-                <a href="./VendedorHome" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6"
-                        src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
-            </div>
-
-            <div class="flex items-center">
-                <a href="./VendedorMiBuzon"><img class="w-6" src="{{ asset('imgs/BuzonIcon.png') }}"
-                        alt="User Icon"></a>
-            </div>
-
-            <div class="flex items-center">
-                <a href="./VendedorMisReservas"><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}"
-                        alt="User Icon"></a>
-            </div>
-            <div class="flex items-center">
-                <a href="./VendedorProfileVista"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}"
-                        alt="User Icon"></a>
-            </div>
-        </div>
-
-        <!--FIN DE NAVBAR MOBIL-->
-    </div>
+   
 
     <div class="mt-14  w-[90%] mx-auto md:text-[30px]">
 
