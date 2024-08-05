@@ -22,11 +22,11 @@
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="./UserCarritoGeneral"
+            <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="./UserEstadoPedidos"
+            <a href="{{ route('UserEstadoPedidos') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="./UserProfileVista"
+            <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
@@ -39,17 +39,17 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('UserEstadoPedidos') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>

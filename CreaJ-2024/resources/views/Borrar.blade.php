@@ -24,13 +24,13 @@
                         </div>
 
                         <div class="flex items-center">
-                            <a href="./UserCarritoGeneral" class=" bg-white rounded-full p-[0.25rem] "><img
+                            <a href="{{ route('cart.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
                                     class="w-6" src="{{ asset('imgs/CarritoSelectedIcon.png') }}"
                                     alt="User Icon"></a>
                         </div>
 
                         <div class="flex items-center">
-                            <a href="./UserEstadoPedidos"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}"
+                            <a href="{{ route('UserEstadoPedidos') }}"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}"
                                     alt="User Icon"></a>
                         </div>
                         <div class="flex items-center">

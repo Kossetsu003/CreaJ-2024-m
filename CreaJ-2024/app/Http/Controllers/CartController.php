@@ -14,13 +14,14 @@ class CartController extends Controller
 {
     public function index()
     {
+        $userid = Auth::id();
         $cartItems = Cart::with('product')->where('fk_users', Auth::id())->get();
 
         $total = $cartItems->reduce(function ($carry, $item) {
             return $carry + ($item->product->price * $item->quantity);
         }, 0);
 
-        return view('cart.index', compact('cartItems', 'total'));
+        return view('UserCarritoGeneral', compact('cartItems', 'total', 'userid'));
     }
 
     public function add(Request $request, Product $product)

@@ -30,7 +30,7 @@
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
-    
+
     <div class="mx-auto max-w-lg mt-10 mb-32"> <!-- Añadido un margen inferior -->
         <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
             <!--INICIO DE NAVBAR MOBIL-->
@@ -94,24 +94,30 @@
                  </div>
         </div>
         <h1 class="justify-center text-bold text-center pt-6 text-[1.5rem]">Vendedores en {{ $mercadoLocal->nombre }} : </h1>
-        <div class="flex mt-5">
-            <div class="flex mx-auto">
-                <button class="flex items-center h-8 border  px-1 py-0.5 rounded-md mr-2 text-xs bg-blue-300 border-blue-300 text-white font-bold">
-                    <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
+
+
+        <!--CATEGORIAS-->
+
+        <div class="flex ">
+            <div class="flex ">
+                <p class="flex items-center h-[3rem] border  rounded-md  text-[1rem] bg-blue-300 border-blue-300 text-white font-bold">
+                    <img class="w-[3rem]" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
                     <span class="ml-1">Todos Los puestos</span>
-                </button>
+                </p>
 
                 <button class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs ">
                     <img class="w-5" src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
                     <span class="ml-1">Ropa</span>
                 </button>
 
-                <button class="flex items-center border text-black px-1 py-0.5 rounded-md text-xs hover:bg-blue-200">
+                <button class="flex items-center border text-black px-1 py-0.5 rounded-md text-xs hover:bg-blue-200 hover:text-white">
                     <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
                     <span class="ml-1">Comida</span>
                 </button>
             </div>
         </div>
+
+        <!--FIN DE CATEGORIAS-->
 
         <div class="flex flex-wrap justify-center mt-5 text-sm">
 

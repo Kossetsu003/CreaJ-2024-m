@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Mis Reservas</title>
+    <title>Mi Carrito</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
@@ -21,11 +21,11 @@
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="./UserCarritoGeneral"
+            <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="./UserEstadoPedidos"
+            <a href="{{ route('UserEstadoPedidos') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="./UserProfileVista"
+            <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
@@ -38,17 +38,17 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('UserEstadoPedidos') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -57,45 +57,53 @@
 
     <main class="p-4">
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Pedidos</h1>
+            <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
+                Mi Carrito
+            </div>
+            @if (session('success'))
+            <div class="bg-green-500 w-[50%] px-[1rem] py-[0.5rem] text-[1.25rem]  uppercase font-semibold rounded text-white mb-[1.5rem]">
+                <span class="ml-[1rem]">{{ session('success') }}</span>
+            </div>
+            @endif
+
 
             <div class="space-y-4">
-                <div
-                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-                    <div class="flex items-center">
-                        <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto"
-                            class="w-16 h-16 rounded-md mr-4">
-                        <div>
-                            <h2 class="text-lg font-semibold text-gray-800">Pedido #1</h2>
-                            <p class="text-sm text-gray-600">Fecha: 25 de Mayo, 2024</p>
-                        </div>
-                    </div>
-                    <div class="flex">
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
-                    </div>
-                </div>
 
+                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Productos</span>
+                @foreach ($cartItems as $cartItem)
+                <!--INICIO DE LA CARTA-->
                 <div
-                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
                     <div class="flex items-center">
-                        <img src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="Imagen del producto"
-                            class="w-16 h-16 rounded-md mr-4">
+                        <!--INFO DEL PRODCUT-->
+                        <img src="{{ asset('imgs/'. $cartItem->product->imagen_referencia) }}" alt="Imagen del producto"
+                            class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
-                            <h2 class="text-lg font-semibold text-gray-800">Pedido #2</h2>
-                            <p class="text-sm text-gray-600">Fecha: 23 de Mayo, 2024</p>
+                            <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"> {{ $cartItem->product->name }}</h2>
+                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-semibold mb-[8px]">Precio: ${{ $cartItem->product->price }} c/u</p>
+
+                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold">Cantidad: {{ $cartItem->quantity }} - Subtotal: ${{ $cartItem->product->price * $cartItem->quantity }} </p>
                         </div>
                     </div>
+                    <!--BOTNOES-->
                     <div class="flex">
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Confirmar</button>
-                        <button
-                            class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600">Cancelar</button>
+                        <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="md:px-[2rem] md:py-[1rem] md:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600" type="submit">Cancelar</button>
                     </div>
                 </div>
+            </form>
+                @endforeach
+                <!--FIN DE LA CARTA-->
+                <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
+                <form action="{{ route('reservations.store') }}" method="POST">
+                    @csrf
+                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-green-500 rounded-md ml-2 hover:bg-green-600"  type="submit">Guardar Reserva</button>
+                </form>
             </div>
+
         </div>
 
     </main>

@@ -21,11 +21,11 @@
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="./UserCarritoGeneral"
+            <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="./UserEstadoPedidos"
+            <a href="{{ route('UserEstadoPedidos') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="./UserProfileVista"
+            <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
@@ -38,39 +38,56 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('UserEstadoPedidos') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
     </div>
 
+    <form action="{{ route('cart.add', $product) }}" method="POST">
+        @csrf
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <img class="rounded-lg w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
                 alt="{{ $product->imagen_referencia }}">
             <div class="bg-white p-6 rounded-lg shadow-lg">
+
+
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="font-bold text-2xl lg:text-3xl text-gray-800"> {{ $product->name }}</h2>
+
+
+
+                    <!--SUMATORIA-->
                     <div class="flex items-center space-x-2">
-                        <button
-                            class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">-</button>
-                        <span class="text-lg text-gray-800">2</span>
-                        <button
-                            class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">+</button>
+                        <!--Boton 1-->
+                        <span
+                            class="bg--200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">-</span>
+                        <!--INPUT IMPORTANTES-->
+                        <input type="number" name="quantity" value="1" min="1">
+            <input type="hidden" name="subtotal" value="1" min="1">
+
+                        <!--Boton 2-->
+                        <span
+                            class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">+</span>
                     </div>
+                    <!--SUMATORIA-->
+
+
                 </div>
 
+                <!--ESTRELLAS
                 <div class="flex items-center mb-4">
                     <img class="w-6 mr-2" src="{{ asset('imgs/775819.svg') }}" alt="Rating Icon">
                     <img class="w-6 mr-2" src="{{ asset('imgs/775819.svg') }}" alt="Rating Icon">
@@ -79,6 +96,7 @@
                     <img class="w-6 mr-2" src="{{ asset('imgs/775819.svg') }}" alt="Rating Icon">
                     <span class="text-lg text-gray-800">5.0</span>
                 </div>
+            -->
 
                 <p class="text-gray-600 mb-4 text-lg">
                     {{ $product->description }}
@@ -89,14 +107,12 @@
                     <h3 class="font-bold text-xl lg:text-2xl text-gray-800">Precio</h3>
                     <p class="text-xl lg:text-2xl text-gray-900">${{ $product->price }}</p>
                 </div>
+                <button type="submit" class="w-full bg-gray-800 text-white text-lg font-bold py-3 rounded-lg hover:bg-gray-700 flex items-center justify-center">Agregar al carrito</button>
 
-                <button
-                    class="w-full bg-gray-800 text-white text-lg font-bold py-3 rounded-lg hover:bg-gray-700 flex items-center justify-center">
-                    <img class="w-6 h-6 mr-2" src="{{ asset('imgs/carrito-de-compras.png') }}" alt="Add to Cart">
-                    Añadir a MiCarrito
-                </button>
+            </form>
             </div>
         </div>
+
 
         <!-- Recommended Products Section -->
         <div class="mt-16">

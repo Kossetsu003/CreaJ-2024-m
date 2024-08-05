@@ -15,10 +15,10 @@
                 @method('DELETE')
                 <button type="submit">Eliminar del carrito</button>
             </form>
-        </li>
-    @endforeach
+l    @endforeach
 </ul>
 
+<?php echo $userid ?>
 <h2>Total: ${{ $total }}</h2>
 
 <!-- Formulario para guardar los ítems del carrito en una reserva -->

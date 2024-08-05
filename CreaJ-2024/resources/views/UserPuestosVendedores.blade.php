@@ -21,11 +21,11 @@
         <div class="flex gap-8">
             <a href="{{ route('mercado-locals.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="./UserCarritoGeneral"
+            <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="./UserEstadoPedidos"
+            <a href="{{ route('UserEstadoPedidos') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="./UserProfileVista"
+            <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
@@ -38,17 +38,17 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserCarritoGeneral">
+                <a href="{{ route('cart.index') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserEstadoPedidos">
+                <a href="{{ route('UserEstadoPedidos') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="./UserProfileVista">
+                <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -73,6 +73,32 @@
                 </div>
             </div>
         </div>
+
+
+        <!--CATEGORIAS-->
+
+     <div class="flex my-5">
+        <div class="flex mx-auto">
+            <button class="flex items-center h-[3rem] border  px-1 py-0.5 rounded-md mr-2 text-[1.5rem] bg-blue-300 border-blue-300 text-white font-bold">
+                <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
+                <span class="ml-1">Todos Los puestos</span>
+            </button>
+
+            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
+                <img class="w-5 " src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
+                <span class="ml-1">Ropa</span>
+            </button>
+
+            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
+                <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
+                <span class="ml-1">Comedor</span>
+            </button>
+        </div>
+    </div>
+
+    <!--FIN DE CATEGORIAS-->
+
+
 
         <!-- Fin Principal -->
 

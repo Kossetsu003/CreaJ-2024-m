@@ -60,7 +60,7 @@ Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestos
 Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
 Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoPedidos','UserEstadoPedidos')->name('UserEstadoPedidos');
-Route::view('/UserProfileVista','UserProfileVista')->middleware('auth')->name('UserProfileVista');
+Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista')->middleware('check.user.session');
 Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
 
 
@@ -121,6 +121,7 @@ Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
+Route::resource('products', ProductController::class);
 
 
 
@@ -134,9 +135,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //CARRITOOOO
-/*Route::get('/', function () {
+Route::get('/pruebauno', function () {
     return view('layout');
-});*/
+});
 
 
 //Route::resource('users', UserController::class);
@@ -145,7 +146,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //CARRITOO
-Route::resource('products', ProductController::class);
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
