@@ -23,7 +23,7 @@
 
         <div class="flex gap-8">
             <a href="{{ route('admin-mercado-locals.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
             <a href="{{ route('admin-vendedors.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
             <a href="{{ route('admin-clientes.index') }}"

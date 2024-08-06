@@ -68,7 +68,7 @@ Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestos
 Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
 Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoReservas','UserEstadoReservas')->name('UserEstadoReservas');
-Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista')->middleware('check.user.session');
+Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');
 Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
 
 
@@ -125,7 +125,7 @@ Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::c
 // Auth::routes();
 //ROUTES POR CONTROLADORES
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('mercado-locals', MercadoLocalController::class)->middleware('check.user.session');;
+Route::resource('mercado-locals', MercadoLocalController::class);;
 Route::resource('vendedors', VendedorController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
@@ -149,9 +149,9 @@ Route::post('/usuarios/addcarrito/{product}', [UsuariosController::class, 'addca
 Route::post('/usuarios/reservar', [UsuariosController::class, 'reservar'])->name('usuarios.reservar');
 
 // Ruta para ver el carrito
-Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito')->middleware('check.user.session');
+Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito');
 // Ruta para ver las reservas del usuario
-Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas')->middleware('check.user.session');
+Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas');
 
 
 
@@ -179,14 +179,14 @@ Route::get('/pruebauno', function () {
 //CARRITOO
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index')->middleware('check.user.session');
-    Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add')->middleware('check.user.session');
-    Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove')->middleware('check.user.session');;
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove');;
 });
 
 
 //RESERVAAAS
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('check.user.session');;
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');;
 
 // routes/web.php
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
