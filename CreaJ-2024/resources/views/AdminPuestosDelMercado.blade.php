@@ -16,7 +16,7 @@
             MiniShop
         </h1>
         <div class="flex gap-8">
-            <a href="{{ route('usuarios.index') }}"
+            <a href="{{ route('admin-mercado-locals.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
             <a href="{{ route('cart.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
