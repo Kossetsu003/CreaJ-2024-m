@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +9,11 @@
 </head>
 <body>
     <section>
-        <div class="w-72 h-96 mx-auto">
+        <div class="w-72 h-auto mx-auto">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-red-500">Registrar vendedor</h1>
             </div>
-            <form method="POST" action="{{ route('admin-vendedors.store') }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('vendedors.store') }}" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="pb-[7rem] mt-10 space-y-4">
                 @if ($errors->any())
@@ -54,7 +53,6 @@
 
                     <div class="flex justify-center">
                         <input required type="email" name="usuario" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('usuario') is-invalid @enderror" value="{{ old('usuario') }}" id="usuario" placeholder="Escriba el correo electrónico">
-
                     </div>
                     <div class="flex justify-center">
                         <input type="password" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" id="password" placeholder="Escriba su Contraseña">
@@ -72,11 +70,9 @@
                     </div>
                     <div class="flex justify-center">
                         <input required type="text" name="nombre" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" id="nombre" placeholder="Escriba el Nombre del Vendedor">
-
                     </div>
                     <div class="flex justify-center">
-                        <input type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('apellidos') is-invalid @enderror" value="{{ old('apellidos') }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
-
+                        <input required type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('apellidos') is-invalid @enderror" value="{{ old('apellidos') }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
                     </div>
                     <div class="flex justify-center">
                         <input type="text" name="nombre_del_local" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono') }}" id="telefono" placeholder="Digite el Nombre de su Local (Sera Publico)">
@@ -85,8 +81,7 @@
                         <input type="text" name="telefono" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono') }}" id="telefono" placeholder="Digite el Teléfono del Vendedor">
                     </div>
                     <div class="flex justify-center">
-                        <input type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('numero_puesto') is-invalid @enderror" value="{{ old('numero_puesto') }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
-
+                        <input required type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('numero_puesto') is-invalid @enderror" value="{{ old('numero_puesto') }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
                     </div>
                     <select name="clasificacion" id="clasificacion" class="border rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
                         <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>

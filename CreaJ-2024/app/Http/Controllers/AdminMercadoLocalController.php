@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\MercadoLocal;
 use App\Models\Vendedor;
 use App\Models\Cliente;
-use  Illuminate\Support\Facades\Hash;
+use App\Models\User; // Asegúrate de incluir el modelo User
+use Illuminate\Http\Request; // Asegúrate de incluir Request
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\MercadoLocalRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -89,10 +91,9 @@ class AdminMercadoLocalController extends Controller
             'usuario' => $usuario,
             'password' => $password,
         ]);
+    }
 
-        }
-
-        public function confirmation()
+    public function confirmation()
     {
         // Obtener los datos de la sesión
         $usuario = session('usuario');
@@ -101,7 +102,6 @@ class AdminMercadoLocalController extends Controller
         // Mostrar la vista de confirmación
         return view('admin-mercado-locals.confirmation', compact('usuario', 'contrasena'));
     }
-
 
     // Método: show
     // Descripción: Muestra los detalles de un mercado local específico.
@@ -147,5 +147,36 @@ class AdminMercadoLocalController extends Controller
         // Redirigir a la vista de índice de mercados locales con mensaje de éxito
         return redirect()->route('admin-mercado-locals.index')
             ->with('success', 'Mercado Local deleted successfully');
+    }
+
+    // Método: registerVendedor
+    // Descripción: Registra un nuevo vendedor y lo asocia a un mercado local.
+    public function registerVendedor(Request $request)
+    {
+        $request->validate([
+            'usuario' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'Fk_Mercado' => 'required|exists:mercado_locals,id',
+        ]);
+
+        User::create([
+            'usuario' => $request->usuario,
+            'password' => Hash::make($request->password),
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'ROL' => 3, // Rol de vendedor
+        ]);
+
+        Vendedor::create([
+            'usuario' => $request->usuario,
+            'password' => Hash::make($request->password),
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'Fk_Mercado' => $request->Fk_Mercado,
+        ]);
+
+        return redirect()->route('admin-mercado-locals.index')->with('success', 'Vendedor registrado correctamente.');
     }
 }

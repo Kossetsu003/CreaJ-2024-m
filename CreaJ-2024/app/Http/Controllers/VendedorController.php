@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vendedor;
-use App\Models\MercadoLocal;
-use App\Models\Product;
-use App\Http\Requests\VendedorRequest;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -20,10 +18,10 @@ class VendedorController extends Controller
      */
     public function index()
     {
-        $vendedors = Vendedor::paginate();
+        $vendedores = Vendedor::paginate();
 
-        return view('vendedor.index', compact('vendedors'))
-            ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
+        return view('vendedor.index', compact('vendedores'))
+            ->with('i', (request()->input('page', 1) - 1) * $vendedores->perPage());
     }
 
     /**
@@ -32,60 +30,45 @@ class VendedorController extends Controller
     public function create()
     {
         $vendedor = new Vendedor();
-        return view('MercadoRegistrarVendedor', compact('vendedor'));
+        $mercados = MercadoLocal::all();
+        return view('vendedor.create', compact('vendedor', 'mercados'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(VendedorRequest $request)
+    public function store(Request $request)
     {
-         // Validar los datos del formulario
-         $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email|unique:vendedors',
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:vendedors,usuario',
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20|unique:vendedors',
-            'numero_puesto' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:vendedors,telefono',
+            'numero_puesto' => 'required|integer|unique:vendedors,numero_puesto',
             'contrasena' => 'required|string|min:8|confirmed',
+            'fk_mercado' => 'required|exists:mercado_locals,id',
         ]);
 
-        // Verificar si la validación falla
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        // Verificar si ya existen datos iguales en la base de datos
-        if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
-        }
-
-        // Crear vendedor si la validación pasa y no hay datos repetidos
-        $vendedor = Vendedor::create([
+        Vendedor::create([
             'usuario' => $request->usuario,
+            'password' => Hash::make($request->contrasena),
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'telefono' => $request->telefono,
             'numero_puesto' => $request->numero_puesto,
-            'fk_mercado' => 1, // Valor predeterminado
-            'contrasena' => Hash::make($request->contrasena), // Encriptar la contraseña
+            'fk_mercado' => $request->fk_mercado,
+            'ROL' => 3,
         ]);
 
-        // Verificar si ya existen datos iguales en la base de datos
-        if (Vendedor::where('usuario', $request->usuario)->exists() || Vendedor::where('telefono', $request->telefono)->exists()) {
-            return redirect()->back()
-                ->withInput()
-                ->with('error', 'Ya existe un vendedor con el mismo correo electrónico o teléfono.');
-            }
-
-        return redirect()->route('admin-vendedors.index')
+        return redirect()->route('VendedorHome')
             ->with('success', 'Vendedor creado exitosamente.');
-
-}
+    }
 
     /**
      * Display the specified resource.
@@ -113,26 +96,56 @@ class VendedorController extends Controller
     public function edit($id)
     {
         $vendedor = Vendedor::find($id);
-
-        return view('vendedor.edit', compact('vendedor'));
+        $mercados = MercadoLocal::all();
+        return view('vendedor.edit', compact('vendedor', 'mercados'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(VendedorRequest $request, Vendedor $vendedor)
+    public function update(Request $request, $id)
     {
-        $vendedor->update($request->validated());
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:vendedors,usuario,' . $id,
+            'nombre' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:vendedors,telefono,' . $id,
+            'numero_puesto' => 'required|integer|unique:vendedors,numero_puesto,' . $id,
+            'fk_mercado' => 'required|exists:mercado_locals,id',
+            'contrasena' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $vendedor = Vendedor::find($id);
+
+        $vendedor->usuario = $request->usuario;
+        $vendedor->nombre = $request->nombre;
+        $vendedor->apellidos = $request->apellidos;
+        $vendedor->telefono = $request->telefono;
+        $vendedor->numero_puesto = $request->numero_puesto;
+        $vendedor->fk_mercado = $request->fk_mercado;
+        if ($request->filled('contrasena')) {
+            $vendedor->password = Hash::make($request->contrasena);
+        }
+        $vendedor->save();
 
         return redirect()->route('vendedors.index')
-            ->with('success', 'Vendedor updated successfully');
+            ->with('success', 'Vendedor actualizado exitosamente.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
         Vendedor::find($id)->delete();
 
         return redirect()->route('vendedors.index')
-            ->with('success', 'Vendedor deleted successfully');
+            ->with('success', 'Vendedor eliminado exitosamente.');
     }
 }

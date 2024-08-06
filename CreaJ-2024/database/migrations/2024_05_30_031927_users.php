@@ -1,8 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -13,22 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->double('ROL')->unsigned()->nullable()->default(4);
-            $table->string('usuario');
+            $table->unsignedDouble('ROL')->nullable()->default(4);
+            $table->string('usuario')->unique();
             $table->string('password');
             $table->string('nombre')->nullable();
             $table->string('apellido')->nullable();
             $table->string('telefono')->nullable();
             $table->string('sexo')->nullable();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamps();
             $table->rememberToken();
         });
 
+        // Agregar un usuario admin general por defecto
         $password = 'minishop1';
         $hash = Hash::make($password);
         DB::insert('insert into users (id, ROL, usuario, password, nombre, apellido, telefono, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)', [1, 1, 'admin@minishop.sv', $hash, 'Administrador', 'De MiniShop', NULL, NULL]);
-
     }
 
     /**
@@ -37,6 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-
     }
 };
+
