@@ -30,6 +30,13 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 */
 //use App\Http\Controllers\MercadoLocalController;
 
+Route::get('/test', function () {
+    return 'Test route works';
+});
+Route::get('/usuarios/test', [UsuariosController::class, 'test']);
+Route::get('/usuarios/carrito-publico', [UsuariosController::class, 'carritoPublico'])->name('usuarios.carrito.publico');
+Route::get('/usuarios/reservas-publico', [UsuariosController::class, 'reservasPublico'])->name('usuarios.reservas.publico');
+
 
 
 /*Vistas Principales*/
@@ -137,11 +144,14 @@ Route::get('/usuarios/vendedor/{id}', [UsuariosController::class, 'vendedor'])->
 Route::get('/usuarios/producto/{id}', [UsuariosController::class, 'producto'])->name('usuarios.producto');
 //ruta para aniadir alc arrito e index
 Route::post('/usuarios/addcarrito/{product}', [UsuariosController::class, 'addcarrito'])->name('usuarios.addcarrito');
-//index
-Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito');
+
 //RESERVAR y RESERVAS
 Route::post('/usuarios/reservar', [UsuariosController::class, 'reservar'])->name('usuarios.reservar');
-Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas');
+
+// Ruta para ver el carrito
+Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito')->middleware('check.user.session');
+// Ruta para ver las reservas del usuario
+Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas')->middleware('check.user.session');
 
 
 
