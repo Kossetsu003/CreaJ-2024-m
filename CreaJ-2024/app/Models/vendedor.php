@@ -60,4 +60,8 @@ class Vendedor extends Authenticatable
     {
         return $this->belongsTo(\App\Models\MercadoLocal::class, 'fk_mercado', 'id');
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'fk_vendedor');
+    }
 }

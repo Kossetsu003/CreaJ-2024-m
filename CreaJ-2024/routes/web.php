@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReservationItemController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\VendedoresController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -144,14 +145,21 @@ Route::get('/usuarios/vendedor/{id}', [UsuariosController::class, 'vendedor'])->
 Route::get('/usuarios/producto/{id}', [UsuariosController::class, 'producto'])->name('usuarios.producto');
 //ruta para aniadir alc arrito e index
 Route::post('/usuarios/addcarrito/{product}', [UsuariosController::class, 'addcarrito'])->name('usuarios.addcarrito');
-
 //RESERVAR y RESERVAS
 Route::post('/usuarios/reservar', [UsuariosController::class, 'reservar'])->name('usuarios.reservar');
-
 // Ruta para ver el carrito
 Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito');
 // Ruta para ver las reservas del usuario
 Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas');
+
+
+/**
+ * RUTAS PARA EL VENDEDOR CONTROLADOR
+ */
+Route::resource('vendedores', VendedoresController::Class);
+
+Route::get('/vendedores/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
+
 
 
 
