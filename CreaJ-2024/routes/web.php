@@ -158,7 +158,7 @@ Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name(
  */
 Route::resource('vendedores', VendedoresController::Class);
 
-Route::get('/vendedores/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
+Route::get('/vendedores/show/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
 
 
 
