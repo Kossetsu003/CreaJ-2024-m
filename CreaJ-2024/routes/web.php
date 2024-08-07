@@ -31,31 +31,18 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 */
 //use App\Http\Controllers\MercadoLocalController;
 
-Route::get('/test', function () {
-    return 'Test route works';
-});
-Route::get('/usuarios/test', [UsuariosController::class, 'test']);
-Route::get('/usuarios/carrito-publico', [UsuariosController::class, 'carritoPublico'])->name('usuarios.carrito.publico');
-Route::get('/usuarios/reservas-publico', [UsuariosController::class, 'reservasPublico'])->name('usuarios.reservas.publico');
-
 
 
 /*Vistas Principales*/
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'LoginUser'])->name('inicia-sesion');
-
-
 Route::view('/','Index')->name('Index');
-
 Route::view('/LoginUser','LoginUser')->name('LoginUser');
 Route::view('/RegistroUser','RegistroUser')->name('RegistroUser');
-
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [LoginController::class, 'loginuser'])->name('inicia-sesion');
-
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::get('LoginUser', [LoginController::class, 'LoginUser']);
-
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
@@ -137,7 +124,7 @@ Route::resource('products', ProductController::class);
  * RUTAS DEL USUARIO
  */
 //Controlador e index
-Route::resource('usuarios', UsuariosController::Class);
+
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
 // Ruta para el método mercado,vendedor y producto
 Route::get('/usuarios/mercado/{id}', [UsuariosController::class, 'mercado'])->name('usuarios.mercado');

@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="flex items-center">
-                    <a href="{{ route('cart.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6"
+                    <a href="{{ route('usuarios.carrito') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6"
                             src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="{{ route('reservations.index') }}"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}"
+                    <a href="{{ route('usuarios.reservas') }}"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}"
                             alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">

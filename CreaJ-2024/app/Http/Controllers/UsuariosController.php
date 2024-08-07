@@ -128,6 +128,7 @@ use Illuminate\Support\Facades\Auth;
     {
         try {
             $userid = Auth::id();
+            
             $cartItems = Cart::with('product')->where('fk_users', $userid)->get();
             $total = $cartItems->reduce(fn ($carry, $item) => $carry + ($item->product->price * $item->quantity), 0);
             return view('UserCarritoGeneral', compact('cartItems', 'total', 'userid'));
@@ -177,26 +178,7 @@ use Illuminate\Support\Facades\Auth;
 
         return view('UserEstadoReservas', compact('reservations'));
     }
-    public function test()
-    {
-        return 'Test method works';
-    }
-    public function carritoPublico()
-{
-    try {
-        return 'Carrito Público';
-    } catch (\Exception $e) {
-        // Log the exception and return an error message
-        \Log::error('Error en carritoPublico: ' . $e->getMessage());
-        return response()->json(['error' => 'Ocurrió un error interno del servidor'], 500);
-    }
-}
 
-
-    public function reservasPublico()
-    {
-        return 'Reservas Públicas';
-    }
 
  }
 

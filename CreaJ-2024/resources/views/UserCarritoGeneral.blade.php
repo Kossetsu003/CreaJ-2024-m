@@ -21,9 +21,9 @@
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="{{ route('cart.index') }}"
+            <a href="{{ route('usuarios.carrito') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('reservations.index') }}"
+            <a href="{{ route('usuarios.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -38,12 +38,12 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('cart.index') }}">
+                <a href="{{ route('usuarios.carrito') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('reservations.index') }}">
+                <a href="{{ route('usuarios.reservas') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
@@ -69,7 +69,9 @@
 
             <div class="space-y-4">
 
+                @if ($cartItems->isEmpty())
                 <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Productos</span>
+            @else
                 @foreach ($cartItems as $cartItem)
                 <!--INICIO DE LA CARTA-->
                 <div
@@ -96,11 +98,16 @@
                 </div>
             </form>
                 @endforeach
+            @endif
                 <!--FIN DE LA CARTA-->
                 <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
                 <form action="{{ route('usuarios.reservar') }}" method="POST">
                     @csrf
+                    @if ($cartItems->isEmpty())
+                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">Guardar Reserva</button>
+                @else
                     <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-green-500 rounded-md ml-2 hover:bg-green-600"  type="submit">Guardar Reserva</button>
+                    @endif
                 </form>
             </div>
 

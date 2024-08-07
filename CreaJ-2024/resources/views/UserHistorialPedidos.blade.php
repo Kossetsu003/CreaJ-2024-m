@@ -18,9 +18,9 @@
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="{{ route('cart.index') }}"
+            <a href="{{ route('usuarios.carrito') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('reservations.index') }}"
+            <a href="{{ route('usuarios.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -35,12 +35,12 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('cart.index') }}">
+                <a href="{{ route('usuarios.carrito') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('reservations.index') }}">
+                <a href="{{ route('usuarios.reservas') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>

@@ -21,9 +21,9 @@
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="{{ route('cart.index') }}"
+            <a href="{{ route('usuarios.carrito') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('reservations.index') }}"
+            <a href="{{ route('usuarios.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -38,12 +38,12 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('cart.index') }}">
+                <a href="{{ route('usuarios.carrito') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('reservations.index') }}">
+                <a href="{{ route('usuarios.reservas') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
@@ -72,15 +72,13 @@
                     <!--SUMATORIA-->
                     <div class="flex items-center space-x-2">
                         <!--Boton 1-->
-                        <span
-                            class="bg--200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">-</span>
+                        <div class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700 cursor-pointer" onclick="decrement()">-</div>
                         <!--INPUT IMPORTANTES-->
-                        <input type="number" name="quantity" value="1" min="1">
-            <input type="hidden" name="subtotal" value="1" min="1">
+                        <input readonly id="quantity" type="number" name="quantity" value="1" min="1" class=" pl-[12px] w-12 h-8 text-center border border-gray-400 rounded mx-2">
+                        <input type="hidden" name="subtotal" value="1" min="1">
 
                         <!--Boton 2-->
-                        <span
-                            class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700">+</span>
+                        <div class="bg-gray-200 border border-gray-400 rounded-full w-8 h-8 flex justify-center items-center text-lg text-gray-700 cursor-pointer" onclick="increment()">+</div>
                     </div>
                     <!--SUMATORIA-->
 
@@ -134,5 +132,22 @@
         </div>
     </div>
 </body>
+<script>
+    function decrement() {
+        const input = document.getElementById('quantity');
+        let value = parseInt(input.value);
+        if (value > 1) {
+            value--;
+            input.value = value;
+        }
+    }
+
+    function increment() {
+        const input = document.getElementById('quantity');
+        let value = parseInt(input.value);
+        value++;
+        input.value = value;
+    }
+</script>
 
 </html>

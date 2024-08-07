@@ -8,7 +8,7 @@
 <body>
     <nav>
         <a href="{{ route('products.index') }}">Productos</a>
-        <a href="{{ route('cart.index') }}">Carrito</a>
+        <a href="{{ route('usuarios.carrito') }}">Carrito</a>
     </nav>
     <main>
         @yield('content')
