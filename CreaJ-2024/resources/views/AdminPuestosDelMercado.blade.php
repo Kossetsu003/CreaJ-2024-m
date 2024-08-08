@@ -16,7 +16,7 @@
             MiniShop
         </h1>
         <div class="flex gap-8">
-            <a href="{{ route('admin-mercado-locals.index') }}"
+            <a href="{{ route('admin.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
             <a href="{{ route('usuarios.carrito') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
@@ -35,17 +35,17 @@
         <!--INICIO DE NAVBAR MOBIL-->
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
             <<div class="flex items-center  ">
-                <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
+                <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
                         class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
         </div>
 
         <div class="flex items-center">
-            <a href="{{ route('admin-vendedors.index') }}"><img class="w-6"
+            <a href="{{ route('admin.vendedores') }}"><img class="w-6"
                     src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
         </div>
 
         <div class="flex items-center">
-            <a href="{{ route('admin-clientes.index') }}"><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}"
+            <a href="{{ route('admin.clientes') }}"><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}"
                     alt="User Icon"></a>
         </div>
         <div class="flex items-center">

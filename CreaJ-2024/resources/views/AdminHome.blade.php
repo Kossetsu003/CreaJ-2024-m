@@ -15,18 +15,18 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
 
-        <a href="{{ route('admin-mercado-locals.index') }}">
+        <a href="{{ route('admin.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Admin <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
 
         <div class="flex gap-8">
-            <a href="{{ route('admin-mercado-locals.index') }}"
+            <a href="{{ route('admin.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
-            <a href="{{ route('admin-vendedors.index') }}"
+            <a href="{{ route('admin.vendedores') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
-            <a href="{{ route('admin-clientes.index') }}"
+            <a href="{{ route('admin.clientes') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Clientes</a>
             <a href="{{ route('AdminProfileVista')}}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -41,13 +41,13 @@
         <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
                 <div class="flex items-center  ">
-                    <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.vendedores') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
                     <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="flex mt-5 justify-around w-[90%] mx-auto">
-                <a href="{{ route('admin-mercado-locals.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                <a href="{{ route('admin.crearmercados') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
 
                     <span class="flex items-center px-3 py-2  rounded-md">
                         <img class="w-7 mr-2" src="{{ asset('imgs/AddIcon.png') }}" alt="User Icon">
@@ -98,7 +98,7 @@
 
                 @foreach ($mercadoLocals as $mercadoLocal)
                 <!--INICIO DE PLANTILLA-->
-                <a href="{{ route('admin-mercado-locals.show',$mercadoLocal->id) }}" class="md:w-[30%] w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4 ">
+                <a href="{{ route('admin.vermercados',$mercadoLocal->id) }}" class="md:w-[30%] w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4 ">
                     <div>
                         <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="{{ $mercadoLocal->imagen_referencia }}">
                         <div class="text-center mt-2">
@@ -108,10 +108,10 @@
                     </div>
                     <div class="flex justify-center item-center">
                         <!--EDITAR-->
-                        <a class="bg-orange-500 text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin-mercado-locals.edit',$mercadoLocal->id) }}">Editar</a>
+                        <a class="bg-orange-500 text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin.editarmercados',$mercadoLocal->id) }}">Editar</a>
 
                     <!--ELIMINAR-->
-                        <form action="{{ route('admin-mercado-locals.destroy',$mercadoLocal->id) }}" method="POST" class="relative">
+                        <form action="{{ route('admin.eliminarmercados',$mercadoLocal->id) }}" method="POST" class="relative">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class=" bg-red-500 text-white text-xs px-3 py-2 rounded btn btn-danger btn-sm z-[3] "><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>

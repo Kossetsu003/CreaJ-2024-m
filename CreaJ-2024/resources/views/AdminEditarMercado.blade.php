@@ -19,7 +19,7 @@
                 <h3 class="text-sm mt-2">{{ old('nombre', $mercadoLocal?->nombre) }} <span class="font-bold">ID:
                         #{{ old('ROL', $mercadoLocal?->id) }}</span></h3>
             </div>
-            <form method="POST" action="{{ route('admin-mercado-locals.update', $mercadoLocal->id) }}" role="form"
+            <form method="POST" action="{{ route('admin.actualizarmercados', $mercadoLocal->id) }}" role="form"
                 enctype="multipart/form-data">
                 {{ method_field('PATCH') }}
                 @csrf
@@ -113,17 +113,17 @@
             <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                     <div class="flex items-center  ">
-                        <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
+                        <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
                                 class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="{{ route('admin-vendedors.index') }}"><img class="w-6"
+                        <a href="{{ route('admin.vendedores') }}"><img class="w-6"
                                 src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                     </div>
 
                     <div class="flex items-center">
-                        <a href="{{ route('admin-clientes.index') }}"><img class="w-6"
+                        <a href="{{ route('admin.clientes') }}"><img class="w-6"
                                 src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">

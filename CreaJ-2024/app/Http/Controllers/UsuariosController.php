@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 //modelos
 use App\Models\User;
-use App\Models\Clientes;
+use App\Models\Cliente;
 use App\Models\MercadoLocal;
 use App\Models\Vendedor;
 use App\Models\Cart;
@@ -128,7 +128,7 @@ use Illuminate\Support\Facades\Auth;
     {
         try {
             $userid = Auth::id();
-            
+
             $cartItems = Cart::with('product')->where('fk_users', $userid)->get();
             $total = $cartItems->reduce(fn ($carry, $item) => $carry + ($item->product->price * $item->quantity), 0);
             return view('UserCarritoGeneral', compact('cartItems', 'total', 'userid'));

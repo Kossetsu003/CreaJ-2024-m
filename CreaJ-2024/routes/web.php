@@ -123,8 +123,27 @@ Route::resource('products', ProductController::class);
 
 /**RUTAS DEL ADMINISTRADOR
  */
-
+//mercadolocales
  Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+ Route::get('/admin/crearmercados', [AdminController::class, 'crearmercados'])->name('admin.crearmercados');
+ Route::post('/admin/guardarmercados', [AdminController::class, 'guardarmercados'])->name('admin.guardarmercados');
+ Route::get('/admin/vermercados/{id}', [AdminController::class, 'vermercados'])->name('admin.vermercados');
+ Route::get('/admin/editarmercados', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
+ Route::post('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
+ Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados');
+
+//VENDEDORES
+ Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores');
+ Route::get('/admin/crearvendedores', [AdminController::class, 'crearvendedores'])->name('admin.crearvendedores');
+ Route::post('/admin/guardarvendedores', [AdminController::class, 'guardarvendedores'])->name('admin.guardarvendedores');
+ Route::get('/admin/vervendedores/{id}', [AdminController::class, 'vervendedores'])->name('admin.vervendedores');
+ Route::get('/admin/editarvendedores/{id}', [AdminController::class, 'editarvendedores'])->name('admin.editarvendedores');
+ Route::post('/admin/actualizarvendedores', [AdminController::class, 'actualizarvendedores'])->name('admin.actualizarvendedores');
+ Route::delete('/admin/eliminarvendedores/{id}', [AdminController::class, 'eliminarvendedores'])->name('admin.eliminarvendedores');
+
+ //CLIENTES
+ Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
+ Route::delete('/admin/eliminarclientes/{id}', [AdminController::class, 'eliminarclientes'])->name('admin.eliminarclientes');
 /**
  * RUTAS DEL USUARIO
  */
@@ -147,7 +166,7 @@ Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name(
 /**
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
-Route::resource('vendedores', VendedoresController::Class);
+
 
 Route::get('/vendedores/show/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
 

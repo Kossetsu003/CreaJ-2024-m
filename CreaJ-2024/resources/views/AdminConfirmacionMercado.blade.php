@@ -7,5 +7,5 @@
         <p><strong>Contraseña:</strong> {{ $contrasena }}</p>
     </div>
 
-    <a href="{{ route('admin-mercado-locals.index') }}">CONTINUAR</a>
+    <a href="{{ route('admin.index') }}">CONTINUAR</a>
 @endsection

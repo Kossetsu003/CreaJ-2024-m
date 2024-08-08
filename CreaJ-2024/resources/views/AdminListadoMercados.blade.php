@@ -13,18 +13,18 @@
      <!-- Desktop Navbar -->
      <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
 
-        <a href="{{ route('admin-mercado-locals.index') }}">
+        <a href="{{ route('admin.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Admin <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
 
         <div class="flex gap-8">
-            <a href="{{ route('admin-mercado-locals.index') }}"
+            <a href="{{ route('admin.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
-            <a href="{{ route('admin-vendedors.index') }}"
+            <a href="{{ route('admin.vendedores') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
-            <a href="{{ route('admin-clientes.index') }}"
+            <a href="{{ route('admin.clientes') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Clientes</a>
             <a href="{{ route('AdminProfileVista')}}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -36,15 +36,15 @@
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
                 <div class="flex items-center  ">
-                    <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.vendedores') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                 </div>
 
                 <div class="flex items-center">
-                    <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
                     <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>

@@ -13,18 +13,18 @@
      <!-- Desktop Navbar -->
      <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
 
-        <a href="{{ route('admin-mercado-locals.index') }}">
+        <a href="{{ route('admin.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Admin <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
 
         <div class="flex gap-8">
-            <a href="{{ route('admin-mercado-locals.index') }}"
+            <a href="{{ route('admin.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
-            <a href="{{ route('admin-vendedors.index') }}"
+            <a href="{{ route('admin.vendedores') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
-            <a href="{{ route('admin-clientes.index') }}"
+            <a href="{{ route('admin.clientes') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Clientes</a>
             <a href="{{ route('AdminProfileVista')}}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
@@ -38,13 +38,13 @@
         <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
                 <div class="flex items-center  ">
-                    <a href="{{ route('admin-mercado-locals.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('admin-vendedors.index') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.vendedores') }}"><img class="w-6" src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('admin-clientes.index') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
+                    <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
                 <div class="flex items-center">
                     <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
@@ -61,7 +61,7 @@
     <main class="p-4">
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
             <h1 class="text-3xl font-bold mb-6 text-gray-800">Lista de Vendedores</h1>
-            <a class="bg-orange-500 text-white text-xs px-8 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin-vendedors.create') }}">Agregar Vendedores</a>
+            <a class="bg-orange-500 text-white text-xs px-8 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin.crearvendedores') }}">Agregar Vendedores</a>
 
             <div class="space-y-4">
                 @foreach ($vendedors as $vendedor)
@@ -76,11 +76,11 @@
                   </div>
                 </div>
                 <div class="flex">
-                    <form action="{{ route('admin-vendedors.destroy',$vendedor->id) }}" method="POST">
+                    <form action="{{ route('admin.eliminarvendedores',$vendedor->id) }}" method="POST">
 
-                  <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('admin-vendedors.index',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                  <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('admin.vervendedores',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
 
-                  <a class="btn btn-sm btn-success px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('admin-vendedors.edit',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                  <a class="btn btn-sm btn-success px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('admin.editarvendedores',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
 
                   @csrf
                   @method('DELETE')
