@@ -14,6 +14,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReservationItemController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -120,11 +121,14 @@ Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 Route::resource('products', ProductController::class);
 
+/**RUTAS DEL ADMINISTRADOR
+ */
+
+ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 /**
  * RUTAS DEL USUARIO
  */
 //Controlador e index
-
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
 // Ruta para el método mercado,vendedor y producto
 Route::get('/usuarios/mercado/{id}', [UsuariosController::class, 'mercado'])->name('usuarios.mercado');
