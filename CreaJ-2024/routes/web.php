@@ -15,11 +15,13 @@ use App\Http\Controllers\ReservationItemController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\VendedoresController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MercadosController;
 
+/*
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +51,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 /*Vistas de Clientes*/
+/*ELIMINAR
 Route::view('/UserProductoEnEspecifico','UserProductoEnEspecifico')->name('UserProductoEnEspecifico');
 Route::view('/UserEditarPerfil','UserEditarPerfil')->name('UserEditarPerfil');
 Route::view('/UserCarritoGeneral','UserCarritoGeneral')->name('UserCarritoGeneral');
@@ -58,13 +61,13 @@ Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserPro
 Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoReservas','UserEstadoReservas')->name('UserEstadoReservas');
 Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');
-Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');
+Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');*/
 
 
 
 
 /*Vistas de Vendedores*/
-
+/*ELIMINAR
 Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');
 Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto'); //
 Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
@@ -72,24 +75,24 @@ Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfi
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
 Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //
 Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
-Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');
+Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');*/
 
 
 
 
 /*Vistas de Mercado*/
-
+/*ELIMINAR
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
 Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
 Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
 Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
 Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores'); //
 Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor'); //
-Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');
+Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');*/
 
 
 /*Administrador General*/
-
+/*ELIMINAR
 Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
 Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');
 Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); //
@@ -104,7 +107,7 @@ Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListad
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 Route::view('/AdminConfirmacionMercado','AdminConfirmacionMercado')->name('AdminConfirmacionMercado');
-Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::class, 'confirmation'])->name('admin-mercado-locals.confirmation');
+Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::class, 'confirmation'])->name('admin-mercado-locals.confirmation');*/
 
 
 
@@ -113,6 +116,7 @@ Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::c
 
 // Auth::routes();
 //ROUTES POR CONTROLADORES
+/*ELIMINAR*/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mercado-locals', MercadoLocalController::class);;
 Route::resource('vendedors', VendedorController::class);
@@ -120,6 +124,12 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('admin-clientes', AdminClienteController::class);
 Route::resource('admin-vendedors', AdminVendedorController::class);
 Route::resource('products', ProductController::class);
+
+
+
+
+
+
 
 /**RUTAS DEL ADMINISTRADOR
  */
@@ -131,7 +141,6 @@ Route::resource('products', ProductController::class);
  Route::get('/admin/editarmercados', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
  Route::post('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
  Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados');
-
 //VENDEDORES
  Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores');
  Route::get('/admin/crearvendedores', [AdminController::class, 'crearvendedores'])->name('admin.crearvendedores');
@@ -140,10 +149,14 @@ Route::resource('products', ProductController::class);
  Route::get('/admin/editarvendedores/{id}', [AdminController::class, 'editarvendedores'])->name('admin.editarvendedores');
  Route::post('/admin/actualizarvendedores', [AdminController::class, 'actualizarvendedores'])->name('admin.actualizarvendedores');
  Route::delete('/admin/eliminarvendedores/{id}', [AdminController::class, 'eliminarvendedores'])->name('admin.eliminarvendedores');
-
  //CLIENTES
  Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
  Route::delete('/admin/eliminarclientes/{id}', [AdminController::class, 'eliminarclientes'])->name('admin.eliminarclientes');
+
+
+
+
+
 /**
  * RUTAS DEL USUARIO
  */
@@ -163,56 +176,46 @@ Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('u
 Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas');
 
 
+
+
+
 /**
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
-
-
 Route::get('/vendedores/show/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
 
 
 
 
 
+/**
+ * RUTAS PARA EL MERCADO CONTROLADOR
+ */
+Route::get('/mercados/index/{id}', [MercadosController::class, 'index'])->name('mercados.index');
 
 
-Route::resource('admin-mercado-locals', AdminMercadoLocalController::class);
-
-// Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
+
+
+/*PRUEBAS PARA EL CARRITO*/
 //CARRITOOOO
 Route::get('/pruebauno', function () {
     return view('layout');
 });
-
-
 //Route::resource('users', UserController::class);
-
-
-
-
 //CARRITOO
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
     Route::delete('/cart/{product}', [CartController::class, 'remove'])->name('cart.remove');;
 });
-
-
 //RESERVAAAS
 Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');;
-
 // routes/web.php
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-
-
 //RESERVA
-
-
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
