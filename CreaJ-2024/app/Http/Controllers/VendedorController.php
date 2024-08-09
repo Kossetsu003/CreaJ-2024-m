@@ -30,7 +30,7 @@ class VendedorController extends Controller
     public function create()
     {
         $vendedor = new Vendedor();
-        $mercados = MercadoLocal::all();
+        $mercados = MercadoLocals::all();
         return view('vendedor.create', compact('vendedor', 'mercados'));
     }
 

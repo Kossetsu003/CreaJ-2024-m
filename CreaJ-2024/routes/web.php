@@ -81,14 +81,14 @@ Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');*/
 
 
 /*Vistas de Mercado*/
-/*ELIMINAR
+//ELIMINAR
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
-Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');*/
-Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');/*
+Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
+Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
 Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
 Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores'); //
 Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor'); //
-Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');*/
+Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');
 
 
 /*Administrador General*/
@@ -192,6 +192,18 @@ Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedo
  * RUTAS PARA EL MERCADO CONTROLADOR
  */
 Route::get('/mercados', [MercadosController::class, 'index'])->name('mercados.index');
+//vendedores
+Route::get('/mercados/vervendedor/{id}', [MercadosController::class, 'vervendedor'])->name('mercados.vervendedor');
+Route::get('/mercados/listavendedores', [MercadosController::class, 'listavendedores'])->name('mercados.listavendedores');
+Route::get('/mercados/editarvendedor/{id}', [MercadosController::class, 'editarvendedor'])->name('mercados.editarvendedor');
+Route::get('/mercados/agregarvendedor', [MercadosController::class, 'agregarvendedor'])->name('mercados.agregarvendedor');
+Route::post('/mercados/guardarvendedor', [MercadosController::class, 'guardarvendedor'])->name('mercados.guardarvendedor');
+Route::delete('/mercados/eliminarvendedor/{id}', [MercadosController::class, 'eliminarvendedor'])->name('mercados.eliminarvendedor');
+//Reservas
+Route::get('/mercados/reservas', [MercadosController::class, 'reservas'])->name('mercados.reservas');
+Route::get('/mercados/reservadelvendedor/{id}', [MercadosController::class, 'reservasdelvendedor'])->name('mercados.reservasdelvendedor');
+Route::get('/mercados/editarvendedor/{id}', [MercadosController::class, 'editarreservas'])->name('mercados.editarreservas');
+
 
 
 

@@ -13,19 +13,19 @@
 <body class="overflow-x-hidden">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('usuarios.index') }}">
+        <a href="{{ route('mercados.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
           MINI <span class="text-red-600 uppercase "><b>Mercado</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('usuarios.index') }}"
+            <a href="{{ route('mercados.index') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">hogar</a>
-            <a href="{{ route('usuarios.carrito') }}"
+            <a href="{{ route('mercados.listavendedores') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
-            <a href="{{ route('usuarios.reservas') }}"
+            <a href="{{ route('mercados.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
+            <a href="{{ route('MercadoProfileVista') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
@@ -33,22 +33,22 @@
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
         <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('mercados.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('usuarios.carrito') }}">
+                <a href="{{ route('mercados.listavendedores') }}">
                     <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('usuarios.reservas') }}">
+                <a href="{{ route('mercados.reservas') }}">
                     <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('UserProfileVista') }}">
+                <a href="{{ route('MercadoProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -56,20 +56,23 @@
     </div>
     <!-- INICIO BANNER -->
     <div class="w-screen hidden md:block">
-        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/mercadocentral.png') }}"  alt="Banner Image">
+        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}"  alt="Banner Image">
     </div>
     <!-- FIN BANNER -->
 
-    <div class="mt-14 w-full mx-auto md:text-[30px]">
+    <div class="mt-8 w-full mx-auto md:text-[30px]">
         <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">
             <!-- Contenedor Principal -->
             <div>
                 <!-- TITULO -->
-                <div class="md:font-bold text-[2rem] md:text-[4rem] ">
+                <div class="md:font-bold text-[2rem] md:text-[4rem] text-center">
                     {{ $mercadoLocal->nombre }}
                 </div>
                 <div class="md:text-center md:font-semibold font-bold">
                     Ubicado En: {{ $mercadoLocal->municipio }}
+                </div>
+                <div class="md:text-center   text-[20px] pb-[10px] w-[40rem] h-auto">
+                    {{ $mercadoLocal->descripcion }}
                 </div>
             </div>
         </div>
@@ -99,20 +102,21 @@
         <!-- CARTAS -->
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
 
-
-            <a href="" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
+            @foreach ($vendedors as $vendedor)
+            <a href="{{ route('mercados.vervendedor',$vendedor->id) }}" class="w-full sm:w-[48%] md:w-[30%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/rosiomartinez.png') }}" alt="rosariomartinez.png">
-                <h3 class="font-bold mt-5 text-[1.5rem]">Comedor Rosario</h3>
-                <h3 class="mb-2">Tienda de Rosario Martinez</h3>
+                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="{{ $vendedor->imagen_de_referencia }}">
+                <h3 class="font-bold mt-5 text-[1.5rem]">{{ $vendedor->nombre_del_local }}</h3>
+                <h3 class="mb-2">Tienda de {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
                 <div class="flex justify-between">
-                    <b><h3>Comida</h3></b>
+                    <b><h3>{{ $vendedor->clasificacion }}</h3></b>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
                         <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
             </a>
+            @endforeach
 
         </div>
         <!-- FIN CARTAS -->
