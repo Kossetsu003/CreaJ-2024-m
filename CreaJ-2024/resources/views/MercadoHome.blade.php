@@ -15,14 +15,14 @@
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Mini <span class="text-red-600 uppercase"><b>Mercado</b></span>
+          MINI <span class="text-red-600 uppercase "><b>Mercado</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">hogar</a>
             <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
             <a href="{{ route('usuarios.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
             <a href="{{ route('UserProfileVista') }}"
@@ -66,35 +66,29 @@
             <div>
                 <!-- TITULO -->
                 <div class="md:font-bold text-[2rem] md:text-[4rem] ">
-                    Mercado Ejemplo
+                    {{ $mercadoLocal->nombre }}
                 </div>
                 <div class="md:text-center md:font-semibold font-bold">
-                    Ubicado En: San Salvador Centro
+                    Ubicado En: {{ $mercadoLocal->municipio }}
                 </div>
             </div>
+        </div>
+
+        <!--BOTONES PRINCIPALES-->
+        <div class="object-center items-center">
+            <a class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">VER MERCADO</a>
+        <a class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">EDITAR MERCADO</a>
+
+
         </div>
 
 
         <!--CATEGORIAS-->
 
-     <div class="flex my-5">
-        <div class="flex mx-auto">
-            <button class="flex items-center h-[3rem] border  px-1 py-0.5 rounded-md mr-2 text-[1.5rem] bg-red-300 border-red-300 text-white font-bold">
-                <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
-                <span class="ml-1">Todos Los puestos</span>
-            </button>
-
-            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
-                <img class="w-5 " src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
-                <span class="ml-1">Ropa</span>
-            </button>
-
-            <button class="flex items-center border text-black h-[3rem] px-1 py-0.5 rounded-md mr-2 text-[1.5rem] ">
-                <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
-                <span class="ml-1">Comedor</span>
-            </button>
+        <div class="md:text-center pt-[3rem] md:font-semibold font-bold">
+            TODOS LOS PUESTOS:
         </div>
-    </div>
+
 
     <!--FIN DE CATEGORIAS-->
 

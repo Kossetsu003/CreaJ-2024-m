@@ -59,8 +59,8 @@ Route::view('/UserCarritoDePuesto','UserCarritoDePuesto')->name('UserCarritoDePu
 Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestosVendedores');
 Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
 Route::view('/UserHome','UserHome')->name('UserHome');
-Route::view('/UserEstadoReservas','UserEstadoReservas')->name('UserEstadoReservas');
-Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');
+Route::view('/UserEstadoReservas','UserEstadoReservas')->name('UserEstadoReservas');*/
+Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');/*
 Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');*/
 
 
@@ -70,8 +70,8 @@ Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorial
 /*ELIMINAR
 Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');
 Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto'); //
-Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');
-Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');
+Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');*/
+Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');/*
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
 Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //
 Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
@@ -83,8 +83,8 @@ Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');*/
 /*Vistas de Mercado*/
 /*ELIMINAR
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
-Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
-Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
+Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');*/
+Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');/*
 Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
 Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores'); //
 Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor'); //
@@ -94,8 +94,8 @@ Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');*/
 /*Administrador General*/
 /*ELIMINAR
 Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
-Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');
-Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); //
+Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');*/
+Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); /*
 Route::view('/AdminHome','AdminHome')->name('AdminHome');
 Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
@@ -182,7 +182,7 @@ Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name(
 /**
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
-Route::get('/vendedores/show/{id}', [VendedoresController::class, 'show'])->name('vendedores.show');
+Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
 
 
 
@@ -191,7 +191,7 @@ Route::get('/vendedores/show/{id}', [VendedoresController::class, 'show'])->name
 /**
  * RUTAS PARA EL MERCADO CONTROLADOR
  */
-Route::get('/mercados/index/{id}', [MercadosController::class, 'index'])->name('mercados.index');
+Route::get('/mercados', [MercadosController::class, 'index'])->name('mercados.index');
 
 
 

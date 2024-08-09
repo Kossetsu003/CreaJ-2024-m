@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Auth;
 
  class MercadosController extends Controller
  {
-    public function index($id){
+    public function index(){
+        $id = 1;
         // Buscar el mercado local por ID
     $mercadoLocal = MercadoLocal::find($id);
 

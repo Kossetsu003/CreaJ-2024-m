@@ -32,8 +32,9 @@ use Illuminate\Support\Facades\Auth;
  class VendedoresController extends Controller{
 
 
-    public function show($id)
+    public function index()
 {
+    $id = 1;
     $vendedor = Vendedor::with('mercadoLocal')->find($id);
     $mercadoLocal = $vendedor->mercadoLocal;
     $products = Product::where('fk_vendedors', $id)->get();
