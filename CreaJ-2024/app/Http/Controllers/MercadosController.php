@@ -160,6 +160,15 @@ use Illuminate\Support\Facades\Validator;
      * RESERVAS
      */
     public function reservas(){
+         // Obtener el ID del mercado del usuario autenticado
+    $fk_mercado = session('fk_mercado');
+
+    // Filtrar las reservas por el mercado al que pertenecen
+    $reservations = Reservation::whereHas('vendedor', function ($query) use ($fk_mercado) {
+        $query->where('fk_mercado', $fk_mercado);
+    })->with('items.product')->get();
+
+    return view('UserEstadoReservas', compact('reservations'));
 
     }
     public function reservadelvendedor(){
