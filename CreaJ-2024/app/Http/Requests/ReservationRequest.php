@@ -25,6 +25,7 @@ class ReservationRequest extends FormRequest
 			'fk_user' => 'required',
             'total' => 'required|numeric|min:0',
             'items' => 'required|array',
+            'fk_mercado' => 'required|exists:mercado_locals,id',
             'items.*.fk_product' => 'required|exists:products,id',
             'items.*.quantity' => 'required|integer|min:1',
             'items.*.subtotal' => 'required|numeric|min:0',

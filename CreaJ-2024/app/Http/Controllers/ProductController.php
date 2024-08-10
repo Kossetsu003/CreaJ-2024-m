@@ -17,11 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        /*Lo unico que se es que no lo ocupo?
+       // Lo unico que se es que no lo ocupo?
         $products = Product::paginate();
 
         return view('product.index', compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());*/
+            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
     }
 
     /**

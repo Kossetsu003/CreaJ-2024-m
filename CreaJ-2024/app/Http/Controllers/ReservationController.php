@@ -61,10 +61,14 @@ class ReservationController extends Controller
             return $carry + ($item->product->price * $item->quantity);
         }, 0);
 
+        // Obtener el mercado desde el primer item en el carrito (asumiendo que todos los productos son del mismo mercado)
+        $fk_mercado = $cartItems->first()->product->vendedor->fk_mercado;
+
         // Crear la reserva
         $reservation = Reservation::create([
             'fk_users' => $user->id,
             'total' => $total,
+            'fk_mercado' => $fk_mercado,
         ]);
 
         // Crear los items de la reserva
@@ -82,6 +86,7 @@ class ReservationController extends Controller
 
         return redirect()->route('reservations.index')->with('success', 'Reserva creada exitosamente.');
     }
+
 
     /**
      * Display the specified resource.

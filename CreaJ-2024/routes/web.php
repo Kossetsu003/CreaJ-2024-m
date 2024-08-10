@@ -17,11 +17,11 @@ use App\Http\Controllers\VendedoresController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MercadosController;
 
-/*
+
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-*/
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

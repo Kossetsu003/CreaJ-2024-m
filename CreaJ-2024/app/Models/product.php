@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
-    
+
 
     protected $perPage = 20;
 
@@ -42,7 +42,7 @@ class Product extends Model
     {
         return $this->belongsTo(\App\Models\Vendedor::class, 'fk_vendedors', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -50,7 +50,7 @@ class Product extends Model
     {
         return $this->hasMany(\App\Models\Cart::class, 'id', 'fk_product');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -58,6 +58,6 @@ class Product extends Model
     {
         return $this->hasMany(\App\Models\ReservationItem::class, 'id', 'fk_product');
     }
-    
+
 
 }
