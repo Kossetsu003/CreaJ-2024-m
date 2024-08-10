@@ -102,7 +102,6 @@ Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminList
 Route::view('/AdminAgregarMercado','AdminAgregarMercado')->name('AdminAgregarMercado');
 Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
-Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
 Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListadoMercados');
 Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
@@ -138,8 +137,8 @@ Route::resource('products', ProductController::class);
  Route::get('/admin/crearmercados', [AdminController::class, 'crearmercados'])->name('admin.crearmercados');
  Route::post('/admin/guardarmercados', [AdminController::class, 'guardarmercados'])->name('admin.guardarmercados');
  Route::get('/admin/vermercados/{id}', [AdminController::class, 'vermercados'])->name('admin.vermercados');
- Route::get('/admin/editarmercados', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
- Route::post('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
+ Route::get('/admin/editarmercados/{id}', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
+ Route::patch('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
  Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados');
 //VENDEDORES
  Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores');
@@ -192,18 +191,22 @@ Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedo
  * RUTAS PARA EL MERCADO CONTROLADOR
  */
 Route::get('/mercados', [MercadosController::class, 'index'])->name('mercados.index');
+Route::get('/mercados/editar/{id}', [MercadosController::class, 'editar'])->name('mercados.editar');
+Route::put('/mercados/actualizar', [MercadosController::class, 'actualizar'])->name('mercados.actualizar');
 //vendedores
 Route::get('/mercados/vervendedor/{id}', [MercadosController::class, 'vervendedor'])->name('mercados.vervendedor');
 Route::get('/mercados/listavendedores', [MercadosController::class, 'listavendedores'])->name('mercados.listavendedores');
 Route::get('/mercados/editarvendedor/{id}', [MercadosController::class, 'editarvendedor'])->name('mercados.editarvendedor');
+Route::post('/mercados/actualizarvendedor/{id}', [MercadosController::class, 'actualizarvendedor'])->name('mercados.actualizarvendedor');
 Route::get('/mercados/agregarvendedor', [MercadosController::class, 'agregarvendedor'])->name('mercados.agregarvendedor');
 Route::post('/mercados/guardarvendedor', [MercadosController::class, 'guardarvendedor'])->name('mercados.guardarvendedor');
 Route::delete('/mercados/eliminarvendedor/{id}', [MercadosController::class, 'eliminarvendedor'])->name('mercados.eliminarvendedor');
 //Reservas
 Route::get('/mercados/reservas', [MercadosController::class, 'reservas'])->name('mercados.reservas');
 Route::get('/mercados/reservadelvendedor/{id}', [MercadosController::class, 'reservasdelvendedor'])->name('mercados.reservasdelvendedor');
-Route::get('/mercados/editarvendedor/{id}', [MercadosController::class, 'editarreservas'])->name('mercados.editarreservas');
-
+Route::get('/mercados/editarreservas/{id}', [MercadosController::class, 'editarreservas'])->name('mercados.editarreservas');
+//productos
+Route::get('/mercados/verproducto/{id}', [MercadosController::class, 'verproducto'])->name('mercados.verproducto');
 
 
 

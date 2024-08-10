@@ -31,7 +31,7 @@
                     <label for="imagen_de_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
                         <span id="file-name" class="text-gray-400 text-xs">Imagen de <b>Usted</b> o de <b>Su Puesto</b>
                         </span>
-                        <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
+                        <input type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
                         {!! $errors->first('imagen_de_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
@@ -144,15 +144,12 @@
         });
     </script>
     <script>
-        document.getElementById('show-passwords').addEventListener('change', function(event) {
-            const passwordFields = document.querySelectorAll('input[type="password"]');
+        document.getElementById('show-passwords').addEventListener('change', function() {
+            const passwordFields = document.querySelectorAll('input[name="password"], input[name="password_confirmation"]');
+            const isPasswordVisible = this.checked;
 
             passwordFields.forEach(field => {
-                if (event.target.checked) {
-                    field.type = 'text';
-                } else {
-                    field.type = 'password';
-                }
+                field.type = isPasswordVisible ? 'text' : 'password';
             });
         });
     </script>

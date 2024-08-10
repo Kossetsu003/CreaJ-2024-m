@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
 
 return new class extends Migration
 {
@@ -21,8 +22,8 @@ return new class extends Migration
             $table->string('imagen_referencia')->nullable();
             $table->string('municipio');
             $table->string('ubicacion');
-            $table->string('horaentrada');
-            $table->string('horasalida');
+            $table->time('horaentrada');
+            $table->time('horasalida');
             $table->text('descripcion');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
@@ -54,8 +55,8 @@ return new class extends Migration
             'mercadocentral.png',
             'San Salvador Centro',
             '3av norte y 1a calle poniente, san salvador centro',
-            '0850',
-            '2030',
+            '085000',
+            '203000',
             'El mercado central es uno de los principales mercados de San Salvador, se pueden encontrar diversos productos.',
             now(),
             now()

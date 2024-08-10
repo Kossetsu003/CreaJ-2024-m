@@ -124,17 +124,46 @@ use Illuminate\Support\Facades\Validator;
         // Retornar vista 'AdminEditarMercado' con el mercado local a editar
         return view('AdminEditarMercado', compact('mercadoLocal'));
         }
-        public function actualizarmercados( MercadoLocalRequest $request, $id)
+        public function actualizarmercados(MercadoLocalRequest $request, $id)
         {
-            $mercadoLocal = MercadoLocal::find($id); // Encontrar mercado local por ID
+            // Encontrar mercado local por ID
+            $mercadoLocal = MercadoLocal::findOrFail($id);
 
-            // Actualizar campos del mercado local con datos del formulario
-            $mercadoLocal->update($request->validated());
+            // Validar y obtener los datos del formulario
+            $data = $request->validate([
+                'nombre' => 'required|string|max:255',
+                'municipio' => 'required|string|max:255',
+                'ubicacion' => 'required|string|max:255',
+                'horaentrada' => 'required',
+                'horasalida' => 'required',
+                'descripcion' => 'required|string|max:220',
+                'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            // Si se ha subido una nueva imagen
+            if ($request->hasFile('imagen_referencia')) {
+                // Construir el nuevo nombre del archivo
+                $nombre = str_replace(' ', '_', strtolower($request->input('nombre')));
+                $municipio = str_replace(' ', '_', strtolower($request->input('municipio')));
+                $imageName = "{$nombre}_{$municipio}.png";
+
+                // Mover el archivo a la carpeta 'imgs' con el nuevo nombre
+                $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+
+                // Actualizar el nombre del archivo en los datos que se guardarán en la base de datos
+                $data['imagen_referencia'] = $imageName;
+            }
+
+            // Actualizar campos del mercado local con los datos del formulario
+            $mercadoLocal->update($data);
 
             // Redirigir a la vista de índice de mercados locales con mensaje de éxito
             return redirect()->route('admin.index')
-                ->with('success', 'MercadoLocal updated successfully');
+                ->with('success', 'Mercado Local actualizado con éxito');
         }
+
+
+
         public function eliminarmercados($id)
         {
             MercadoLocal::find($id)->delete(); // Encontrar y eliminar mercado local por ID
@@ -168,18 +197,23 @@ use Illuminate\Support\Facades\Validator;
         public function guardarvendedores(VendedorRequest $request)
         {
                 // Validar los datos del formulario
-         $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email|unique:vendedors',
-            'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'nombre' => 'required|string|max:255',
-            'nombre_del_local' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20|unique:vendedors',
-            'numero_puesto' => 'required|integer',
-            'password' => 'required|string|min:8|confirmed',
-            'clasificacion' => 'required|string|max:255',
-            'fk_mercado' => 'required|exists:mercado_locals,id',
-        ]);
+                $validator = Validator::make($request->all(), [
+                    'usuario' => 'required|email|unique:vendedors',
+                    'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'nombre' => 'required|string|max:255',
+                    'nombre_del_local' => 'required|string|max:255',
+                    'apellidos' => 'required|string|max:255',
+                    'telefono' => 'required|string|max:20|unique:vendedors',
+                    'numero_puesto' => 'required|integer',
+                    'password' => 'required|string|min:8|confirmed',  // Regla de longitud mínima
+                    'clasificacion' => 'required|string|max:255',
+                    'fk_mercado' => 'required|exists:mercado_locals,id',
+                ], [
+
+                    'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+                    'password.confirmed' => 'Las contraseñas no coinciden.',
+                ]);
+
 
         // Verificar si la validación falla
         if ($validator->fails()) {
@@ -234,7 +268,7 @@ use Illuminate\Support\Facades\Validator;
         public function vervendedores($id)
         {
             $vendedor = Vendedor::find($id);
-            return view('vendedor.show', compact('vendedor'));
+            return view('Mercado', compact('vendedor'));
         }
         public function editarvendedores($id)
         {

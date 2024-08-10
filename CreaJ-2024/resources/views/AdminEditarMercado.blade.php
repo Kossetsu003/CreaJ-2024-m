@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <section>
         <div class="w-72 h-auto mx-auto mt-16 pb-[3rem]">
 
@@ -19,53 +18,51 @@
                 <h3 class="text-sm mt-2">{{ old('nombre', $mercadoLocal?->nombre) }} <span class="font-bold">ID:
                         #{{ old('ROL', $mercadoLocal?->id) }}</span></h3>
             </div>
-            <form method="POST" action="{{ route('admin.actualizarmercados', $mercadoLocal->id) }}" role="form"
-                enctype="multipart/form-data">
+
+            <form method="POST" action="{{ route('admin.actualizarmercados', $mercadoLocal->id) }}" role="form" enctype="multipart/form-data">
                 {{ method_field('PATCH') }}
                 @csrf
+                @method('PATCH'
+
+                )
 
                 <div class="mt-20 space-y-4">
 
+                    <!-- INICIO DE INPUT DE LA FOTO -->
+                    <div class="flex justify-between">
+                        <label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
+                            <span id="file-name" class="text-gray-400 text-xs">Imagen del mercado</span>
+                            <input type="file" accept=".png, .jpg, .jpeg" name="imagen_referencia" class="hidden" id="imagen_referencia">
+                            {!! $errors->first('imagen_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                            <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
+                        </label>
+                    </div>
+                    <!-- FIN DEL INPUT DE LA IMG -->
 
-                    <!--
-                <div class="flex justify-between">
-                    <label for="imagen_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
-                        <span class="text-gray-400 text-xs">Imagen del mercado</span>
-                        <input required type="file" name="imagen_referencia" class="hidden border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('imagen_referencia') is-invalid @enderror" value="{{ old('imagen_referencia', $mercadoLocal?->imagen_referencia) }}" id="imagen_referencia" placeholder="Imagen Referencia">
-                        {!! $errors->first(
-                            'imagen_referencia',
-                            '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>',
-                        ) !!}
-                        <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
-                    </label>
-                </div>
-            -->
-
+                    <!-- INICIO DE LA PREVIEW -->
+                    @if ($mercadoLocal?->imagen_referencia)
+                    <div class="mt-4">
+                        <p class="text-gray-400 text-xs text-center">Imagen actual:</p>
+                        <img id="img-preview" class="max-w-xs max-h-xs rounded-md border" src="{{ asset('imgs/' . $mercadoLocal->imagen_referencia) }}" alt="Imagen del Mercado">
+                    </div>
+                @else
+                    <div class="mt-4">
+                        <p class="text-gray-400 text-xs text-center">No hay imagen actual.</p>
+                    </div>
+                @endif
+                    <!-- FIN DE LA PREVIEW -->
 
                     <div class="flex justify-center">
-
-                        <input required type="text" name="nombre"
-                            class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror"
-                            value="{{ old('nombre', $mercadoLocal?->nombre) }}" id="nombre"
-                            placeholder="Nombre Registrado del Mercado">
+                        <input required type="text" name="nombre" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre', $mercadoLocal?->nombre) }}" id="nombre" placeholder="Nombre Registrado del Mercado">
                         {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
 
-
                     <div class="flex justify-center">
-
-                        <input required type="text" name="municipio"
-                            class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('municipio') is-invalid @enderror"
-                            value="{{ old('municipio', $mercadoLocal?->municipio) }}" id="municipio"
-                            placeholder="Municipio Ubicado">
+                        <input required type="text" name="municipio" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('municipio') is-invalid @enderror" value="{{ old('municipio', $mercadoLocal?->municipio) }}" id="municipio" placeholder="Municipio Ubicado">
                         {!! $errors->first('municipio', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
                     <div class="flex justify-center">
-
-                        <input required type="text" name="ubicacion"
-                            class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('ubicacion') is-invalid @enderror"
-                            value="{{ old('ubicacion', $mercadoLocal?->ubicacion) }}" id="ubicacion"
-                            placeholder="Ubicacion Especifica del Mercado">
+                        <input required type="text" name="ubicacion" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('ubicacion') is-invalid @enderror" value="{{ old('ubicacion', $mercadoLocal?->ubicacion) }}" id="ubicacion" placeholder="Ubicación Específica del Mercado">
                         {!! $errors->first('ubicacion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
                     <div class="flex justify-center">
@@ -73,76 +70,58 @@
                         <span class="px-6 text-xs text-gray-400">Hora de Salida</span>
                     </div>
                     <div class="flex justify-center">
-
-                        <input required type="time" name="horaentrada"
-                            class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('horaentrada') is-invalid @enderror"
-                            value="{{ old('horaentrada', $mercadoLocal?->horaentrada) }}" id="horaentrada"
-                            placeholder="Horaentrada">
+                        <input required type="time" name="horaentrada" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('horaentrada') is-invalid @enderror" value="{{ old('horaentrada', $mercadoLocal?->horaentrada) }}" id="horaentrada" placeholder="Hora de Entrada">
                         {!! $errors->first('horaentrada', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
 
-                        <input required type="time" name="horasalida"
-                            class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-4000 form-control @error('horasalida') is-invalid @enderror"
-                            value="{{ old('horasalida', $mercadoLocal?->horasalida) }}" id="horasalida"
-                            placeholder="Horasalida">
+                        <input required type="time" name="horasalida" class="border-1 rounded-lg border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('horasalida') is-invalid @enderror" value="{{ old('horasalida', $mercadoLocal?->horasalida) }}" id="horasalida"  placeholder="Hora de Salida">
                         {!! $errors->first('horasalida', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
                     <div class="flex justify-center">
-                        <span class="text-xs text-gray-400 px-6">Descripcion del Mercado</span>
-
+                        <span class="text-xs text-gray-400 px-6">Descripción del Mercado</span>
                     </div>
                     <div class="flex justify-center">
-                        <textarea required name="descripcion"
-                            class="border-1 rounded-lg border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror"
-                            id="descripcion">{{ old('descripcion', $mercadoLocal?->descripcion) }}</textarea>
+                        <textarea maxlength="220" required name="descripcion" class="border-1 rounded-lg border w-80 h-24 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('descripcion') is-invalid @enderror" id="descripcion">{{ old('descripcion', $mercadoLocal?->descripcion) }}</textarea>
                         {!! $errors->first('descripcion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
                 </div>
 
+                <div class="pt-[2rem] flex justify-center mt-2 mb-4">
+                    <button class="btn btn-primary bg-red-600 w-72 h-12 text-white font-bold rounded-md" type="submit">{{ __('Actualizar') }}</button>
+                </div>
+                <div class="flex justify-center m">
 
-                <div class="flex justify-center mt-2 mb-20">
-
-                    <div class="flex justify-center ">
-                        <button class="bg-red-500 px-5 text-white py-1 rounded mt-4" type="submit"
-                            class="btn btn-primary">{{ __('Submit') }}</button>
-
-                    </div>
-
+                    <a href="{{ route('admin.index')}}"  class=" bg-gray-600  text-white font-bold rounded-md  py-[0.75rem] px-[3.5rem]">Cancelar Actualizacion</a>
+                </a>
                 </div>
             </form>
 
-            <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-                <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                    <div class="flex items-center  ">
-                        <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
-                                class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
-                    </div>
 
-                    <div class="flex items-center">
-                        <a href="{{ route('admin.vendedores') }}"><img class="w-6"
-                                src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
-                    </div>
-
-                    <div class="flex items-center">
-                        <a href="{{ route('admin.clientes') }}"><img class="w-6"
-                                src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <a href="./AdminEstadoPedidos"><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}"
-                                alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
-                        <?php $id = 1; ?>
-                        <a href="{{ route('AdminProfileVista') }}"><img class="w-6"
-                                src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
-
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
 
+    <script>
+        document.getElementById('imagen_referencia').addEventListener('change', function(event) {
+            const input = event.target;
+            const preview = document.getElementById('img-preview');
+            const fileNameSpan = document.getElementById('file-name');
 
-</body>
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+
+                // Mostrar el nombre del archivo seleccionado
+                fileNameSpan.textContent = input.files[0].name;
+            } else {
+                preview.src = '#';
+                preview.classList.add('hidden');
+                fileNameSpan.textContent = 'Imagen del mercado';
+            }
+        });
+    </script>
+
 
 </html>

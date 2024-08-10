@@ -26,8 +26,8 @@ class MercadoLocalRequest extends FormRequest
 			'imagen_referencia' => 'required',
 			'municipio' => 'required|string',
 			'ubicacion' => 'required|string',
-			'horaentrada' => 'required|string',
-			'horasalida' => 'required|string',
+			'horaentrada' => 'required|',
+			'horasalida' => 'required|',
 			'descripcion' => 'required|string',
         ];
     }

@@ -75,18 +75,18 @@
                     <div class="flex items-center">
                       <img src="{{ asset('imgs/'. $vendedor->imagen_de_referencia) }}" alt="t" class="w-40 h-40 rounded-md mr-4 object-cover">
                       <div>
-                        <h2 class="text-lg font-semibold text-gray-800">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h2>
-                        <p >Puesto N {{ $vendedor->numero_puesto }} en el <b>{{ $vendedor->mercadoLocal->nombre }}</b></p>
+                        <h2 class="text-lg font-semibold text-gray-800"><p >#{{ $vendedor->numero_puesto }} {{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h2>
+                         en el <b>{{ $vendedor->mercadoLocal->nombre }}</b></p>
                         <h2 class="text-sm text-gray-600"><b>Numero de Telefono:</b> {{ $vendedor->telefono }}</h2>
                         <p class="text-sm text-gray-600"><b>Correo Electronico : </b>{{ $vendedor->usuario }}</p>
                       </div>
                     </div>
                     <div class="flex">
-                        <form action="{{ route('admin.eliminarvendedores',$vendedor->id) }}" method="POST">
+                        <form action="{{ route('mercados.eliminarvendedor',$vendedor->id) }}" method="POST">
 
-                      <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('admin.vervendedores',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                      <a class="btn btn-sm btn-primary px-3 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 " href="{{ route('mercados.vervendedor',$vendedor->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
 
-                      <a class="btn btn-sm btn-success px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('admin.editarvendedores',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                      <a class="btn btn-sm btn-success px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('mercados.editarvendedor',$vendedor->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
 
                       @csrf
                       @method('DELETE')
