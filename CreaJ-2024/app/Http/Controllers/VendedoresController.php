@@ -112,15 +112,17 @@ use Illuminate\Support\Facades\Auth;
          * PRODUCTO
          */
         public function productos(){
-            $id = 3;
+
+            $id = 3;//ssion('fk_mercado');
             // Obtener todos los productos que pertenecen al vendedor con el ID especificado
-    $productos = Product::where('fk_vendedors', $id)->get();
+            $productos = Product::where('fk_vendedors', $id)->get();
 
     // Pasar los productos a la vista para su visualización
-    return view('productos.index', compact('productos'));
+        return view('VendedorMisProductos', compact('productos'));
 
         }
         public function verproducto(){
+
 
         }
         public function agregarproducto($id){
