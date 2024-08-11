@@ -15,7 +15,7 @@
 
         <a href="{{ route('admin.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Admin <span class="text-blue-600"><b>Shop</b></span>
+            Admin <span class="text-purple-600"><b>Shop</b></span>
         </h1>
         </a>
 

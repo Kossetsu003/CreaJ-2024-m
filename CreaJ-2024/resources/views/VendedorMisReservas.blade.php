@@ -15,7 +15,7 @@
     >
         <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Mini <span class="text-blue-600"><b>Shop</b></span>
+            Mini <span class="text-purple-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">

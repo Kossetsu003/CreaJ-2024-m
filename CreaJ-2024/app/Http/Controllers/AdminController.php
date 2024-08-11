@@ -115,7 +115,7 @@ use Illuminate\Support\Facades\Validator;
         $vendedors = Vendedor::where('Fk_Mercado', $id)->get(); // Obtener vendedores asociados al mercado local
 
         // Retornar vista 'AdminListadoMercados' con datos del mercado local y vendedores
-        return view('AdminListadoMercados', compact('mercadoLocal', 'vendedors'));
+        return view('AdminPuestosDelMercado', compact('mercadoLocal', 'vendedors'));
         }
         public function editarmercados($id)
         {
@@ -268,63 +268,75 @@ use Illuminate\Support\Facades\Validator;
         public function vervendedores($id)
         {
             $vendedor = Vendedor::find($id);
-            return view('Mercado', compact('vendedor'));
+
+        if(!$vendedor) {
+            return redirect()->back()->with('error','Vendedor no encontrado');
+        }
+            $mercadoLocal = $vendedor->mercadoLocal;
+            $products = Product::where('fk_vendedors',$id)->paginate();
+
+            return view('AdminPuestoDelVendedor', compact('vendedor','mercadoLocal','products'))->with('i',(request()->input('page',1) - 1) * $products->perPage());
         }
         public function editarvendedores($id)
         {
             $vendedor = Vendedor::find($id);
-        return view('AdminEditarVendedor', compact('vendedor'));
+        $mercados = MercadoLocal::all();
+        return view('AdminEditarVendedor', compact('vendedor', 'mercados'));
 
         }
-        public function actualizarvendedores( Request $request, $id)
-        {
-                // Validar los datos del formulario
-        $validator = Validator::make($request->all(), [
-            'usuario' => 'required|email|unique:vendedors,usuario,' . $id . '|unique:users,usuario,' . $id,
-            'nombre' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20|unique:vendedors,telefono,' . $id . '|unique:users,telefono,' . $id,
-            'numero_puesto' => 'required|string|max:255|unique:vendedors,numero_puesto,' . $id,
-            'fk_mercado' => 'required|exists:mercado_locals,id',
-            'contrasena' => 'nullable|string|min:8|confirmed',
-        ]);
+        public function actualizarvendedor(VendedorRequest $request ,$id){
+            $request->validate([
+                'password' => 'nullable|string|min:8|confirmed',
+                'nombre' => 'required|string|max:255',
+                'nombre_del_local' => 'required|string|max:255',
+                'imagen_de_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'clasificacion' => 'required|string|max:255',
+                'apellidos' => 'required|string|max:255',
+                'telefono' => 'required|string|max:255',
+                'numero_puesto' => 'required|integer|unique:vendedors,numero_puesto,' . $id,
+                'fk_mercado' => 'required|exists:mercado_locals,id',
+            ]);
 
-        // Verificar si la validación falla
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+            // Encontrar el vendedor por ID
+            $vendedor = Vendedor::findOrFail($id);
 
-        $vendedor = Vendedor::find($id);
+            // Actualizar los campos
+            $vendedor->usuario = $request->input('usuario');
+            $vendedor->ROL = $request->input('ROL');
 
-        // Actualizar campos del vendedor
-        $vendedor->usuario = $request->usuario;
-        $vendedor->nombre = $request->nombre;
-        $vendedor->apellidos = $request->apellidos;
-        $vendedor->telefono = $request->telefono;
-        $vendedor->numero_puesto = $request->numero_puesto;
-        $vendedor->fk_mercado = $request->fk_mercado;
-        if ($request->filled('contrasena')) {
-            $vendedor->contrasena = bcrypt($request->contrasena); // Encriptar la contraseña
-        }
-        $vendedor->save();
-
-        // Actualizar el usuario en la tabla `users`
-        $user = User::where('usuario', $request->usuario)->first();
-        if ($user) {
-            $user->usuario = $request->usuario;
-            $user->nombre = $request->nombre;
-            $user->apellido = $request->apellidos;
-            $user->telefono = $request->telefono;
-            if ($request->filled('contrasena')) {
-                $user->password = Hash::make($request->contrasena);
+            // Si la contraseña se envía, actualiza, de lo contrario, deja la existente
+            if ($request->filled('password')) {
+                $vendedor->password = bcrypt($request->input('password'));
             }
-            $user->save();
-        }
 
-        return redirect()->route('admin.vendedores')
-            ->with('success', 'Vendedor actualizado exitosamente.');
+            $vendedor->nombre = $request->input('nombre');
+            $vendedor->nombre_del_local = $request->input('nombre_del_local');
+            $vendedor->clasificacion = $request->input('clasificacion');
+            $vendedor->apellidos = $request->input('apellidos');
+            $vendedor->telefono = $request->input('telefono');
+            $vendedor->numero_puesto = $request->input('numero_puesto');
+            $vendedor->fk_mercado = $request->input('fk_mercado');
+
+            // Manejar la imagen de referencia
+            if ($request->hasFile('imagen_de_referencia')) {
+                // Guardar la imagen
+                $imageName = time() . '.' . $request->imagen_de_referencia->extension();
+                $request->imagen_de_referencia->move(public_path('imgs'), $imageName);
+
+                // Eliminar la imagen antigua si existe
+                if ($vendedor->imagen_de_referencia && file_exists(public_path('imgs/' . $vendedor->imagen_de_referencia))) {
+                    unlink(public_path('imgs/' . $vendedor->imagen_de_referencia));
+                }
+
+                // Actualizar la referencia en la base de datos
+                $vendedor->imagen_de_referencia = $imageName;
+            }
+
+            // Guardar los cambios en la base de datos
+            $vendedor->save();
+
+            // Redireccionar o devolver una respuesta
+            return redirect()->route('admin.vendedores', $id)->with('success', 'Vendedor actualizado correctamente.');
         }
         public function eliminarvendedores($id)
         {
@@ -357,5 +369,31 @@ use Illuminate\Support\Facades\Validator;
 
         return redirect()->route('admin.clientes')
             ->with('success', 'Cliente deleted successfully');
+        }
+
+
+        /**
+         * PRODUCTO
+         */
+        public function verproducto($id){
+                    // Obtener el producto específico
+            $product = Product::find($id);
+            // Verificar si el producto existe antes de proceder
+            if (!$product) {
+                return redirect()->back()->with('error', 'Producto no encontrado.');
+            }
+            // Obtener el vendedor del producto
+            $vendedor = $product->vendedor;
+
+            // Obtener los productos que comparten la misma llave foránea del vendedor,
+            // pero excluyendo el producto actual
+            $products = Product::where('fk_vendedors', $product->fk_vendedors)
+        ->where('id', '!=', $id)
+        ->paginate();
+
+        // Retornar la vista con los datos del producto y otros productos del mismo vendedor
+        return view('AdminProductoEspecifico', compact('product', 'products', 'vendedor'))
+        ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+
         }
     }

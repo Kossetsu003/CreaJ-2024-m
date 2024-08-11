@@ -96,8 +96,8 @@ Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');
 Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
 Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');*/
 Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); /*
-Route::view('/AdminHome','AdminHome')->name('AdminHome');
-Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');
+Route::view('/AdminHome','AdminHome')->name('AdminHome');*/
+Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');/*
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
 Route::view('/AdminAgregarMercado','AdminAgregarMercado')->name('AdminAgregarMercado');
 Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
@@ -151,7 +151,8 @@ Route::resource('products', ProductController::class);
  //CLIENTES
  Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
  Route::delete('/admin/eliminarclientes/{id}', [AdminController::class, 'eliminarclientes'])->name('admin.eliminarclientes');
-
+//producto
+Route::get('/admin/verproducto/{id}', [AdminController::class, 'verproducto'])->name('admin.verproducto');
 
 
 

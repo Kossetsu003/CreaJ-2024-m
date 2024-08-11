@@ -11,13 +11,13 @@
     <section>
         <div class="w-72 h-auto mx-auto">
             <div class="text-center">
-                <h1 class="text-3xl font-bold text-red-500">Registrar vendedor</h1>
+                <h1 class="text-3xl font-bold text-purple-500">Registrar vendedor</h1>
             </div>
             <form method="POST" action="{{ route('vendedors.store') }}" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="pb-[7rem] mt-10 space-y-4">
                 @if ($errors->any())
-                    <div class="bg-red-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
+                    <div class="bg-purple-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -114,7 +114,7 @@
                         @enderror
                     </div>
                     <div class="flex justify-center mt-16">
-                        <button class="btn btn-primary bg-red-600 w-72 h-10 text-white font-bold rounded-md">Registrar Vendedor</button>
+                        <button class="btn btn-primary bg-purple-600 w-72 h-10 text-white font-bold rounded-md">Registrar Vendedor</button>
                     </div>
                 </div>
             </form>

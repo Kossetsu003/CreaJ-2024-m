@@ -202,11 +202,10 @@ use Illuminate\Support\Facades\Hash;
 
         $vendedor->save();
 
-        return redirect()->route('mercados.listadovendedores')
+        return redirect()->route('mercados.listavendedores')
             ->with('success', 'Vendedor creado exitosamente.');
     }
 
-    
     public function vervendedor($id){
         //puestodelvendedor
         $vendedor = Vendedor::find($id);
@@ -225,15 +224,16 @@ use Illuminate\Support\Facades\Hash;
 
     }
     public function eliminarvendedor($id){
-        $vendedor = Vendedor::find($id);
+             // Buscar al vendedor por su ID
+    $vendedor = Vendedor::find($id);
 
-        // Eliminar el usuario en la tabla `users`
-        User::where('usuario', $vendedor->usuario)->delete();
-
+    if ($vendedor) {
+        // Eliminar el vendedor
         $vendedor->delete();
-
-        return redirect()->route('mercados.vervendedor')
-            ->with('success', 'Vendedor eliminado exitosamente.');
+        return redirect()->route('mercados.listavendedores')->with('success', 'Vendedor eliminado correctamente.');
+    } else {
+        return redirect()->route('mercados.listavendedores')->with('error', 'Vendedor no encontrado.');
+    }
 
     }
 

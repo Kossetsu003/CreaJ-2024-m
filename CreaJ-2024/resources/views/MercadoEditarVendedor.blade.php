@@ -47,7 +47,7 @@
                  @if ($vendedor?->imagen_de_referencia)
     <div class="mt-4">
         <p class="text-gray-400 text-xs text-center">Imagen actual:</p>
-        <img id="img-preview" class="max-w-xs max-h-xs rounded-md border" src="{{ asset('imgs/' . $mercadoLocal->imagen_referencia) }}" alt="Imagen del Mercado">
+        <img id="img-preview" class="max-w-xs max-h-xs rounded-md border" src="{{ asset('imgs/' . $vendedor?->imagen_de_referencia) }}" alt="Imagen del Vendedor">
     </div>
 @else
     <div class="mt-4">
