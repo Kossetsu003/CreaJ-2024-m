@@ -80,7 +80,7 @@
         <!--BOTONES PRINCIPALES-->
         <div class="object-center items-center">
 
-        <a href="{{ route('admin.editarmercados',$mercadoLocal->id) }}" class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">EDITAR MERCADO</a>
+        <a href="{{ route('mercados.editar',$mercadoLocal->id) }}" class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">EDITAR MERCADO</a>
 
 
         </div>

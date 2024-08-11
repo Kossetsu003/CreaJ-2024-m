@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price',8,2);
             $table->string('imagen_referencia')->nullable();
             $table->string('categoria');
-            $table->timestamps();
+            $table->string('estado')->default('Disponible');
             $table->unsignedBigInteger('fk_vendedors');
             $table -> foreign('fk_vendedors') -> references('id') -> on('vendedors') -> onDelete('cascade');
         });

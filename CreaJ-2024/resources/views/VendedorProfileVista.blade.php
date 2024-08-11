@@ -18,28 +18,28 @@ class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
 <div class="flex gap-8">
     <a
         href="./VendedorHome"
-        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        class="font-bold uppercase text-sm lg:text-base hover:text-orange-300"
         >Home</a
     >
     <a
         href="./VendedorMiBuzon"
-        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        class="font-bold uppercase text-sm lg:text-base hover:text-orange-300"
         >Buzon</a
     >
     <a
         href="./VendedorMisReservas"
-        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        class="font-bold uppercase text-sm lg:text-base hover:text-orange-300"
         >Reservas</a
     >
     <a
         href="./VendedorProfileVista"
-        class="font-bold uppercase text-sm lg:text-base hover:text-gray-300"
+        class="font-bold uppercase text-sm lg:text-base hover:text-orange-300"
         >Perfil</a
     >
 </div>
 </div>
     <div class="pb-[7rem]">
-       <div class="bg-zinc-700 h-[160px] flex items-center justify-center">
+       <div class="bg-orange-700 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
         <div class="flex justify-center mt-5">
@@ -101,7 +101,7 @@ class="hidden md:flex p-4 bg-white items-center justify-between shadow-md"
 
      <!-- Mobile Navbar -->
      <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-         <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+         <div class="bg-orange-900 rounded-2xl h-14 flex justify-around">
              <div class="flex items-center">
                  <a href="./VendedorHome" class="bg-white rounded-full p-1">
                      <img

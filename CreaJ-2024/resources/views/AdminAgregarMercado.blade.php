@@ -42,7 +42,7 @@
                     <p class="text-gray-400 text-xs text-center">Su foto se veria asi: </p>
                 </div>
                 <div class="mt-4">
-                    <img id="img-preview" class="max-w-xs max-h-xs hidden rounded-md border" src="#" alt="Vista Previa de Imagen">
+                    <img id="img-preview" class="max-w max-h-xs hidden rounded-md border" src="#" alt="Vista Previa de Imagen">
                 </div>
 
                 <!---FIN DE LA PREVIEW-->

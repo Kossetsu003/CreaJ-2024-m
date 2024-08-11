@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Registrar Vendedor</title>
+    <title>EDITAR VENDEDOR</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
@@ -14,7 +14,8 @@
     <section>
         <div class="w-72 h-auto mx-auto">
             <div class="text-center pt-[3rem]">
-                <h1 class="text-3xl font-bold text-red-500">Registrar vendedor</h1>
+                <h1 class="text-3xl font-bold text-red-500 uppercase">EDITAR vendedor</h1>
+                <h2 class="text-2xl font-semibold">{{ old('nombre_del_local', $vendedor?->nombre_del_local) }}</h2>
             </div>
 
             <form method="POST" action="{{ route('mercados.actualizarvendedor', ['id' => $vendedor->id]) }}" role="form" enctype="multipart/form-data">
@@ -47,7 +48,7 @@
                  @if ($vendedor?->imagen_de_referencia)
     <div class="mt-4">
         <p class="text-gray-400 text-xs text-center">Imagen actual:</p>
-        <img id="img-preview" class="max-w-xs max-h-xs rounded-md border" src="{{ asset('imgs/' . $vendedor?->imagen_de_referencia) }}" alt="Imagen del Vendedor">
+        <img id="img-preview" class="max-w max-h-xs rounded-md border" src="{{ asset('imgs/' . $vendedor?->imagen_de_referencia) }}" alt="Imagen del Vendedor">
     </div>
 @else
     <div class="mt-4">

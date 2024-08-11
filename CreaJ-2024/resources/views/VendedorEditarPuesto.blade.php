@@ -5,26 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Registrar Vendedor</title>
+    <title>EDITAR VENDEDOR</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
 <body>
 
-
     <section>
         <div class="w-72 h-auto mx-auto">
             <div class="text-center pt-[3rem]">
-                <h1 class="text-3xl font-bold text-purple-500">Registrar vendedor</h1>
+                <h1 class="text-3xl font-bold text-orange-500 uppercase">EDITAR vendedor</h1>
+                <h2 class="text-2xl font-semibold">{{ old('nombre_del_local', $vendedor?->nombre_del_local) }}</h2>
             </div>
 
-            <form method="POST" action="{{ route('mercados.actualizarvendedor', ['id' => $vendedor->id]) }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('vendedores.actualizar', ['id' => $vendedor->id]) }}" role="form" enctype="multipart/form-data">
                 <div class="pb-[7rem] mt-10 space-y-4">
                     <input type="hidden" name="id" value="{{ $vendedor->id }}">
                     @csrf
 
                     @if ($errors->any())
-                        <div class="bg-purple-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
+                        <div class="bg-orange-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -161,14 +161,14 @@
                     <div class="flex justify-center">
                         <div class="flex justify-center mt-8">
 
-                            <button class="btn btn-primary bg-purple-600 w-72 h-12 text-white font-bold rounded-md">Actualizar Vendedor</button>
+                            <button class="btn btn-primary bg-orange-600 w-72 h-12 text-white font-bold rounded-md">Actualizar Vendedor</button>
                         </div>
                     </form>
 
                     </div>
                     <div class="flex justify-center mt-4">
 
-                        <a href="{{ route('mercados.index')}}"  class=" bg-gray-600  text-white font-bold rounded-md  py-[0.75rem] px-[3.5rem]">Cancelar Actualizacion</a>
+                        <a href="{{ route('vendedores.index')}}"  class=" bg-gray-600  text-white font-bold rounded-md  py-[0.75rem] px-[3.5rem]">Cancelar Actualizacion</a>
                     </a>
                     </div>
                 </div>

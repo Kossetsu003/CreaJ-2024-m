@@ -137,7 +137,7 @@ use Illuminate\Support\Facades\Validator;
                 'horaentrada' => 'required',
                 'horasalida' => 'required',
                 'descripcion' => 'required|string|max:220',
-                'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+                'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg ',
             ]);
 
             // Si se ha subido una nueva imagen
@@ -199,7 +199,7 @@ use Illuminate\Support\Facades\Validator;
                 // Validar los datos del formulario
                 $validator = Validator::make($request->all(), [
                     'usuario' => 'required|email|unique:vendedors',
-                    'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg ',
                     'nombre' => 'required|string|max:255',
                     'nombre_del_local' => 'required|string|max:255',
                     'apellidos' => 'required|string|max:255',
@@ -289,7 +289,7 @@ use Illuminate\Support\Facades\Validator;
                 'password' => 'nullable|string|min:8|confirmed',
                 'nombre' => 'required|string|max:255',
                 'nombre_del_local' => 'required|string|max:255',
-                'imagen_de_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'imagen_de_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg ',
                 'clasificacion' => 'required|string|max:255',
                 'apellidos' => 'required|string|max:255',
                 'telefono' => 'required|string|max:255',
