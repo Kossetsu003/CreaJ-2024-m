@@ -109,8 +109,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($products as $product)
                 <!-- Product Card 1 -->
-                <a href="{{ route('usuarios.producto', $product->id) }}" class="bg-white p-6 rounded-lg shadow-lg">
-                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="Producto 1">
+                <a href="{{ route('mercados.verproducto', $product->id) }}" class="bg-white p-6 rounded-lg shadow-lg">
+                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{$product->imagen_referencia}}">
                     <h3 class="font-bold text-lg text-gray-800">{{ $product->name }}</h3>
                     <p class="text-gray-600 mb-4">{{ $product->vendedor->nombre_del_local }}. Precio: ${{ $product->price }}</p>
                 </a>

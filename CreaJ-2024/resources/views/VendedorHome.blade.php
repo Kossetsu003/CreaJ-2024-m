@@ -12,7 +12,7 @@
 <body>
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('usuarios.index') }}">
+        <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
             Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
         </h1>

@@ -23,6 +23,7 @@ use App\Http\Requests\ProductRequest;
 use App\Http\Requests\VendedorRequest as RequestsVendedorRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UsuariosController
@@ -121,9 +122,26 @@ use Illuminate\Support\Facades\Auth;
         return view('VendedorMisProductos', compact('productos'));
 
         }
-        public function verproducto(){
+        public function verproducto($id){
+            $product = Product::find($id);
 
+            // Verificar si el producto existe antes de proceder
+            if (!$product) {
+                return redirect()->back()->with('error', 'Producto no encontrado.');
+            }
 
+            // Obtener el vendedor del producto
+            $vendedor = $product->vendedor;
+
+            // Obtener los productos que comparten la misma llave foránea del vendedor,
+            // pero excluyendo el producto actual
+            $products = Product::where('fk_vendedors', $product->fk_vendedors)
+                ->where('id', '!=', $id)
+                ->paginate(3);
+
+            // Retornar la vista con los datos del producto y otros productos del mismo vendedor
+            return view('VendedorProductoEnEspecifico', compact('product', 'products', 'vendedor'))
+                ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
         }
         public function agregarproducto($id){
             $product = new Product();
@@ -173,10 +191,73 @@ use Illuminate\Support\Facades\Auth;
     return redirect()->route('vendedores.index')->with('success', 'Producto agregado exitosamente.');
 
         }
-        public function editarproducto(){
+        public function editarproducto($id){
+            $producto = Product::find($id);
+            $vendedor = $producto->vendedor;
+       ;
+        return view('VendedorEditarProducto', compact('producto', 'vendedor'));
 
         }
-        public function actualizarproducto(){
+        public function actualizarproducto(VendedorRequest $request, $id){
+
+            dd($request->all());
+            // Validación de los datos del formulario
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string|max:200',
+        'price_type' => 'required|string|in:fixed,per_dollar',
+        'price' => 'nullable|numeric|required_if:price_type,fixed',
+        'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
+        'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'fk_vendedors' => 'required|integer|exists:vendedors,id',
+        'categoria' => 'required|string',
+        'estado' => 'nullable|string',
+    ]);
+
+    // Encontrar el producto por su ID
+    $product = Product::findOrFail($id);
+
+    // Manejo de la imagen
+    if ($request->hasFile('imagen_referencia')) {
+        // Eliminar la imagen anterior si existe
+        if ($product->imagen_referencia) {
+            Storage::disk('public')->delete('imgs/' . $product->imagen_referencia);
+        }
+
+        // Crear el nombre de la imagen basado en el nombre y la categoría
+        $imageName = $request->input('name') . '_' . $request->input('categoria') . '.png';
+        $imagePath = 'imgs/' . $imageName;
+
+        // Guardar la imagen en la carpeta 'public/imgs'
+        $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+
+        // Asignar el nuevo nombre de la imagen al producto
+        $product->imagen_referencia = $imageName;
+    }
+
+    // Actualizar los campos del producto
+    $product->name = $request->input('name');
+    $product->description = $request->input('description');
+    $product->price_type = $request->input('price_type');
+
+    if ($product->price_type === 'fixed') {
+        $product->price = $request->input('price');
+        $product->quantity_per_dollar = null;
+    } else {
+        $product->price = null;
+        $product->quantity_per_dollar = $request->input('quantity_per_dollar');
+    }
+
+    $product->fk_vendedors = $request->input('fk_vendedors');
+    $product->categoria = $request->input('categoria');
+    $product->estado = $request->input('estado', 'disponible');
+
+    // Guardar los cambios en la base de datos
+    $product->save();
+
+    // Redireccionar a una vista o ruta deseada con un mensaje de éxito
+    return redirect()->route('vendedores.productos')->with('success', 'Producto actualizado exitosamente.');
+
 
         }
         public function actualizarestadoproducto(){
@@ -185,8 +266,16 @@ use Illuminate\Support\Facades\Auth;
         public function publicarestadoproducto(){
 
         }
-        public function eliminarproducto(){
+        public function eliminarproducto($id){
+            $producto = Product::find($id);
 
+            if ($producto) {
+                // Eliminar el vendedor
+                $producto->delete();
+                return redirect()->route('vendedores.productos')->with('success', 'Vendedor eliminado correctamente.');
+            } else {
+                return redirect()->route('vendedores.productos')->with('error', 'Vendedor no encontrado.');
+            }
         }
 
 
