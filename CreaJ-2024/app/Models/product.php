@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Product extends Model
 {
+    public $timestamps = false;
 
 
     protected $perPage = 20;
@@ -32,7 +33,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'price', 'fk_vendedors'];
+    protected $fillable = ['name', 'description', 'price', 'fk_vendedors', 'categoria'];
 
 
     /**

@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Storage;
 
         public function index()
         {
-            $id = 3;
+            $id = 1;
             $vendedor = Vendedor::with('mercadoLocal')->find($id);
             $mercadoLocal = $vendedor->mercadoLocal;
             $products = Product::where('fk_vendedors', $id)->get();
@@ -114,7 +114,7 @@ use Illuminate\Support\Facades\Storage;
          */
         public function productos(){
 
-            $id = 3;//ssion('fk_mercado');
+            $id = 1;//ssion('fk_mercado');
             // Obtener todos los productos que pertenecen al vendedor con el ID especificado
             $productos = Product::where('fk_vendedors', $id)->get();
 
@@ -151,45 +151,57 @@ use Illuminate\Support\Facades\Storage;
         }
         public function guardarproducto(ProductRequest $request){
                         // Validar la solicitud
+                    // Validar los datos recibidos del formulario
     $request->validate([
         'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
+        'description' => 'nullable|string|max:200',
         'price' => 'required|numeric|min:0',
-        'categoria' => 'required|string|max:255',
-        'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'fk_vendedors' => 'required|exists:vendedors,id',
+        'categoria' => 'required|string',
+        'imagen_referencia' => 'image|mimes:jpeg,png,jpg,gif,svg',
     ]);
 
-    // Manejar la imagen de referencia si se proporciona
-    if ($request->hasFile('imagen_referencia')) {
-        // Construir el nombre de la imagen
-        $producto = str_replace(' ', '_', strtolower($request->input('name')));
-        $categoria = str_replace(' ', '_', strtolower($request->input('categoria')));
-        $imageName = "{$producto}_{$categoria}.png";
+    // Procesar la imagen
 
-        // Mover el archivo a la carpeta 'imgs' y guardar solo el nombre del archivo
+    /*if ($request->hasFile('imagen_referencia')) {
+        // Obtener la clasificación para usarla en el nombre del archivo
+        $clasificacion = $request->input('categoria');
+        $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
+        $imageName = "{$nombreProducto}_{$clasificacion}.png";
+
+        // Guardar la imagen en public/imgs
         $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
 
-        // Guardar solo el nombre del archivo en la base de datos
-        $imagenReferencia = $imageName;
+        // Guardar el nombre de la imagen en la base de datos
+        $imageFileName = $imageName;
+    }*/
+
+
+
+    // Crear un nuevo producto con los datos validados
+    $producto = new Product([
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'categoria' => $request->input('categoria'),
+        'estado' => 'Disponible',  // Valor por defecto de estado
+        'fk_vendedors' => $request->input('fk_vendedors'),
+        'imagen' => $imageName, // Guardar el nombre de la imagen en la base de datos
+    ]);
+    if ($request->hasFile('imagen_referencia')) {
+        $file = $request->file('imagen_referencia');
+        $imageName = $request->nombre . '_' . $request->categoria . '.png';
+
+        // Movimiento
+        $file->move(public_path('imgs'), $imageName);
+        // Guardar
+        $producto->imagen_referencia = $imageName;
     }
 
+    // Guardar el producto en la base de datos
+    $producto->save();
 
-
-    // Crear el nuevo producto
-    $product = new Product();
-    $product->name = $request->name;
-    $product->description = $request->description;
-    $product->price = $request->price;
-    $product->categoria = $request->categoria;
-    $product->estado = 'Disponible';
-    $product->imagen_referencia = $imagenReferencia;
-    $product->fk_vendedors = $request->fk_vendedors;
-    $product->save();
-
-    // Redirigir o mostrar mensaje de éxito
-    return redirect()->route('vendedores.index')->with('success', 'Producto agregado exitosamente.');
-
+    // Redireccionar a la página de productos con un mensaje de éxito
+    return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
         }
         public function editarproducto($id){
             $producto = Product::find($id);

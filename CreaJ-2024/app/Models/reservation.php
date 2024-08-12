@@ -11,26 +11,20 @@ class Reservation extends Model
     protected $fillable = [
         'total',
         'fk_users',
-        'fk_mercado', // Add this field
         'estado',
         'retiro',
+
     ];
 
     // Relationship to the MercadoLocal model
-    public function mercadoLocal()
-    {
-        return $this->belongsTo(MercadoLocal::class, 'fk_mercado');
-    }
+
 
     // Relationship to the User model
     public function user()
     {
         return $this->belongsTo(User::class, 'fk_users');
     }
-    public function vendedors()
-{
-    return $this->belongsTo(Vendedor::class, 'fk_vendedors'); // Ajusta el campo 'vendedor_id' según tu esquema
-}
+   
 
     // Other relationships, such as items and products
 }

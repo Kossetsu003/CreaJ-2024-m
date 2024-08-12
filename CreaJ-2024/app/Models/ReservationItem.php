@@ -10,7 +10,11 @@ class ReservationItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fk_reservation', 'fk_product', 'quantity', 'price',
+        'fk_reservation',
+        'fk_product',
+        'quantity',
+        'price',
+        'fk_vendedors',
     ];
 
     public function reservation()
@@ -22,4 +26,9 @@ class ReservationItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function vendedors()
+    {
+        return $this->belongsTo(Vendedor::class, 'fk_vendedors');
+    }
+    
 }

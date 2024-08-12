@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->decimal('total');
             //Usuario perteneciente
-            $table->unsignedBigInteger('FK_users');
-            $table->unsignedBigInteger('fk_mercados');
-            $table->foreign('fk_mercados')->references('id')->on('mercado_locals')->onDelete('cascade'); 
+            $table->unsignedBigInteger('fk_users');
+
             $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('fk_mercado');
-            $table->foreign('fk_mercado')->references('id')->on('mercado_locals')->onDelete('cascade');
+           
             $table->timestamps();
             $table->string('estado')->default("enviado");
             $table->string('retiro')->default("Entrada del Mercado");
