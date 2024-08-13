@@ -73,7 +73,7 @@ class ReservationController extends Controller
                 'fk_reservation' => $reservation->id,
                 'fk_product' => $item->fk_product,
                 'quantity' => $item->quantity,
-                'subtotal' => $item->quantity * $item->product->price,
+                'subtotal' => $item->quantity * $item->products->price,
             ]);
         }
 

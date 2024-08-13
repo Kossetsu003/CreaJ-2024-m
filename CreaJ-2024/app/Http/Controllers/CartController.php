@@ -31,7 +31,7 @@ class CartController extends Controller
 
         $quantity = $request->input('quantity');
 
-        $cartItem = Cart::where('fk_product', $product->id)
+        $cartItem = Cart::where('fk_products', $product->id)
                         ->where('fk_users', Auth::id())
                         ->first();
 
@@ -41,7 +41,7 @@ class CartController extends Controller
             $cartItem->save();
         } else {
             Cart::create([
-                'fk_product' => $product->id,
+                'fk_products' => $product->id,
                 'fk_users' => Auth::id(),
                 'quantity' => $quantity,
                 'subtotal' => $quantity * $product->price

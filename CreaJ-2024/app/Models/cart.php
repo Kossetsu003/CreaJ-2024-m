@@ -9,7 +9,7 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fk_product',
+        'fk_products',
         'fk_users',
         'subtotal', // Añadimos fk_users a los campos fillable
         'quantity',
@@ -17,7 +17,7 @@ class Cart extends Model
 
     public function product()
 {
-    return $this->belongsTo(Product::class, 'fk_product');
+    return $this->belongsTo(Product::class, 'fk_products');
 }
 
 
