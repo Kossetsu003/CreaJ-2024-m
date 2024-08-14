@@ -7,19 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReservationItem extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'fk_reservation', 'fk_product', 'quantity', 'price',
+        'fk_reservation',
+        'fk_product',
+        'quantity',
+        'subtotal',
+        'fk_vendedors',
     ];
-
-    public function reservation()
-    {
-        return $this->belongsTo(Reservation::class, 'fk_reservation');
-    }
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'fk_product');
     }
 }
+

@@ -2,15 +2,26 @@
 
 <h1>Carrito de Compras</h1>
 
+<!-- Mostrar mensajes de éxito -->
 @if (session('success'))
-    <div>{{ session('success') }}</div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
+
+<!-- Mostrar mensajes de error -->
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
 
 <ul>
     @foreach ($cartItems as $cartItem)
         <li>
             Producto: {{ $cartItem->product->name }} - Cantidad: {{ $cartItem->quantity }} - Precio: ${{ $cartItem->product->price }} - Subtotal: ${{ $cartItem->product->price * $cartItem->quantity }}
-            <form action="{{ route('cart.remove', $cartItem->fk_products) }}" method="POST" style="display:inline;">
+            <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
                 <button type="submit">Eliminar del carrito</button>

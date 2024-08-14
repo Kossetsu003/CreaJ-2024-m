@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\ReservationItem;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class ReservationController extends Controller
     public function index()
     {
         // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
-        $reservations = Reservation::where('fk_users', Auth::id())->with('items.product')->get();
+        $reservations = Reservation::where('fk_user', Auth::id())->with('items.product')->get();
 
         return view('reservations.index', compact('reservations'));
     }
@@ -31,7 +32,7 @@ class ReservationController extends Controller
     public function create()
     {
         // Obtener los ítems del carrito del usuario autenticado
-        $cartItems = Cart::with('product')->where('fk_users', Auth::id())->get();
+        $cartItems = Cart::with('product')->where('fk_user', Auth::id())->get();
 
         if ($cartItems->isEmpty()) {
             return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
@@ -49,46 +50,59 @@ class ReservationController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $user = Auth::user();
-        $cartItems = Cart::where('fk_users', $user->id)->get();
+{
+    DB::beginTransaction();
 
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
-        }
-
-        $total = $cartItems->reduce(function ($carry, $item) {
-            return $carry + ($item->product->price * $item->quantity);
-        }, 0);
-
-        // Crear la reserva
+    try {
+        // Crear la reserva con el campo 'fk_user' incluido
         $reservation = Reservation::create([
-            'fk_users' => $user->id,
-            'total' => $total,
+            'fk_user' => Auth::id(), // Asegúrate de que este campo coincide con tu esquema
+            'total' => 0, // Se actualizará después
+            'fk_vendedors' => Auth::user()->vendedor_id // Ajusta según la lógica
         ]);
 
-        // Crear los items de la reserva
+        // Obtener los artículos del carrito
+        $cartItems = Cart::where('fk_user', Auth::id())->get();
+
+        $total = 0;
+
         foreach ($cartItems as $item) {
+            // Crear elementos de reserva
             ReservationItem::create([
                 'fk_reservation' => $reservation->id,
                 'fk_product' => $item->fk_product,
                 'quantity' => $item->quantity,
-                'subtotal' => $item->quantity * $item->products->price,
+                'subtotal' => $item->subtotal,
+                'fk_vendedors' => $item->product->fk_vendedor // Ajusta según la lógica
             ]);
+
+            // Calcular el total
+            $total += $item->subtotal;
         }
 
-        // Vaciar el carrito
-        Cart::where('fk_users', $user->id)->delete();
+        // Actualizar el total de la reserva
+        $reservation->total = $total;
+        $reservation->save();
 
-        return redirect()->route('reservations.index')->with('success', 'Reserva creada exitosamente.');
+        // Vaciar el carrito
+        Cart::where('fk_user', Auth::id())->delete();
+
+        DB::commit();
+
+        return redirect()->route('reservations.index')->with('success', 'Reserva creada con éxito.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Error al crear la reserva: ' . $e->getMessage());
     }
+}
+
 
     /**
      * Display the specified resource.
      */
     public function show(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -101,7 +115,7 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -114,7 +128,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -143,7 +157,7 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 

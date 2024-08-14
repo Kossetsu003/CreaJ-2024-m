@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->decimal('total');
             //Usuario perteneciente
-            $table->unsignedBigInteger('FK_users');
-            $table->foreign('fk_users')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('fk_user');
+            $table->foreign('fk_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->string('estado')->default("enviado");
             $table->string('retiro')->default("Entrada del Mercado");

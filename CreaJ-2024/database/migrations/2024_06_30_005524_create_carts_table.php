@@ -14,8 +14,8 @@ class CreateCartsTable extends Migration
             $table->integer('quantity')->nulleable()->default(1);
             $table->double('subtotal')->nulleable()->default(0.01);
             $table->timestamps();
-            $table->unsignedBigInteger('fk_users');
-            $table -> foreign('fk_users') -> references('id') -> on('users') -> onDelete('cascade');
+            $table->unsignedBigInteger('fk_user');
+            $table -> foreign('fk_user') -> references('id') -> on('users') -> onDelete('cascade');
         });
     }
 

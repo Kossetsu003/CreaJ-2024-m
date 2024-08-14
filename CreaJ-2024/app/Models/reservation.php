@@ -9,10 +9,10 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    use HasFactory;
-
     protected $fillable = [
-        'fk_users', 'total','estado',
+        'fk_user',
+        'total',
+        'fk_vendedors',
     ];
 
     public function items()
