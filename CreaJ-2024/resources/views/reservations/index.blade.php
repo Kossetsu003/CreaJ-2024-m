@@ -2,7 +2,7 @@
 
 @foreach ($reservations as $reservation)
     <div>
-        <h2>Reserva #{{ $reservation->id }}</h2>
+        <h2>Reserva #{{ $reservation->id }} id</h2>
         <p>Total: ${{ $reservation->total }}</p>
         <ul>
             @foreach ($reservation->items as $item)

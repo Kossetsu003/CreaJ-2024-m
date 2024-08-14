@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Fk Reservation</th>
 										<th>Fk Product</th>
 										<th>Quantity</th>
@@ -47,9 +47,9 @@
                                 <tbody>
                                     @foreach ($reservationItems as $reservationItem)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $reservationItem->FK_reservation }}</td>
+                                            <td>{{ ++$i }}id item</td>
+
+											<td>{{ $reservationItem->FK_reservation }} fk reserva</td>
 											<td>{{ $reservationItem->FK_product }}</td>
 											<td>{{ $reservationItem->quantity }}</td>
 											<td>{{ $reservationItem->subtotal }}</td>
