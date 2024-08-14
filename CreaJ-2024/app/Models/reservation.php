@@ -12,7 +12,7 @@ class Reservation extends Model
     protected $fillable = [
         'fk_user',
         'total',
-        'fk_vendedors',
+       
     ];
 
     public function items()

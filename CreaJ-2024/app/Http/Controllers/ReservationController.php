@@ -58,7 +58,7 @@ class ReservationController extends Controller
         $reservation = Reservation::create([
             'fk_user' => Auth::id(), // Asegúrate de que este campo coincide con tu esquema
             'total' => 0, // Se actualizará después
-            'fk_vendedors' => Auth::user()->vendedor_id // Ajusta según la lógica
+
         ]);
 
         // Obtener los artículos del carrito
@@ -73,7 +73,8 @@ class ReservationController extends Controller
                 'fk_product' => $item->fk_product,
                 'quantity' => $item->quantity,
                 'subtotal' => $item->subtotal,
-                'fk_vendedors' => $item->product->fk_vendedor // Ajusta según la lógica
+                'fk_vendedors' => $item->product->vendedor->id,
+                'precio' => $item->product->price// Ajusta según la lógica
             ]);
 
             // Calcular el total

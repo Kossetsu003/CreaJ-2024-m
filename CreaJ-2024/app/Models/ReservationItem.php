@@ -12,6 +12,7 @@ class ReservationItem extends Model
         'fk_product',
         'quantity',
         'subtotal',
+        'precio',
         'fk_vendedors',
     ];
 
