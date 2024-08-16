@@ -71,6 +71,7 @@ class ReservationController extends Controller
             ReservationItem::create([
                 'fk_reservation' => $reservation->id,
                 'fk_product' => $item->fk_product,
+                'nombre' => $item->product->name,
                 'quantity' => $item->quantity,
                 'subtotal' => $item->subtotal,
                 'fk_vendedors' => $item->product->vendedor->id,

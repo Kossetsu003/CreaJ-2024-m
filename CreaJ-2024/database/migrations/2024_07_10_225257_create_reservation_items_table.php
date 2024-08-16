@@ -18,7 +18,7 @@ return new class extends Migration
             //product anclado
            $table->unsignedBigInteger('fk_product');
            $table->unsignedBigInteger('fk_vendedors');
-           $table->string('product_name')->nullable();
+           $table->string('nombre')->nullable();
            $table->integer('quantity');
            $table->decimal('subtotal',10,2)->default(1);
             $table->foreign('fk_vendedors')->references('id')->on('vendedors')->onDelete('cascade');

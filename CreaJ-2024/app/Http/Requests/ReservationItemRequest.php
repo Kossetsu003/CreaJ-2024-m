@@ -18,7 +18,7 @@ class ReservationItemRequest extends FormRequest
             'fk_reservation' => 'required|exists:reservations,id',
             'fk_product' => 'required|exists:products,id',
             'fk_vendedors' => 'required|exists:vendedors,id',
-            'product_name' => 'nullable|string|max:255',
+            'nombre' => 'nullable|string|max:255',
             'quantity' => 'required|integer|min:1',
             'subtotal' => 'required|numeric|min:0',
             'esstado' => 'nullable|string|max:255',

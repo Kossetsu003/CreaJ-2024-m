@@ -10,6 +10,7 @@ class ReservationItem extends Model
     protected $fillable = [
         'fk_reservation',
         'fk_product',
+        'nombre',
         'quantity',
         'subtotal',
         'precio',

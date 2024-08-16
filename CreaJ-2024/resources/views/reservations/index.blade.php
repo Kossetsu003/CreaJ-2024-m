@@ -7,11 +7,14 @@
         <ul>
             @foreach ($reservation->items as $item)
                 @if ($item->product)
+                INICIO de PRODUCTO
                 <h1>{{ $item->product->id}}</h1>
+                bs
 
                     <li>{{ $item->product->name }} - {{ $item->quantity }} - ${{ $item->subtotal }}</li>
                 @else
                 <h3>hola</h3>
+                holus
                     <li>Producto no disponible - {{ $item->quantity }} - ${{ $item->subtotal }}</li>
                 @endif
             @endforeach
