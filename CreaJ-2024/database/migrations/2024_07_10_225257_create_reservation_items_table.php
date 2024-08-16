@@ -19,14 +19,14 @@ return new class extends Migration
            $table->unsignedBigInteger('fk_product');
            $table->unsignedBigInteger('fk_vendedors');
 
-           $table->string('product_name')->nullable();
+           $table->string('nombre')->nullable();
            $table->decimal('precio', 8, 2);
            $table->integer('quantity');
            $table->decimal('subtotal', 8,2)->default(1);
             $table->foreign('fk_vendedors')->references('id')->on('vendedors')->onDelete('cascade');
            $table->foreign('fk_reservation')->references('id')->on('reservations')->onDelete('cascade');
            $table->foreign('fk_product')->references('id')->on('products')->onDelete('cascade');
-           
+
            $table->string('estado')->default("Enviado");
             $table->timestamps();
         });

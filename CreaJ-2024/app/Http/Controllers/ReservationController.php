@@ -20,7 +20,7 @@ class ReservationController extends Controller
     public function index()
     {
         // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
-        $reservations = Reservation::where('fk_users', Auth::id())->with('items.product')->get();
+        $reservations = Reservation::where('fk_user', Auth::id())->with('items.product')->get();
 
         return view('UserEstadoReservas', compact('reservations'));
     }
@@ -31,7 +31,7 @@ class ReservationController extends Controller
     public function create()
     {
         // Obtener los ítems del carrito del usuario autenticado
-        $cartItems = Cart::with('product')->where('fk_users', Auth::id())->get();
+        $cartItems = Cart::with('product')->where('fk_user', Auth::id())->get();
 
         if ($cartItems->isEmpty()) {
             return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
@@ -51,7 +51,7 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $cartItems = Cart::where('fk_users', $user->id)->get();
+        $cartItems = Cart::where('fk_user', $user->id)->get();
 
         if ($cartItems->isEmpty()) {
             return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
@@ -66,7 +66,7 @@ class ReservationController extends Controller
 
         // Crear la reserva
         $reservation = Reservation::create([
-            'fk_users' => $user->id,
+            'fk_user' => $user->id,
             'total' => $total,
             'fk_mercado' => $fk_mercado,
         ]);
@@ -76,13 +76,14 @@ class ReservationController extends Controller
             ReservationItem::create([
                 'fk_reservation' => $reservation->id,
                 'fk_product' => $item->fk_product,
+                'nombre'=> $item->product->name,
                 'quantity' => $item->quantity,
                 'subtotal' => $item->quantity * $item->product->price,
             ]);
         }
 
         // Vaciar el carrito
-        Cart::where('fk_users', $user->id)->delete();
+        Cart::where('fk_user', $user->id)->delete();
 
         return redirect()->route('reservations.index')->with('success', 'Reserva creada exitosamente.');
     }
@@ -93,7 +94,7 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -106,7 +107,7 @@ class ReservationController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -119,7 +120,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 
@@ -148,7 +149,7 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        if ($reservation->fk_users !== Auth::id()) {
+        if ($reservation->fk_user !== Auth::id()) {
             abort(403);
         }
 

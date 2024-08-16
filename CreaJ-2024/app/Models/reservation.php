@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,22 +10,13 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
+        'fk_user',
         'total',
-        'fk_users',
-        'estado',
-        'retiro',
-
+       
     ];
 
-    // Relationship to the MercadoLocal model
-
-
-    // Relationship to the User model
-    public function user()
+    public function items()
     {
-        return $this->belongsTo(User::class, 'fk_users');
+        return $this->hasMany(ReservationItem::class, 'fk_reservation');
     }
-   
-
-    // Other relationships, such as items and products
 }

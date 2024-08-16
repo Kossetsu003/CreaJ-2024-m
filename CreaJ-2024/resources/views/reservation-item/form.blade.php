@@ -1,6 +1,6 @@
 <div class="row padding-1 p-1">
     <div class="col-md-12">
-        
+
         <div class="form-group mb-2 mb20">
             <label for="f_k_reservation" class="form-label">{{ __('Fk Reservation') }}</label>
             <input type="text" name="FK_reservation" class="form-control @error('FK_reservation') is-invalid @enderror" value="{{ old('FK_reservation', $reservationItem?->FK_reservation) }}" id="f_k_reservation" placeholder="Fk Reservation">
@@ -8,8 +8,8 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="f_k_product" class="form-label">{{ __('Fk Product') }}</label>
-            <input type="text" name="FK_product" class="form-control @error('FK_product') is-invalid @enderror" value="{{ old('FK_product', $reservationItem?->FK_product) }}" id="f_k_product" placeholder="Fk Product">
-            {!! $errors->first('FK_product', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+            <input type="text" name="fk_product" class="form-control @error('fk_product') is-invalid @enderror" value="{{ old('fk_product', $reservationItem?->fk_product) }}" id="f_k_product" placeholder="Fk Product">
+            {!! $errors->first('fk_product', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
             <label for="quantity" class="form-label">{{ __('Quantity') }}</label>

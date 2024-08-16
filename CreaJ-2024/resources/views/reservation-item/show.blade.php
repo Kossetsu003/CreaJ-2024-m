@@ -19,14 +19,14 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        
+
                         <div class="form-group mb-2 mb20">
                             <strong>Fk Reservation:</strong>
                             {{ $reservationItem->FK_reservation }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Fk Product:</strong>
-                            {{ $reservationItem->FK_product }}
+                            {{ $reservationItem->fk_product }}
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Quantity:</strong>

@@ -23,6 +23,7 @@ use App\Http\Request\ProductRequest;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -105,7 +106,7 @@ use Illuminate\Support\Facades\Auth;
         $quantity = $request->input('quantity');
 
         $cartItem = Cart::where('fk_product', $product->id)
-                        ->where('fk_users', Auth::id())
+                        ->where('fk_user', Auth::id())
                         ->first();
 
         if ($cartItem) {
@@ -115,7 +116,7 @@ use Illuminate\Support\Facades\Auth;
         } else {
             Cart::create([
                 'fk_product' => $product->id,
-                'fk_users' => Auth::id(),
+                'fk_user' => Auth::id(),
                 'quantity' => $quantity,
                 'subtotal' => $quantity * $product->price
             ]);
@@ -129,7 +130,7 @@ use Illuminate\Support\Facades\Auth;
         try {
             $userid = Auth::id();
 
-            $cartItems = Cart::with('product')->where('fk_users', $userid)->get();
+            $cartItems = Cart::with('product')->where('fk_user', $userid)->get();
             $total = $cartItems->reduce(fn ($carry, $item) => $carry + ($item->product->price * $item->quantity), 0);
             return view('UserCarritoGeneral', compact('cartItems', 'total', 'userid'));
         } catch (\Exception $e) {
@@ -139,42 +140,55 @@ use Illuminate\Support\Facades\Auth;
     }
     public function reservar(Request $request)
     {
-        $user = Auth::user();
-        $cartItems = Cart::where('fk_users', $user->id)->get();
+        DB::beginTransaction();
 
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
-        }
+        try {
+            // Crear la reserva con el campo 'fk_user' incluido
+            $reservation = Reservation::create([
+                'fk_user' => Auth::id(), // Asegúrate de que este campo coincide con tu esquema
+                'total' => 0, // Se actualizará después
 
-        $total = $cartItems->reduce(function ($carry, $item) {
-            return $carry + ($item->product->price * $item->quantity);
-        }, 0);
-
-        // Crear la reserva
-        $reservation = Reservation::create([
-            'fk_users' => $user->id,
-            'total' => $total,
-        ]);
-
-        // Crear los items de la reserva
-        foreach ($cartItems as $item) {
-            ReservationItem::create([
-                'fk_reservation' => $reservation->id,
-                'fk_product' => $item->fk_product,
-                'quantity' => $item->quantity,
-                'subtotal' => $item->quantity * $item->product->price,
             ]);
+
+            // Obtener los artículos del carrito
+            $cartItems = Cart::where('fk_user', Auth::id())->get();
+
+            $total = 0;
+
+            foreach ($cartItems as $item) {
+                // Crear elementos de reserva
+                ReservationItem::create([
+                    'fk_reservation' => $reservation->id,
+                    'fk_product' => $item->fk_product,
+                    'quantity' => $item->quantity,
+                    'subtotal' => $item->subtotal,
+                    'fk_vendedors' => $item->product->vendedor->id,
+                    'precio' => $item->product->price// Ajusta según la lógica
+                ]);
+
+                // Calcular el total
+                $total += $item->subtotal;
+            }
+
+            // Actualizar el total de la reserva
+            $reservation->total = $total;
+            $reservation->save();
+
+            // Vaciar el carrito
+            Cart::where('fk_user', Auth::id())->delete();
+
+            DB::commit();
+
+            return redirect()->route('usuarios.reservas')->with('success', 'Reserva creada con éxito.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Error al crear la reserva: ' . $e->getMessage());
         }
-
-        // Vaciar el carrito
-        Cart::where('fk_users', $user->id)->delete();
-
-        return redirect()->route('usuarios.reservas')->with('success', 'Reserva creada exitosamente.');
     }
     public function reservas()
     {
         // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
-        $reservations = Reservation::where('fk_users', Auth::id())->with('items.product')->get();
+        $reservations = Reservation::where('fk_user', Auth::id())->with('items.product')->get();
 
         return view('UserEstadoReservas', compact('reservations'));
     }

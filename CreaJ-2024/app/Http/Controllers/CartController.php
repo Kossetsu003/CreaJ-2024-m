@@ -15,7 +15,7 @@ class CartController extends Controller
     public function index()
     {
         $userid = Auth::id();
-        $cartItems = Cart::with('product')->where('fk_users', Auth::id())->get();
+        $cartItems = Cart::with('product')->where('fk_user', Auth::id())->get();
 
         $total = $cartItems->reduce(function ($carry, $item) {
             return $carry + ($item->product->price * $item->quantity);
@@ -33,7 +33,7 @@ class CartController extends Controller
         $quantity = $request->input('quantity');
 
         $cartItem = Cart::where('fk_product', $product->id)
-                        ->where('fk_users', Auth::id())
+                        ->where('fk_user', Auth::id())
                         ->first();
 
         if ($cartItem) {
@@ -43,7 +43,7 @@ class CartController extends Controller
         } else {
             Cart::create([
                 'fk_product' => $product->id,
-                'fk_users' => Auth::id(),
+                'fk_user' => Auth::id(),
                 'quantity' => $quantity,
                 'subtotal' => $quantity * $product->price
             ]);
@@ -57,7 +57,7 @@ class CartController extends Controller
     public function checkout()
 {
     $user = Auth::user();
-    $cartItems = Cart::where('fk_users', $user->id)->get();
+    $cartItems = Cart::where('fk_user', $user->id)->get();
 
     if ($cartItems->isEmpty()) {
         return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
@@ -69,7 +69,7 @@ class CartController extends Controller
 
     // Crear la reserva
     $reservation = Reservation::create([
-        'fk_users' => $user->id,
+        'fk_user' => $user->id,
         'total' => $total,
     ]);
 
@@ -84,7 +84,7 @@ class CartController extends Controller
     }
 
     // Vaciar el carrito
-    Cart::where('fk_users', $user->id)->delete();
+    Cart::where('fk_user', $user->id)->delete();
 
     return redirect()->route('reservations.index')->with('success', 'Reserva creada exitosamente.');
 }
@@ -92,7 +92,7 @@ class CartController extends Controller
     public function remove(Product $product)
     {
         $cartItem = Cart::where('fk_product', $product->id)
-                        ->where('fk_users', Auth::id())
+                        ->where('fk_user', Auth::id())
                         ->first();
 
         if ($cartItem) {
