@@ -10,25 +10,27 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
-<body class="bg-gray-100">
+<body class="">
      <!-- Desktop Navbar -->
      <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+             Mini <span class="text-orange-600"><b>Vendedores</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('vendedores.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Puesto<a>
+             <a href="{{ route('vendedores.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Productos</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
             <a href="{{ route('vendedores.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Reservas</a>
-                <a href="{{ route('vendedores.historial') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Historial</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
+            <a href="{{ route('vendedores.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('VendedorProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -57,7 +59,17 @@
         </div>
     </div>
     <main class="p-4">
+
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex justify-between mt-5">
+                <div class="ml-[2%]">
+                    <h1 class="md:text-[1.5rem] text-[1rem]">{{ $vendedor->nombre_del_local }} en <span class="font-semibold"> {{ $vendedor->mercadoLocal->nombre}}</span>&#128178;</h1>
+                    <h3 class="text-orange-800 font-bold text-[1rem]">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
+                </div>
+                <div class="md:hidden mr-[5%] mt-4 rounded-full w-[8rem] h-[8rem] ">
+                    <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
+                </div>
+            </div>
             <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
                 Mis Productos
             </div>
@@ -65,7 +77,9 @@
 
 
             <div class="space-y-4 items-center justify-center">
-
+                @if ($productos->isEmpty())
+                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Productos</span>
+                @else
 
                 @foreach ($productos as $producto)
                 <div class=" my-10 p-4 border border-gray-200 rounded-lg flex flex-col mx-auto w-[75%] h-[250px]  md:flex-row md:items-start gap-4 md:gap-6 transition duration-300 hover:bg-gray-50">
@@ -106,6 +120,7 @@
                 </div>
 
 @endforeach
+@endif
 
 
                 <!--FIN DE LA CARTA-->

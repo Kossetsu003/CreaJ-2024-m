@@ -20,6 +20,7 @@ use App\Http\Requests\VendedorRequest;
 use App\Http\Requests\CartRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ReservationItemRequest;
 use App\Http\Requests\VendedorRequest as RequestsVendedorRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -114,12 +115,14 @@ use Illuminate\Support\Facades\Storage;
          */
         public function productos(){
 
+            $id = 1;
+            $vendedor = Vendedor::with('mercadoLocal')->find($id);
             $id = 1;//ssion('fk_mercado');
             // Obtener todos los productos que pertenecen al vendedor con el ID especificado
-            $productos = Product::where('fk_vendedors', $id)->get();
+            $productos = Product::where('fk_vendedors',  $id)->get();
 
     // Pasar los productos a la vista para su visualización
-        return view('VendedorMisProductos', compact('productos'));
+        return view('VendedorMisProductos', compact('productos' ,'vendedor'));
 
         }
         public function verproducto($id){
@@ -290,6 +293,8 @@ use Illuminate\Support\Facades\Storage;
         public function reservas()
         {
             $id = 1;
+            $id = 1;
+            $vendedor = Vendedor::with('mercadoLocal')->find($id);
             $mercadoId = 1; // ID del mercado que quieres filtrar
 
             // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
@@ -304,7 +309,7 @@ use Illuminate\Support\Facades\Storage;
             }])
             ->get();
 
-            return view('VendedorEstadoReservas', compact('reservations', 'id'));
+            return view('VendedorEstadoReservas', compact('reservations', 'id', 'vendedor'));
         }
 
 
@@ -312,13 +317,57 @@ use Illuminate\Support\Facades\Storage;
         public function verreserva(){
 
         }
-        public function actualizarestadoreserva(){
+        public function publicarEstadoReserva(Request $request, $id)
+        {
+            // Obtener el ReservationItem por ID
+            $item = ReservationItem::find($id);
 
-        }
-        public function publicarestadoreseva(){
+            // Verificar si el item fue encontrado
+            if (!$item) {
+                return redirect()->route('vendedores.reservas')->with('error', 'El ítem de la reserva no fue encontrado.');
+            }
 
+            // Verificar si el item pertenece al vendedor con id = 1
+            if ($item->fk_vendedors == 1) {
+                // Validar el estado enviado
+                $estadoValido = ['enviado', 'sin_existencias', 'en_entrega', 'recibido'];
+                $nuevoEstado = $request->input('estado');
+
+                if (in_array($nuevoEstado, $estadoValido)) {
+                    // Actualizar el estado del item
+                    $item->estado = $nuevoEstado;
+                    $item->save();
+
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'en_entrega')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'en_entrega';
+                        $reserva->save();
+                    }
+
+                    // Redireccionar a la vista o hacer otra acción
+                    return redirect()->route('vendedores.reservas')->with('success', 'El estado de la reserva ha sido actualizado.');
+                } else {
+                    // Estado no válido
+                    return redirect()->route('vendedores.reservas')->with('error', 'El estado proporcionado no es válido.');
+                }
+            } else {
+                // Si no pertenece al vendedor correcto, mostrar un error
+                return redirect()->route('vendedores.reservas')->with('error', 'No tienes permiso para actualizar este item.');
+            }
         }
+
+
+
         public function historial(){
+            $id = 1;
+            $vendedor = Vendedor::with('mercadoLocal')->find($id);
             $id = 1;
 
             // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
@@ -330,7 +379,7 @@ use Illuminate\Support\Facades\Storage;
             }])
             ->get();
 
-            return view('VendedorHistorialReservas', compact('reservations', 'id'));
+            return view('VendedorHistorialReservas', compact('reservations', 'id', 'vendedor'));
         }
 
 

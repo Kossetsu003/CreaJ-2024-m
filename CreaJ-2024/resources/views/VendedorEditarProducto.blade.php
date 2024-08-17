@@ -10,20 +10,24 @@
 <body >
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('usuarios.index') }}">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-                Mini <span class="text-orange-600 uppercase"><b>Vendedor</b></span>
-            </h1>
+        <a href="{{ route('vendedores.index') }}">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+             Mini <span class="text-orange-600"><b>Vendedores</b></span>
+        </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('vendedores.index') }}"
-               class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Puesto</a>
+             <a href="{{ route('vendedores.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
-               class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Productos</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
             <a href="{{ route('vendedores.reservas') }}"
-               class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Reservas</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
+            <a href="{{ route('vendedores.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('VendedorProfileVista') }}"
-               class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->

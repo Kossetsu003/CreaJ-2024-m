@@ -11,23 +11,26 @@
 
 <body>
     <!-- Desktop Navbar -->
+    
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+             Mini <span class="text-orange-600"><b>Vendedores</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('vendedores.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Puesto<a>
+             <a href="{{ route('vendedores.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Productos</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
             <a href="{{ route('vendedores.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Reservas</a>
-                <a href="{{ route('vendedores.historial') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Historial</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
+            <a href="{{ route('vendedores.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('VendedorProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -55,12 +58,23 @@
             </div>
         </div>
     </div>
-    <div class="mt-14 w-full mx-auto md:text-[30px]">
+    <div class="md:mt-14 mt-7 w-full mx-auto md:text-[30px]">
 
-        <h1 class="md:hidden text-3xl md:text-4xl lg:text-5xl font-black text-center mb-6">
+
+        <h1 class="md:hidden text-3xl md:text-4xl lg:text-5xl font-black pl-2 mb-6">
             Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
         </h1>
+        <div class="flex justify-between mt-5">
+            <div class="ml-[2%]">
+                <h1>Hola! Bienvenido &#x1F44B;</h1>
+                <h3 class="text-orange-800 font-bold">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
+            </div>
+            <div class="md:hidden mr-[5%] mt-4 rounded-full w-12 ">
+                <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
+            </div>
+        </div>
         <div class="flex flex-col md:flex-row justify-center items-center w-screen mx-auto">
+
             <!-- Contenedor Principal -->
 
 
@@ -72,17 +86,17 @@
             <!-- Etiquetas -->
             <div class="flex flex-col justify-center items-center md:items-start md:ml-8 mt-4 md:mt-0 text-center md:text-left">
                 <!-- Título -->
-                <div class="font-bold text-[2rem] md:text-[4rem]">
+                <div class="font-bold text-[1.5rem] md:text-[2.5rem]">
                     {{ $vendedor->nombre_del_local }}
                 </div>
-                <div class="text-[1rem] md:font-semibold  md:text-xl mt-2">
+                <div class="text-[1rem] md:font-semibold  md:text-[1.5rem] mt-2">
                    Propietario: <b class="uppercase">{{ $vendedor->nombre}} {{ $vendedor->apellidos}}</b>
                 </div>
-                <div class="font-semibold text-[1rem] md:text-2xl mt-2">
+                <div class="font-semibold text-[1rem] md:text-[1.5rem] mt-2">
                     Puesto #{{ $vendedor->numero_puesto}} - <span class="md:font-bold"> en {{ $mercadoLocal->nombre }}</span>
                 </div>
                 <!-- Añade más etiquetas aquí -->
-                <div class="text-[1rem] md:font-semibold  md:text-xl mt-2">
+                <div class="text-[1rem] md:font-semibold  md:text-[1.5rem] mt-2">
                     Correo Electronico: <span>{{ $vendedor->usuario}}</span>
                 </div>
 
@@ -117,10 +131,10 @@
         <!-- CARTAS -->
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
             @if ($products->isEmpty())
-                <p class="text-[3rem] py-[18rem] font-semibold text-gray-600">No hay Productos en Venta</p>
+                <p class="md:text-[1.75rem] text-[1.5rem] py-[18rem] font-semibold text-gray-600">No hay Productos en Venta</p>
             @else
                 @foreach ($products as $product)
-                    <a href="{{ route('usuarios.producto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-4 hover:shadow-lg hover:ease-in-out rounded-md">
+                    <a href="{{ route('vendedores.verproducto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-4 hover:shadow-lg hover:ease-in-out rounded-md">
                         <img class="w-full h-[300px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                         <div class="flex ">
                             <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">{{ $product->name }}</h1>

@@ -73,8 +73,8 @@ Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorE
 Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');*/
 Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');/*
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
-Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //
-Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');
+Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //*/
+Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');/*
 Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');*/
 
 
@@ -102,8 +102,8 @@ Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminList
 Route::view('/AdminAgregarMercado','AdminAgregarMercado')->name('AdminAgregarMercado');
 Route::view('/AdminPerfilDelVendedor','AdminPerfilDelVendedor')->name('AdminPerfilDelVendedor');
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
-Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListadoMercados');
-Route::view('/AdminHistorialPedidos','AdminListadoVendedores')->name('AdminHistorialPedidos');
+Route::view('/AdminListadoMercados','AdminPuestosDelMercado')->name('AdminListadoMercados');*/
+Route::view('/AdminHistorialPedidos','AdminHistorialPedidos')->name('AdminHistorialPedidos');/*
 Route::view('/AdminEstadoPedidos','AdminEstadoPedidos')->name('AdminEstadoPedidos');
 Route::view('/AdminConfirmacionMercado','AdminConfirmacionMercado')->name('AdminConfirmacionMercado');
 Route::get('/admin-mercado-locals/confirmation', [AdminMercadoLocalController::class, 'confirmation'])->name('admin-mercado-locals.confirmation');*/
@@ -198,8 +198,8 @@ Route::delete('/vendedores/eliminarproducto/{id}', [VendedoresController::class,
 //Reservas
 Route::get('/vendedores/reservas', [VendedoresController::class, 'reservas'])->name('vendedores.reservas');
 Route::get('/vendedores/verreserva/{id}', [VendedoresController::class, 'verreserva'])->name('vendedores.verreserva');
-Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedorController::class])->name('actualizarestadoreserva');
-Route::post('/vendedores/publicarestadoreserva/{id}', [VendedorController::class, 'publicarestadoreserva'])->name('vendedores.publicarestadoreserva');
+Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedoresController::class])->name('vendedores.actualizarestadoreserva');
+Route::post('/vendedores/publicar-estado-reserva/{id}', [VendedoresController::class, 'publicarEstadoReserva'])->name('vendedores.publicar-estado-reserva');
 Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])->name('vendedores.historial');
 
 

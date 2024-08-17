@@ -15,19 +15,20 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
              Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Hogar</a>
             <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Carrito</a>
             <a href="{{ route('usuarios.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -63,17 +64,33 @@
             </div>
 
             <div class="space-y-4">
-
+                @if ($reservations->isEmpty())
+                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Reservas Todavia</span>
+                @else
                 <!--INICIO DE RESERVA-->
                 @foreach ($reservations as $reservation)
+                {{ $reservation->estado }}
                 <div
                     class="p-4 border border-gray-200 rounded-lg  justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
 
                     <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"
                     >Reserva:
+                    @if ($reservation->estado == 'enviado')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
                         {{ $reservation->estado }}
                     </span>
+
+                    @elseif ($reservation->estado == 'sin_existencias')
+                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
+                        Sin Existencias
+                    </span>
+                    @elseif ($reservation->estado == 'en_entrega')
+                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange--800 rounded">
+                        En Entrega 
+                    </span>
+
+                    @endif
+
                     </h2>
                     <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
 
@@ -97,6 +114,7 @@
                 <!--FIN DE CARTA-->
                 </div>
                 @endforeach
+            @endif
                 <!--FIN DE SEGMENTO DE RESERVA-->
 
 

@@ -30,26 +30,31 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden z-20 ">
+        <div  class="bg-black rounded-2xl p-8 h-14 flex justify-around z-20">
             <div class="flex items-center">
                 <a href="{{ route('mercados.index') }}" class="bg-white rounded-full p-1">
-                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                    <img class="w-10" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('mercados.listavendedores') }}">
-                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                    <img class="w-10" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('mercados.reservas') }}">
-                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                    <img class="w-10" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('mercados.reservas') }}">
+                    <img class="w-10" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('MercadoProfileVista') }}">
-                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                    <img class="w-10" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
@@ -71,7 +76,7 @@
                 <div class="md:text-center md:font-semibold font-bold">
                     Ubicado En: {{ $mercadoLocal->municipio }}
                 </div>
-                <div class="md:text-center   text-[20px] pb-[10px] w-[40rem] h-auto">
+                <div class="md:text-center   text-[20px] pb-[10px] md:w-[40rem] h-auto">
                     {{ $mercadoLocal->descripcion }}
                 </div>
             </div>

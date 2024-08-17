@@ -13,22 +13,21 @@
 <body class="">
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-
         <a href="{{ route('usuarios.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
              Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
-
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Hogar</a>
             <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Carrito</a>
             <a href="{{ route('usuarios.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -60,22 +59,20 @@
 
 
     <!-- Agregar un margen superior al contenido principal igual a la altura de la barra de navegación -->
-    <!-- <div class="mt-10">
-            <div class="flex justify-between mt-5">
-                <div class="ml-[10%]">
-                    <h1>Hola! Bienvenido &#x1F44B;</h1>
-                    <h3 class="text-blue-800 font-bold">Sra. Maria Mercedes Gonzales</h3>
+     <div class="mt-10">
+            <div class="flex justify-between my-5">
+                <div class="ml-[3%]">
+                    <h1 class=" text-[1.25rem]">Hola! Bienvenido &#x1F44B;</h1>
+                    <h3 class="text-blue-800 font-bold text-[1.5rem]">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h3>
                 </div>
-                <div class="mr-[10%] mt-4">
+                <div class="mr-[3%] mt-4">
                     <img class=" rounded-full w-12" src="{{ asset('imgs/PerfilJuana.jpg') }}" alt="User Icon">
                 </div>
-            </div> -->
+            </div>
 
-    <!-- <div class="text-center mt-5">
-                <h1 class="text-[60px] font-bold">Mini <span class="text-blue-600 font-bold">Shop</span></h1>
-            </div> -->
+
     <div class="h-[70vh] bg-no-repeat bg-cover bg-center lg:bg-[center_top_-25rem]"
-        style="background-image: url({{ asset('imgs/PortadaMiniShop.png') }});">
+        style="background-image: url({{ asset('imgs/bkg.jpeg') }});">
 
     </div>
 

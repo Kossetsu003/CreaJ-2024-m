@@ -15,21 +15,23 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+             Mini <span class="text-orange-600"><b>Vendedores</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('vendedores.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Puesto<a>
+             <a href="{{ route('vendedores.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Productos</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
             <a href="{{ route('vendedores.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Reservas</a>
-                <a href="{{ route('vendedores.historial') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Historial</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
+            <a href="{{ route('vendedores.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('VendedorProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -59,7 +61,17 @@
     </div>
 
     <main class="p-4">
+
         <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+            <div class="flex justify-between mt-5">
+                <div class="ml-[2%]">
+                    <h1 class="md:text-[1.5rem] text-[1rem]">{{ $vendedor->nombre_del_local }} en <span class="font-semibold"> {{ $vendedor->mercadoLocal->nombre}}</span>&#128178;</h1>
+                    <h3 class="text-orange-800 font-bold text-[1rem]">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
+                </div>
+                <div class="md:hidden mr-[5%] mt-4 rounded-full w-[8rem] h-[8rem] ">
+                    <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
+                </div>
+            </div>
             <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
                 Mis Reservas
             </div>
@@ -69,45 +81,93 @@
 
 
                 <!--INICIO DE RESERVA-->
-                @foreach ($reservations as $reservation)
-                    @if ( $reservation->estado != 'entregado')
-                    <div
-                    class="p-4 border border-gray-200 rounded-lg  justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-
-                    <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"
-                    >Reserva:
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
-                        @if ( $reservation->estado == 'enviado')
-                                Recibido
+                @if ($reservations->isEmpty())
+    <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Reservas Pendientes</span>
+@else
+    @foreach ($reservations as $reservation)
+        @if ($reservation->estado != 'entregado')
+            <!-- Contenedor principal de la reserva -->
+            <div class="p-4 border border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">
+                    Reserva:
+                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-yellow-200 text-yellow-800 rounded">
+                        @if ($reservation->estado == 'enviado')
+                            Recibido
                         @endif
-
                     </span>
-                    </h2>
-                    <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">Pedido Por</span> {{ $reservation->user->nombre}} {{ $reservation->user->apellido}}</h2>
-                    <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
+                </h2>
 
-                    @foreach ($reservation->items as $item)
-                <!--INICIO DE CARTA-->
-                <div
-                    class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-                    <div class="flex items-center">
-                        <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}"
-                        class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
-                        <div>
-                            <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">{{ $item->nombre }}</h2>
-                            <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Cantidad:</b> {{ $item->quantity }}</p>
-                            <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
-                            <p class="text-sm md:text-[1.5rem] text-gray-600  mb-[8px]"><b>Subtotal:</b> ${{ $item->subtotal }}</p>
+                <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
+                    <span class="font-bold">Pedido Por:</span> {{ $reservation->user->nombre }} {{ $reservation->user->apellido }}
+                </h2>
+
+                <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
+
+                <!-- Iteración sobre los items de la reserva -->
+                @foreach ($reservation->items as $item)
+                    <!-- Contenedor de cada item de la reserva -->
+                    <div class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                        <div class="flex items-center flex-1">
+                            <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}" class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
+                            <div>
+                                <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
+                                    <span class="font-bold">
+                                        {{ $item->nombre }}
+                                    </span>
+                                </h2>
+                                <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]">
+                                    <b>Cantidad:</b> {{ $item->quantity }}
+                                </p>
+                                <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]">
+                                    <b>Precio (c/u):</b> ${{ $item->precio }}
+                                </p>
+                                <p class="text-sm md:text-[1.5rem] text-gray-600 mb-[8px]">
+                                    <b>Subtotal:</b> ${{ $item->subtotal }}
+                                </p>
+                            </div>
                         </div>
+
+                        <!-- Formulario siempre visible -->
+                        <div class="mt-4">
+                            <h2 class="text-xl font-bold mb-4 text-center">¿El pedido está listo?</h2>
+                            <form action="{{ route('vendedores.publicar-estado-reserva', $item->id) }}" method="POST">
+                                @csrf
+                                <!-- Input oculto para enviar el estado -->
+                                <input type="hidden" name="estado" id="estado" value="">
+
+                                <div class="flex justify-between ">
+                                    <!-- Botón para "Mi Pedido Está Listo" -->
+                                    <button type="button" onclick="setEstado('en_entrega')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
+                                        Mi Pedido Está Listo
+                                    </button>
+
+                                    <!-- Botón para "Ya No Hay Existencias" -->
+                                    <button type="button" onclick="setEstado('sin_existencias')" class="mx-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                        Ya No Hay Existencias
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <script>
+                            function setEstado(value) {
+                                // Establece el valor del input oculto con el estado seleccionado
+                                document.getElementById('estado').value = value;
+                                // Envía el formulario
+                                document.querySelector('form').submit();
+                            }
+                        </script>
+
+
                     </div>
-
-                </div>
                 @endforeach
-                <!--FIN DE CARTA-->
-                </div>
+                <!-- Fin de iteración de los items -->
+            </div>
+            <!-- Fin del contenedor principal de la reserva -->
+        @endif
+    @endforeach
+@endif
 
-                    @endif
-                @endforeach
                 <!--FIN DE SEGMENTO DE RESERVA-->
 
 

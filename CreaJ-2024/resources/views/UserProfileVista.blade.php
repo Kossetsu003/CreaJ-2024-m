@@ -21,19 +21,20 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
              Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Hogar</a>
             <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Carrito</a>
             <a href="{{ route('usuarios.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Reservas</a>
+            <a href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
@@ -135,7 +136,7 @@
                 <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
             </div>
             <div>
-              
+
                 <b>
                     <b>
                         <h2>Sobre nosotros</h2>
