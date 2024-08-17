@@ -60,8 +60,8 @@ Route::view('/UserPuestosVendedores','UserPuestosVendedores')->name('UserPuestos
 Route::view('/UserProductosDeUnPuesto','UserProductosDeUnPuesto')->name('UserProductosDeUnPuesto');
 Route::view('/UserHome','UserHome')->name('UserHome');
 Route::view('/UserEstadoReservas','UserEstadoReservas')->name('UserEstadoReservas');*/
-Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');/*
-Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');*/
+Route::view('/UserProfileVista', 'UserProfileVista')->name('UserProfileVista');
+Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorialPedidos');/*
 
 
 
@@ -200,7 +200,7 @@ Route::get('/vendedores/reservas', [VendedoresController::class, 'reservas'])->n
 Route::get('/vendedores/verreserva/{id}', [VendedoresController::class, 'verreserva'])->name('vendedores.verreserva');
 Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedorController::class])->name('actualizarestadoreserva');
 Route::post('/vendedores/publicarestadoreserva/{id}', [VendedorController::class, 'publicarestadoreserva'])->name('vendedores.publicarestadoreserva');
-
+Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])->name('vendedores.historial');
 
 
 

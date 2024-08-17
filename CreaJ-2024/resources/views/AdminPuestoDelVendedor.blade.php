@@ -91,7 +91,7 @@
             @foreach ($products as $product)
             <a href="{{ route('admin.verproducto', $product->id)}}" class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
+                src="{{ asset( 'imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                 <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
                     {{ $product->name }}
                 </h1>

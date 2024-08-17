@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('fk_user')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
+          
             $table->string('estado')->default("enviado");
             $table->string('retiro')->default("Entrada del Mercado");
         });

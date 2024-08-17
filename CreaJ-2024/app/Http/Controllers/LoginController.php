@@ -29,9 +29,10 @@ class LoginController extends Controller
 
         $user->save();
 
-        Auth::login($user);
+       $user = Auth::login($user);
 
-        return redirect(route('UserProfileVista'));
+
+        return redirect(route('UserProfileVista','user'));
     }
 
     public function LoginUser(Request $request)

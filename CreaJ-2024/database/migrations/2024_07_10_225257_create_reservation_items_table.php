@@ -18,6 +18,7 @@ return new class extends Migration
             //product anclado
            $table->unsignedBigInteger('fk_product');
            $table->unsignedBigInteger('fk_vendedors');
+           $table->unsignedBigInteger('fk_mercados');
 
            $table->string('nombre')->nullable();
            $table->decimal('precio', 8, 2);
@@ -26,6 +27,8 @@ return new class extends Migration
             $table->foreign('fk_vendedors')->references('id')->on('vendedors')->onDelete('cascade');
            $table->foreign('fk_reservation')->references('id')->on('reservations')->onDelete('cascade');
            $table->foreign('fk_product')->references('id')->on('products')->onDelete('cascade');
+           $table->foreign('fk_mercados')->references('id')->on('mercado_locals')->onDelete('cascade');
+
 
            $table->string('estado')->default("Enviado");
             $table->timestamps();

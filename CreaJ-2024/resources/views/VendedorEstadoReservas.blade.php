@@ -14,27 +14,29 @@
 
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <a href="{{ route('usuarios.index') }}">
+        <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-             Mini <span class="text-blue-600"><b>Shop</b></span>
+            Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('usuarios.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+            <a href="{{ route('vendedores.index') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Puesto<a>
+            <a href="{{ route('vendedores.productos') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Productos</a>
+            <a href="{{ route('vendedores.reservas') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mis Reservas</a>
+                <a href="{{ route('vendedores.historial') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Historial</a>
+            <a href="{{ route('VendedorProfileVista') }}"
+                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mi Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
+                <a href="{{ route('vendedores.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -63,18 +65,25 @@
             </div>
 
             <div class="space-y-4">
+                {{ $id; }}
+
 
                 <!--INICIO DE RESERVA-->
                 @foreach ($reservations as $reservation)
-                <div
+                    @if ( $reservation->estado != 'entregado')
+                    <div
                     class="p-4 border border-gray-200 rounded-lg  justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
 
                     <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"
                     >Reserva:
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
-                        {{ $reservation->estado }}
+                        @if ( $reservation->estado == 'enviado')
+                                Recibido
+                        @endif
+
                     </span>
                     </h2>
+                    <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">Pedido Por</span> {{ $reservation->user->nombre}} {{ $reservation->user->apellido}}</h2>
                     <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
 
                     @foreach ($reservation->items as $item)
@@ -85,7 +94,7 @@
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}"
                         class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
-                            <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">{{ $item->product->name }}</span> en {{ $item->product->vendedor->nombre_del_local}}</h2>
+                            <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">{{ $item->nombre }}</h2>
                             <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Cantidad:</b> {{ $item->quantity }}</p>
                             <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
                             <p class="text-sm md:text-[1.5rem] text-gray-600  mb-[8px]"><b>Subtotal:</b> ${{ $item->subtotal }}</p>
@@ -96,6 +105,8 @@
                 @endforeach
                 <!--FIN DE CARTA-->
                 </div>
+
+                    @endif
                 @endforeach
                 <!--FIN DE SEGMENTO DE RESERVA-->
 

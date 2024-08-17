@@ -82,7 +82,7 @@
 
             <a href="{{ route('usuarios.producto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
                 <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
+                    src="{{ asset( 'imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                 <div class="flex ">
                     <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
                         {{ $product->name }}

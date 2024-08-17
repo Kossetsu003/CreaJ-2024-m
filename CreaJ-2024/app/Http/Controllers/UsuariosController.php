@@ -161,8 +161,10 @@ use Illuminate\Support\Facades\DB;
                     'fk_reservation' => $reservation->id,
                     'fk_product' => $item->fk_product,
                     'quantity' => $item->quantity,
+                    'nombre'=>$item->product->nombre,
                     'subtotal' => $item->subtotal,
                     'fk_vendedors' => $item->product->vendedor->id,
+                    'fk_mercados' => $item->product->vendedor->fk_mercado,
                     'precio' => $item->product->price// Ajusta según la lógica
                 ]);
 

@@ -149,60 +149,53 @@ use Illuminate\Support\Facades\Storage;
             return view('VendedorRegistroProducto', compact('product', 'vendedor'));
 
         }
-        public function guardarproducto(ProductRequest $request){
-                        // Validar la solicitud
-                    // Validar los datos recibidos del formulario
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string|max:200',
-        'price' => 'required|numeric|min:0',
-        'categoria' => 'required|string',
-        'imagen_referencia' => 'image|mimes:jpeg,png,jpg,gif,svg',
-    ]);
+        public function guardarproducto(ProductRequest $request)
+        {
+            // Validar la solicitud
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string|max:200',
+                'price' => 'required|numeric|min:0',
+                'categoria' => 'required|string',
+                'imagen_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // La imagen es requerida
+            ]);
 
-    // Procesar la imagen
+            // Procesar la imagen
+            if ($request->hasFile('imagen_referencia')) {
+                // Generar el nombre de la imagen según los campos 'name' y 'categoria'
+                $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
+                $clasificacion = str_replace(' ', '_', strtolower($request->input('categoria')));
+                $imageName = "{$nombreProducto}_{$clasificacion}.png";
 
-    /*if ($request->hasFile('imagen_referencia')) {
-        // Obtener la clasificación para usarla en el nombre del archivo
-        $clasificacion = $request->input('categoria');
-        $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
-        $imageName = "{$nombreProducto}_{$clasificacion}.png";
+                // Mover la imagen a la carpeta public/imgs
+                $path = $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
 
-        // Guardar la imagen en public/imgs
-        $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+                // Verifica si la imagen se movió correctamente
+                if (!$path) {
+                    return back()->withErrors(['imagen_referencia' => 'No se pudo mover la imagen.']);
+                }
+            } else {
+                return back()->withErrors(['imagen_referencia' => 'Es obligatorio subir una imagen.']);
+            }
 
-        // Guardar el nombre de la imagen en la base de datos
-        $imageFileName = $imageName;
-    }*/
+            // Crear un nuevo producto con los datos validados
+            $producto = new Product([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'categoria' => $request->input('categoria'),
+                'estado' => 'Disponible',  // Valor por defecto de estado
+                'fk_vendedors' => $request->input('fk_vendedors'),
+                'imagen_referencia' => $imageName, // Guardar el nombre de la imagen en la base de datos
+            ]);
 
+            // Guardar el producto en la base de datos
+            $producto->save();
 
-
-    // Crear un nuevo producto con los datos validados
-    $producto = new Product([
-        'name' => $request->input('name'),
-        'description' => $request->input('description'),
-        'price' => $request->input('price'),
-        'categoria' => $request->input('categoria'),
-        'estado' => 'Disponible',  // Valor por defecto de estado
-        'fk_vendedors' => $request->input('fk_vendedors'),
-        'imagen' => $imageName, // Guardar el nombre de la imagen en la base de datos
-    ]);
-    if ($request->hasFile('imagen_referencia')) {
-        $file = $request->file('imagen_referencia');
-        $imageName = $request->nombre . '_' . $request->categoria . '.png';
-
-        // Movimiento
-        $file->move(public_path('imgs'), $imageName);
-        // Guardar
-        $producto->imagen_referencia = $imageName;
-    }
-
-    // Guardar el producto en la base de datos
-    $producto->save();
-
-    // Redireccionar a la página de productos con un mensaje de éxito
-    return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
+            // Redireccionar a la página de productos con un mensaje de éxito
+            return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
         }
+
         public function editarproducto($id){
             $producto = Product::find($id);
             $vendedor = $producto->vendedor;
@@ -294,9 +287,28 @@ use Illuminate\Support\Facades\Storage;
         /**
          * RESERVAS
          */
-        public function reservas(){
+        public function reservas()
+        {
+            $id = 1;
+            $mercadoId = 1; // ID del mercado que quieres filtrar
 
+            // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
+            $reservations = Reservation::whereHas('items.product.vendedor', function ($query) use ($mercadoId) {
+                $query->where('fk_mercado', $mercadoId);
+            })
+            ->with(['items' => function ($query) use ($mercadoId) {
+                $query->whereHas('product.vendedor', function ($q) use ($mercadoId) {
+                    $q->where('fk_mercado', $mercadoId);
+                })
+                ->with('product.vendedor');
+            }])
+            ->get();
+
+            return view('VendedorEstadoReservas', compact('reservations', 'id'));
         }
+
+
+
         public function verreserva(){
 
         }
@@ -305,6 +317,20 @@ use Illuminate\Support\Facades\Storage;
         }
         public function publicarestadoreseva(){
 
+        }
+        public function historial(){
+            $id = 1;
+
+            // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
+            $reservations = Reservation::whereHas('items', function ($query) use ($id) {
+                $query->where('fk_vendedors', $id);
+            })
+            ->with(['items' => function ($query) use ($id) {
+                $query->where('fk_vendedors', $id)->with('product.vendedor');
+            }])
+            ->get();
+
+            return view('VendedorHistorialReservas', compact('reservations', 'id'));
         }
 
 

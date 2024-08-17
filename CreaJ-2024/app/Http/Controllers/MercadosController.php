@@ -241,17 +241,24 @@ use Illuminate\Support\Facades\Hash;
      * RESERVAS
      */
     public function reservas(){
-         // Obtener el ID del mercado del usuario autenticado
-    $fk_mercado = session('fk_mercado');
+        // Obtener el ID del mercado del usuario autenticado
+        $id = 1;
 
-    // Filtrar las reservas por el mercado al que pertenecen
-    $reservations = Reservation::whereHas('vendedors', function ($query) use ($fk_mercado) {
-        $query->where('fk_mercado', $fk_mercado);
-    })->with('items.product')->get();
+        // Obtener las reservas que tienen items donde fk_vendedors y fk_mercados son iguales al valor de $id
+        $reservations = Reservation::whereHas('items', function ($query) use ($id) {
+            $query->where('fk_vendedors', $id)
+                  ->where('fk_mercados', $id); // Filtrar por fk_mercados
+        })
+        ->with(['items' => function ($query) use ($id) {
+            $query->where('fk_vendedors', $id)
+                  ->where('fk_mercados', $id) // Filtrarporfk_mercados
+                  ->with('product.vendedor');
+        }])
+        ->get();
 
-    return view('UserEstadoReservas', compact('reservations'));
-
+        return view('MercadoEstadoReservas', compact('reservations', 'id'));
     }
+
     public function reservadelvendedor(){
 
     }
