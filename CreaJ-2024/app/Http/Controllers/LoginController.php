@@ -29,8 +29,7 @@ class LoginController extends Controller
 
         $user->save();
 
-       $user = Auth::login($user);
-
+        Auth::login($user);
 
         return redirect(route('UserProfileVista','user'));
     }
@@ -39,21 +38,55 @@ class LoginController extends Controller
     {
         $credentials = $request->only('usuario', 'password');
         $remember = $request->filled('remember');
+        $user = null;
 
-        // Intentar autenticar como usuario normal
-        if (Auth::guard('web')->attempt($credentials, $remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended('UserProfileVista'); // Ruta para usuarios normales
+        // Autenticar según el rol
+        $user = User::where('usuario', $credentials['usuario'])->first();
+        
+        if ($user) {
+            // Intentar autenticar al usuario en la tabla `User`
+            if (Auth::attempt($credentials, $remember)) {
+                $request->session()->regenerate();
+                return $this->redirectUser($user->ROL);
+            }
         }
 
-        // Intentar autenticar como vendedor
-        else if (Auth::guard('vendedor')->attempt($credentials, $remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended('VendedorHome'); // Ruta para vendedores
+        // Si no es un usuario, intentar en las otras tablas según el rol
+        if (!$user) {
+            // Autenticación para el rol de Vendedor (rol 3)
+            $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
+            if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
+                Auth::guard('vendedor')->login($vendedor, $remember);
+                return $this->redirectUser(3);
+            }
+
+            // Autenticación para el rol de Mercado (rol 2)
+            $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
+            if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
+                Auth::guard('mercado')->login($mercado, $remember);
+                return $this->redirectUser(2);
+            }
         }
 
-        // Si ninguna autenticación tiene éxito
-        return redirect('LoginUser')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
+        // Si la autenticación falla
+        return redirect('login')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
+    }
+
+    protected function redirectUser($rol)
+    {
+        switch ($rol) {
+            case 1:
+                return redirect()->intended('admin'); // Ruta para Admin General
+            case 2:
+                return redirect()->intended('mercados'); // Ruta para Admin Mercado
+            case 3:
+                return redirect()->intended('vendedores'); // Ruta para Vendedores
+            case 4:
+                return redirect()->intended('usuarios'); // Ruta para Usuarios normales
+            default:
+                Auth::logout();
+                return redirect('login')->with('error', 'Rol no reconocido.');
+        }
     }
 
     public function logout(Request $request)
