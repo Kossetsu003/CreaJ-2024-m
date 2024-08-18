@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="flex justify-center">
-                        <input type="password" name="password"
+                        <input type="password" maxlength="8" name="password"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror"
                             value="{{ old('password') }}" id="password"
                             placeholder="Escriba su Contraseña">
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="flex justify-center">
-                        <input type="password" required name="password_confirmation"
+                        <input type="password" maxlength="8" required name="password_confirmation"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror"
                             value="{{ old('password_confirmation') }}" id="password_confirmation"
                             placeholder="Confirme su Contraseña">

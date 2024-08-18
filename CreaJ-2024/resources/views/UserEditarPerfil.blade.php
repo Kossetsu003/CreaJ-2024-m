@@ -116,7 +116,7 @@
 
                         <div>
                             <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
-                            <input required type="password" name="contrasena" id="contrasena"
+                            <input required type="password" maxlength="8" name="contrasena" id="contrasena"
                                 placeholder="Contraseña"
                                 class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('contrasena') is-invalid @enderror">
                         </div>
@@ -124,7 +124,7 @@
                         <div>
                             <label for="confirmar_contrasena"
                                 class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-                            <input required type="password" name="confirmar_contrasena" id="confirmar_contrasena"
+                            <input required type="password" maxlength="8" name="confirmar_contrasena" id="confirmar_contrasena"
                                 placeholder="Confirmar Contraseña"
                                 class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control">
                         </div>

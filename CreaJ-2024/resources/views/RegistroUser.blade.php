@@ -52,8 +52,8 @@
                         <option class="md:h-12 h-9 md:text-[1rem] text-xs" value="Masc" {{ old('sexo') == 'Masc' ? 'selected' : '' }}>Género: Masculino</option>
                         <option class="md:h-12 h-9 md:text-[1rem] text-xs" value="Fem" {{ old('sexo') == 'Fem' ? 'selected' : '' }}>Género: Femenino</option>
                     </select>
-                    <input required type="password" name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
-                    <input required type="password" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
+                    <input required type="password" maxlength="8" name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
+                    <input required type="password" maxlength="8" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
 
                     <div class="flex justify-end mt-2"> <!-- Contenedor de forgot password -->
                         <h3 class="text-sm font-bold"><a href="{{ route('login') }}">Ya tengo cuenta</a></h3>

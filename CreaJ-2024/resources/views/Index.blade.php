@@ -21,7 +21,7 @@
 
                         <div class="hidden md:flex justify-center w-[90%] mx-auto">
                             <h3 class="text-white mt-5 text-justify ">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, iste possimus, quam ab libero minima impedit eos consectetur exercitationem,
+                                En <span class="font-semibold">Mini Shop</span> puedes encontrar tus Mercados Municipales favoritos, puedes encontrar tus locales, vendedores, comedores, tienda de mayoreo de costumbre, y puedes reservar todos los productos que desees y retirarlos en la puerta de tu Mercado más cercano.
                             </h3>
                         </div>
                     </div>
@@ -47,19 +47,19 @@
                 </div>
                 <div>
                     <div class="flex gap-7 justify-center mt-8">
-                        <div class="bg-black p-1 rounded-full inline-block">
+                        <a href="https://www.facebook.com/DirectivaCentralMercadosSanSalvador/?locale=es_LA" class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/facebook.png') }}" alt="User Icon">
-                        </div>
-                        <div class="bg-black p-1 rounded-full inline-block">
+                        </a>
+                        <a href="https://x.com/SsMercados" class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/twitter.png') }}" alt="User Icon">
-                        </div>
-                        <div class="bg-black p-1 rounded-full inline-block">
+                        </a>
+                        <a href="https://www.instagram.com/explore/locations/198993770818162/mercado-central-de-san-salvador/?next=%2Fformasiparisi%2F" class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/instagram.png') }}" alt="User Icon">
-                        </div>
-                        
-                        <div class="bg-black p-1 rounded-full inline-block">
+                        </a>
+
+                        <a href="https://www.linkedin.com/company/sansalvador" class="bg-black p-1 rounded-full inline-block">
                             <img class="rounded-full w-6" src="{{ asset('imgs/linkedin.png') }}" alt="User Icon">
-                        </div>
+                        </a>
                     </div>
 
                 </div>
