@@ -99,7 +99,7 @@
             </div>
 
 
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('logout') }}" method="GET">
                 @csrf
                 <div class="mx-auto flex items-center mt-10">
                     <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
