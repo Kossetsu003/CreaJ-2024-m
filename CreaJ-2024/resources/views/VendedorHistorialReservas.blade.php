@@ -28,7 +28,7 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
             <a href="{{ route('vendedores.historial') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
-            <a href="{{ route('VendedorProfileVista') }}"
+            <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
                     Perfil
                 </a>
@@ -114,7 +114,7 @@
                             <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
                             <p class="text-sm md:text-[1.5rem] text-gray-600  mb-[8px]"><b>Subtotal:</b> ${{ $item->subtotal }}</p>
                         </div>
-                        
+
                     </div>
 
                 </div>

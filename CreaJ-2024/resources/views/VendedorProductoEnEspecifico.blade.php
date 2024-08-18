@@ -26,7 +26,7 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
             <a href="{{ route('vendedores.historial') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
-            <a href="{{ route('VendedorProfileVista') }}"
+            <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
                     Perfil
                 </a>

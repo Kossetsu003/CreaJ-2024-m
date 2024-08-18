@@ -176,6 +176,7 @@ Route::post('/usuarios/reservar', [UsuariosController::class, 'reservar'])->name
 Route::get('/usuarios/carrito', [UsuariosController::class, 'carrito'])->name('usuarios.carrito');
 // Ruta para ver las reservas del usuario
 Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name('usuarios.reservas');
+Route::post('/usuarios/publicarestadoreserva/{id}', [UsuariosController::class, 'publicarestadoreserva'])->name('usuarios.publicarestadoreserva');
 
 
 
@@ -185,6 +186,7 @@ Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name(
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
 Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
+Route::get('/vendedores/perfil', [VendedoresController::class, 'perfil'])->name('vendedor.perfil');
 Route::get('/vendedores/editar/{id}', [VendedoresController::class, 'editar'])->name('vendedores.editar');
 Route::post('/vendedores/actualizar/{id}', [VendedoresController::class, 'actualizar'])->name('vendedores.actualizar');
 //producto

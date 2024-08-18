@@ -34,15 +34,44 @@ use Illuminate\Support\Facades\Storage;
  class VendedoresController extends Controller{
 
 
-        public function index()
-        {
-            $id = 1;
-            $vendedor = Vendedor::with('mercadoLocal')->find($id);
-            $mercadoLocal = $vendedor->mercadoLocal;
-            $products = Product::where('fk_vendedors', $id)->get();
+    public function index()
+{
+    // Verificar si el usuario autenticado es un vendedor
+    if (Auth::guard('vendedor')->check()) {
+        // Obtener el vendedor autenticado desde el guard 'vendedor'
+        $vendedor = Auth::guard('vendedor')->user();
 
-            return view('VendedorHome', compact('vendedor', 'products','mercadoLocal'));
-        }
+        // Obtener la información del mercado local relacionado con el vendedor
+        $mercadoLocal = $vendedor->mercadoLocal;
+
+        // Obtener los productos del vendedor autenticado
+        $products = Product::where('fk_vendedors', $vendedor->id)->get();
+
+        // Retornar la vista con los datos del vendedor, productos y mercado local
+        return view('VendedorHome', compact('vendedor', 'products', 'mercadoLocal'));
+    }
+
+    // Si el usuario no es un vendedor, se puede redirigir o manejar el error
+    return redirect()->route('login')->with('error', 'Acceso no autorizado');
+}
+
+public function perfil(){
+    if (Auth::guard('vendedor')->check()) {
+        // Obtener el vendedor autenticado desde el guard 'vendedor'
+        $vendedor = Auth::guard('vendedor')->user();
+
+        // Obtener la información del mercado local relacionado con el vendedor
+        $mercadoLocal = $vendedor->mercadoLocal;
+
+        // Obtener los productos del vendedor autenticado
+        $products = Product::where('fk_vendedors', $vendedor->id)->get();
+
+        // Retornar la vista con los datos del vendedor, productos y mercado local
+        return view('VendedorProfileVista', compact('vendedor', 'products', 'mercadoLocal'));
+    }
+}
+
+
         public function editar($id){
              //MercadoEditarVendedor.blade.php
         $vendedor = Vendedor::find($id);
@@ -330,7 +359,7 @@ use Illuminate\Support\Facades\Storage;
             // Verificar si el item pertenece al vendedor con id = 1
             if ($item->fk_vendedors == 1) {
                 // Validar el estado enviado
-                $estadoValido = ['enviado', 'sin_existencias', 'en_entrega', 'recibido'];
+                $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_esperar', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
                 $nuevoEstado = $request->input('estado');
 
                 if (in_array($nuevoEstado, $estadoValido)) {
@@ -397,6 +426,24 @@ use Illuminate\Support\Facades\Storage;
                         // Actualizar el estado de la reserva a 'en_entrega'
                         $reserva = Reservation::find($fk_reservation);
                         $reserva->estado = 'sin_espera';
+                        $reserva->save();
+                    }
+                    /**
+                     * ARCHIVAR
+                     */
+                    /**
+                     * ARCHIVAR
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'archivado')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'archivado';
                         $reserva->save();
                     }
 
