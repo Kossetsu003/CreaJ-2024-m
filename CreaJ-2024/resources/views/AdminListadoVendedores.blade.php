@@ -12,22 +12,22 @@
 <body>
      <!-- Desktop Navbar -->
      <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-
         <a href="{{ route('admin.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-            Admin <span class="text-purple-600"><b>Shop</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+             Mini <span class="text-purple-600"><b>Admin</b></span>
         </h1>
         </a>
-
         <div class="flex gap-8">
             <a href="{{ route('admin.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Mercados</a>
-            <a href="{{ route('admin.vendedores') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mercados</a>
+              <a href="{{ route('admin.vendedores') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Vendedores</a>
             <a href="{{ route('admin.clientes') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Clientes</a>
-            <a href="{{ route('AdminProfileVista')}}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Clientes</a>
+                <a href="{{ route('AdminProfileVista')}}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
 

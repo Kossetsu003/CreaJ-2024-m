@@ -68,70 +68,82 @@
     </div>
 
 
-
+    <div class="w-screen hidden md:block">
+        <img class="w-full h-[25rem] object-cover" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="Banner Image">
+    </div>
 
     <div class="mt-14  w-[90%] mx-auto ">
 
-        <div class="flex justify-between  w-[90%] mx-auto "> <!--Contenedor Principal-->
+        <div class="flex justify-between text-center  w-[90%] mx-auto "> <!--Contenedor Principal-->
             <div>
-                <div class=" lg:text-[60px]">
-                    Puesto #{{ $vendedor->numero_puesto}}  {{ $vendedor->nombre_del_local }}
+                <div class=" lg:text-[60px] font-semibold">
+                   {{ $mercadoLocal->nombre }}
                 </div>
-                <div class="font-bold lg:text-[40px]">
-                    Ubicado en {{ $mercadoLocal->nombre }}
+                <div class=" lg:text-[40px]">
+                    Ubicado en {{ $mercadoLocal->ubicacion }}
                 </div>
             </div>
-
-            <div>
-                <img class="w-[200px] h-[200px] object-cover rounded-full" src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
-            </div>
-
         </div>
         <!--El titulo-->
 
+        <!--BOTONES-->
         <div class="flex mt-5 lg:mt-[40px]">
-            <div class="flex mx-auto">
-                <button
-                    class="flex items-center lg:h-11  h-8 border  px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px] bg-blue-300 border-blue-300 text-white font-bold">
-                    <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
-                    <span class="ml-1">Todos Los puestos</span>
-                </button>
+            <div class="flex mt-5 lg:mt-[40px]">
+                <div class="flex mx-auto">
+                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                        <input type="hidden" name="clasificacion" value="todos">
+                        <button type="submit" class="flex items-center lg:h-11 h-8 border px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px] bg-blue-300 border-blue-300 text-white font-bold">
+                            <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
+                            <span class="ml-1">Todos Los puestos</span>
+                        </button>
+                    </form>
 
-                <button class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px] ">
-                    <img class="w-5" src="{{ asset('imgs/ClotheSelected.png') }}" alt="User Icon">
-                    <span class="ml-1">Ropa</span>
-                </button>
+                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                        <input type="hidden" name="clasificacion" value="comedor">
+                        <button type="submit" class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px]">
+                            <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
+                            <span class="ml-1">Comedores</span>
+                        </button>
+                    </form>
 
-                <button
-                    class="flex items-center border text-black px-1 py-0.5 rounded-md text-xs lg:text-[20px] hover:bg-blue-200">
-                    <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
-                    <span class="ml-1">Comida</span>
-                </button>
+                    <!-- Puedes agregar más botones de filtro aquí -->
+                </div>
             </div>
+
+
         </div>
+        <!--FIN BOTONES-->
 
         <!--Comienzo de las cartas -->
 
         <div class="flex flex-wrap justify-center mt-5 text-sm gap-[10px]  lg:gap-[40px]">
             <!-- INICIO DE CARTA-->
-        @if ($products->isEmpty())
+        @if ($vendedors->isEmpty())
                 <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Vendedores Inscritos</span>
             @else
-            @foreach ($products as $product)
-            <div class="w-[48%] mb-8 p-2">
+            @foreach ($vendedors as $vendedor)
+            <a href="{{ route('admin.vervendedores',$vendedor->id) }}" class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
-                <h3 class="font-bold mt-5">{{ $product->name }}</h3>
-                <h3 class="mb-2">{{ $product->vendedor->nombre_del_local }}</h3>
+                    src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
+                <h3 class="font-bold mt-5">{{ $vendedor->nombre_del_local}}</h3>
+                <h3 class="mb-2">Propietario: {{ $vendedor->nombre}} {{$vendedor->apellidos }}</h3>
                 <div class="flex justify-between">
-                    <h3>{{ $product->categoria }}</h3>
+                    <h3>
+                        @if ($vendedor->clasificacion == 'frutasyverduras')
+                            Frutas y Verduras
+                        @elseif ( $vendedor->clasificacion == 'comedor')
+                            Comedor
+                        @else
+                        {{ $vendedor->clasificacion }}
+                        @endif
+                    </h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
                         <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
                 </div>
 
-            </div>
+            </a>
             @endforeach
         @endif
             <!--FIN DE CARTA-->

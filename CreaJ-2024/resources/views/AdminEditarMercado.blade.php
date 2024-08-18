@@ -27,6 +27,7 @@
                 )
 
                 <div class="mt-20 space-y-4">
+                    <input type="hidden" id="fallbackInput" value="{{ $mercadoLocal->imagen_referencia }}" name="imagen_referencia">
 
                     <!-- INICIO DE INPUT DE LA FOTO -->
                     <div class="flex justify-between">
@@ -121,6 +122,21 @@
                 fileNameSpan.textContent = 'Imagen del mercado';
             }
         });
+    </script>
+    <script>
+        function handleFormSubmit(event) {
+            const fileInput = document.getElementById('imagen_referencia');
+            const fallbackInput = document.getElementById('fallbackInput');
+
+            if (!fileInput.value) {
+                // No file selected, replace the file input with the fallback value
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.name = 'imagen_referencia';
+                newInput.value = fallbackInput.value;
+                fileInput.parentNode.replaceChild(newInput, fileInput);
+            }
+        }
     </script>
 
 

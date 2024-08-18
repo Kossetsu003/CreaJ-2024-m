@@ -140,13 +140,15 @@ Route::resource('products', ProductController::class);
  Route::get('/admin/editarmercados/{id}', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
  Route::patch('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
  Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados');
+
+
 //VENDEDORES
  Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores');
  Route::get('/admin/crearvendedores', [AdminController::class, 'crearvendedores'])->name('admin.crearvendedores');
  Route::post('/admin/guardarvendedores', [AdminController::class, 'guardarvendedores'])->name('admin.guardarvendedores');
  Route::get('/admin/vervendedores/{id}', [AdminController::class, 'vervendedores'])->name('admin.vervendedores');
  Route::get('/admin/editarvendedores/{id}', [AdminController::class, 'editarvendedores'])->name('admin.editarvendedores');
- Route::post('/admin/actualizarvendedores', [AdminController::class, 'actualizarvendedores'])->name('admin.actualizarvendedores');
+ Route::post('/admin/actualizarvendedor/{id}', [AdminController::class, 'actualizarvendedor'])->name('admin.actualizarvendedor');
  Route::delete('/admin/eliminarvendedores/{id}', [AdminController::class, 'eliminarvendedores'])->name('admin.eliminarvendedores');
  //CLIENTES
  Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
@@ -193,13 +195,13 @@ Route::post('/vendedores/guardarproducto', [VendedoresController::class, 'guarda
 Route::get('/vendedores/editarproducto/{id}', [VendedoresController::class, 'editarproducto'])->name('vendedores.editarproducto');
 Route::put('/vendedores/actualizarproducto/{id}', [VendedoresController::class, 'actualizarproducto'])->name('vendedores.actualizarproducto');
 Route::get('/vendedores/actualizarestadoproducto/{id}', [VendedoresController::class, 'actualizarestadoprodcuto'])->name('vendedores.actualizarestadoproducto');
-Route::post('/vendedores/publicarestadoproducto/{id}', [VendedoresController::class, 'publicarestadoproducto'])->name('publicarestadoproducto');
+Route::post('/vendedores/publicarestadoproducto/{id}', [VendedoresController::class, 'publicarestadoproducto'])->name('vendedores.publicarestadoproducto');
 Route::delete('/vendedores/eliminarproducto/{id}', [VendedoresController::class, 'eliminarproducto'])->name('vendedores.eliminarproducto');
 //Reservas
 Route::get('/vendedores/reservas', [VendedoresController::class, 'reservas'])->name('vendedores.reservas');
 Route::get('/vendedores/verreserva/{id}', [VendedoresController::class, 'verreserva'])->name('vendedores.verreserva');
 Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedoresController::class])->name('vendedores.actualizarestadoreserva');
-Route::post('/vendedores/publicar-estado-reserva/{id}', [VendedoresController::class, 'publicarEstadoReserva'])->name('vendedores.publicar-estado-reserva');
+Route::post('/vendedores/publicarestadoreserva/{id}', [VendedoresController::class, 'publicarestadoreserva'])->name('vendedores.publicarestadoreserva');
 Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])->name('vendedores.historial');
 
 

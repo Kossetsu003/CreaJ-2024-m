@@ -109,14 +109,21 @@ use Illuminate\Support\Facades\Validator;
             '   password' => $password,
             ]);
         }
-        public function vermercados($id)
+
+        public function vermercados($id, Request $request)
         {
             $mercadoLocal = MercadoLocal::find($id); // Encontrar mercado local por ID
-        $vendedors = Vendedor::where('Fk_Mercado', $id)->get(); // Obtener vendedores asociados al mercado local
 
-        // Retornar vista 'AdminListadoMercados' con datos del mercado local y vendedores
-        return view('AdminPuestosDelMercado', compact('mercadoLocal', 'vendedors'));
+            // Filtrar vendedores según la clasificación si se proporciona, de lo contrario obtener todos
+            $query = Vendedor::where('Fk_Mercado', $id);
+            if ($request->has('clasificacion') && $request->clasificacion != 'todos') {
+                $query->where('clasificacion', $request->clasificacion);
+            }
+            $vendedors = $query->get(); // Obtener los vendedores filtrados
+
+            return view('AdminMercadoEspecifico', compact('mercadoLocal', 'vendedors'));
         }
+
         public function editarmercados($id)
         {
             $mercadoLocal = MercadoLocal::find($id); // Encontrar mercado local por ID
@@ -137,7 +144,7 @@ use Illuminate\Support\Facades\Validator;
                 'horaentrada' => 'required',
                 'horasalida' => 'required',
                 'descripcion' => 'required|string|max:220',
-                'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg ',
+
             ]);
 
             // Si se ha subido una nueva imagen
@@ -205,7 +212,7 @@ use Illuminate\Support\Facades\Validator;
                     'apellidos' => 'required|string|max:255',
                     'telefono' => 'required|string|max:20|unique:vendedors',
                     'numero_puesto' => 'required|integer',
-                    'password' => 'required|string|min:8|confirmed',  // Regla de longitud mínima
+                    'password' => 'string|min:8|confirmed',  // Regla de longitud mínima
                     'clasificacion' => 'required|string|max:255',
                     'fk_mercado' => 'required|exists:mercado_locals,id',
                 ], [
@@ -275,7 +282,7 @@ use Illuminate\Support\Facades\Validator;
             $mercadoLocal = $vendedor->mercadoLocal;
             $products = Product::where('fk_vendedors',$id)->paginate();
 
-            return view('AdminPuestoDelVendedor', compact('vendedor','mercadoLocal','products'))->with('i',(request()->input('page',1) - 1) * $products->perPage());
+            return view('AdminPuestosDelMercado', compact('vendedor','mercadoLocal','products'))->with('i',(request()->input('page',1) - 1) * $products->perPage());
         }
         public function editarvendedores($id)
         {
@@ -289,7 +296,7 @@ use Illuminate\Support\Facades\Validator;
                 'password' => 'nullable|string|min:8|confirmed',
                 'nombre' => 'required|string|max:255',
                 'nombre_del_local' => 'required|string|max:255',
-                'imagen_de_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg ',
+
                 'clasificacion' => 'required|string|max:255',
                 'apellidos' => 'required|string|max:255',
                 'telefono' => 'required|string|max:255',
@@ -363,12 +370,13 @@ use Illuminate\Support\Facades\Validator;
         return view('AdminListadoClientes', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
         }
+        
         public function eliminarclientes($id)
         {
             Cliente::find($id)->delete();
 
-        return redirect()->route('admin.clientes')
-            ->with('success', 'Cliente deleted successfully');
+            return redirect()->route('admin.clientes')
+                ->with('success', 'Cliente deleted successfully');
         }
 
 

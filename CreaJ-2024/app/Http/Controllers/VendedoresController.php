@@ -317,7 +317,7 @@ use Illuminate\Support\Facades\Storage;
         public function verreserva(){
 
         }
-        public function publicarEstadoReserva(Request $request, $id)
+        public function publicarestadoreserva(Request $request, $id)
         {
             // Obtener el ReservationItem por ID
             $item = ReservationItem::find($id);
@@ -338,6 +338,10 @@ use Illuminate\Support\Facades\Storage;
                     $item->estado = $nuevoEstado;
                     $item->save();
 
+                    /**
+                     * EN ENTREGA
+                     */
+
                     // Verificar si todos los items relacionados tienen estado 'en_entrega'
                     $fk_reservation = $item->fk_reservation;
                     $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
@@ -350,6 +354,52 @@ use Illuminate\Support\Facades\Storage;
                         $reserva->estado = 'en_entrega';
                         $reserva->save();
                     }
+                    /**
+                     * SIN EXISTENCIAS
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'sin_existencias')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'sin_existencias';
+                        $reserva->save();
+                    }
+                    /**
+                     * EN ESPERA
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'en_espera')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'en_espera';
+                        $reserva->save();
+                    }
+                    /**
+                     * SIN EXISTENCIAS
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'sin_esperar')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'sin_esperar';
+                        $reserva->save();
+                    }
+
 
                     // Redireccionar a la vista o hacer otra acción
                     return redirect()->route('vendedores.reservas')->with('success', 'El estado de la reserva ha sido actualizado.');

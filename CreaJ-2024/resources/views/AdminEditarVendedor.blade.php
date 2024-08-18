@@ -15,14 +15,15 @@
     <section>
         <div class="w-72 h-auto mx-auto">
             <div class="text-center pt-[3rem]">
-                <h1 class="text-3xl font-bold text-purple-500">Registrar vendedor</h1>
+                <h1 class="text-3xl font-semibold text-purple-500">Editar Vendedor <span class="font-bold">{{ $vendedor->nombre}} {{$vendedor->apellidos}}</span></h1>
+                <h3 class="text-xl font-semibold ">Ubicado en <span class="font-bold">{{ $vendedor->mercadoLocal->nombre}} </span></h1>
             </div>
 
-            <form method="POST" action="{{ route('mercados.actualizarvendedor', ['id' => $vendedor->id]) }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.actualizarvendedor', ['id' => $vendedor->id]) }}" role="form" enctype="multipart/form-data">
                 <div class="pb-[7rem] mt-10 space-y-4">
-                    <input type="hidden" name="id" value="{{ $vendedor->id }}">
-                    @csrf
 
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $vendedor->id }}">
                     @if ($errors->any())
                         <div class="bg-purple-500 text-white p-2 rounded mt-1 text-sm sm:text-sm text-center">
                             <ul>
@@ -34,11 +35,12 @@
                     @endif
 
                     <!--INICIO DE INPUT DE LA FOTO-->
+                    <input type="hidden" id="fallbackInput" value="{{ $vendedor->imagen_de_referencia }}" name="imagen_de_referencia">
                 <div class="flex justify-between">
                     <label for="imagen_de_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
                         <span id="file-name" class="text-gray-400 text-xs">Imagen de <b>Usted</b> o de <b>Su Puesto</b>
                         </span>
-                        <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
+                        <input  type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
                         {!! $errors->first('imagen_de_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
@@ -67,7 +69,7 @@
                     </div>
 
                     <div class="flex justify-center">
-                        <input type="password" name="password"
+                        <input type="password" maxlength="8" name="password"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror"
                             value="{{ old('password') }}" id="password"
                             placeholder="Escriba su Contraseña">
@@ -75,7 +77,7 @@
                     </div>
 
                     <div class="flex justify-center">
-                        <input type="password" required name="password_confirmation"
+                        <input type="password" maxlength="8" required name="password_confirmation"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror"
                             value="{{ old('password_confirmation') }}" id="password_confirmation"
                             placeholder="Confirme su Contraseña">
@@ -161,7 +163,7 @@
                     <div class="flex justify-center">
                         <div class="flex justify-center mt-8">
 
-                            <button class="btn btn-primary bg-purple-600 w-72 h-12 text-white font-bold rounded-md">Actualizar Vendedor</button>
+                            <button type="submit" class="btn btn-primary bg-purple-600 w-72 h-12 text-white font-bold rounded-md">Actualizar Vendedor</button>
                         </div>
                     </form>
 
@@ -200,6 +202,21 @@
                 password.type = this.checked ? 'text' : 'password';
             });
         });
+    </script>
+    <script>
+        function handleFormSubmit(event) {
+            const fileInput = document.getElementById('imagen_de_referencia');
+            const fallbackInput = document.getElementById('fallbackInput');
+
+            if (!fileInput.value) {
+                // No file selected, replace the file input with the fallback value
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.name = 'imagen_de_referencia';
+                newInput.value = fallbackInput.value;
+                fileInput.parentNode.replaceChild(newInput, fileInput);
+            }
+        }
     </script>
 
 </body>
