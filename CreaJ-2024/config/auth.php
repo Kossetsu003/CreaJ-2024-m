@@ -38,21 +38,21 @@ return [
     
 
     'guards' => [
-
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users', // Guard por defecto para usuarios normales
-        ],
-
-        'vendedor' => [
-            'driver' => 'session',
-            'provider' => 'vendedors', // Guard para vendedores
-        ],
-        'mercadolocal' =>[
-            'driver' => 'session',
-            'provider' => 'mercadolocals'
-        ]
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
+
+    'mercadolocal' => [
+        'driver' => 'session',
+        'provider' => 'mercados',
+    ],
+
+    'vendedor' => [
+        'driver' => 'session',
+        'provider' => 'vendedores',
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -71,21 +71,22 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-
-        'vendedors' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Vendedor::class,
-            ],
-        'mercadolocals' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\MercadoLocal::class,
-        ]
+   'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
+
+    'mercados' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\MercadoLocal::class,
+    ],
+
+    'vendedores' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Vendedor::class,
+    ],
+],
 
 
     /*

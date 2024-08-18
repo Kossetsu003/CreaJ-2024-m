@@ -131,11 +131,11 @@ use Illuminate\Support\Facades\Hash;
         return redirect()->route('mercados.listavendedores', $id)->with('success', 'Vendedor actualizado correctamente.');
     }
     public function agregarvendedor(){
-        //Mercado Registrar Vendedor
         $vendedor = new Vendedor();
-        $mercados = MercadoLocal::all(); // Suponiendo que tu modelo de mercados se llama MercadoLocal
+        $mercados = MercadoLocal::all(); 
         return view('MercadoRegistrarVendedor', compact('vendedor', 'mercados'));
     }
+    
     public function guardarvendedor(VendedorRequest $request){
         $validator = Validator::make($request->all(), [
             'usuario' => 'required|email|unique:vendedors',

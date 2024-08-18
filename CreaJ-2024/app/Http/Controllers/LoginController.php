@@ -39,23 +39,30 @@ class LoginController extends Controller
     {
         $credentials = $request->only('usuario', 'password');
         $remember = $request->filled('remember');
-
-        // Intentar autenticar como usuario normal
-        if (Auth::guard('web')->attempt($credentials, $remember)) {
+    
+        // Intentar autenticar con el guard por defecto
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('UserProfileVista'); // Ruta para usuarios normales
+            $rol = Auth::user()->ROL;
+    
+            switch ($rol) {
+                case 1:
+                    return redirect()->intended('admin'); // Ruta para Admin General
+                case 2:
+                    return redirect()->intended('mercados'); // Ruta para Admin Mercado
+                case 3:
+                    return redirect()->intended('vendedores'); // Ruta para Vendedores
+                case 4:
+                    return redirect()->intended('usuarios'); // Ruta para Usuarios normales
+                default:
+                    Auth::logout();
+                    return redirect('login')->with('error', 'Rol no reconocido.');
+            }
         }
-
-        // Intentar autenticar como vendedor
-        else if (Auth::guard('vendedor')->attempt($credentials, $remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended('VendedorHome'); // Ruta para vendedores
-        }
-
-        // Si ninguna autenticación tiene éxito
-        return redirect('LoginUser')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
+    
+        // Si la autenticación falla
+        return redirect('login')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
     }
-
     public function logout(Request $request)
     {
         Auth::logout();
