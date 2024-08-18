@@ -190,6 +190,27 @@
                                     </button>
                                 </div>
                             </form>
+
+
+@elseif($item->estado == 'problema')
+                            <h2 class="text-xl font-bold mb-4 text-center">Ya se Envio su producto. <br> Lo puede recibir en: <b>El Cliente {{ $item->reserva->user->nombre }} está esperando. ¿Ya resolvió su problema y envío el producto?</h2>
+                            <form id="form-{{ $item->id }}" action="{{ route('usuarios.publicarestadoreserva', $item->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="estado" id="estado-{{ $item->id }}" value="">
+
+                                <div class="flex justify-between">
+                                    <button type="button" onclick="setEstado('{{ $item->id }}', 'en_entrega')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
+                                       Ya lo Envíe 
+                                    </button>
+
+                                    <button type="button" onclick="setEstado('{{ $item->id }}', 'sin_existencias')" class="mx-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                        No hay Existencia 
+                                    </button>
+                                </div>
+                            </form>
+
+
+
                         @elseif($item->estado == 'recibido')
                             <h2 class="text-xl font-bold mb-4 text-center">El Cliente ya lo recibió</h2>
                             <form id="form-{{ $item->id }}" action="{{ route('vendedores.publicarestadoreserva', $item->id) }}" method="POST">
