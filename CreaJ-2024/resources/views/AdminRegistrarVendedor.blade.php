@@ -13,7 +13,7 @@
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-purple-500">Registrar vendedor</h1>
             </div>
-            <form method="POST" action="{{ route('vendedors.store') }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('admin.guardarvendedores') }}" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="pb-[7rem] mt-10 space-y-4">
                 @if ($errors->any())

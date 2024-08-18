@@ -206,13 +206,13 @@ use Illuminate\Support\Facades\Validator;
                 // Validar los datos del formulario
                 $validator = Validator::make($request->all(), [
                     'usuario' => 'required|email|unique:vendedors',
-                    'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg ',
+                    'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
                     'nombre' => 'required|string|max:255',
                     'nombre_del_local' => 'required|string|max:255',
                     'apellidos' => 'required|string|max:255',
                     'telefono' => 'required|string|max:20|unique:vendedors',
                     'numero_puesto' => 'required|integer',
-                    'password' => 'string|min:8|confirmed',  // Regla de longitud mínima
+                    'password' => 'string|confirmed',  // Regla de longitud mínima
                     'clasificacion' => 'required|string|max:255',
                     'fk_mercado' => 'required|exists:mercado_locals,id',
                 ], [
@@ -370,7 +370,7 @@ use Illuminate\Support\Facades\Validator;
         return view('AdminListadoClientes', compact('clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
         }
-        
+
         public function eliminarclientes($id)
         {
             Cliente::find($id)->delete();

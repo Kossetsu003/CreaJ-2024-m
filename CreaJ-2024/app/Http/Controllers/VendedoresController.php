@@ -390,13 +390,13 @@ use Illuminate\Support\Facades\Storage;
                     // Verificar si todos los items relacionados tienen estado 'en_entrega'
                     $fk_reservation = $item->fk_reservation;
                     $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'sin_esperar')
+                        ->where('estado', '!=', 'sin_espera')
                         ->count() == 0;
 
                     if ($todosEnEntrega) {
                         // Actualizar el estado de la reserva a 'en_entrega'
                         $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'sin_esperar';
+                        $reserva->estado = 'sin_espera';
                         $reserva->save();
                     }
 
