@@ -18,20 +18,31 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-        $user = new User();
+         // Validación de los datos con unicidad
+    $request->validate([
+        'usuario' => 'required|email|unique:users,usuario', // El correo debe ser único en la tabla users
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'telefono' => 'required|string|max:8|unique:users,telefono', // El teléfono debe ser único en la tabla users
+        'sexo' => 'required|in:Masc,Fem', // Debe ser Masculino o Femenino
+        'password' => 'required|min:8|', // Mínimo 8 caracteres y debe coincidir con la confirmación
+    ]);
 
-        $user->usuario = $request->usuario;
-        $user->password = Hash::make($request->password); // Asegúrate de usar Hash::make()
-        $user->nombre = $request->nombre;
-        $user->apellido = $request->apellido;
-        $user->telefono = $request->telefono;
-        $user->sexo = $request->sexo;
+    // Crear un nuevo usuario si la validación pasa
+    $user = new User();
 
-        $user->save();
+    $user->usuario = $request->usuario;
+    $user->password = Hash::make($request->password);
+    $user->nombre = $request->nombre;
+    $user->apellido = $request->apellido;
+    $user->telefono = $request->telefono;
+    $user->sexo = $request->sexo;
 
-        Auth::login($user);
+    $user->save();
 
-        return redirect(route('UserProfileVista','user'));
+    Auth::login($user);
+
+    return redirect(route('UserProfileVista','user'))->with('success', '¡Registro exitoso!');
     }
 
     public function LoginUser(Request $request)
