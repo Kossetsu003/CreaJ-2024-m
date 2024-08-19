@@ -17,7 +17,7 @@
     <title>ProfileUser</title>
 </head>
 
-<body>
+<body >
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
@@ -125,7 +125,7 @@
     </div>
 
     </div>
-    <footer class="bg-[#292526] pb-16">
+    <footer class="bg-[#292526] pb-16 pt-[6rem] ">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
             <div>
                 <b>
