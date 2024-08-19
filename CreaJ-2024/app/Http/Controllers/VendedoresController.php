@@ -21,463 +21,403 @@ use App\Http\Requests\CartRequest;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\ReservationItemRequest;
-use App\Http\Requests\VendedorRequest as RequestsVendedorRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Class UsuariosController
+ * Class VendedoresController
  * @package App/Http/Controllers
  */
 
- class VendedoresController extends Controller{
-
+class VendedoresController extends Controller{
 
     public function index()
-{
-    // Verificar si el usuario autenticado es un vendedor
-    if (Auth::guard('vendedor')->check()) {
-        // Obtener el vendedor autenticado desde el guard 'vendedor'
-        $vendedor = Auth::guard('vendedor')->user();
+    {
+        // Verificar si el usuario autenticado es un vendedor
+        if (Auth::guard('vendedor')->check()) {
+            // Obtener el vendedor autenticado desde el guard 'vendedor'
+            $vendedor = Auth::guard('vendedor')->user();
 
-        // Obtener la información del mercado local relacionado con el vendedor
-        $mercadoLocal = $vendedor->mercadoLocal;
+            // Obtener la información del mercado local relacionado con el vendedor
+            $mercadoLocal = $vendedor->mercadoLocal;
 
-        // Obtener los productos del vendedor autenticado
-        $products = Product::where('fk_vendedors', $vendedor->id)->get();
+            // Obtener los productos del vendedor autenticado
+            $products = Product::where('fk_vendedors', $vendedor->id)->get();
 
-        // Retornar la vista con los datos del vendedor, productos y mercado local
-        return view('VendedorHome', compact('vendedor', 'products', 'mercadoLocal'));
+            // Retornar la vista con los datos del vendedor, productos y mercado local
+            return view('VendedorHome', compact('vendedor', 'products', 'mercadoLocal'));
+        }
+
+        // Si el usuario no es un vendedor, se puede redirigir o manejar el error
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
     }
 
-    // Si el usuario no es un vendedor, se puede redirigir o manejar el error
-    return redirect()->route('login')->with('error', 'Acceso no autorizado');
-}
+    public function perfil()
+    {
+        if (Auth::guard('vendedor')->check()) {
+            // Obtener el vendedor autenticado desde el guard 'vendedor'
+            $vendedor = Auth::guard('vendedor')->user();
 
-public function perfil(){
-    if (Auth::guard('vendedor')->check()) {
-        // Obtener el vendedor autenticado desde el guard 'vendedor'
-        $vendedor = Auth::guard('vendedor')->user();
+            // Obtener la información del mercado local relacionado con el vendedor
+            $mercadoLocal = $vendedor->mercadoLocal;
 
-        // Obtener la información del mercado local relacionado con el vendedor
-        $mercadoLocal = $vendedor->mercadoLocal;
+            // Obtener los productos del vendedor autenticado
+            $products = Product::where('fk_vendedors', $vendedor->id)->get();
 
-        // Obtener los productos del vendedor autenticado
-        $products = Product::where('fk_vendedors', $vendedor->id)->get();
+            // Retornar la vista con los datos del vendedor, productos y mercado local
+            return view('VendedorProfileVista', compact('vendedor', 'products', 'mercadoLocal'));
+        }
 
-        // Retornar la vista con los datos del vendedor, productos y mercado local
-        return view('VendedorProfileVista', compact('vendedor', 'products', 'mercadoLocal'));
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
     }
-}
 
-
-        public function editar($id){
-             //MercadoEditarVendedor.blade.php
-        $vendedor = Vendedor::find($id);
-        $mercados = MercadoLocal::all();
-        return view('VendedorEditarPuesto', compact('vendedor', 'mercados'));
-
-        }
-        public function actualizar(VendedorRequest $request, $id){
-            $request->validate([
-                'password' => 'nullable|string|min:8|confirmed',
-                'nombre' => 'required|string|max:255',
-                'nombre_del_local' => 'required|string|max:255',
-                'imagen_de_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg ',
-                'clasificacion' => 'required|string|max:255',
-                'apellidos' => 'required|string|max:255',
-                'telefono' => 'required|string|max:255',
-                'numero_puesto' => 'required|integer|unique:vendedors,numero_puesto,' . $id,
-                'fk_mercado' => 'required|exists:mercado_locals,id',
-            ]);
-
-            // Encontrar el vendedor por ID
-            $vendedor = Vendedor::findOrFail($id);
-
-            // Actualizar los campos
-            $vendedor->usuario = $request->input('usuario');
-            $vendedor->ROL = $request->input('ROL');
-
-            // Si la contraseña se envía, actualiza, de lo contrario, deja la existente
-            if ($request->filled('password')) {
-                $vendedor->password = bcrypt($request->input('password'));
-            }
-
-            $vendedor->nombre = $request->input('nombre');
-            $vendedor->nombre_del_local = $request->input('nombre_del_local');
-            $vendedor->clasificacion = $request->input('clasificacion');
-            $vendedor->apellidos = $request->input('apellidos');
-            $vendedor->telefono = $request->input('telefono');
-            $vendedor->numero_puesto = $request->input('numero_puesto');
-            $vendedor->fk_mercado = $request->input('fk_mercado');
-
-            // Manejar la imagen de referencia
-            if ($request->hasFile('imagen_de_referencia')) {
-                // Guardar la imagen
-                $imageName = time() . '.' . $request->imagen_de_referencia->extension();
-                $request->imagen_de_referencia->move(public_path('imgs'), $imageName);
-
-                // Eliminar la imagen antigua si existe
-                if ($vendedor->imagen_de_referencia && file_exists(public_path('imgs/' . $vendedor->imagen_de_referencia))) {
-                    unlink(public_path('imgs/' . $vendedor->imagen_de_referencia));
-                }
-
-                // Actualizar la referencia en la base de datos
-                $vendedor->imagen_de_referencia = $imageName;
-            }
-
-            // Guardar los cambios en la base de datos
-            $vendedor->save();
-
-            // Redireccionar o devolver una respuesta
-            return redirect()->route('vendedores.index', $id)->with('success', 'Vendedor actualizado correctamente.');
-
-        }
-
-
-
-
-
-        /**
-         * PRODUCTO
-         */
-        public function productos(){
-
-            $id =Auth::guard('vendedor')->user();
-            $vendedor = Vendedor::with('mercadoLocal')->find($id);
-           //ssion('fk_mercado');
-            // Obtener todos los productos que pertenecen al vendedor con el ID especificado
-            $productos = Product::where('fk_vendedors',  $id)->get();
-
-    // Pasar los productos a la vista para su visualización
-        return view('VendedorMisProductos', compact('productos' ,'vendedor'));
-
-        }
-        public function verproducto($id){
-            $product = Product::find($id);
-
-            // Verificar si el producto existe antes de proceder
-            if (!$product) {
-                return redirect()->back()->with('error', 'Producto no encontrado.');
-            }
-
-            // Obtener el vendedor del producto
-            $vendedor = $product->vendedor;
-
-            // Obtener los productos que comparten la misma llave foránea del vendedor,
-            // pero excluyendo el producto actual
-            $products = Product::where('fk_vendedors', $product->fk_vendedors)
-                ->where('id', '!=', $id)
-                ->paginate(3);
-
-            // Retornar la vista con los datos del producto y otros productos del mismo vendedor
-            return view('VendedorProductoEnEspecifico', compact('product', 'products', 'vendedor'))
-                ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
-        }
-        public function agregarproducto($id){
-            $product = new Product();
+    public function editar($id)
+    {
+        // Verificar si el vendedor autenticado puede editar este registro
+        if (Auth::guard('vendedor')->id() == $id) {
             $vendedor = Vendedor::find($id);
-            return view('VendedorRegistroProducto', compact('product', 'vendedor'));
-
+            $mercados = MercadoLocal::all();
+            return view('VendedorEditarPuesto', compact('vendedor', 'mercados'));
         }
-        public function guardarproducto(ProductRequest $request)
-        {
-            // Validar la solicitud
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'description' => 'nullable|string|max:200',
-                'price' => 'required|numeric|min:0',
-                'categoria' => 'required|string',
-                'imagen_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // La imagen es requerida
-            ]);
 
-            // Procesar la imagen
-            if ($request->hasFile('imagen_referencia')) {
-                // Generar el nombre de la imagen según los campos 'name' y 'categoria'
-                $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
-                $clasificacion = str_replace(' ', '_', strtolower($request->input('categoria')));
-                $imageName = "{$nombreProducto}_{$clasificacion}.png";
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
+    }
 
-                // Mover la imagen a la carpeta public/imgs
-                $path = $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+    public function actualizar(VendedorRequest $request, $id)
+    {
+        $request->validate([
+            'password' => 'nullable|string|min:8|confirmed',
+            'nombre' => 'required|string|max:255',
+            'nombre_del_local' => 'required|string|max:255',
+            'imagen_de_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'clasificacion' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'telefono' => 'required|string|max:255',
+            'numero_puesto' => 'required|integer|unique:vendedors,numero_puesto,' . $id,
+            'fk_mercado' => 'required|exists:mercado_locals,id',
+        ]);
 
-                // Verifica si la imagen se movió correctamente
-                if (!$path) {
-                    return back()->withErrors(['imagen_referencia' => 'No se pudo mover la imagen.']);
-                }
-            } else {
-                return back()->withErrors(['imagen_referencia' => 'Es obligatorio subir una imagen.']);
+        // Verificar si el vendedor autenticado puede actualizar este registro
+        if (Auth::guard('vendedor')->id() != $id) {
+            return redirect()->route('login')->with('error', 'Acceso no autorizado');
+        }
+
+        // Encontrar el vendedor por ID
+        $vendedor = Vendedor::findOrFail($id);
+
+        // Actualizar los campos
+        $vendedor->usuario = $request->input('usuario');
+        $vendedor->ROL = $request->input('ROL');
+
+        // Si la contraseña se envía, actualiza, de lo contrario, deja la existente
+        if ($request->filled('password')) {
+            $vendedor->password = bcrypt($request->input('password'));
+        }
+
+        $vendedor->nombre = $request->input('nombre');
+        $vendedor->nombre_del_local = $request->input('nombre_del_local');
+        $vendedor->clasificacion = $request->input('clasificacion');
+        $vendedor->apellidos = $request->input('apellidos');
+        $vendedor->telefono = $request->input('telefono');
+        $vendedor->numero_puesto = $request->input('numero_puesto');
+        $vendedor->fk_mercado = $request->input('fk_mercado');
+
+        // Manejar la imagen de referencia
+        if ($request->hasFile('imagen_de_referencia')) {
+            // Guardar la imagen
+            $imageName = time() . '.' . $request->imagen_de_referencia->extension();
+            $request->imagen_de_referencia->move(public_path('imgs'), $imageName);
+
+            // Eliminar la imagen antigua si existe
+            if ($vendedor->imagen_de_referencia && file_exists(public_path('imgs/' . $vendedor->imagen_de_referencia))) {
+                unlink(public_path('imgs/' . $vendedor->imagen_de_referencia));
             }
 
-            // Crear un nuevo producto con los datos validados
-            $producto = new Product([
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'price' => $request->input('price'),
-                'categoria' => $request->input('categoria'),
-                'estado' => 'Disponible',  // Valor por defecto de estado
-                'fk_vendedors' => $request->input('fk_vendedors'),
-                'imagen_referencia' => $imageName, // Guardar el nombre de la imagen en la base de datos
-            ]);
-
-            // Guardar el producto en la base de datos
-            $producto->save();
-
-            // Redireccionar a la página de productos con un mensaje de éxito
-            return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
+            // Actualizar la referencia en la base de datos
+            $vendedor->imagen_de_referencia = $imageName;
         }
 
-        public function editarproducto($id){
-            $producto = Product::find($id);
-            $vendedor = $producto->vendedor;
-       ;
+        // Guardar los cambios en la base de datos
+        $vendedor->save();
+
+        // Redireccionar o devolver una respuesta
+        return redirect()->route('vendedores.index')->with('success', 'Vendedor actualizado correctamente.');
+    }
+
+    public function productos()
+    {
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
+
+        // Obtener todos los productos que pertenecen al vendedor autenticado
+        $productos = Product::where('fk_vendedors', $vendedor->id)->get();
+
+        // Pasar los productos a la vista para su visualización
+        return view('VendedorMisProductos', compact('productos', 'vendedor'));
+    }
+
+    public function verproducto($id)
+    {
+        $product = Product::find($id);
+
+        // Verificar si el producto existe antes de proceder
+        if (!$product) {
+            return redirect()->back()->with('error', 'Producto no encontrado.');
+        }
+
+        // Verificar si el vendedor autenticado es el propietario del producto
+        if ($product->fk_vendedors != Auth::guard('vendedor')->id()) {
+            return redirect()->back()->with('error', 'No tienes permiso para ver este producto.');
+        }
+
+        // Obtener el vendedor del producto
+        $vendedor = $product->vendedor;
+
+        // Obtener los productos que comparten la misma llave foránea del vendedor,
+        // pero excluyendo el producto actual
+        $products = Product::where('fk_vendedors', $product->fk_vendedors)
+            ->where('id', '!=', $id)
+            ->paginate(3);
+
+        // Retornar la vista con los datos del producto y otros productos del mismo vendedor
+        return view('VendedorProductoEnEspecifico', compact('product', 'products', 'vendedor'))
+            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+    }
+
+    public function agregarproducto()
+    {
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
+        $product = new Product();
+
+        return view('VendedorRegistroProducto', compact('product', 'vendedor'));
+    }
+
+    public function guardarproducto(ProductRequest $request)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:200',
+            'price' => 'required|numeric|min:0',
+            'categoria' => 'required|string',
+            'imagen_referencia' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // La imagen es requerida
+        ]);
+
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
+
+        // Procesar la imagen
+        if ($request->hasFile('imagen_referencia')) {
+            $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
+            $clasificacion = str_replace(' ', '_', strtolower($request->input('categoria')));
+            $imageName = "{$nombreProducto}_{$clasificacion}.png";
+
+            $path = $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+
+            if (!$path) {
+                return back()->withErrors(['imagen_referencia' => 'No se pudo mover la imagen.']);
+            }
+        } else {
+            return back()->withErrors(['imagen_referencia' => 'Es obligatorio subir una imagen.']);
+        }
+
+        $producto = new Product([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'categoria' => $request->input('categoria'),
+            'estado' => 'Disponible',  // Valor por defecto de estado
+            'fk_vendedors' => $vendedor->id, // Asociar el producto al vendedor autenticado
+            'imagen_referencia' => $imageName,
+        ]);
+
+        $producto->save();
+
+        return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
+    }
+
+    public function editarproducto($id)
+    {
+        $producto = Product::find($id);
+
+        // Verificar si el producto existe antes de proceder
+        if (!$producto) {
+            return redirect()->back()->with('error', 'Producto no encontrado.');
+        }
+
+        // Verificar si el vendedor autenticado es el propietario del producto
+        if ($producto->fk_vendedors != Auth::guard('vendedor')->id()) {
+            return redirect()->back()->with('error', 'No tienes permiso para editar este producto.');
+        }
+
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
+
         return view('VendedorEditarProducto', compact('producto', 'vendedor'));
-
-        }
-        public function actualizarproducto(VendedorRequest $request, $id){
-
-            dd($request->all());
-            // Validación de los datos del formulario
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string|max:200',
-        'price_type' => 'required|string|in:fixed,per_dollar',
-        'price' => 'nullable|numeric|required_if:price_type,fixed',
-        'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
-        'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'fk_vendedors' => 'required|integer|exists:vendedors,id',
-        'categoria' => 'required|string',
-        'estado' => 'nullable|string',
-    ]);
-
-    // Encontrar el producto por su ID
-    $product = Product::findOrFail($id);
-
-    // Manejo de la imagen
-    if ($request->hasFile('imagen_referencia')) {
-        // Eliminar la imagen anterior si existe
-        if ($product->imagen_referencia) {
-            Storage::disk('public')->delete('imgs/' . $product->imagen_referencia);
-        }
-
-        // Crear el nombre de la imagen basado en el nombre y la categoría
-        $imageName = $request->input('name') . '_' . $request->input('categoria') . '.png';
-        $imagePath = 'imgs/' . $imageName;
-
-        // Guardar la imagen en la carpeta 'public/imgs'
-        $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
-
-        // Asignar el nuevo nombre de la imagen al producto
-        $product->imagen_referencia = $imageName;
     }
 
-    // Actualizar los campos del producto
-    $product->name = $request->input('name');
-    $product->description = $request->input('description');
-    $product->price_type = $request->input('price_type');
+    public function actualizarproducto(ProductRequest $request, $id)
+    {
+        // Validación de los datos del formulario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:200',
+            'price_type' => 'required|string|in:fixed,per_dollar',
+            'price' => 'nullable|numeric|required_if:price_type,fixed',
+            'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
+            'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'categoria' => 'required|string',
+            'estado' => 'nullable|string',
+        ]);
 
-    if ($product->price_type === 'fixed') {
-        $product->price = $request->input('price');
-        $product->quantity_per_dollar = null;
-    } else {
-        $product->price = null;
-        $product->quantity_per_dollar = $request->input('quantity_per_dollar');
-    }
+        $producto = Product::findOrFail($id);
 
-    $product->fk_vendedors = $request->input('fk_vendedors');
-    $product->categoria = $request->input('categoria');
-    $product->estado = $request->input('estado', 'disponible');
-
-    // Guardar los cambios en la base de datos
-    $product->save();
-
-    // Redireccionar a una vista o ruta deseada con un mensaje de éxito
-    return redirect()->route('vendedores.productos')->with('success', 'Producto actualizado exitosamente.');
-
-
+        // Verificar si el vendedor autenticado es el propietario del producto
+        if ($producto->fk_vendedors != Auth::guard('vendedor')->id()) {
+            return redirect()->back()->with('error', 'No tienes permiso para actualizar este producto.');
         }
-        public function actualizarestadoproducto(){
 
-        }
-        public function publicarestadoproducto(){
-
-        }
-        public function eliminarproducto($id){
-            $producto = Product::find($id);
-
-            if ($producto) {
-                // Eliminar el vendedor
-                $producto->delete();
-                return redirect()->route('vendedores.productos')->with('success', 'Vendedor eliminado correctamente.');
-            } else {
-                return redirect()->route('vendedores.productos')->with('error', 'Vendedor no encontrado.');
+        // Manejo de la imagen
+        if ($request->hasFile('imagen_referencia')) {
+            // Eliminar la imagen anterior si existe
+            if ($producto->imagen_referencia) {
+                Storage::disk('public')->delete('imgs/' . $producto->imagen_referencia);
             }
+
+            // Crear el nombre de la imagen basado en el nombre y la categoría
+            $imageName = $request->input('name') . '_' . $request->input('categoria') . '.png';
+            $imagePath = 'imgs/' . $imageName;
+
+            $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+
+            $producto->imagen_referencia = $imageName;
         }
 
+        // Actualizar los campos del producto
+        $producto->name = $request->input('name');
+        $producto->description = $request->input('description');
+        $producto->price_type = $request->input('price_type');
 
-        /**
-         * RESERVAS
-         */
-        public function reservas()
-        {
-            $id = 1;
-            $id = 1;
-            $vendedor = Vendedor::with('mercadoLocal')->find($id);
-            $mercadoId = 1; // ID del mercado que quieres filtrar
+        if ($producto->price_type === 'fixed') {
+            $producto->price = $request->input('price');
+            $producto->quantity_per_dollar = null;
+        } else {
+            $producto->price = null;
+            $producto->quantity_per_dollar = $request->input('quantity_per_dollar');
+        }
 
-            // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
-            $reservations = Reservation::whereHas('items.product.vendedor', function ($query) use ($mercadoId) {
-                $query->where('fk_mercado', $mercadoId);
+        $producto->categoria = $request->input('categoria');
+        $producto->estado = $request->input('estado', 'disponible');
+
+        $producto->save();
+
+        return redirect()->route('vendedores.productos')->with('success', 'Producto actualizado exitosamente.');
+    }
+
+    public function eliminarproducto($id)
+    {
+        $producto = Product::find($id);
+
+        // Verificar si el vendedor autenticado es el propietario del producto
+        if ($producto->fk_vendedors != Auth::guard('vendedor')->id()) {
+            return redirect()->back()->with('error', 'No tienes permiso para eliminar este producto.');
+        }
+
+        if ($producto) {
+            $producto->delete();
+            return redirect()->route('vendedores.productos')->with('success', 'Producto eliminado correctamente.');
+        } else {
+            return redirect()->route('vendedores.productos')->with('error', 'Producto no encontrado.');
+        }
+    }
+
+    public function reservas()
+    {
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
+
+        $reservations = Reservation::whereHas('items.product.vendedor', function ($query) use ($vendedor) {
+                $query->where('fk_vendedors', $vendedor->id);
             })
-            ->with(['items' => function ($query) use ($mercadoId) {
-                $query->whereHas('product.vendedor', function ($q) use ($mercadoId) {
-                    $q->where('fk_mercado', $mercadoId);
-                })
-                ->with('product.vendedor');
+            ->with(['items' => function ($query) use ($vendedor) {
+                $query->where('fk_vendedors', $vendedor->id)->with('product.vendedor');
             }])
             ->get();
 
-            return view('VendedorEstadoReservas', compact('reservations', 'id', 'vendedor'));
+        return view('VendedorEstadoReservas', compact('reservations', 'vendedor'));
+    }
+
+    public function publicarestadoreserva(Request $request, $id)
+    {
+        $item = ReservationItem::find($id);
+
+        if (!$item) {
+            return redirect()->route('vendedores.reservas')->with('error', 'El ítem de la reserva no fue encontrado.');
         }
 
-
-
-        public function verreserva(){
-
+        if ($item->fk_vendedors != Auth::guard('vendedor')->id()) {
+            return redirect()->route('vendedores.reservas')->with('error', 'No tienes permiso para actualizar este item.');
         }
-        public function publicarestadoreserva(Request $request, $id)
-        {
-            // Obtener el ReservationItem por ID
-            $item = ReservationItem::find($id);
 
-            // Verificar si el item fue encontrado
-            if (!$item) {
-                return redirect()->route('vendedores.reservas')->with('error', 'El ítem de la reserva no fue encontrado.');
+        $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_espera', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
+        $nuevoEstado = $request->input('estado');
+
+        if (in_array($nuevoEstado, $estadoValido)) {
+            $item->estado = $nuevoEstado;
+            $item->save();
+
+            $fk_reservation = $item->fk_reservation;
+            $todosEnEstado = function($estado) use ($fk_reservation) {
+                return ReservationItem::where('fk_reservation', $fk_reservation)
+                    ->where('estado', '!=', $estado)
+                    ->count() == 0;
+            };
+
+            if ($todosEnEstado('en_entrega')) {
+                $reserva = Reservation::find($fk_reservation);
+                $reserva->estado = 'en_entrega';
+                $reserva->save();
             }
 
-            // Verificar si el item pertenece al vendedor con id = 1
-            if ($item->fk_vendedors == 1) {
-                // Validar el estado enviado
-                $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_esperar', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
-                $nuevoEstado = $request->input('estado');
-
-                if (in_array($nuevoEstado, $estadoValido)) {
-                    // Actualizar el estado del item
-                    $item->estado = $nuevoEstado;
-                    $item->save();
-
-                    /**
-                     * EN ENTREGA
-                     */
-
-                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
-                    $fk_reservation = $item->fk_reservation;
-                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'en_entrega')
-                        ->count() == 0;
-
-                    if ($todosEnEntrega) {
-                        // Actualizar el estado de la reserva a 'en_entrega'
-                        $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'en_entrega';
-                        $reserva->save();
-                    }
-                    /**
-                     * SIN EXISTENCIAS
-                     */
-                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
-                    $fk_reservation = $item->fk_reservation;
-                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'sin_existencias')
-                        ->count() == 0;
-
-                    if ($todosEnEntrega) {
-                        // Actualizar el estado de la reserva a 'en_entrega'
-                        $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'sin_existencias';
-                        $reserva->save();
-                    }
-                    /**
-                     * EN ESPERA
-                     */
-                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
-                    $fk_reservation = $item->fk_reservation;
-                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'en_espera')
-                        ->count() == 0;
-
-                    if ($todosEnEntrega) {
-                        // Actualizar el estado de la reserva a 'en_entrega'
-                        $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'en_espera';
-                        $reserva->save();
-                    }
-                    /**
-                     * SIN EXISTENCIAS
-                     */
-                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
-                    $fk_reservation = $item->fk_reservation;
-                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'sin_espera')
-                        ->count() == 0;
-
-                    if ($todosEnEntrega) {
-                        // Actualizar el estado de la reserva a 'en_entrega'
-                        $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'sin_espera';
-                        $reserva->save();
-                    }
-                    /**
-                     * ARCHIVAR
-                     */
-                    /**
-                     * ARCHIVAR
-                     */
-                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
-                    $fk_reservation = $item->fk_reservation;
-                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
-                        ->where('estado', '!=', 'archivado')
-                        ->count() == 0;
-
-                    if ($todosEnEntrega) {
-                        // Actualizar el estado de la reserva a 'en_entrega'
-                        $reserva = Reservation::find($fk_reservation);
-                        $reserva->estado = 'archivado';
-                        $reserva->save();
-                    }
-
-
-                    // Redireccionar a la vista o hacer otra acción
-                    return redirect()->route('vendedores.reservas')->with('success', 'El estado de la reserva ha sido actualizado.');
-                } else {
-                    // Estado no válido
-                    return redirect()->route('vendedores.reservas')->with('error', 'El estado proporcionado no es válido.');
-                }
-            } else {
-                // Si no pertenece al vendedor correcto, mostrar un error
-                return redirect()->route('vendedores.reservas')->with('error', 'No tienes permiso para actualizar este item.');
+            if ($todosEnEstado('sin_existencias')) {
+                $reserva = Reservation::find($fk_reservation);
+                $reserva->estado = 'sin_existencias';
+                $reserva->save();
             }
+
+            if ($todosEnEstado('en_espera')) {
+                $reserva = Reservation::find($fk_reservation);
+                $reserva->estado = 'en_espera';
+                $reserva->save();
+            }
+
+            if ($todosEnEstado('sin_espera')) {
+                $reserva = Reservation::find($fk_reservation);
+                $reserva->estado = 'sin_espera';
+                $reserva->save();
+            }
+
+            if ($todosEnEstado('archivado')) {
+                $reserva = Reservation::find($fk_reservation);
+                $reserva->estado = 'archivado';
+                $reserva->save();
+            }
+
+            return redirect()->route('vendedores.reservas')->with('success', 'El estado de la reserva ha sido actualizado.');
+        } else {
+            return redirect()->route('vendedores.reservas')->with('error', 'El estado proporcionado no es válido.');
         }
+    }
 
+    public function historial()
+    {
+        $vendedor = Auth::guard('vendedor')->user(); // Obtener el vendedor autenticado
 
-
-        public function historial(){
-            $id = 1;
-            $vendedor = Vendedor::with('mercadoLocal')->find($id);
-            $id = 1;
-
-            // Obtener los ReservationItems donde fk_vendedors es igual al valor de $id
-            $reservations = Reservation::whereHas('items', function ($query) use ($id) {
-                $query->where('fk_vendedors', $id);
+        $reservations = Reservation::whereHas('items', function ($query) use ($vendedor) {
+                $query->where('fk_vendedors', $vendedor->id);
             })
-            ->with(['items' => function ($query) use ($id) {
-                $query->where('fk_vendedors', $id)->with('product.vendedor');
+            ->with(['items' => function ($query) use ($vendedor) {
+                $query->where('fk_vendedors', $vendedor->id)->with('product.vendedor');
             }])
             ->get();
 
-            return view('VendedorHistorialReservas', compact('reservations', 'id', 'vendedor'));
-        }
-
-
- }
+        return view('VendedorHistorialReservas', compact('reservations', 'vendedor'));
+    }
+}
