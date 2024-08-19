@@ -187,25 +187,25 @@ Route::post('/usuarios/publicarestadoreserva/{id}', [UsuariosController::class, 
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
 Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
-Route::get('/vendedores/perfil', [VendedoresController::class, 'perfil'])->name('vendedor.perfil')->middleware('check.user.session');
-Route::get('/vendedores/editar/{id}', [VendedoresController::class, 'editar'])->name('vendedores.editar')->middleware('check.user.session');
-Route::post('/vendedores/actualizar/{id}', [VendedoresController::class, 'actualizar'])->name('vendedores.actualizar')->middleware('check.user.session');
+Route::get('/vendedores/perfil', [VendedoresController::class, 'perfil'])->name('vendedor.perfil');
+Route::get('/vendedores/editar/{id}', [VendedoresController::class, 'editar'])->name('vendedores.editar');
+Route::post('/vendedores/actualizar/{id}', [VendedoresController::class, 'actualizar'])->name('vendedores.actualizar');
 //producto
-Route::get('/vendedores/productos', [VendedoresController::class, 'productos'])->name('vendedores.productos')->middleware('check.user.session');
-Route::get('/vendedores/verproducto/{id}', [VendedoresController::class, 'verproducto'])->name('vendedores.verproducto')->middleware('check.user.session');
-Route::get('/vendedores/agregarproducto/{id}',[VendedoresController::class, 'agregarproducto'])->name('vendedores.agregarproducto')->middleware('check.user.session');
-Route::post('/vendedores/guardarproducto', [VendedoresController::class, 'guardarproducto'])->name('vendedores.guardarproducto')->middleware('check.user.session');
-Route::get('/vendedores/editarproducto/{id}', [VendedoresController::class, 'editarproducto'])->name('vendedores.editarproducto')->middleware('check.user.session');
-Route::put('/vendedores/actualizarproducto/{id}', [VendedoresController::class, 'actualizarproducto'])->name('vendedores.actualizarproducto')->middleware('check.user.session');
-Route::get('/vendedores/actualizarestadoproducto/{id}', [VendedoresController::class, 'actualizarestadoprodcuto'])->name('vendedores.actualizarestadoproducto')->middleware('check.user.session');
-Route::post('/vendedores/publicarestadoproducto/{id}', [VendedoresController::class, 'publicarestadoproducto'])->name('vendedores.publicarestadoproducto')->middleware('check.user.session');
-Route::delete('/vendedores/eliminarproducto/{id}', [VendedoresController::class, 'eliminarproducto'])->name('vendedores.eliminarproducto')->middleware('check.user.session');
+Route::get('/vendedores/productos', [VendedoresController::class, 'productos'])->name('vendedores.productos');
+Route::get('/vendedores/verproducto/{id}', [VendedoresController::class, 'verproducto'])->name('vendedores.verproducto');
+Route::get('/vendedores/agregarproducto/{id}',[VendedoresController::class, 'agregarproducto'])->name('vendedores.agregarproducto');
+Route::post('/vendedores/guardarproducto', [VendedoresController::class, 'guardarproducto'])->name('vendedores.guardarproducto');
+Route::get('/vendedores/editarproducto/{id}', [VendedoresController::class, 'editarproducto'])->name('vendedores.editarproducto');
+Route::put('/vendedores/actualizarproducto/{id}', [VendedoresController::class, 'actualizarproducto'])->name('vendedores.actualizarproducto');
+Route::get('/vendedores/actualizarestadoproducto/{id}', [VendedoresController::class, 'actualizarestadoprodcuto'])->name('vendedores.actualizarestadoproducto');
+Route::post('/vendedores/publicarestadoproducto/{id}', [VendedoresController::class, 'publicarestadoproducto'])->name('vendedores.publicarestadoproducto');
+Route::delete('/vendedores/eliminarproducto/{id}', [VendedoresController::class, 'eliminarproducto'])->name('vendedores.eliminarproducto');
 //Reservas
-Route::get('/vendedores/reservas', [VendedoresController::class, 'reservas'])->name('vendedores.reservas')->middleware('check.user.session');
-Route::get('/vendedores/verreserva/{id}', [VendedoresController::class, 'verreserva'])->name('vendedores.verreserva')->middleware('check.user.session');
-Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedoresController::class])->name('vendedores.actualizarestadoreserva')->middleware('check.user.session');
-Route::post('/vendedores/publicarestadoreserva/{id}', [VendedoresController::class, 'publicarestadoreserva'])->name('vendedores.publicarestadoreserva')->middleware('check.user.session');
-Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])->name('vendedores.historial')->middleware('check.user.session');
+Route::get('/vendedores/reservas', [VendedoresController::class, 'reservas'])->name('vendedores.reservas');
+Route::get('/vendedores/verreserva/{id}', [VendedoresController::class, 'verreserva'])->name('vendedores.verreserva');
+Route::get('/vendedores/actualizarestadoreserva/{id}', [VendedoresController::class])->name('vendedores.actualizarestadoreserva');
+Route::post('/vendedores/publicarestadoreserva/{id}', [VendedoresController::class, 'publicarestadoreserva'])->name('vendedores.publicarestadoreserva');
+Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])->name('vendedores.historial');
 
 
 
