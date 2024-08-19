@@ -186,7 +186,7 @@ Route::post('/usuarios/publicarestadoreserva/{id}', [UsuariosController::class, 
 /**
  * RUTAS PARA EL VENDEDOR CONTROLADOR
  */
-Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedores.index')->middleware('check.user.session');
+Route::get('/vendedores', [VendedoresController::class, 'index'])->name('vendedores.index');
 Route::get('/vendedores/perfil', [VendedoresController::class, 'perfil'])->name('vendedor.perfil')->middleware('check.user.session');
 Route::get('/vendedores/editar/{id}', [VendedoresController::class, 'editar'])->name('vendedores.editar')->middleware('check.user.session');
 Route::post('/vendedores/actualizar/{id}', [VendedoresController::class, 'actualizar'])->name('vendedores.actualizar')->middleware('check.user.session');
