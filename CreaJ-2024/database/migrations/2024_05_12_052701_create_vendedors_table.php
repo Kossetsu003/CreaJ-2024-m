@@ -32,7 +32,7 @@ return new class extends Migration
         DB::table('vendedors')->insert([
             'usuario' => 'rosio.martinez@gmail.com',
             'ROL' => 3,
-            'password' => Hash::make('rosio123'), // Ajusta la contraseña según tus necesidades
+            'password' => Hash::make('12345678'), // Ajusta la contraseña según tus necesidades
             'nombre' => 'Rosio',
             'nombre_del_local' => 'Comedor Rosio',
             'imagen_de_referencia' => 'rosiomartinez.png', // Valor por defecto null
@@ -49,7 +49,7 @@ return new class extends Migration
             [
                 'usuario' => 'juan.perez@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('juan123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Juan',
                 'nombre_del_local' => 'Tienda Juanito',
                 'imagen_de_referencia' => 'juanperez.png',
@@ -64,7 +64,7 @@ return new class extends Migration
             [
                 'usuario' => 'maria.gonzalez@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('maria123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'María',
                 'nombre_del_local' => 'Boutique María',
                 'imagen_de_referencia' => 'mariagonzalez.png',
@@ -81,7 +81,7 @@ return new class extends Migration
             [
                 'usuario' => 'pedro.rodriguez@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('pedro123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Pedro',
                 'nombre_del_local' => 'Panadería Pedro',
                 'imagen_de_referencia' => 'pedrorodriguez.png',
@@ -96,7 +96,7 @@ return new class extends Migration
             [
                 'usuario' => 'laura.silva@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('laura123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Laura',
                 'nombre_del_local' => 'Zapatería Laura',
                 'imagen_de_referencia' => 'laurasilva.png',
@@ -111,7 +111,7 @@ return new class extends Migration
             [
                 'usuario' => 'oscar.morales@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('oscar123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Óscar',
                 'nombre_del_local' => 'Ferretería Óscar',
                 'imagen_de_referencia' => 'oscarmorales.png',
@@ -128,7 +128,7 @@ return new class extends Migration
             [
                 'usuario' => 'claudia.fernandez@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('claudia123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Claudia',
                 'nombre_del_local' => 'Librería Claudia',
                 'imagen_de_referencia' => 'claudiafernandez.png',
@@ -143,7 +143,7 @@ return new class extends Migration
             [
                 'usuario' => 'manuel.ortiz@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('manuel123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Manuel',
                 'nombre_del_local' => 'Restaurante Manuel',
                 'imagen_de_referencia' => 'manuelortiz.png',
@@ -158,7 +158,7 @@ return new class extends Migration
             [
                 'usuario' => 'carla.mendez@gmail.com',
                 'ROL' => 3,
-                'password' => Hash::make('carla123'),
+                'password' => Hash::make('12345678'),
                 'nombre' => 'Carla',
                 'nombre_del_local' => 'Juguetería Carla',
                 'imagen_de_referencia' => 'carlamendez.png',

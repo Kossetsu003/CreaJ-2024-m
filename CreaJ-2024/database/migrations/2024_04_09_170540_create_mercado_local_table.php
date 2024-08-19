@@ -52,7 +52,7 @@ return new class extends Migration
             updated_at)
             values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1,
-            'MercadoCentral@SanSalvadorCentro.sv',
+            'MercadoCentral@minishop.sv',
             $hash,
             'Mercado Central',
             2,
@@ -88,7 +88,7 @@ return new class extends Migration
             updated_at)
             values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             2,
-            'MercadoHulaHula@SanSalvadorCentro.sv',
+            'MercadoHulaHula@minishop.sv',
             $hash,
             'Mercado Hula Hula',
             2,
@@ -123,7 +123,7 @@ return new class extends Migration
             updated_at)
             values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             3,
-            'MercadoLaTiendona@SanSalvadorCentro.sv',
+            'MercadoLaTiendona@minishop.sv',
             $hash,
             'Mercado La Tiendona',
             2,
@@ -158,7 +158,7 @@ return new class extends Migration
             updated_at)
             values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             4,
-            'MercadoExCuartel@SanSalvadorCentro.sv',
+            'MercadoExCuartel@minishop.sv',
             $hash,
             'Mercado Ex-Cuartel',
             2,

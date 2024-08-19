@@ -14,7 +14,9 @@
                 <h1 class="text-3xl font-bold text-red-500">Registrar vendedor</h1>
             </div>
             <form method="POST" action="{{ route('mercados.guardarvendedor') }}" role="form" enctype="multipart/form-data">
-                @csrf
+                @csrf{{ $mercado->id }}
+
+                <input type="hidden" value="{{ $mercado->id }}" name="fk_mercado">
                 <div class="pb-[7rem] mt-10 space-y-4">
                     <!-- Mensajes de Error Generales -->
                     @if ($errors->any())
@@ -28,7 +30,7 @@
                     @endif
 
                     <!-- INICIO DE INPUT DE LA FOTO -->
-                    <div class="flex justify-between">
+                    <div class="flex flex-col items-center">
                         <label for="imagen_de_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
                             <span id="file-name" class="text-gray-400 text-xs">Imagen de <b>Usted</b> o de <b>Su Puesto</b></span>
                             <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
@@ -39,7 +41,7 @@
                     <!-- FIN DEL INPUT DE LA IMG -->
 
                     <!-- INICIO DE LA PREVIEW -->
-                    <section>
+                    <section class="flex flex-col items-center">
                         <div>
                             <p class="text-gray-400 text-xs text-center">Su foto se vería así:</p>
                         </div>
@@ -50,23 +52,23 @@
                     <!-- FIN DE LA PREVIEW -->
 
                     <!-- Campo de Correo Electrónico -->
-                    <div class="flex justify-center">
+                    <div class="flex flex-col items-center">
                         <input required type="email" name="usuario" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('usuario') border-red-500 @enderror" value="{{ old('usuario') }}" id="usuario" placeholder="Escriba el correo electrónico">
                         @error('usuario')
                             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="flex justify-center">
-                        <input type="password" maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" id="password" placeholder="Escriba su Contraseña">
 
                     <!-- Campo de Contraseña -->
-                    <div class="flex justify-center">
-                        <input type="password" maxlength="8" required name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') }}" id="password_confirmation" placeholder="Confirme su Contraseña">
-
+                    <div class="flex flex-col items-center">
+                        <input type="password" maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" id="password" placeholder="Escriba su Contraseña">
+                        @error('password')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <!-- Campo de Confirmación de Contraseña -->
-                    <div class="flex justify-center">
+                    <div class="flex flex-col items-center">
                         <input required type="password" name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('password_confirmation') border-red-500 @enderror" id="password_confirmation" placeholder="Confirme su Contraseña">
                         @error('password_confirmation')
                             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
@@ -74,7 +76,7 @@
                     </div>
 
                     <!-- Mostrar Contraseñas -->
-                    <div class="flex justify-center mt-2">
+                    <div class="flex items-center justify-center mt-2">
                         <label class="flex items-center">
                             <input type="checkbox" id="show-passwords" class="mr-2">
                             <span class="text-xs text-gray-600">Mostrar Contraseñas</span>
@@ -82,25 +84,48 @@
                     </div>
 
                     <!-- Campo de Nombre -->
-                    <div class="flex justify-center">
+                    <div class="flex flex-col items-center">
                         <input required type="text" name="nombre" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('nombre') border-red-500 @enderror" value="{{ old('nombre') }}" id="nombre" placeholder="Escriba el Nombre del Vendedor">
                         @error('nombre')
                             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="flex justify-center">
-                        <input required type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('apellidos') is-invalid @enderror" value="{{ old('apellidos') }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
+
+                    <!-- Campo de Apellidos -->
+                    <div class="flex flex-col items-center">
+                        <input required type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('apellidos') border-red-500 @enderror" value="{{ old('apellidos') }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
+                        @error('apellidos')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="flex justify-center">
-                        <input type="text" name="nombre_del_local" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('nombre_del_local') is-invalid @enderror" value="{{ old('nombre_del_local') }}" id="nombre_del_local" placeholder="Digite el Nombre de su Local (Sera Publico)">
+
+                    <!-- Campo de Nombre del Local -->
+                    <div class="flex flex-col items-center">
+                        <input type="text" name="nombre_del_local" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('nombre_del_local') border-red-500 @enderror" value="{{ old('nombre_del_local') }}" id="nombre_del_local" placeholder="Digite el Nombre de su Local (Será Público)">
+                        @error('nombre_del_local')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="flex justify-center">
-                        <input type="text" name="telefono" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono') }}" id="telefono" placeholder="Digite el Teléfono del Vendedor">
+
+                    <!-- Campo de Teléfono -->
+                    <div class="flex flex-col items-center">
+                        <input type="text" name="telefono" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('telefono') border-red-500 @enderror" value="{{ old('telefono') }}" id="telefono" placeholder="Digite el Teléfono del Vendedor">
+                        @error('telefono')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="flex justify-center">
-                        <input required type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('numero_puesto') is-invalid @enderror" value="{{ old('numero_puesto') }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
+
+                    <!-- Campo de Número de Puesto -->
+                    <div class="flex flex-col items-center">
+                        <input required type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('numero_puesto') border-red-500 @enderror" value="{{ old('numero_puesto') }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
+                        @error('numero_puesto')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <select name="clasificacion" id="clasificacion" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
+
+                    <!-- Campo de Clasificación -->
+                    <div class="flex flex-col items-center">
+                        <select name="clasificacion" id="clasificacion" class="border bg-gray-100 rounded border-gray-400 w-80 h-9 pl-5 text-xs mt-2 text-gray-400" required>
                         <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
                         <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
                         <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
@@ -114,96 +139,48 @@
                         <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
                         <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
                         <option class="font-bold text-xl text-gray-800" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
-
-
-                    </select>
-
-                    <!-- Campo de Apellidos -->
-                    <div class="flex justify-center">
-                        <input required type="text" name="apellidos" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('apellidos') border-red-500 @enderror" value="{{ old('apellidos') }}" id="apellidos" placeholder="Escriba los Apellidos del Vendedor">
-                        @error('apellidos')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Campo de Nombre del Local -->
-                    <div class="flex justify-center">
-                        <input type="text" name="nombre_del_local" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('nombre_del_local') border-red-500 @enderror" value="{{ old('nombre_del_local') }}" id="nombre_del_local" placeholder="Digite el Nombre de su Local (Será Público)">
-                        @error('nombre_del_local')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Campo de Teléfono -->
-                    <div class="flex justify-center">
-                        <input type="text" name="telefono" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('telefono') border-red-500 @enderror" value="{{ old('telefono') }}" id="telefono" placeholder="Digite el Teléfono del Vendedor">
-                        @error('telefono')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Campo de Número de Puesto -->
-                    <div class="flex justify-center">
-                        <input required type="text" name="numero_puesto" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('numero_puesto') border-red-500 @enderror" value="{{ old('numero_puesto') }}" id="numero_puesto" placeholder="Escriba el Número Puesto">
-                        @error('numero_puesto')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Campo de Clasificación -->
-                    
-
-                    <!-- Campo de Mercado -->
-                    <div class="flex justify-center mt-2">
-                        <select name="fk_mercado" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('fk_mercado') border-red-500 @enderror" id="fk_mercado">
-                            @foreach($mercados as $mercado)
-                                <option value="{{ $mercado->id }}" {{ old('fk_mercado') == $mercado->id ? 'selected' : '' }}>{{ $mercado->nombre }}</option>
-                            @endforeach
                         </select>
-                        @error('fk_mercado')
+                        @error('clasificacion')
                             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <!-- Botón de Enviar -->
-                    <div class="flex justify-center mt-16">
-                        <button class="bg-red-600 w-72 h-10 text-white font-bold rounded-md">Registrar Vendedor</button>
+                    <!-- Botón para Registrarse -->
+                    <div class="flex flex-col items-center">
+                        <button type="submit" class="w-80 bg-red-600 text-white text-center text-sm py-2 px-4 rounded-md shadow-md hover:bg-red-700 mt-5">Registrarse</button>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-    <script>
-        document.getElementById('imagen_de_referencia').addEventListener('change', function(event) {
-            const input = event.target;
-            const preview = document.getElementById('img-preview');
-            const fileNameSpan = document.getElementById('file-name');
 
-            if (input.files && input.files[0]) {
+    <script>
+        const inputImage = document.getElementById('imagen_de_referencia');
+        const imgPreview = document.getElementById('img-preview');
+        const fileNameSpan = document.getElementById('file-name');
+
+        inputImage.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                fileNameSpan.textContent = file.name;
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
+                    imgPreview.src = e.target.result;
+                    imgPreview.classList.remove('hidden');
+                    imgPreview.classList.add('block');
                 };
-                reader.readAsDataURL(input.files[0]);
-
-                // Mostrar el nombre del archivo seleccionado
-                fileNameSpan.textContent = input.files[0].name;
-            } else {
-                preview.src = '#';
-                preview.classList.add('hidden');
-                fileNameSpan.textContent = 'Imagen del Vendedor';
+                reader.readAsDataURL(file);
             }
         });
-    </script>
-    <script>
-        document.getElementById('show-passwords').addEventListener('change', function() {
-            const passwordFields = document.querySelectorAll('input[name="password"], input[name="password_confirmation"]');
-            const isPasswordVisible = this.checked;
 
-            passwordFields.forEach(field => {
-                field.type = isPasswordVisible ? 'text' : 'password';
-            });
+        const showPasswordsCheckbox = document.getElementById('show-passwords');
+        const passwordInput = document.getElementById('password');
+        const passwordConfirmationInput = document.getElementById('password_confirmation');
+
+        showPasswordsCheckbox.addEventListener('change', function() {
+            const type = this.checked ? 'text' : 'password';
+            passwordInput.type = type;
+            passwordConfirmationInput.type = type;
         });
     </script>
 </body>

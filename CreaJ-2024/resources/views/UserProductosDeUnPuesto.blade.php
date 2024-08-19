@@ -88,7 +88,7 @@
                     <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
                         {{ $product->name }}
                     </h1>
-                    <button class="py-[5px] px-4 bg-red-700 rounded text-white">
+                    <button class=" text-red-700 rounded text-[1rem] z-10">
                         Agregar
                     </button>
                 </div>

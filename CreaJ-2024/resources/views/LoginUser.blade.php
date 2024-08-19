@@ -37,7 +37,7 @@
                             <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="email" name="usuario" id="usuario" placeholder="Ingrese su correo electrónico">
                         </div>
                         <div class="flex justify-center mt-2">
-                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="text" name="password" id="contrasena" placeholder="Ingrese su contraseña">
+                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="password" name="password" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
                         <!--DEBERIAMOS PONERLO?
                         <div class="flex justify-end mt-3 pr-2">
