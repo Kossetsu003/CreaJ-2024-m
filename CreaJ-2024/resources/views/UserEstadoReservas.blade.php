@@ -73,7 +73,7 @@
     @if ($reservation->estado != 'archivado')
         <div class="p-4 border border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
             <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Reserva:
-                @if ($reservation->estado == 'Enviado')
+                @if ($reservation->estado == 'enviado')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-yellow-200 text-yellow-800 rounded">
                        Enviado
                     </span>
@@ -82,9 +82,9 @@
                         No hay Existencias
                         {{ $reservation->sin_existencias }}
                     </span>
-                @elseif($reservation->estado == 'sin_esperar')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                       No se Espera el Producto
+                @elseif($reservation->estado == 'sin_espera')
+                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
+                       Cancelado
                     </span>
                 @elseif($reservation->estado == 'en_espera')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
@@ -100,7 +100,7 @@
                     </span>
                 @elseif($reservation->estado == 'sin_recibir')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                        No se ha Recibido
+                       No ha recibido el Producto
                     </span>
                 @elseif($reservation->estado == 'problemas')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
@@ -156,8 +156,8 @@
                             </form>
 
 
-@elseif($item->estado == 'problema')
-                            <h2 class="text-xl font-bold mb-4 text-center">Ya se Envio su producto. <br> Lo puede recibir en: <b>El Vendedor {{ $item->vendedor->nombre }} tiene problemas con su producto. ¿Desea Esperar?</h2>
+@elseif($item->estado == 'problemas')
+                            <h2 class="text-xl font-bold mb-4 text-center">El Vendedor {{ $item->vendedor->nombre }} tiene problemas con su producto. ¿Desea Esperar?</h2>
                             <form id="form-{{ $item->id }}" action="{{ route('usuarios.publicarestadoreserva', $item->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="estado" id="estado-{{ $item->id }}" value="">

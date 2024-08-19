@@ -151,26 +151,7 @@
                     </div>
 
                     <!-- Campo de Clasificación -->
-                    <div class="flex justify-center">
-                        <select name="clasificacion" id="clasificacion" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400 @error('clasificacion') border-red-500 @enderror" required>
-                            <option value="" class="font-bold text-xs text-white">Escoga su Clasificación</option>
-                            <option value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
-                            <option value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
-                            <option value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Básicos</option>
-                            <option value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanías</option>
-                            <option value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
-                            <option value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
-                            <option value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lácteos</option>
-                            <option value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
-                            <option value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plásticos</option>
-                            <option value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas y Verduras</option>
-                            <option value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
-                            <option value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
-                        </select>
-                        @error('clasificacion')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    
 
                     <!-- Campo de Mercado -->
                     <div class="flex justify-center mt-2">

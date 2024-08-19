@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -20,6 +19,11 @@ class CheckUserSession
             return response()->view('auth.login-required'); // Nombre de la vista que mostrarás
         }
 
-        return $next($request);
+        $response = $next($request);
+
+        // Deshabilitar la caché del navegador para las rutas protegidas
+        return $response->header('Cache-Control', 'no-cache, no-store, must-revalidate')
+                        ->header('Pragma', 'no-cache')
+                        ->header('Expires', '0');
     }
 }

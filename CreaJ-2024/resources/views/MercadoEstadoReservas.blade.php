@@ -84,6 +84,7 @@
                         @if ( $reservation->estado == 'enviado')
                                 Recibido
                         @endif
+                        {{ $reservation->estado }}
 
                     </span>
                     </h2>

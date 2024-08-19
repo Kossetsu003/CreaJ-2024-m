@@ -30,7 +30,7 @@ return new class extends Migration
            $table->foreign('fk_mercados')->references('id')->on('mercado_locals')->onDelete('cascade');
 
 
-           $table->string('estado')->default("Enviado");
+           $table->string('estado')->default("enviado");
             $table->timestamps();
         });
     }

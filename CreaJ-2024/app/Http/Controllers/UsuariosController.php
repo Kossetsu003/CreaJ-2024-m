@@ -214,7 +214,7 @@ use Illuminate\Support\Facades\DB;
             // Verificar si el item pertenece al vendedor con id = 1
             if ($item->reservation->user->id == Auth::id()) {
                 // Validar el estado enviado
-                $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_esperar', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
+                $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_espera', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
                 $nuevoEstado = $request->input('estado');
 
                 if (in_array($nuevoEstado, $estadoValido)) {

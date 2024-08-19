@@ -78,7 +78,7 @@
             </div>
 
             <div class="space-y-4">
-                {{ $id; }}
+                
 
 
                 <!--INICIO DE RESERVA-->
@@ -86,7 +86,7 @@
     <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Historial Todavia</span>
 @else
                 @foreach ($reservations as $reservation)
-                    @if ( $reservation->estado == 'entregado')
+                    @if ( $reservation->estado == 'archivado')
                     <div
                     class="p-4 border border-gray-200 rounded-lg  justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
 
@@ -94,12 +94,14 @@
                     >Reserva:
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-gray-200 text-gray-800 rounded">
 
-                        Ya esta Entregado
+                        Ya esta Archivado
 
                     </span>
                     </h2>
                     <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">Entregado a:</span> {{ $reservation->user->nombre}} {{ $reservation->user->apellido}}</h2>
+
                     <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
+                    <p class="text-sm md:text-[1.5rem] text-gray-600  mb-[8px]"><b>Fecha de Entrega:</b> {{ $reservation->updated_at }}</p>
 
                     @foreach ($reservation->items as $item)
                 <!--INICIO DE CARTA-->
@@ -109,7 +111,7 @@
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}"
                         class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
-                            <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">{{ $item->nombre }}</h2>
+                            <h2 class=" text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span  class="font-bold">{{ $item->product->name }}</h2>
                             <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Cantidad:</b> {{ $item->quantity }}</p>
                             <p class="text-sm md:text-[1.25rem] text-gray-600  mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
                             <p class="text-sm md:text-[1.5rem] text-gray-600  mb-[8px]"><b>Subtotal:</b> ${{ $item->subtotal }}</p>

@@ -95,9 +95,9 @@
                         No hay Existencias
                         {{ $reservation->sin_existencias }}
                     </span>
-                @elseif($reservation->estado == 'sin_esperar')
+                @elseif($reservation->estado == 'sin_espera')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                        El Cliente No espero
+                        Cancelado
                     </span>
                 @elseif($reservation->estado == 'en_espera')
                     <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
@@ -123,13 +123,14 @@
             </h2>
 
             @foreach ($reservation->items as $item)
+           
                 <div class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                     <div class="flex items-center flex-1">
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}" class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
                             <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
                                 <span class="font-bold">
-                                    {{ $item->nombre }}
+                                    {{ $item->product->name }} con  {{ $item->reservation->user->nombre }} {{ $item->reservation->user->apellido }}
                                 </span>
                             </h2>
                             <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]">
@@ -146,7 +147,7 @@
 
                     <div class="mt-4">
                         <!--PREGUNTAS-->
-                        @if($item->estado == 'Enviado' || $item->estado == 'en_espera')
+                        @if($item->estado == 'enviado' || $item->estado == 'en_espera'|| $item->estado== 'sin_recibir')
                             <h2 class="text-xl font-bold mb-4 text-center">¿El pedido está listo?</h2>
                             <form id="form-{{ $item->id }}" action="{{ route('vendedores.publicarestadoreserva', $item->id) }}" method="POST">
                                 @csrf
@@ -164,17 +165,20 @@
                             </form>
                         @elseif($item->estado == 'sin_espera')
                             <h2 class="text-xl font-bold mb-4 text-center">El Cliente No espero</h2>
-                            <form id="form-{{ $item->id }}" action="{{ route('vendedores.publicarestadoreserva', $item->id) }}" method="POST">
+
+                            <form id="form-{{ $item->id }}" action="{{ route('vendedores.eliminarrreservationitem', $item->id) }}" method="POST">
+                                @method('DELETE')
                                 @csrf
                                 <input type="hidden" name="estado" id="estado-{{ $item->id }}" value="">
 
                                 <div class="flex justify-between">
-                                    <button type="button" onclick="setEstado('{{ $item->id }}', 'eliminar')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
+                                    <button type="button" onclick="setEstado('{{ $item->id }}', 'eliminar')" class="bg-red-500 hover:bg-red-700 mx-4 text-white font-bold py-2 px-4 rounded">
                                         Eliminar Reserva
                                     </button>
                                 </div>
                             </form>
-                        @elseif($item->estado == 'sin_recibir')
+                            @elseif($reservation->estado == 'sin_recibir')
+                        <h3>HOLAA</h3>
                             <h2 class="text-xl font-bold mb-4 text-center">El Cliente No ha Recibido el Paquete ¿Hay problemas?</h2>
                             <form id="form-{{ $item->id }}" action="{{ route('vendedores.publicarestadoreserva', $item->id) }}" method="POST">
                                 @csrf
@@ -194,17 +198,17 @@
 
 @elseif($item->estado == 'problema')
                             <h2 class="text-xl font-bold mb-4 text-center">Ya se Envio su producto. <br> Lo puede recibir en: <b>El Cliente {{ $item->reserva->user->nombre }} está esperando. ¿Ya resolvió su problema y envío el producto?</h2>
-                            <form id="form-{{ $item->id }}" action="{{ route('usuarios.publicarestadoreserva', $item->id) }}" method="POST">
+                            <form id="form-{{ $item->id }}" action="{{ route('vendedores.publicarestadoreserva', $item->id) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="estado" id="estado-{{ $item->id }}" value="">
 
                                 <div class="flex justify-between">
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'en_entrega')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
-                                       Ya lo Envíe 
+                                       Ya lo Envíe
                                     </button>
 
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'sin_existencias')" class="mx-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                        No hay Existencia 
+                                        No hay Existencia
                                     </button>
                                 </div>
                             </form>

@@ -83,9 +83,10 @@
                 <img class="w-[10rem] h-[10rem] md:w-[52rem] md:h-[25rem] object-cover object-center rounded-full md:rounded-[25px] mx-auto" src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="Banner Image">
             </div>
 
+
             <!-- Etiquetas -->
             <div class="flex flex-col justify-center items-center md:items-start md:ml-8 mt-4 md:mt-0 text-center md:text-left">
-                <!-- Título -->
+
                 <div class="font-bold text-[1.5rem] md:text-[2.5rem]">
                     {{ $vendedor->nombre_del_local }}
                 </div>
@@ -108,8 +109,10 @@
                 </div>
 
             </div>
+
         </div>
 
+       
 
         <div class="flex mt-16 justify-around w-[90%] mx-auto">
             <a href="{{ route('vendedores.agregarproducto',  $vendedor->id) }}" class="btn btn-primary btn-sm float-right "  data-placement="left">
