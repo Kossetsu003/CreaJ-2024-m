@@ -420,4 +420,31 @@ class VendedoresController extends Controller{
 
         return view('VendedorHistorialReservas', compact('reservations', 'vendedor'));
     }
+
+    public function eliminarreservationitem($id)
+{
+    // Encuentra el ReservationItem por su ID
+    $reservationItem = ReservationItem::find($id);
+
+    if ($reservationItem) {
+        // Obtén la reserva asociada
+        $reservation = $reservationItem->reservation;
+
+        // Elimina el ReservationItem
+        $reservationItem->delete();
+
+        // Verifica si la reserva está vacía
+        if ($reservation->items()->count() === 0) {
+            // Si no tiene más items, elimina la Reservation
+            $reservation->delete();
+        }
+
+        // Redirige a la vista de vendedores.reservas con un mensaje de éxito
+        return redirect()->route('vendedores.reservas')->with('success', 'Reservation item deleted successfully.');
+    }
+
+    // Si el item no fue encontrado, redirige con un mensaje de error
+    return redirect()->route('vendedores.reservas')->with('error', 'Reservation item not found.');
+}
+
 }

@@ -236,6 +236,7 @@
 
     @endif
 @endforeach
+<div class="h-[40rem]"></div>
 
 
             <script>

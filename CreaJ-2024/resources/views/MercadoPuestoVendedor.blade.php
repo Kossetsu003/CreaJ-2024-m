@@ -13,9 +13,9 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('mercados.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-          MINI <span class="text-red-600 uppercase "><b>Mercado</b></span>
-        </h1>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
+                MINI <span class="text-red-600 uppercase "><b>Mercado</b></span>
+            </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('mercados.index') }}"
@@ -24,13 +24,13 @@
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
             <a href="{{ route('mercados.reservas') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('MercadoProfileVista') }}"
+            <a href="{{ route('mercados.perfil') }}"
                 class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
         </div>
     </div>
     <!-- Mobile Navbar -->
     <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div  class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('mercados.index') }}" class="bg-white rounded-full p-1">
                     <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
@@ -47,7 +47,7 @@
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('MercadoProfileVista') }}">
+                <a href="{{ route('mercados.perfil') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
@@ -56,7 +56,8 @@
     <div class="mt-14 w-full mx-auto md:text-[30px]">
 
         <div class="w-screen hidden md:block object-center">
-            <img class="w-[15rem] h-[15rem] object-cover object-center rounded-full mx-auto" src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="Banner Image">
+            <img class="w-[15rem] h-[15rem] object-cover object-center rounded-full mx-auto"
+                src="{{ asset('imgs/' . $vendedor->imagen_de_referencia) }}" alt="Banner Image">
         </div>
 
         <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">
@@ -67,7 +68,8 @@
                     {{ $vendedor->nombre_del_local }}
                 </div>
                 <div class="md:text-center md:font-semibold font-bold">
-                   Puesto #{{ $vendedor->numero_puesto}} - <span class="md:font-bold">{{ $mercadoLocal->nombre }}</span>
+                    Puesto #{{ $vendedor->numero_puesto }} - <span
+                        class="md:font-bold">{{ $mercadoLocal->nombre }}</span>
                 </div>
             </div>
         </div>
@@ -79,27 +81,26 @@
         <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
 
             @foreach ($products as $product)
+                <a href="{{ route('mercados.verproducto', $product->id) }}"
+                    class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
+                    <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
+                        src="{{ asset('imgs/' . $product->imagen_referencia) }}"
+                        alt="{{ $product->imagen_referencia }}">
+                    <div class="flex ">
+                        <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
+                            {{ $product->name }}
+                        </h1>
 
-            <a href="{{ route('mercados.verproducto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
-                <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
-                    src="{{ asset( 'imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
-                <div class="flex ">
-                    <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
-                        {{ $product->name }}
-                    </h1>
-
-                </div>
-                <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
-                <div class="flex justify-between">
-                    <h3>{{ $product->description }}</h3>
-                    <div class="flex items-center">
-                        <h3 class="mr-2">4.2</h3>
-                        <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
                     </div>
-                </div>
-            </a>
-
-
+                    <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
+                    <div class="flex justify-between">
+                        <h3>{{ $product->description }}</h3>
+                        <div class="flex items-center">
+                            <h3 class="mr-2">4.2</h3>
+                            <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                        </div>
+                    </div>
+                </a>
             @endforeach
 
         </div>

@@ -52,6 +52,21 @@ use Illuminate\Support\Facades\Hash;
         ->with('iVendedors', $iVendedors)
         ->with('iMercadoLocals', $iMercadoLocals);
 }
+public function perfil()
+    {
+        if (Auth::guard('mercado')->check()) {
+            // Obtener el vendedor autenticado desde el guard 'vendedor'
+            $mercadoLocal = Auth::guard('mercado')->user();
+
+            // Obtener la información del mercado local relacionado con el vendedor
+          
+
+            // Retornar la vista con los datos del vendedor, productos y mercado local
+            return view('MercadoProfileVista', compact('mercadoLocal'));
+        }
+
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
+    }
 
 
 
@@ -129,6 +144,8 @@ use Illuminate\Support\Facades\Hash;
         // Redireccionar o devolver una respuesta
         return redirect()->route('mercados.listavendedores', $id)->with('success', 'Vendedor actualizado correctamente.');
     }
+
+    
     public function agregarvendedor(){
         $vendedor = new Vendedor();
         $mercados = MercadoLocal::all(); 
