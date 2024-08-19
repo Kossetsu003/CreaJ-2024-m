@@ -144,7 +144,7 @@ public function perfil(){
          */
         public function productos(){
 
-            $id = 1;
+            $id =Auth::guard('vendedor')->user();
             $vendedor = Vendedor::with('mercadoLocal')->find($id);
             $id = 1;//ssion('fk_mercado');
             // Obtener todos los productos que pertenecen al vendedor con el ID especificado
