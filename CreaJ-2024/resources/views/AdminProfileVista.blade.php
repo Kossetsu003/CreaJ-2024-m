@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>AdminProfileVista</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,10 +37,7 @@
             </div>
         </div>
 
-
-
-
-         <div class="mx-auto max-w-lg mt-10"> <!-- Añadido un margen inferior -->
+         <div class=""> <!-- Añadido un margen inferior -->
             <!--INICIO DE NAVBAR MOBIL-->
             <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
                 <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
@@ -46,9 +51,6 @@
                         <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                     </div>
                     <div class="flex items-center">
-                        <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
-                    </div>
-                    <div class="flex items-center">
                 <?php $id = 1; ?>
                         <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
                     </div>
@@ -56,12 +58,11 @@
                 <!--FIN DE NAVBAR MOBIL-->
             </div>
 
-                <!--FIN DE NAVBAR MOBIL-->
-            </div>
-        <div class="bg-violet-500 h-auto pb-[4rem] pt-[2rem] w-full flex items-center justify-center">
-            <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
+            <!--FIN DE NAVBAR MOBIL-->
         </div>
-
+        <div class="bg-violet-500 h-auto pb-[4rem] pt-[2rem] w-full flex items-center justify-center">
+            <h3 class="text-[3rem] font-bold lg:text-[5rem]">Mini<span class="text-white ml-2">Shop</span></h3>
+        </div>
 
         <div class="flex justify-center mt-5">
             <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
@@ -86,37 +87,29 @@
     @endauth
 
         <div class="w-[50%] mx-auto mt-16">
-
             <div class=" mx-auto flex items-center">
                 <img class="w-5" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3>
             </div>
 
             <div class=" mx-auto flex items-center mt-10">
                 <img class="w-5" src="{{ asset('imgs/BuzonIcon.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3>
             </div>
-
 
             <div class=" mx-auto flex items-center mt-10">
                 <img class="w-5" src="{{ asset('imgs/addIcon.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Agregar Mercado</h3> <!-- Alineado a la derecha -->
+                <h3 class="flex-grow text-left font-bold ml-5">Agregar Mercado</h3>
             </div>
-
 
             <form action="{{ route('logout') }}" method="GET">
                 @csrf
                 <div class="mx-auto flex items-center mt-10">
                     <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
                     <button type="submit" class="flex-grow text-left font-bold ml-5">Cerrar Cuenta</button>
-                    <!-- Alineado a la derecha -->
                 </div>
             </form>
-
         </div>
-
-
     </div>
-
 </body>
 </html>
