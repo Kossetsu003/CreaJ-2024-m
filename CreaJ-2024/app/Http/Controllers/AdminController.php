@@ -49,6 +49,7 @@ use Illuminate\Support\Facades\Validator;
         return view('AdminHome', compact('mercadoLocals', 'vendedors', 'clientes'))
             ->with('i', (request()->input('page', 1) - 1) * $mercadoLocals->perPage());
         }
+
         public function crearmercados()
         {
             $mercadoLocal = new MercadoLocal(); // Crear nueva instancia de MercadoLocal
@@ -104,9 +105,10 @@ use Illuminate\Support\Facades\Validator;
 
             $mercadolocal->save();
 
-            return redirect()->route    ('admin.index')->with([
+            return redirect()->route('admin.index')->with([
                 'usuario' => $usuario,
-            '   password' => $password,
+                'password' => $password,
+                'nombre' =>$mercadolocal->nombre,
             ]);
         }
 

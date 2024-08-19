@@ -31,7 +31,7 @@
                     <label for="imagen_de_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
                         <span id="file-name" class="text-gray-400 text-xs">Imagen de <b>Usted</b> o de <b>Su Puesto</b>
                         </span>
-                        <input type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
+                        <input type="file" required accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
                         {!! $errors->first('imagen_de_referencia', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                         <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                     </label>
@@ -55,11 +55,11 @@
                         <input required type="email" name="usuario" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('usuario') is-invalid @enderror" value="{{ old('usuario') }}" id="usuario" placeholder="Escriba el correo electrónico">
                     </div>
                     <div class="flex justify-center">
-                        <input type="password"  maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror"  id="password" placeholder="Escriba su Contraseña">
+                        <input type="password" required  maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror"  id="password" placeholder="Escriba su Contraseña">
 
                     </div>
                     <div class="flex justify-center">
-                        <input type="password"  maxlength="8"  name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" placeholder="Confirme su Contraseña">
+                        <input type="password" required  maxlength="8"  name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" placeholder="Confirme su Contraseña">
 
                     </div>
                     <div class="flex justify-center mt-2">

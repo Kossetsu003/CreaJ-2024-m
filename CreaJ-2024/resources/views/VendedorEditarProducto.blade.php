@@ -115,10 +115,20 @@
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
                         <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
-                            <option class="font-bold text-xs text-white" value="null">Escoge su Categoría</option>
-                            <option class="font-bold text-xl text-gray-800" value="comedor" {{ $producto->categoria === 'comedor' ? 'selected' : '' }}>Comedor</option>
-                            <option class="font-bold text-xl text-gray-800" value="ropa" {{ $producto->categoria === 'ropa' ? 'selected' : '' }}>Ropa</option>
-                            <!-- Agrega más opciones según sea necesario -->
+                            <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
+                        <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                        <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
+                        <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
+                        <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
+                        <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
+                        <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
+                        <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
+                        <option class="font-bold text-xl text-gray-800" value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
+                        <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
+                        <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
+                        <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
+                        <option class="font-bold text-xl text-gray-800" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
+
                         </select>
                     </div>
 

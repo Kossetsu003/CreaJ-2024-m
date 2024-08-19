@@ -79,6 +79,11 @@
             <h3 class="font-bold">Administrador General</h3>
             <h3 class="text-xs">administracion@minishop.sv</h3>
         </div>
+        @auth
+        <div> {{ Auth::user()->nombre }}
+            {{ Auth::user()->apellido }} </div>
+        <div> {{ Auth::user()->telefono }} </div>
+    @endauth
 
         <div class="w-[50%] mx-auto mt-16">
 

@@ -38,6 +38,8 @@
     <div class="mx-auto  mt-10 mb-32 "> <!-- Añadido un margen inferior -->
 
 
+
+
          <!--INICIO DE NAVBAR MOBIL-->
         <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
@@ -72,7 +74,15 @@
                     <img class=" rounded-full w-12" src="{{ asset('imgs/MiCarritoUser.png') }}" alt="User Icon">
                 </div>
             </div>
-
+            @if(session('usuario') && session('password'))
+            <div class="bg-green-500 text-white text-center py-4 px-6 rounded-md mb-6 mx-4">
+                <strong>¡Nuevo Mercado Creado llamado "{{ session('nombre')}}"!</strong><br>
+                Las credenciales del mercado son las siguientes:<br>
+                <span><strong>Usuario:</strong> {{ session('usuario') }}</span><br>
+                <span><strong>Contraseña:</strong> {{ session('password') }}</span>
+                <p>Son Unicas asi que no se le olvide!</p>
+            </div>
+            @endif
 
 
         <!--<div class="mt-5">
@@ -95,7 +105,7 @@
 
             </div>
 
-            
+
 
             <div class="flex justify-center mt-5 flex-col items-center">
 
@@ -122,7 +132,7 @@
                     </div>
                 </a>
                 @endforeach
-                
+
                 <!--FIN DE PLANTILLA -->
             </div>
         </div>

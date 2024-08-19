@@ -71,7 +71,7 @@ Route::view('/UserHistorialPedidos','UserHistorialPedidos')->name('UserHistorial
 Route::view('/VendedorRegistroProducto','VendedorRegistroProducto')->name('VendedorRegistroProducto');/*
 Route::view('/VendedorEditarProducto','VendedorEditarProducto')->name('VendedorEditarProducto'); //
 Route::view('/VendedorMiBuzon','VendedorMiBuzon')->name('VendedorMiBuzon');*/
-Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista');/*
+Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfileVista')->middleware('check.user.session');/*
 Route::view('/VendedorProductoEnEspecifico','VendedorProductoEnEspecifico')->name('VendedorProductoEnEspecifico');
 Route::view('/VendedorEditarMiPuesto','VendedorEditarMiPuesto')->name('VendedorEditarMiPuesto'); //*/
 Route::view('/VendedorMisReservas','VendedorMisReservas')->name('VendedorMisReservas');/*
@@ -84,7 +84,7 @@ Route::view('/VendedorHome','VendedorHome')->name('VendedorHome');*/
 //ELIMINAR
 Route::view('/MercadoRegistrarVendedor','MercadoRegistrarVendedor')->name('MercadoRegistrarVendedor');
 Route::view('/MercadoEditarVendedor','MercadoEditarVendedor')->name('MercadoEditarVendedor');
-Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista');
+Route::view('/MercadoProfileVista','MercadoProfileVista')->name('MercadoProfileVista')->middleware('check.user.session');
 Route::view('/MercadoVista','MercadoVista')->name('MercadoVista'); //
 Route::view('/MercadoListadoVendedores','MercadoListadoVendedores')->name('MercadoListadoVendedores'); //
 Route::view('/MercadoPuestoDelVendedor','MercadoPuestoDelVendedor')->name('MercadoPuestoDelVendedor'); //
@@ -95,7 +95,7 @@ Route::view('/MercadoHome','MercadoHome')->name('MercadoHome');
 /*ELIMINAR
 Route::view('/AdminEditarMercado','AdminEditarMercado')->name('AdminEditarMercado');
 Route::view('/AdminListadoClientes','AdminListadoClientes')->name('AdminListadoClientes');*/
-Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista'); /*
+Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista')->middleware('check.user.session'); /*
 Route::view('/AdminHome','AdminHome')->name('AdminHome');*/
 Route::view('/AdminPuestosDelMercado','AdminPuestosDelMercado')->name('AdminPuestosDelMercado');/*
 Route::view('/AdminListadoVendedores','AdminListadoVendedores')->name('AdminListadoVendedores');
@@ -133,29 +133,29 @@ Route::resource('products', ProductController::class);
 /**RUTAS DEL ADMINISTRADOR
  */
 //mercadolocales
- Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
- Route::get('/admin/crearmercados', [AdminController::class, 'crearmercados'])->name('admin.crearmercados');
- Route::post('/admin/guardarmercados', [AdminController::class, 'guardarmercados'])->name('admin.guardarmercados');
- Route::get('/admin/vermercados/{id}', [AdminController::class, 'vermercados'])->name('admin.vermercados');
- Route::get('/admin/editarmercados/{id}', [AdminController::class, 'editarmercados'])->name('admin.editarmercados');
- Route::patch('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados');
- Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados');
+ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('check.user.session');
+ Route::get('/admin/crearmercados', [AdminController::class, 'crearmercados'])->name('admin.crearmercados')->middleware('check.user.session');
+ Route::post('/admin/guardarmercados', [AdminController::class, 'guardarmercados'])->name('admin.guardarmercados')->middleware('check.user.session');
+ Route::get('/admin/vermercados/{id}', [AdminController::class, 'vermercados'])->name('admin.vermercados')->middleware('check.user.session');
+ Route::get('/admin/editarmercados/{id}', [AdminController::class, 'editarmercados'])->name('admin.editarmercados')->middleware('check.user.session');
+ Route::patch('/admin/actualizarmercados/{id}', [AdminController::class, 'actualizarmercados'])->name('admin.actualizarmercados')->middleware('check.user.session');
+ Route::delete('/admin/eliminarmercados/{id}', [AdminController::class, 'eliminarmercados'])->name('admin.eliminarmercados')->middleware('check.user.session');
 
 
 //VENDEDORES
- Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores');
- Route::get('/admin/crearvendedores', [AdminController::class, 'crearvendedores'])->name('admin.crearvendedores');
- Route::post('/admin/guardarvendedores', [AdminController::class, 'guardarvendedores'])->name('admin.guardarvendedores');
- Route::get('/admin/vervendedores/{id}', [AdminController::class, 'vervendedores'])->name('admin.vervendedores');
- Route::get('/admin/editarvendedores/{id}', [AdminController::class, 'editarvendedores'])->name('admin.editarvendedores');
- Route::post('/admin/actualizarvendedor/{id}', [AdminController::class, 'actualizarvendedor'])->name('admin.actualizarvendedor');
- Route::delete('/admin/eliminarvendedores/{id}', [AdminController::class, 'eliminarvendedores'])->name('admin.eliminarvendedores');
+ Route::get('/admin/vendedores', [AdminController::class, 'vendedores'])->name('admin.vendedores')->middleware('check.user.session');
+ Route::get('/admin/crearvendedores', [AdminController::class, 'crearvendedores'])->name('admin.crearvendedores')->middleware('check.user.session');
+ Route::post('/admin/guardarvendedores', [AdminController::class, 'guardarvendedores'])->name('admin.guardarvendedores')->middleware('check.user.session');
+ Route::get('/admin/vervendedores/{id}', [AdminController::class, 'vervendedores'])->name('admin.vervendedores')->middleware('check.user.session');
+ Route::get('/admin/editarvendedores/{id}', [AdminController::class, 'editarvendedores'])->name('admin.editarvendedores')->middleware('check.user.session');
+ Route::post('/admin/actualizarvendedor/{id}', [AdminController::class, 'actualizarvendedor'])->name('admin.actualizarvendedor')->middleware('check.user.session');
+ Route::delete('/admin/eliminarvendedores/{id}', [AdminController::class, 'eliminarvendedores'])->name('admin.eliminarvendedores')->middleware('check.user.session');
  //CLIENTES
- Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes');
- Route::delete('/admin/eliminarclientes/{id}', [AdminController::class, 'eliminarclientes'])->name('admin.eliminarclientes');
+ Route::get('/admin/clientes', [AdminController::class, 'clientes'])->name('admin.clientes')->middleware('check.user.session');
+ Route::delete('/admin/eliminarclientes/{id}', [AdminController::class, 'eliminarclientes'])->name('admin.eliminarclientes')->middleware('check.user.session');
 //producto
-Route::get('/admin/verproducto/{id}', [AdminController::class, 'verproducto'])->name('admin.verproducto');
-Route::delete('/vendedores/eliminarreservationitem/{id}', [VendedoresController::class, 'eliminarreservationitem'])->name('vendedores.eliminarrreservationitem');
+Route::get('/admin/verproducto/{id}', [AdminController::class, 'verproducto'])->name('admin.verproducto')->middleware('check.user.session');
+Route::delete('/vendedores/eliminarreservationitem/{id}', [VendedoresController::class, 'eliminarreservationitem'])->name('vendedores.eliminarrreservationitem')->middleware('check.user.session');
 
 
 
