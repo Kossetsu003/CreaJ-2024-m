@@ -34,26 +34,25 @@ use Illuminate\Support\Facades\Hash;
 
  class MercadosController extends Controller
  {
-    public function index(){
-        $id = 1;
-        // Buscar el mercado local por ID
-    $mercadoLocal = MercadoLocal::find($id);
+    public function index()
+{
+    // Obtener el mercado autenticado usando el guard 'mercado'
+    $mercadoLocal = Auth::guard('mercado')->user();
 
-    // Obtener los vendedores con fk_mercado igual al ID del mercado local con paginación
-    $vendedors = Vendedor::where('fk_mercado', $id)->paginate();
+    // Filtrar los locales y vendedores asociados al mercado autenticado
+    $mercadoLocals = MercadoLocal::where('id', $mercadoLocal->id)->paginate();
+    $vendedors = Vendedor::where('fk_mercado', $mercadoLocal->id)->paginate();
 
-    // Retornar la vista con ambos datos
-    return view('MercadoHome', compact('mercadoLocal', 'vendedors'))
-        ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
+    // Calcular los índices de paginación
+    $iVendedors = (request()->input('page', 1) - 1) * $vendedors->perPage();
+    $iMercadoLocals = (request()->input('page', 1) - 1) * $mercadoLocals->perPage();
 
+    // Retornar la vista 'MercadoHome' con los datos paginados filtrados
+    return view('MercadoHome', compact('vendedors', 'mercadoLocals', 'mercadoLocal'))
+        ->with('iVendedors', $iVendedors)
+        ->with('iMercadoLocals', $iMercadoLocals);
+}
 
-    }
-    function editar($id){
-        $mercadoLocal = MercadoLocal::findOrFail($id); // Encontrar mercado local por ID
-
-        // Retornar vista 'AdminEditarMercado' con el mercado local a editar
-        return view('AdminEditarMercado', compact('mercadoLocal'));
-    }
 
 
 

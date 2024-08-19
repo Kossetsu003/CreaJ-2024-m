@@ -13,14 +13,14 @@ return [
             'provider' => 'users',
         ],
 
-        'mercado' => [ // Cambia el nombre del guard a 'mercado'
-            'driver' => 'session',
-            'provider' => 'mercados', // Asegúrate de que el provider coincida
-        ],
-
         'vendedor' => [
             'driver' => 'session',
-            'provider' => 'vendedores',
+            'provider' => 'vendedores', // Asegúrate de que coincida con el nombre correcto en 'providers'
+        ],
+
+        'mercado' => [
+            'driver' => 'session',
+            'provider' => 'mercados',
         ],
     ],
 
@@ -32,7 +32,7 @@ return [
 
         'mercados' => [
             'driver' => 'eloquent',
-            'model' => App\Models\MercadoLocal::class, // Asegúrate de que este modelo exista
+            'model' => App\Models\MercadoLocal::class,
         ],
 
         'vendedores' => [
@@ -51,14 +51,14 @@ return [
 
         'vendedores' => [
             'provider' => 'vendedores',
-            'table' => 'password_reset_tokens', // Asegúrate de que esta tabla exista
+            'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
 
         'mercados' => [
             'provider' => 'mercados',
-            'table' => 'password_reset_tokens', // Asegúrate de que esta tabla exista
+            'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
@@ -67,3 +67,4 @@ return [
     'password_timeout' => 10800,
 
 ];
+    

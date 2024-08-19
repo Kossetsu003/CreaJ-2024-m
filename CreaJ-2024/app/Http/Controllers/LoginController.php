@@ -18,10 +18,17 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-        $user = new User();
+        // Verificar si el nombre de usuario ya existe en alguna de las tablas
+        if (User::where('usuario', $request->usuario)->exists() || 
+            Vendedor::where('usuario', $request->usuario)->exists() || 
+            MercadoLocal::where('usuario', $request->usuario)->exists()) {
+            return redirect('register')->with('error', 'El nombre de usuario ya está en uso en otra tabla.');
+        }
 
+        // Creación del usuario
+        $user = new User();
         $user->usuario = $request->usuario;
-        $user->password = Hash::make($request->password); // Asegúrate de usar Hash::make()
+        $user->password = Hash::make($request->password); // Hashing de la contraseña
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->telefono = $request->telefono;
@@ -44,6 +51,7 @@ class LoginController extends Controller
         $user = User::where('usuario', $credentials['usuario'])->first();
         
         if ($user) {
+            \Log::info('Autenticando usuario: ' . $user->usuario);
             // Intentar autenticar al usuario en la tabla `User`
             if (Auth::attempt($credentials, $remember)) {
                 $request->session()->regenerate();
@@ -57,6 +65,7 @@ class LoginController extends Controller
             $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
             if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
                 Auth::guard('vendedor')->login($vendedor, $remember);
+                $request->session()->regenerate();
                 return $this->redirectUser(3);
             }
 
@@ -64,6 +73,7 @@ class LoginController extends Controller
             $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
             if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
                 Auth::guard('mercado')->login($mercado, $remember);
+                $request->session()->regenerate();
                 return $this->redirectUser(2);
             }
         }
