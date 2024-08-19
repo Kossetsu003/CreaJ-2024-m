@@ -16,7 +16,7 @@
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-blue-600"><b>Shop</b></span>
+            Mini <span class="text-blue-600"><b>Shop</b></span>
         </h1>
         </a>
         <div class="flex gap-8">
@@ -32,7 +32,8 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+    <div class=" absolute left-0 right-0 bottom-0">
+    <div class="md:hidden bottom-0 relative flex justify-center left-0 right-0 z-10 ">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
@@ -56,9 +57,10 @@
             </div>
         </div>
     </div>
-
-    <main class="p-4">
-        <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+    </div>
+    <!--  FIN Mobile Navbar -->
+    <main class="md:p-[3rem] flex z-10 left-0 right-0">
+        <div class="w-full bg-white p-8 rounded-lg md:shadow-lg">
             <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
                 Mis Reservas
             </div>
@@ -71,10 +73,10 @@
                 @foreach ($reservations as $reservation)
 
     @if ($reservation->estado != 'archivado')
-        <div class="p-4 border border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+        <div class="p-4 font-sans font-light border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
             <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Reserva:
                 @if ($reservation->estado == 'enviado')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-yellow-200 text-yellow-800 rounded">
+                    <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-amber-300 text-white rounded">
                        Enviado
                     </span>
                 @elseif($reservation->estado == 'sin_existencias')
@@ -112,7 +114,7 @@
 
             @foreach ($reservation->items as $item)
                 <!-- INICIO DE CARTA -->
-                <div class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <div class="my-2 p-4  border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                     <div class="flex items-center">
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}" class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
@@ -208,7 +210,7 @@
         </div>
 
     </main>
-    <footer class="bg-[#292526] pb-16">
+    <footer class="bg-[#292526] pb-16 pt-[5rem] bottom-0 relative ">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
             <div>
                 <b>
@@ -219,6 +221,7 @@
                 <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
             </div>
             <div>
+
                 <b>
                     <b>
                         <h2>Sobre nosotros</h2>
@@ -228,7 +231,7 @@
                     metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
                     locales.</p>
             </div>
-            <div class="md:self-end md:justify-self-end pb-4">
+            <div class="md:self-end md:justify-self-end pb-4" >
                 <p class="font-black text-5xl mb-4">Mini <span class="text-blue-600">Shop</span></p>
                 <div class="flex gap-2">
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
@@ -250,7 +253,6 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-[2px] bg-white"></div>
     </footer>
 </body>
 

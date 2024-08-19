@@ -55,14 +55,14 @@
             </div>
         </div>
     </div>
-
-    <main class="p-4">
-        <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+    <!-- Fin del Mobile Navbar -->
+    <main class="p-4 ">
+        <div class="w-full bg-white p-8  ">
             <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
                 Mi Carrito
             </div>
             @if (session('success'))
-            <div class="bg-green-500  w-[50%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
+            <div class="bg-emerald-600  w-[50%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
                 <span class="md:ml-[1rem]">{{ session('success') }}</span>
             </div>
             @endif
@@ -76,7 +76,7 @@
                 @foreach ($cartItems as $cartItem)
                 <!--INICIO DE LA CARTA-->
                 <div
-                    class="p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
+                    class="p-4  border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
                     <div class="flex items-center">
                         <!--INFO DEL PRODCUT-->
                         <img src="{{ asset('imgs/'. $cartItem->product->imagen_referencia) }}" alt="Imagen del producto"
@@ -107,12 +107,13 @@
                     @if ($cartItems->isEmpty())
                     <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">Guardar Reserva</button>
                 @else
-                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-green-500 rounded-md ml-2 hover:bg-green-600"  type="submit">Guardar Reserva</button>
+                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-emerald-300 rounded-md ml-2 hover:bg-emerald-500"  type="submit">Guardar Reserva</button>
                     @endif
                 </form>
             </div>
 
         </div>
+
 
     </main>
     <footer class="bg-[#292526] pb-16">
