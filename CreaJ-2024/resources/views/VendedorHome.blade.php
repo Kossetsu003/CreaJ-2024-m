@@ -74,7 +74,8 @@
                 <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
             </div>
         </div>
-        <div class="flex flex-col md:flex-row justify-center items-center w-screen mx-auto">
+        
+        <div class="flex flex-col xl:flex-row justify-center items-center w-screen mx-auto">
 
             <!-- Contenedor Principal -->
 
@@ -86,27 +87,27 @@
 
 
             <!-- Etiquetas -->
-            <div class="flex flex-col justify-center items-center md:items-start md:ml-8 mt-4 md:mt-0 text-center md:text-left">
+            <div class="flex flex-col  justify-center items-center lg:items-start md:ml-8 mt-4 lg:mt-0 text-center lg:text-left">
 
-                <div class="font-bold text-[1.5rem] md:text-[2.5rem]">
+                <div class="font-bold text-[1.5rem] lg:text-[2rem] ">
                     {{ $vendedor->nombre_del_local }}
                 </div>
-                <div class="text-[1rem] md:font-semibold  md:text-[1.5rem] mt-2">
-                    Propietario: <b class="uppercase">{{ $vendedor->nombre}} {{ $vendedor->apellidos}}</b>
+                <div class="text-[1rem] lg:font-semibold  lg:text-[1.5rem] mt-2">
+                    Propietario: <span>{{ $vendedor->nombre}} {{ $vendedor->apellidos}}</span>
                 </div>
-                <div class="font-semibold text-[1rem] md:text-[1.5rem] mt-2">
-                    Puesto #{{ $vendedor->numero_puesto}} - <span class="md:font-bold"> en {{ $mercadoLocal->nombre }}</span>
+                <div class="font-semibold text-[1rem] lg:text-[1.5rem] mt-2">
+                    Puesto #{{ $vendedor->numero_puesto}} - <span class=""> en {{ $mercadoLocal->nombre }}</span>
                 </div>
                 <!-- Añade más etiquetas aquí -->
-                <div class="text-[1rem] md:font-semibold  md:text-[1.5rem] mt-2">
+                <div class="text-[1rem] lg:font-semibold  lg:text-[1.5rem] mt-2">
                     Correo Electronico: <span>{{ $vendedor->usuario}}</span>
                 </div>
 
-                <div class="text-[1rem] md:font-semibold  md:text-xl mt-2">
-                    Clasificacion: <b class="uppercase text-orange-600">{{$vendedor->clasificacion}}</b>
+                <div class="text-[1rem] lg:font-semibold  lg:text-[1.5rem] mt-2">
+                    Clasificacion: <b class=" text-orange-600">{{$vendedor->clasificacion}}</b>
                 </div>
-                <div class="mt-4">
-                    <a href="{{ route('vendedores.editar',$vendedor->id) }}" class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-orange-500 rounded-md mt-2 hover:bg-orange-600" type="button">EDITAR MI PUESTO</a>
+                <div class="mt-4 md:mt-[2rem] xl:mt-[3rem]">
+                    <a href="{{ route('vendedores.editar',$vendedor->id) }}" class="lg:px-[2rem] lg:py-[1rem] lg:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-orange-500 rounded-md mt-2 hover:bg-orange-600" type="button">EDITAR MI PUESTO</a>
                 </div>
 
             </div>
