@@ -60,7 +60,7 @@ class LoginController extends Controller
 
     Auth::login($user);
 
-    return redirect(route('UserProfileVista','user'))->with('success', '¡Registro exitoso!');
+    return redirect(route('usuarios.index','user'))->with('success', '¡Registro exitoso!');
     }
 
     //LOGIN USER

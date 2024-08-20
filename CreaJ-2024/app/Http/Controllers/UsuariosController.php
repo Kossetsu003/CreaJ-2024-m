@@ -14,17 +14,18 @@ use App\Models\ReservationItem;
 //request
 use Illuminate\Http\Request;
 use App\Http\Request\UserRequest;
-use App\Http\Request\ClienteRequest;
+use App\Http\Requests\ClienteRequest;
 use App\Http\Request\MercadoLocalRequest;
 use App\Http\Request\VendedorRequest;
 use App\Http\Request\CartRequest;
 use App\Http\Request\ReservationRequest;
 use App\Http\Request\ProductRequest;
 
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
 
 
 /**
@@ -47,6 +48,44 @@ use Illuminate\Support\Facades\DB;
         return view('UserHome', compact('vendedors', 'mercadoLocals'))
         ->with('iVendedors', $iVendedors)
         ->with('iMercadoLocals', $iMercadoLocals);
+    }
+    public function create(){
+        $cliente = new Cliente();
+        return view('RegistroUser', compact('cliente'));
+
+    }
+    public function store(ClienteRequest $request){
+        $validator = Validator::make($request->all(), [
+            'usuario' => 'required|email|unique:clientes',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20|unique:clientes',
+            'sexo' => 'required|string',
+            'contrasena' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Crear cliente si la validación pasa
+        $cliente = Cliente::create([
+            'usuario' => $request->usuario,
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'telefono' => $request->telefono,
+            'sexo' => $request->sexo,
+            'contrasena' => bcrypt($request->contrasena), // Asegúrate de encriptar la contraseña
+        ]);
+
+        // Guardar el ID del cliente en la sesión
+        Session::put('id', $cliente->id);
+
+        return redirect()->route('LoginUser', ['success' => true]);
+
     }
 
     //VER MERCADO Y SUS PUESTOS
