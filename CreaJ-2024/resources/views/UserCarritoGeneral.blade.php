@@ -14,9 +14,9 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-blue-600"><b>Shop</b></span>
-        </h1>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+                Mini <span class="text-blue-600"><b>Shop</b></span>
+            </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
@@ -25,13 +25,16 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Carrito</a>
             <a href="{{ route('usuarios.reservas') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
-                    Perfil
-                </a>
+            <a href="{{ route('usuarios.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Historial</a>
+            <a
+                href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                Perfil
+            </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
-   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
@@ -62,59 +65,72 @@
                 Mi Carrito
             </div>
             @if (session('success'))
-            <div class="bg-emerald-600  w-[40%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
-                <span class="md:ml-[1rem]">{{ session('success') }}</span>
-            </div>
+                <div
+                    class="bg-emerald-600  w-[40%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
+                    <span class="md:ml-[1rem]">{{ session('success') }}</span>
+                </div>
             @endif
 
 
             <div class="space-y-4">
 
                 @if ($cartItems->isEmpty())
-                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Productos</span>
-            @else
-                @foreach ($cartItems as $cartItem)
-                <!--INICIO DE LA CARTA-->
-                <div
-                    class="p-4  border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
-                    <div class="flex items-center">
-                        <!--INFO DEL PRODCUT-->
-                        <img src="{{ asset('imgs/'. $cartItem->product->imagen_referencia) }}" alt="Imagen del producto"
-                            class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
-                        <div>
-                            <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]"> {{ $cartItem->product->name }}</h2>
-                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-semibold mb-[8px]">Precio: ${{ $cartItem->product->price }} c/u</p>
+                    <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay
+                        Productos</span>
+                @else
+                    @foreach ($cartItems as $cartItem)
+                        <!--INICIO DE LA CARTA-->
+                        <div
+                            class="p-4  border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50 ">
+                            <div class="flex items-center">
+                                <!--INFO DEL PRODCUT-->
+                                <img src="{{ asset('imgs/' . $cartItem->product->imagen_referencia) }}"
+                                    alt="Imagen del producto"
+                                    class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
+                                <div>
+                                    <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">
+                                        {{ $cartItem->product->name }}</h2>
+                                    <p class="text-sm md:text-[1.5rem] text-gray-600 font-semibold mb-[8px]">Precio:
+                                        ${{ $cartItem->product->price }} c/u</p>
 
-                            <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold">Cantidad: {{ $cartItem->quantity }} - Subtotal: ${{ $cartItem->product->price * $cartItem->quantity }} </p>
+                                    <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold">Cantidad:
+                                        {{ $cartItem->quantity }} - Subtotal:
+                                        ${{ $cartItem->product->price * $cartItem->quantity }} </p>
+                                </div>
+                            </div>
+                            <!--BOTNOES-->
+                            <div class="flex">
+                                <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button
+                                        class="md:px-[2rem] md:py-[1rem] md:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600"
+                                        type="submit">Cancelar</button>
+                            </div>
                         </div>
-                    </div>
-                    <!--BOTNOES-->
-                    <div class="flex">
-                        <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-
-                            <button class="md:px-[2rem] md:py-[1rem] md:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-red-500 rounded-md ml-2 hover:bg-red-600" type="submit">Cancelar</button>
-                    </div>
-                </div>
-            </form>
-                @endforeach
-            @endif
+                        </form>
+                    @endforeach
+                @endif
                 <!--FIN DE LA CARTA-->
                 <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
                 <form action="{{ route('usuarios.reservar') }}" method="POST">
                     @csrf
                     @if ($cartItems->isEmpty())
+                        <button
+                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
+                            type="button">Guardar Reserva</button>
+                    @elseif ($total < 5)
+                        <p class="text-xl text-justify w-60">El Pedido minimo para una reserva es de <b>$5.00</b>. Usted
+                            le faltan <b>${{ $restante = '5' - $total }}</b></p>
 
-                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">Guardar Reserva</button>
-                    @elseif ( $total < 5 )
-
-                    <p class="text-xl text-justify w-60">El Pedido minimo para una reserva es de <b>$5.00</b>. Usted le faltan <b>${{ $restante = '5'-$total }}</b></p>
-
-                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600" type="button">Guardar Reserva</button>
-
-                @else
-                    <button class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-emerald-300 rounded-md ml-2 hover:bg-emerald-500"  type="submit">Guardar Reserva</button>
+                        <button
+                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
+                            type="button">Guardar Reserva</button>
+                    @else
+                        <button
+                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-emerald-300 rounded-md ml-2 hover:bg-emerald-500"
+                            type="submit">Guardar Reserva</button>
                     @endif
                 </form>
             </div>

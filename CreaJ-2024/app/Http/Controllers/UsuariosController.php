@@ -126,14 +126,19 @@ use Illuminate\Support\Facades\Validator;
         // Obtener el producto específico por su ID
         $product = Product::find($id);
 
-        // Obtener todos los productos con paginación
-        $products = Product::where('id', '!=', $id)->paginate();
+        // Obtener otros 3 productos de la misma categoría que no sean el actual
+        $products = Product::where('id', '!=', $id)
+        ->where('categoria', $product->categoria)
+        ->take(3)
+            ->get();
         $vendedor = $product->vendedor;
 
         // Retornar la vista con ambos datos
-        return view('UserProductoEnEspecifico', compact('product', 'products','vendedor'))
-            ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
+        return view('UserProductoEnEspecifico', compact('product', 'products', 'vendedor'))
+        ->with('i', 0); // Ajustar 'i' manualmente si es necesario
     }
+
+
 
     //AGREGAR EL PRODUCTO AL CARRITO
     public function addcarrito(Request $request, Product $product)
@@ -230,6 +235,17 @@ use Illuminate\Support\Facades\Validator;
     {
         // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
         $reservations = Reservation::where('fk_user', Auth::id())->with('items.product')->get();
+
+        return view('UserEstadoReservas', compact('reservations'));
+    }
+    public function historial()
+    {
+        // Obtener las reservas del usuario autenticado con los ítems y productos relacionados
+        // y que el estado sea "archivado"
+        $reservations = Reservation::where('fk_user', Auth::id())
+        ->where('estado', 'archivado')
+        ->with('items.product')
+        ->get();
 
         return view('UserEstadoReservas', compact('reservations'));
     }
