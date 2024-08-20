@@ -68,59 +68,33 @@ public function LoginUser(Request $request)
 {
     $credentials = $request->only('usuario', 'password');
     $remember = $request->filled('remember');
-    $user = null;
 
-    $request->validate([
-        'usuario' => 'required|email',
-        'password' => 'required|min:8',
-    ], [
-        'usuario.required' => 'El campo correo electrónico es obligatorio.',
-        'usuario.email' => 'Debe ingresar un correo electrónico válido.',
-        'password.required' => 'El campo contraseña es obligatorio.',
-        'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-    ]);
-
-    // Autenticar según el rol
-    $user = User::where('usuario', $credentials['usuario'])->first();
-
-    if ($user) {
-        \Log::info('Autenticando usuario: ' . $user->usuario);
-        // Intentar autenticar al usuario en la tabla `User`
-        if (Auth::attempt($credentials, $remember)) {
-            $request->session()->regenerate();
-            return $this->redirectUser($user->ROL);
-        } else {
-            return back()->withErrors(['password' => 'La contraseña es incorrecta.'])->withInput();
-        }
-    } else {
-        return back()->withErrors(['usuario' => 'El correo electrónico no está registrado.'])->withInput();
+    // Intentar autenticar al usuario en la tabla `User`
+    if (Auth::attempt($credentials, $remember)) {
+        $request->session()->regenerate();
+        $user = Auth::user();
+        return $this->redirectUser($user->ROL);
     }
 
     // Si no es un usuario, intentar en las otras tablas según el rol
-    if (!$user) {
-        // Autenticación para el rol de Vendedor (rol 3)
-        $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
-        if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
-            Auth::guard('vendedor')->login($vendedor, $remember);
-            $request->session()->regenerate();
-            return $this->redirectUser(3);
-        } else {
-            return back()->withErrors(['password' => 'La contraseña es incorrecta.'])->withInput();
-        }
+    $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
+    if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
+        Auth::guard('vendedor')->login($vendedor, $remember);
+        $request->session()->regenerate();
+        return $this->redirectUser(3);
+    }
 
-        // Autenticación para el rol de Mercado (rol 2)
-        $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
-        if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
-            Auth::guard('mercado')->login($mercado, $remember);
-            $request->session()->regenerate();
-            return $this->redirectUser(2);
-        } else {
-            return back()->withErrors(['password' => 'La contraseña es incorrecta.'])->withInput();
-        }
+    $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
+    if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
+        Auth::guard('mercado')->login($mercado, $remember);
+        $request->session()->regenerate();
+        return $this->redirectUser(2);
     }
 
     // Si la autenticación falla
-    return redirect('login')->with('error', 'Credenciales incorrectas. Inténtelo de nuevo.');
+    return redirect('login')->withErrors([
+        'usuario' => 'Credenciales incorrectas. Inténtelo de nuevo.',
+    ]);
 }
 
 
