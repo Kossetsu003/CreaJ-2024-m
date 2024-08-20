@@ -64,7 +64,7 @@ Route::view('/VendedorProfileVista','VendedorProfileVista')->name('VendedorProfi
 /*Administrador General*/
 Route::view('/AdminProfileVista','AdminProfileVista')->name('AdminProfileVista')->middleware('check.user.session');
 
-
+Route::view('/UserHistorialPedidos', 'UserHistorialPedidos')->name('UserHistorialPedidos')->middleware('check.user.session');
 
 
 
@@ -120,6 +120,7 @@ Route::get('/usuarios/reservas', [UsuariosController::class, 'reservas'])->name(
 Route::post('/usuarios/publicarestadoreserva/{id}', [UsuariosController::class, 'publicarestadoreserva'])->name('usuarios.publicarestadoreserva')->middleware('check.user.session');
 Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
 Route::post('/usuarios/store', [UsuariosController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios/historial', [UsuariosController::class, 'historial'])->name('usuarios.historial');
 
 
 

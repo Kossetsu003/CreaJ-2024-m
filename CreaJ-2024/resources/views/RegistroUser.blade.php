@@ -54,7 +54,7 @@
                         <span class="text-red-500 text-xs mt-1">{{ $errors->first('apellido') }}</span>
                     @endif
             
-                    <input required type="text" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2" value="{{ old('telefono') }}">
+                    <input required type="text" maxlength="8" name="telefono" id="telefono" placeholder="Ingrese su Número de Teléfono" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2" value="{{ old('telefono') }}">
                     @if ($errors->has('telefono'))
                         <span class="text-red-500 text-xs mt-1">{{ $errors->first('telefono') }}</span>
                     @endif
@@ -68,12 +68,12 @@
                         <span class="text-red-500 text-xs mt-1">{{ $errors->first('sexo') }}</span>
                     @endif
             
-                    <input required type="password" maxlength="8" name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
+                    <input required type="password"  name="password" id="contrasena" placeholder="Escriba su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
                     @if ($errors->has('password'))
                         <span class="text-red-500 text-xs mt-1">{{ $errors->first('password') }}</span>
                     @endif
             
-                    <input required type="password" maxlength="8" name="contrasena_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
+                    <input required type="password"  name="password_confirmation" id="contrasena_confirmation" placeholder="Escriba de nuevo su Contraseña" class="border rounded border-gray-400 w-full md:h-12 h-9 pl-5 md:text-[1rem] text-xs mt-2">
                 </div>
             
                 <div class="flex justify-center mt-5">

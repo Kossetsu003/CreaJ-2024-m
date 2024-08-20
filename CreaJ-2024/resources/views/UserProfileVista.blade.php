@@ -17,13 +17,13 @@
     <title>ProfileUser</title>
 </head>
 
-<body >
+<body>
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('usuarios.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-blue-600"><b>Shop</b></span>
-        </h1>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
+                Mini <span class="text-blue-600"><b>Shop</b></span>
+            </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('usuarios.index') }}"
@@ -32,13 +32,16 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Carrito</a>
             <a href="{{ route('usuarios.reservas') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
-                    Perfil
-                </a>
+            <a href="{{ route('usuarios.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Historial</a>
+            <a
+                href="{{ route('UserProfileVista') }}"class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                Perfil
+            </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
-   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
