@@ -154,7 +154,7 @@
 
 
     <footer class="bg-[#292526] pb-16">
-        <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white p-12">
+        <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white p-[3rem]">
             <div class="hidden md:block">
                 <h2 class="font-bold">Contact Us</h2>
                 <p>Whatsapp: wa.me/50369565421</p>

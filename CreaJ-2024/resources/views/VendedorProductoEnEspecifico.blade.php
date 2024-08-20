@@ -9,12 +9,11 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
-            <!-- Desktop Navbar -->
-    <!-- Desktop Navbar -->
-    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+         <!-- Desktop Navbar -->
+     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-orange-600"><b>Vendedores</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+             Mini <span class="text-rose-400 font-bold">Vendedores</span>
         </h1>
         </a>
         <div class="flex gap-8">
@@ -57,6 +56,8 @@
             </div>
         </div>
     </div>
+    <!-- fin del Mobile Navbar -->
+
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <img class="rounded-lg h-[25rem] object-cover w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
@@ -79,14 +80,14 @@
                     <p class="text-xl lg:text-2xl text-gray-900">${{ $product->price }}</p>
                 </div>
 
-                <a class="w-full bg-orange-800 text-white text-lg font-bold py-3 rounded-lg hover:bg-orange-700 flex items-center justify-center my-4 uppercase" href="{{ route('vendedores.editarproducto', $product->id) }}">
+                <a class="w-full bg-sky-300 hover:bg-sky-400 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase" href="{{ route('vendedores.editarproducto', $product->id) }}">
 
                     Editar
                 </a>
                 <form action="{{ route('vendedores.eliminarproducto', $product->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                <input type="submit" class="w-full bg-red-800 text-white text-lg font-bold py-3 rounded-lg hover:bg-red-700 flex items-center justify-center my-4 uppercase" value="ELIMINAR">
+                <input type="submit" class="w-full bg-red-400 hover:bg-red-500 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase" value="ELIMINAR">
             </form>
             </div>
         </div>
@@ -97,7 +98,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product Card 1 -->
                 @foreach ($products as $product)
-                <a href="{{ route('vendedores.verproducto', $product->id) }} class="bg-white p-6 rounded-lg shadow-lg">
+                <a href="{{ route('vendedores.verproducto', $product->id) }} class="bg-white p-6 rounded-lg shadow-lg ">
                     <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{$product->imagen_referencia}}">
                     <h3 class="font-bold text-lg text-gray-800">{{ $product->name }}</h3>
                     <p class="text-gray-600 mb-4">                    <p class="text-gray-600 mb-4">{{ $product->vendedor->nombre_del_local }}. Precio: ${{ $product->price }}</p>
