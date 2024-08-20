@@ -35,7 +35,7 @@
 
 
 
-     <div class="mx-auto max-w-lg mt-10"> <!-- Añadido un margen inferior -->
+    <div class="mx-auto max-w-lg mt-10"> <!-- Añadido un margen inferior -->
         <!--INICIO DE NAVBAR MOBIL-->
         <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
@@ -48,9 +48,7 @@
                 <div class="flex items-center">
                     <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
-                <div class="flex items-center">
-                    <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
-                </div>
+
                 <div class="flex items-center">
             <?php $id = 1; ?>
                     <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>

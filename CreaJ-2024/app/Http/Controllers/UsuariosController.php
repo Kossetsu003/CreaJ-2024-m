@@ -196,5 +196,157 @@ use Illuminate\Support\Facades\DB;
     }
 
 
+
+
+    /**
+     * CAMBIAR ESTADO RESERVAS
+     */
+    public function publicarestadoreserva(Request $request, $id)
+        {
+            // Obtener el ReservationItem por ID
+            $item = ReservationItem::find($id);
+
+            // Verificar si el item fue encontrado
+            if (!$item) {
+                return redirect()->route('usuarios.reservas')->with('error', 'El ítem de la reserva no fue encontrado.');
+            }
+
+            // Verificar si el item pertenece al vendedor con id = 1
+            if ($item->reservation->user->id == Auth::id()) {
+                // Validar el estado enviado
+                $estadoValido = ['enviado', 'sin_existencias', 'en_espera', 'sin_espera', 'en_entrega', 'recibido', 'sin_recibir', 'problemas', 'archivado'];
+                $nuevoEstado = $request->input('estado');
+
+                if (in_array($nuevoEstado, $estadoValido)) {
+                    // Actualizar el estado del item
+                    $item->estado = $nuevoEstado;
+                    $item->save();
+
+
+                    /**
+                     * SIN EXISTENCIAS
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'sin_existencias')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'sin_existencias';
+                        $reserva->save();
+                    }
+                    /**
+                     * EN ESPERA
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'en_espera')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'en_espera';
+                        $reserva->save();
+                    }
+                    /**
+                     * SIN ESPERA
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'sin_espera')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'sin_espera';
+                        $reserva->save();
+                    }
+
+
+
+
+
+                    /**
+                     * En ENTREGA
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'en_entrega')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'en_entrega';
+                        $reserva->save();
+                    }
+                    /**
+                     * SIN RECIBIR
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'sin_recibir')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'sin_recibir';
+                        $reserva->save();
+                    }
+                    /**
+                     * PROBLEMA
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'problema')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'problema';
+                        $reserva->save();
+                    }
+                    /**
+                     * RECIBIDO
+                     */
+                    // Verificar si todos los items relacionados tienen estado 'en_entrega'
+                    $fk_reservation = $item->fk_reservation;
+                    $todosEnEntrega = ReservationItem::where('fk_reservation', $fk_reservation)
+                        ->where('estado', '!=', 'recibido')
+                        ->count() == 0;
+
+                    if ($todosEnEntrega) {
+                        // Actualizar el estado de la reserva a 'en_entrega'
+                        $reserva = Reservation::find($fk_reservation);
+                        $reserva->estado = 'recibido';
+                        $reserva->save();
+                    }
+
+
+                    // Redireccionar a la vista o hacer otra acción
+                    return redirect()->route('usuarios.reservas')->with('success', 'El estado de la reserva ha sido actualizado.');
+                } else {
+                    // Estado no válido
+                    return redirect()->route('usuarios.reservas')->with('error', 'El estado proporcionado no es válido.');
+                }
+            } else {
+                // Si no pertenece al vendedor correcto, mostrar un error
+                return redirect()->route('usuarios.reservas')->with('error', 'No tienes permiso para actualizar este item.');
+            }
+        }
+
+
  }
 

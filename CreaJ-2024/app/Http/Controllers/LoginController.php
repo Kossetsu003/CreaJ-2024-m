@@ -18,18 +18,21 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
-         // Validación de los datos con unicidad
-    $request->validate([
-        'usuario' => 'required|email|unique:users,usuario', // El correo debe ser único en la tabla users
-        'nombre' => 'required|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'telefono' => 'required|string|max:8|unique:users,telefono', // El teléfono debe ser único en la tabla users
-        'sexo' => 'required|in:Masc,Fem', // Debe ser Masculino o Femenino
-        'password' => 'required|min:8|', // Mínimo 8 caracteres y debe coincidir con la confirmación
-    ]);
+        // Verificar si el nombre de usuario ya existe en alguna de las tablas
+        if (User::where('usuario', $request->usuario)->exists() || 
+            Vendedor::where('usuario', $request->usuario)->exists() || 
+            MercadoLocal::where('usuario', $request->usuario)->exists()) {
+            return redirect('register')->with('error', 'El nombre de usuario ya está en uso en otra tabla.');
+        }
 
-    // Crear un nuevo usuario si la validación pasa
-    $user = new User();
+        // Creación del usuario
+        $user = new User();
+        $user->usuario = $request->usuario;
+        $user->password = Hash::make($request->password); // Hashing de la contraseña
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->telefono = $request->telefono;
+        $user->sexo = $request->sexo;
 
     $user->usuario = $request->usuario;
     $user->password = Hash::make($request->password);
@@ -55,6 +58,7 @@ class LoginController extends Controller
         $user = User::where('usuario', $credentials['usuario'])->first();
         
         if ($user) {
+            \Log::info('Autenticando usuario: ' . $user->usuario);
             // Intentar autenticar al usuario en la tabla `User`
             if (Auth::attempt($credentials, $remember)) {
                 $request->session()->regenerate();
@@ -68,6 +72,7 @@ class LoginController extends Controller
             $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
             if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
                 Auth::guard('vendedor')->login($vendedor, $remember);
+                $request->session()->regenerate();
                 return $this->redirectUser(3);
             }
 
@@ -75,6 +80,7 @@ class LoginController extends Controller
             $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
             if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
                 Auth::guard('mercado')->login($mercado, $remember);
+                $request->session()->regenerate();
                 return $this->redirectUser(2);
             }
         }

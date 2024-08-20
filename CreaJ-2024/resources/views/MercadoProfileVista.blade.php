@@ -27,9 +27,9 @@
             <h3 class="text-[10px]"> <span class="ml-2">5.0</span></h3>
         </div>
         <div class="text-center mt-3">
-            <h3 class="text-xs">Puesto de Comida</h3>
-            <h3 class="font-bold">Andrew Food</h3>
-            <h3 class="text-xs">corre123@gmail.com</h3>
+            <h3 class="text-xs">{{ $mercadoLocal->municipio }}</h3>
+            <h3 class="font-bold">{{ $mercadoLocal->nombre }}</h3>
+            <h3 class="text-xs">{{ $mercadoLocal->usuario }}</h3>
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
@@ -50,11 +50,14 @@
             </div>
 
 
-            <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold  ml-5">Cerrar Cuenta</h3> <!-- Alineado a la derecha -->
-            </div>
-
+            <form action="{{ route('logout') }}" method="GET">
+                @csrf
+                <div class="mx-auto flex items-center mt-10">
+                    <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
+                    <button type="submit" class="flex-grow text-left font-bold ml-5">Cerrar Cuenta</button>
+                    <!-- Alineado a la derecha -->
+                </div>
+            </form>
 
         </div>
 

@@ -27,7 +27,7 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
             <a href="{{ route('vendedores.historial') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
-            <a href="{{ route('VendedorProfileVista') }}"
+            <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
                     Perfil
                 </a>
@@ -84,8 +84,8 @@
                 @foreach ($productos as $producto)
                 <div class=" my-10 p-4 border border-gray-200 rounded-lg flex flex-col mx-auto w-[75%] h-[250px]  md:flex-row md:items-start gap-4 md:gap-6 transition duration-300 hover:bg-gray-50">
                     <!-- Imagen del Producto -->
-                    <div class="flex-shrink-0 w-full max-h-fit md:w-1/4">
-                        <img src="{{ asset('imgs/'. $producto->imagen_referencia) }}" alt="Imagen del Producto" class="w-full max-h-fit rounded-md object-cover">
+                    <div class="flex-shrink-0 w-full h-auto md:w-1/4">
+                        <img src="{{ asset('imgs/'. $producto->imagen_referencia) }}" alt="Imagen del Producto" class="w-full h-[12rem] rounded-md object-cover">
                     </div>
 
                     <!-- Información del Producto -->

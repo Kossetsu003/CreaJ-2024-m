@@ -26,7 +26,7 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Reservas</a>
             <a href="{{ route('vendedores.historial') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
-            <a href="{{ route('VendedorProfileVista') }}"
+            <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
                     Perfil
                 </a>
@@ -59,7 +59,7 @@
     </div>
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <img class="rounded-lg w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
+            <img class="rounded-lg h-[25rem] object-cover w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
             alt="{{ $product->imagen_referencia }}">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center mb-6">

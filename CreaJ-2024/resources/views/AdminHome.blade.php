@@ -38,6 +38,8 @@
     <div class="mx-auto  mt-10 mb-32 "> <!-- Añadido un margen inferior -->
 
 
+
+
          <!--INICIO DE NAVBAR MOBIL-->
         <div class="bottom-bar fixed bottom-[1%] left-0 right-0 flex justify-center md:hidden">
             <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
@@ -50,9 +52,7 @@
                 <div class="flex items-center">
                     <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}" alt="User Icon"></a>
                 </div>
-                <div class="flex items-center">
-                    <a href="./AdminEstadoPedidos" ><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}" alt="User Icon"></a>
-                </div>
+
                 <div class="flex items-center">
             <?php $id = 1; ?>
                     <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
@@ -72,14 +72,22 @@
                     <img class=" rounded-full w-12" src="{{ asset('imgs/MiCarritoUser.png') }}" alt="User Icon">
                 </div>
             </div>
-
+            @if(session('usuario') && session('password'))
+            <div class="bg-green-500 text-white text-center py-4 px-6 rounded-md mb-6 mx-4">
+                <strong>¡Nuevo Mercado Creado llamado "{{ session('nombre')}}"!</strong><br>
+                Las credenciales del mercado son las siguientes:<br>
+                <span><strong>Usuario:</strong> {{ session('usuario') }}</span><br>
+                <span><strong>Contraseña:</strong> {{ session('password') }}</span>
+                <p>Son Unicas asi que no se le olvide!</p>
+            </div>
+            @endif
 
 
         <!--<div class="mt-5">
                 <img class="w-[100%]" src="{{ asset('imgs/PortadaMiniShop.png') }}" alt="User Icon">
             </div>-->
             <div class="w-screen hidden md:block">
-                <img class="w-full h-[35rem] object-cover" src="{{ asset('imgs/PortadaMiniShop.png') }}" alt="Banner Image">
+                <img class="w-full h-[35rem] object-cover" src="{{ asset('imgs/mercadolatiendona.png') }}" alt="Banner Image">
             </div>
 
             <div class="flex mt-5 justify-around w-[90%] mx-auto">
@@ -95,11 +103,13 @@
 
             </div>
 
+
+
             <div class="flex justify-center mt-5 flex-col items-center">
 
                 @foreach ($mercadoLocals as $mercadoLocal)
                 <!--INICIO DE PLANTILLA-->
-                <a href="{{ route('admin.vermercados',$mercadoLocal->id) }}" class="md:w-[30%] w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4 ">
+                <a href="{{ route('admin.vermercados',$mercadoLocal->id) }}" class="md:w-[30%] w-[80%] rounded-md  border-gray-200 mb-4 ">
                     <div>
                         <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="{{ $mercadoLocal->imagen_referencia }}">
                         <div class="text-center mt-2">
@@ -107,9 +117,9 @@
                             <h3 class="w-[85%] mx-auto text-xs text-justify pb-5">El {{ $mercadoLocal->nombre }} se encuentra en {{ $mercadoLocal->ubicacion }}, en el municipio de {{ $mercadoLocal->municipio }}. En el horario siguiente: {{ $mercadoLocal->horaentrada }} - {{ $mercadoLocal->horasalida }}. {{ $mercadoLocal->descripcion }}</h3>
                         </div>
                     </div>
-                    <div class="flex justify-center item-center">
+                    <div class=" flex justify-between space-x-4 p-4 ">
                         <!--EDITAR-->
-                        <a class="bg-orange-500 text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success" href="{{ route('admin.editarmercados',$mercadoLocal->id) }}">Editar</a>
+                        <a class=" text-white text-xs px-3 py-2 rounded z-[2] btn btn-sm btn-success bg-purple-400 " href="{{ route('admin.editarmercados',$mercadoLocal->id) }}">Editar</a>
 
                     <!--ELIMINAR-->
                         <form action="{{ route('admin.eliminarmercados',$mercadoLocal->id) }}" method="POST" class="relative">
@@ -117,9 +127,10 @@
                         @method('DELETE')
                         <button type="submit" class=" bg-red-500 text-white text-xs px-3 py-2 rounded btn btn-danger btn-sm z-[3] "><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
                         </form>
-                     </div>
+                    </div>
                 </a>
                 @endforeach
+
                 <!--FIN DE PLANTILLA -->
             </div>
         </div>

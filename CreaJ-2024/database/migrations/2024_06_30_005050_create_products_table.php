@@ -52,61 +52,284 @@ return new class extends Migration
             'estado' => 'Disponible',
             'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
         ]);
-        /**
-         * EMBUTIDOS COJUTEPECANOS
-         */DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);
-        /**
-         * Artesanias
-         */
-        DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);DB::table('products')->insert([
-            'name' => 'Lasagna',
-            'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
-            'price' => 2.75,
-            'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
-            'estado' => 'Disponible',
-            'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
-        ]);
+        // Productos para el vendedor 1 del Mercado 1
+DB::table('products')->insert([
+    [
+        'name' => 'Lasagna',
+        'description' => 'Almuerzo de Lasagna, con dos acompañamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
+        'price' => 2.75,
+        'imagen_referencia' => 'lasagna.png',
+        'categoria' => 'Comida',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 1,  // Vendedor 1 del Mercado 1
+    ],
+    [
+        'name' => 'Pizza Margarita',
+        'description' => 'Pizza Margarita con salsa de tomate, mozzarella y albahaca.',
+        'price' => 3.50,
+        'imagen_referencia' => 'pizza_margarita.png',
+        'categoria' => 'Comida',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 1,
+    ],
+    [
+        'name' => 'Ensalada Caesar',
+        'description' => 'Ensalada Caesar con pollo, lechuga, crutones y aderezo Caesar.',
+        'price' => 2.25,
+        'imagen_referencia' => 'ensalada_caesar.png',
+        'categoria' => 'Comida',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 1,
+    ],
+]);
+
+// Productos para el vendedor 2 del Mercado 1
+DB::table('products')->insert([
+    [
+        'name' => 'Camisa Azul',
+        'description' => 'Camisa de algodón azul, talla M.',
+        'price' => 15.00,
+        'imagen_referencia' => 'camisa_azul.png',
+        'categoria' => 'Ropa',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 2,  // Vendedor 2 del Mercado 1
+    ],
+    [
+        'name' => 'Zapatos Negros',
+        'description' => 'Zapatos de cuero negro, talla 42.',
+        'price' => 40.00,
+        'imagen_referencia' => 'zapatos_negros.png',
+        'categoria' => 'Calzado',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 2,
+    ],
+    [
+        'name' => 'Sombrero Beige',
+        'description' => 'Sombrero de paja beige, tamaño único.',
+        'price' => 12.00,
+        'imagen_referencia' => 'sombrero_beige.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 2,
+    ],
+]);
+
+// Productos para el vendedor 3 del Mercado 1
+DB::table('products')->insert([
+    [
+        'name' => 'Cinta Métrica',
+        'description' => 'Cinta métrica de 5 metros.',
+        'price' => 8.00,
+        'imagen_referencia' => 'cinta_metrica.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 3,  // Vendedor 3 del Mercado 1
+    ],
+    [
+        'name' => 'Martillo',
+        'description' => 'Martillo de acero con mango de madera.',
+        'price' => 10.00,
+        'imagen_referencia' => 'martillo.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 3,
+    ],
+    [
+        'name' => 'Destornillador',
+        'description' => 'Juego de destornilladores, incluye tamaños pequeños y grandes.',
+        'price' => 6.00,
+        'imagen_referencia' => 'destornillador.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 3,
+    ],
+]);
+
+// Productos para el vendedor 1 del Mercado 2
+DB::table('products')->insert([
+    [
+        'name' => 'Pan de Ajo',
+        'description' => 'Pan recién horneado con ajo y perejil.',
+        'price' => 1.50,
+        'imagen_referencia' => 'pan_de_ajo.png',
+        'categoria' => 'Panadería',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 4,  // Vendedor 1 del Mercado 2
+    ],
+    [
+        'name' => 'Croissant',
+        'description' => 'Delicioso croissant de mantequilla.',
+        'price' => 2.00,
+        'imagen_referencia' => 'croissant.png',
+        'categoria' => 'Panadería',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 4,
+    ],
+    [
+        'name' => 'Baguette',
+        'description' => 'Baguette crujiente y dorada.',
+        'price' => 1.75,
+        'imagen_referencia' => 'baguette.png',
+        'categoria' => 'Panadería',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 4,
+    ],
+]);
+
+// Productos para el vendedor 2 del Mercado 2
+DB::table('products')->insert([
+    [
+        'name' => 'Sandalias Verano',
+        'description' => 'Sandalias cómodas para verano, talla 38.',
+        'price' => 25.00,
+        'imagen_referencia' => 'sandalias_verano.png',
+        'categoria' => 'Calzado',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 5,  // Vendedor 2 del Mercado 2
+    ],
+    [
+        'name' => 'Cinturón Cuero',
+        'description' => 'Cinturón de cuero negro, talla ajustable.',
+        'price' => 20.00,
+        'imagen_referencia' => 'cinturon_cuero.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 5,
+    ],
+    [
+        'name' => 'Bufanda Lana',
+        'description' => 'Bufanda de lana para el invierno.',
+        'price' => 15.00,
+        'imagen_referencia' => 'bufanda_lana.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 5,
+    ],
+]);
+
+// Productos para el vendedor 3 del Mercado 2
+DB::table('products')->insert([
+    [
+        'name' => 'Brocas para Taladro',
+        'description' => 'Juego de brocas para taladro, diferentes tamaños.',
+        'price' => 12.00,
+        'imagen_referencia' => 'brocas_taladro.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 6,  // Vendedor 3 del Mercado 2
+    ],
+    [
+        'name' => 'Sierra de Mano',
+        'description' => 'Sierra de mano de alta calidad.',
+        'price' => 18.00,
+        'imagen_referencia' => 'sierra_mano.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 6,
+    ],
+    [
+        'name' => 'Llave Inglesa',
+        'description' => 'Llave inglesa ajustable.',
+        'price' => 9.00,
+        'imagen_referencia' => 'llave_inglesa.png',
+        'categoria' => 'Herramientas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 6,
+    ],
+]);
+
+// Productos para el vendedor 1 del Mercado 3
+DB::table('products')->insert([
+    [
+        'name' => 'Novela de Aventura',
+        'description' => 'Una emocionante novela de aventuras.',
+        'price' => 10.00,
+        'imagen_referencia' => 'novela_aventura.png',
+        'categoria' => 'Libros',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 7,  // Vendedor 1 del Mercado 3
+    ],
+    [
+        'name' => 'Manual de Cocina',
+        'description' => 'Manual de cocina con recetas tradicionales.',
+        'price' => 15.00,
+        'imagen_referencia' => 'manual_cocina.png',
+        'categoria' => 'Libros',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 7,
+    ],
+    [
+        'name' => 'Diccionario Inglés-Español',
+        'description' => 'Diccionario completo inglés-español.',
+        'price' => 20.00,
+        'imagen_referencia' => 'diccionario.png',
+        'categoria' => 'Libros',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 7,
+    ],
+]);
+
+// Productos para el vendedor 2 del Mercado 3
+DB::table('products')->insert([
+    [
+        'name' => 'Ensalada Mediterránea',
+        'description' => 'Ensalada con aceite de oliva, aceitunas, y queso feta.',
+        'price' => 3.00,
+        'imagen_referencia' => 'ensalada_mediterranea.png',
+        'categoria' => 'Comida',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 8,  // Vendedor 2 del Mercado 3
+    ],
+    [
+        'name' => 'Bocadillo Vegetariano',
+        'description' => 'Bocadillo con vegetales frescos y hummus.',
+        'price' => 2.50,
+        'imagen_referencia' => 'bocadillo_vegetariano.png',
+        'categoria' => 'Comida',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 8,
+    ],
+    [
+        'name' => 'Smoothie de Frutas',
+        'description' => 'Smoothie fresco de frutas variadas.',
+        'price' => 2.00,
+        'imagen_referencia' => 'smoothie_frutas.png',
+        'categoria' => 'Bebidas',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 8,
+    ],
+]);
+
+// Productos para el vendedor 3 del Mercado 3
+DB::table('products')->insert([
+    [
+        'name' => 'Bolso de Mano',
+        'description' => 'Bolso de mano elegante para mujeres.',
+        'price' => 30.00,
+        'imagen_referencia' => 'bolso_mano.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 9,  // Vendedor 3 del Mercado 3
+    ],
+    [
+        'name' => 'Reloj de Pulsera',
+        'description' => 'Reloj de pulsera clásico con correa de cuero.',
+        'price' => 50.00,
+        'imagen_referencia' => 'reloj_pulsera.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 9,
+    ],
+    [
+        'name' => 'Gafas de Sol',
+        'description' => 'Gafas de sol con protección UV.',
+        'price' => 15.00,
+        'imagen_referencia' => 'gafas_sol.png',
+        'categoria' => 'Accesorios',
+        'estado' => 'Disponible',
+        'fk_vendedors' => 9,
+    ],
+]);
 
     }
 
