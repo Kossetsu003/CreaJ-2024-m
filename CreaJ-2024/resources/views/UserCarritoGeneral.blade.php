@@ -62,7 +62,7 @@
                 Mi Carrito
             </div>
             @if (session('success'))
-            <div class="bg-emerald-600  w-[50%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
+            <div class="bg-emerald-600  w-[40%] md:px-[1rem] md:py-[0.5rem] md:text-[1.25rem]  md:uppercase font-semibold rounded text-white mb-[1.5rem]">
                 <span class="md:ml-[1rem]">{{ session('success') }}</span>
             </div>
             @endif
