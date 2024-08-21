@@ -50,7 +50,7 @@ use Illuminate\Support\Facades\Validator;
         ->with('iMercadoLocals', $iMercadoLocals);
     }
     public function create(){
-        $cliente = new Cliente();
+        $cliente = new User();
         return view('RegistroUser', compact('cliente'));
 
     }

@@ -43,6 +43,17 @@
                         <div class="flex justify-center mt-2">
                             <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="password" name="password" id="contrasena" placeholder="Ingrese su contraseña">
                         </div>
+                         <div class=" justify-center mt-2">
+                       <input
+  class="appearance-none h-5 w-5 border border-gray-500 rounded-sm checked:bg-purple-600 checked:border-purple-600 focus:outline-none"
+  type="checkbox"
+  id="show-passwords">
+
+
+                            <input class="" type="checkbox" id="show-passwords" class="mr-2">
+                            <span class="md:text-[1rem] text-sm text-gray-500">Mostrar Contraseñas</span>
+                        </label>
+                    </div>
                         @if($errors->has('password'))
                             <div class="text-red-500 text-sm mt-1">{{ $errors->first('password') }}</div>
                         @endif
@@ -52,7 +63,7 @@
                     </div>
                 </div>
             </form>
-            
+
             <div class="hidden md:flex items-center mt-1">
                 <div class="flex-grow border-t border-gray-400"></div>
                 <span class="px-4 text-xs">O</span>
