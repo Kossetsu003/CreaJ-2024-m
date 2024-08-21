@@ -60,14 +60,14 @@
     <form method="POST" action="{{ route('vendedores.guardarproducto') }}" enctype="multipart/form-data" onsubmit="calculatePrice()">
         @csrf
         <input type="hidden" name="fk_vendedors" value="{{ $vendedor->id }}">
-    
+
         <section>
             <div class="w-72 h-auto mx-auto mt-16">
                 <div class="text-center">
                     <h1 class="text-[1.8rem] font-bold text-rose-400">Registrar Producto</h1>
                     <h3 class=" text-[1.5rem]">Puesto de: <span class="">{{ $vendedor->nombre_del_local }}</span></h3>
                 </div>
-    
+
                 <div class="mt-5 space-y-4">
                     <!-- Imagen del Producto -->
                     <div class="flex justify-between">
@@ -80,12 +80,12 @@
                     @error('imagen_referencia')
                         <p class="text-rose-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Contenedor de la vista previa -->
                     <div id="preview-container" class="mt-4">
                         <img id="image-preview" src="#" alt="Vista previa de la imagen" class="hidden w-[200px] h-[200px] object-cover rounded-[15px] mx-auto">
                     </div>
-    
+
                     <!-- Nombre del Producto -->
                     <div class="flex justify-center mt-4">
                         <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  shadow-md border-gray-400" type="text" name="name" placeholder="Nombre del Producto" value="{{ old('name') }}" >
@@ -93,7 +93,7 @@
                     @error('name')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Descripción del Producto -->
                     <div class="flex justify-center">
                         <textarea maxlength="200" class="border-1 rounded border w-80 h-16 pl-5 text-xs shadow-md border-gray-400" name="description" placeholder="Descripción del Producto">{{ old('description') }}</textarea>
@@ -101,7 +101,7 @@
                     @error('description')
                         <p class="text-rose-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Tipo de Precio -->
                     <div class="flex justify-center">
                         <select id="price-type" name="price_type" class="border-1 rounded border w-80 h-9 pl-5 text-xs text-gray-400 shadow-md border-gray-400" onchange="togglePriceFields()">
@@ -112,7 +112,7 @@
                     @error('price_type')
                         <p class="text-rose-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Precio del Producto (Definido) -->
                     <div id="fixed-price-field" class="flex justify-center mt-4">
                         <input class="border-1 rounded border w-80 h-9 pl-5 text-xs  shadow-md border-gray-400" type="number" name="price" step="0.01" placeholder="Precio del Producto" value="{{ old('price') }}" >
@@ -120,17 +120,18 @@
                     @error('price')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Cantidad por Dólar -->
-                    <div id="per-dollar-field" class="flex justify-center mt-4 hidden">
+                    <div id="per-dollar-field" class=" justify-center mt-4 hidden">
                         <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" id="quantity" name="quantity" step="1" placeholder="Cantidad por Dólar" value="{{ old('quantity') }}">
                     </div>
                     @error('quantity')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
+<<<<<<< HEAD
                         <select name="categoria" id="categoria" class="border  rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
                             <option class=" text-[1rem] text-black" value="">Escoga su Clasificacion</option>
                             <option class="text-[1rem] text-black" value="comedor" {{ old('categoria') == 'comedor' ? 'selected' : '' }}>Comedor</option>
@@ -145,18 +146,34 @@
                             <option class="text-[1rem] text-black" value="frutasyverduras" {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
                             <option class="text-[1rem] text-black" value="emprendimiento" {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
                             <option class="text-[1rem] text-black" value="otros" {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
+=======
+                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
+                            <option class="font-bold text-xs text-white" value="">Escoga su Clasificacion</option>
+                            <option class="font-bold text-xl text-gray-800" value="comida" {{ old('categoria') == 'comida' ? 'selected' : '' }}>Comida</option>
+                            <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('categoria') == 'ropa' ? 'selected' : '' }}>Ropa</option>
+                            <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('categoria') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
+                            <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('categoria') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
+                            <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('categoria') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
+                            <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('categoria') == 'carnes' ? 'selected' : '' }}>Carnes</option>
+                            <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('categoria') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
+                            <option class="font-bold text-xl text-gray-800" value="aves" {{ old('categoria') == 'aves' ? 'selected' : '' }}>Aves</option>
+                            <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('categoria') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
+                            <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
+                            <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
+                            <option class="font-bold text-xl text-gray-800" value="otros" {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
+>>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
                         </select>
                     </div>
                     @error('categoria')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
-    
+
                     <!-- Estado del Producto -->
                     <div class="flex justify-center">
                         <input type="hidden" name="estado" value="Disponible">
                     </div>
                 </div>
-    
+
                 <!-- Botón para Guardar -->
                 <div class="flex justify-center mt-16">
                     <button class="bg-rose-400 hover:bg-rose-50 w-72 h-10 text-white font-bold rounded-md">Guardar</button>

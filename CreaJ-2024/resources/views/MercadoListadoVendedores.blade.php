@@ -11,21 +11,25 @@
 </head>
 
 <body>
-    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+    <div class="hidden md:flex p-4 items-center justify-between shadow-md">
         <a href="{{ route('mercados.index') }}">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">
-                MINI <span class="text-red-600 uppercase "><b>Mercado</b></span>
-            </h1>
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+             Mini <span class="text-red-500 font-bold">Mercado</span>
+        </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('mercados.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">hogar</a>
-            <a href="{{ route('mercados.listavendedores') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Vendedores</a>
-            <a href="{{ route('mercados.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
+             <a href="{{ route('mercados.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300  px-2 py-1">Hogar</a>
+           <a href="{{ route('mercados.listavendedores') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300  px-2 py-1">Vendedores</a>
+           <a href="{{ route('mercados.reservas') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300  px-2 py-1">Reservas</a>
+            <a href="{{ route('mercados.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300  px-2 py-1">Historial</a>
             <a href="{{ route('mercados.perfil') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
+                class="font-semibold uppercase text-sm lg:text-base  hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
+                    Perfil
+                </a>
         </div>
     </div>
     <!-- Mobile Navbar -->

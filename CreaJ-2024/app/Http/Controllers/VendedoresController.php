@@ -199,52 +199,44 @@ class VendedoresController extends Controller{
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:200',
             'imagen_referencia' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'price_type' => 'required|in:fixed,per_dollar',
-            'price' => 'required_if:price_type,fixed|numeric|min:0',
-            'quantity' => 'required_if:price_type,per_dollar|numeric|min:1',
             'categoria' => 'required|string',
         ];
-    
+
         // Definir mensajes de error personalizados
         $messages = [
             'name.required' => 'Campo obligatorio',
             'description.required' => 'Campo obligatorio',
             'imagen_referencia.required' => 'Campo obligatorio',
-            'price_type.required' => 'Campo obligatorio',
-            'price.required_if' => 'Campo obligatorio',
-            'price.numeric' => 'Campo obligatorio',
-            'quantity.required_if' => 'Campo obligatorio',
-            'quantity.numeric' => 'Campo obligatorio',
             'categoria.required' => 'Campo obligatorio',
         ];
-    
+
         // Validar los datos del formulario
         $validatedData = $request->validate($rules, $messages);
-    
+
         // Manejar la imagen del producto
         if ($request->hasFile('imagen_referencia')) {
             $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
             $clasificacion = str_replace(' ', '_', strtolower($request->input('categoria')));
             $imageName = "{$nombreProducto}_{$clasificacion}.png";
-    
+
             $path = $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
-    
+
             if (!$path) {
                 return back()->withErrors(['imagen_referencia' => 'No se pudo mover la imagen.'])->withInput();
             }
         } else {
             return back()->withErrors(['imagen_referencia' => 'Es obligatorio subir una imagen.'])->withInput();
         }
-    
+
         // Determinar el precio en base al tipo de precio
         $priceType = $request->input('price_type');
         $price = $request->input('price');
         $quantity = $request->input('quantity', 1);
-    
+
         if ($priceType === 'per_dollar') {
             $price = 1 / max($quantity, 1); // Asegurarse de que la cantidad sea al menos 1
         }
-    
+
         // Crear y guardar el producto
         $vendedor = Auth::guard('vendedor')->user();
         $producto = new Product([
@@ -256,15 +248,15 @@ class VendedoresController extends Controller{
             'fk_vendedors' => $vendedor->id,
             'imagen_referencia' => $imageName,
         ]);
-    
+
         $producto->save();
-    
+
         return redirect()->route('vendedores.productos')->with('success', 'Producto registrado exitosamente.');
     }
-    
-    
-    
-    
+
+
+
+
 
 
     public function editarproducto($id)

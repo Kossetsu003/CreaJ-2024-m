@@ -64,4 +64,7 @@ class Vendedor extends Authenticatable
     {
         return $this->hasMany(Product::class, 'fk_vendedor');
     }
+    public function reservationitem(){
+        return $this->hasMany(ReservationItem::class, 'fk_vendedors');
+    }
 }

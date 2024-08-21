@@ -16,7 +16,11 @@
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+<<<<<<< HEAD
             Mini <span class="text-rose-400 font-bold">Vendedores</span>
+=======
+             Mini <span class="text-rose-400 font-bold">Vendedores</span>
+>>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
         </h1>
         </a>
         <div class="flex gap-8">
@@ -124,7 +128,7 @@
             </h2>
 
             @foreach ($reservation->items as $item)
-           
+
                 <div class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                     <div class="flex items-center flex-1">
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}" class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">

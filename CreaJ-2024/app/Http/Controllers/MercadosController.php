@@ -59,13 +59,61 @@ public function perfil()
             $mercadoLocal = Auth::guard('mercado')->user();
 
             // Obtener la información del mercado local relacionado con el vendedor
-          
+
 
             // Retornar la vista con los datos del vendedor, productos y mercado local
             return view('MercadoProfileVista', compact('mercadoLocal'));
         }
 
         return redirect()->route('login')->with('error', 'Acceso no autorizado');
+    }
+    public function editar(){
+
+            // Obtener el usuario autenticado bajo el guard 'mercado'
+            $mercadoLocal = Auth::guard('mercado')->user();
+
+
+            // Redirigir a la vista de edición con el ID del mercado autenticado
+            return view('MercadoEditar', compact('mercadoLocal'));
+
+
+
+    }
+    public function actualizar(MercadoLocalRequest $request, $id){
+        $mercadoLocal = MercadoLocal::findOrFail($id);
+
+            // Validar y obtener los datos del formulario
+            $data = $request->validate([
+                'nombre' => 'required|string|max:255',
+                'municipio' => 'required|string|max:255',
+                'ubicacion' => 'required|string|max:255',
+                'horaentrada' => 'required',
+                'horasalida' => 'required',
+                'descripcion' => 'required|string|max:220',
+
+            ]);
+
+            // Si se ha subido una nueva imagen
+            if ($request->hasFile('imagen_referencia')) {
+                // Construir el nuevo nombre del archivo
+                $nombre = str_replace(' ', '_', strtolower($request->input('nombre')));
+                $municipio = str_replace(' ', '_', strtolower($request->input('municipio')));
+                $imageName = "{$nombre}_{$municipio}.png";
+
+                // Mover el archivo a la carpeta 'imgs' con el nuevo nombre
+                $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
+
+                // Actualizar el nombre del archivo en los datos que se guardarán en la base de datos
+                $data['imagen_referencia'] = $imageName;
+            }
+
+            // Actualizar campos del mercado local con los datos del formulario
+            $mercadoLocal->update($data);
+
+            // Redirigir a la vista de índice de mercados locales con mensaje de éxito
+            return redirect()->route('mercados.index')
+                ->with('success', 'Mercado Local actualizado con éxito');
+
     }
 
 
@@ -75,15 +123,18 @@ public function perfil()
      * VENDEDORES
      */
     public function listavendedores(){
-        $fk_mercado = 1;//session('fk_mercado');
+        // Obtener el usuario autenticado bajo el guard 'mercado'
+        $fk_mercado = Auth::guard('mercado')->id();
 
-        // Filtrar los vendedores por el mercado de la sesión activa
+        // Obtener el fk_mercado desde el usuario autenticado
+
+        // Filtrar los vendedores por el mercado del usuario autenticado
         $vendedores = Vendedor::where('fk_mercado', $fk_mercado)->paginate();
 
-        return view('MercadoListadoVendedores', compact('vendedores'))
+        return view('MercadoListadoVendedores', compact('vendedores', 'fk_mercado'))
             ->with('i', (request()->input('page', 1) - 1) * $vendedores->perPage());
-
     }
+
     public function editarvendedor($id){
         //MercadoEditarVendedor.blade.php
         $vendedor = Vendedor::find($id);
@@ -145,13 +196,20 @@ public function perfil()
         return redirect()->route('mercados.listavendedores', $id)->with('success', 'Vendedor actualizado correctamente.');
     }
 
-    
+
     public function agregarvendedor(){
         $vendedor = new Vendedor();
-        $mercados = MercadoLocal::all(); 
-        return view('MercadoRegistrarVendedor', compact('vendedor', 'mercados'));
+
+        // Obtener el usuario autenticado bajo el guard 'mercado'
+        $mercado = Auth::guard('mercado')->user();
+
+        // Suponiendo que 'mercados' es una relación en el modelo autenticado
+        //$mercado = $user->mercados;
+
+        return view('MercadoRegistrarVendedor', compact('vendedor', 'mercado'));
     }
-    
+
+
     public function guardarvendedor(VendedorRequest $request){
         $validator = Validator::make($request->all(), [
             'usuario' => 'required|email|unique:vendedors',
@@ -256,24 +314,28 @@ public function perfil()
     /**
      * RESERVAS
      */
-    public function reservas(){
-        // Obtener el ID del mercado del usuario autenticado
-        $id = 1;
+    public function reservas()
+{
+    // Obtener el usuario autenticado bajo el guard 'mercado'
+    $id = Auth::guard('mercado')->id();
 
-        // Obtener las reservas que tienen items donde fk_vendedors y fk_mercados son iguales al valor de $id
-        $reservations = Reservation::whereHas('items', function ($query) use ($id) {
-            $query->where('fk_vendedors', $id)
-                  ->where('fk_mercados', $id); // Filtrar por fk_mercados
-        })
-        ->with(['items' => function ($query) use ($id) {
-            $query->where('fk_vendedors', $id)
-                  ->where('fk_mercados', $id) // Filtrarporfk_mercados
-                  ->with('product.vendedor');
-        }])
-        ->get();
+    // Obtener las reservas que tienen items donde fk_mercados es igual al valor de $id y el estado NO es 'archivado'
+    $reservations = Reservation::whereHas('items', function ($query) use ($id) {
+        $query->where('fk_mercados', $id) // Filtrar por fk_mercados
+              ->where('estado', '!=', 'archivado'); // Filtrar por estado que NO sea 'archivado'
+    })
+    ->with(['items' => function ($query) use ($id) {
+        $query->where('fk_mercados', $id) // Filtrar por fk_mercados
+              ->where('estado', '!=', 'archivado') // Filtrar por estado que NO sea 'archivado'
+              ->with('product.vendedor');
+    }])
+    ->get();
 
-        return view('MercadoEstadoReservas', compact('reservations', 'id'));
-    }
+    return view('MercadoEstadoReservas', compact('reservations', 'id'));
+}
+
+
+
 
     public function reservadelvendedor(){
 
@@ -305,6 +367,26 @@ public function perfil()
     return view('MercadoProductoEspecifico', compact('product', 'products', 'vendedor'))
         ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
 }
+public function historial()
+{
+    // Obtener el usuario autenticado bajo el guard 'mercado'
+    $id = Auth::guard('mercado')->id();
+
+    // Obtener las reservas que tienen items donde fk_mercados es igual al valor de $id y el estado es 'archivado'
+    $reservations = Reservation::whereHas('items', function ($query) use ($id) {
+        $query->where('fk_mercados', $id) // Filtrar por fk_mercados
+              ->where('estado', 'archivado'); // Filtrar por estado 'archivado'
+    })
+    ->with(['items' => function ($query) use ($id) {
+        $query->where('fk_mercados', $id) // Filtrar por fk_mercados
+              ->where('estado', 'archivado') // Filtrar por estado 'archivado'
+              ->with('product.vendedor');
+    }])
+    ->get();
+
+    return view('MercadoEstadoReservas', compact('reservations', 'id'));
+}
+
 
 
  }

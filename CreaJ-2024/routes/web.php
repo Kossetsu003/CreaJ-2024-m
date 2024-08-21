@@ -156,8 +156,8 @@ Route::get('/vendedores/historial', [VendedoresController::class, 'historial'])-
  * RUTAS PARA EL MERCADO CONTROLADOR
  */
 Route::get('/mercados', [MercadosController::class, 'index'])->name('mercados.index')->middleware('check.user.session');
-Route::get('/mercados/editar/{id}', [MercadosController::class, 'editar'])->name('mercados.editar')->middleware('check.user.session');
-Route::put('/mercados/actualizar', [MercadosController::class, 'actualizar'])->name('mercados.actualizar')->middleware('check.user.session');
+Route::get('/mercados/editar', [MercadosController::class, 'editar'])->name('mercados.editar')->middleware('check.user.session');
+Route::patch('/mercados/actualizar/{id}', [MercadosController::class, 'actualizar'])->name('mercados.actualizar')->middleware('check.user.session');
 //vendedores
 Route::get('/mercados/vervendedor/{id}', [MercadosController::class, 'vervendedor'])->name('mercados.vervendedor')->middleware('check.user.session');
 Route::get('/mercados/listavendedores', [MercadosController::class, 'listavendedores'])->name('mercados.listavendedores')->middleware('check.user.session');
@@ -173,7 +173,7 @@ Route::get('/mercados/editarreservas/{id}', [MercadosController::class, 'editarr
 //productos
 Route::get('/mercados/verproducto/{id}', [MercadosController::class, 'verproducto'])->name('mercados.verproducto')->middleware('check.user.session');
 Route::get('/mercados/perfil', [MercadosController::class, 'perfil'])->name('mercados.perfil')->middleware('check.user.session');
-
+Route::get('/mercados/historial', [MercadosController::class, 'historial'])->name('mercados.historial');
 
 
 

@@ -14,11 +14,15 @@
         <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+<<<<<<< HEAD
             Mini <span class="text-rose-400 font-bold">Vendedores</span>
+=======
+             Mini <span class="text-rose-400 font-bold">Vendedores</span>
+>>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
         </h1>
         </a>
         <div class="flex gap-8">
-            <a href="{{ route('vendedores.index') }}"
+             <a href="{{ route('vendedores.index') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
@@ -71,8 +75,13 @@
                 <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
             </div>
         </div>
+<<<<<<< HEAD
         
         <div class="flex flex-col xl:flex-row justify-center items-center w-screen">
+=======
+
+        <div class="flex flex-col xl:flex-row justify-center items-center w-screen mx-auto">
+>>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
 
             <!-- Contenedor Principal -->
 
