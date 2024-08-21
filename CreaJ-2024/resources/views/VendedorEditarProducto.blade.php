@@ -8,15 +8,15 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body >
-    <!-- Desktop Navbar -->
-    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+        <!-- Desktop Navbar -->
+        <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-orange-600"><b>Vendedores</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+            Mini <span class="text-rose-400 font-bold">Vendedores</span>
         </h1>
         </a>
         <div class="flex gap-8">
-             <a href="{{ route('vendedores.index') }}"
+            <a href="{{ route('vendedores.index') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
@@ -55,6 +55,7 @@
             </div>
         </div>
     </div>
+    <!-- fin del Mobile Navbar -->
 
     <form method="POST" action="{{ route('vendedores.actualizarproducto', $producto->id) }}" enctype="multipart/form-data" onsubmit="calculatePrice()">
         @csrf
@@ -65,14 +66,14 @@
         <section>
             <div class="w-72 h-auto mx-auto mt-16">
                 <div class="text-center">
-                    <h1 class="text-3xl  font-bold text-orange-700 uppercase">Editar Producto</h1>
-                    <h3 class="mt-5">Puesto de: <b>{{ $vendedor->nombre_del_local }}</b></h3>
+                    <h1 class="text-[2rem] font-sans font-semibold text-rose-400 uppercase">Editar Producto</h1>
+                    <h3 class="mt-5 text-[1.5rem]">Puesto de: <span class=" font-medium">{{ $vendedor->nombre_del_local }}</span></h3>
                 </div>
 
                 <div class="mt-5 space-y-4">
                     <!-- Imagen del Producto -->
                     <div class="flex justify-between">
-                        <label for="file-input" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative">
+                        <label for="file-input" class="border-1 rounded border w-80 h-9 pl-5 text-xs  shadow-md bg-transparent flex items-center relative">
                             <span class="text-gray-600">Imagen del Producto</span>
                             <input id="file-input" type="file" name="imagen_referencia" class="hidden" onchange="previewImage(event)">
                             <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
@@ -86,17 +87,17 @@
 
                     <!-- Nombre del Producto -->
                     <div class="flex justify-center mt-4">
-                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" name="name" value="{{ $producto->name }}" placeholder="Nombre del Producto" required>
+                        <input class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400" type="text" name="name" value="{{ $producto->name }}" placeholder="Nombre del Producto" required>
                     </div>
 
                     <!-- Descripción del Producto -->
                     <div class="flex justify-center">
-                        <textarea maxlength="200" class="border-1 rounded border w-80 h-16 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" name="description" placeholder="Descripción del Producto">{{ $producto->description }}</textarea>
+                        <textarea maxlength="200" class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400" name="description" placeholder="Descripción del Producto">{{ $producto->description }}</textarea>
                     </div>
 
                     <!-- Tipo de Precio -->
                     <div class="flex justify-center">
-                        <select id="price-type" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" onchange="togglePriceFields()">
+                        <select id="price-type" class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400" onchange="togglePriceFields()">
                             <option value="fixed" {{ $producto->price_type === 'fixed' ? 'selected' : '' }}>Precio Definido</option>
                             <option value="per_dollar" {{ $producto->price_type === 'per_dollar' ? 'selected' : '' }}>Cantidad por Dólar</option>
                         </select>
@@ -114,20 +115,20 @@
 
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
-                            <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
-                        <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
-                        <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
-                        <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
-                        <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
-                        <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
-                        <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
-                        <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
-                        <option class="font-bold text-xl text-gray-800" value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
-                        <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
-                        <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
-                        <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
-                        <option class="font-bold text-xl text-gray-800" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
+                        <select name="categoria" id="categoria" class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400" required>
+                            <option class=" font-sans font-medium text-[1rem] text-neutral-950 " value="null">Escoga su Clasificacion</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
 
                         </select>
                     </div>
@@ -140,7 +141,7 @@
 
                 <!-- Botón para Guardar -->
                 <div class="flex justify-center mt-2 mb-8">
-                    <button class="bg-orange-600 w-72 h-10 text-white font-bold rounded-md">Guardar</button>
+                    <button class="bg-rose-400 hover:bg-rose-500 w-72 h-10 text-white font-bold rounded-md">Guardar</button>
                 </div>
             </div>
         </section>

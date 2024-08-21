@@ -11,15 +11,15 @@
 </head>
 
 <body class="">
-     <!-- Desktop Navbar -->
-     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+    <!-- Desktop Navbar -->
+    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text- font-bold">
-             Mini <span class="text-rose-400 font-bold">Vendedores</span>
+            Mini <span class="text-rose-400 font-bold">Vendedores</span>
         </h1>
         </a>
         <div class="flex gap-8">
-             <a href="{{ route('vendedores.index') }}"
+            <a href="{{ route('vendedores.index') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
@@ -34,7 +34,7 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
+<div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('vendedores.index') }}" class="bg-white rounded-full p-1">
@@ -99,11 +99,11 @@
 
             <!-- Botones de Acción -->
             <div class="flex flex-col items-center gap-2 md:gap-4 md:items-start">
-                <a class="btn btn-primary px-4 py-2 text-sm font-medium w-auto xl:w-[100%] text-white bg-orange-500 rounded-md hover:bg-orange-600" href="{{ route('vendedores.verproducto', $producto->id) }}">
+                <a class="btn btn-primary px-4 py-2 text-sm font-medium w-auto md:w-[100%] text-white bg-orange-500 rounded-md hover:bg-orange-600" href="{{ route('vendedores.verproducto', $producto->id) }}">
                     <i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}
                 </a>
 
-                <a class="px-4 w-auto xl:w-[100%] py-2 text-sm font-medium text-white  bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('vendedores.editarproducto', $producto->id) }}">
+                <a class="px-4 w-auto md:w-[100%] py-2 text-sm font-medium text-white  bg-blue-500 rounded-md hover:bg-blue-600" href="{{ route('vendedores.editarproducto', $producto->id) }}">
                     <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
                 </a>
 
