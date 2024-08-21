@@ -34,7 +34,7 @@
                     <!-- INICIO DE INPUT DE LA FOTO -->
                     <div class="flex flex-col items-center">
                         <label for="imagen_de_referencia" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 flex items-center relative cursor-pointer">
-                            <span id="file-name" class="text-gray-400 text-xs">Imagen de <b>Usted</b> o de <b>Su Puesto</b></span>
+                            <span id="file-name" class="text-gray-400 text-xs">Imagen des <b>Usted</b> o de <b>Su Puesto</b></span>
                             <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_de_referencia" class="hidden" id="imagen_de_referencia">
                             {!! $errors->first('imagen_de_referencia', '<div class="text-red-500 text-xs mt-1">:message</div>') !!}
                             <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
@@ -61,29 +61,7 @@
                         @enderror
                     </div>
 
-                    <!-- Campo de Contraseña -->
-                    <div class="flex flex-col items-center">
-                        <input type="password" maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" id="password" placeholder="Escriba su Contraseña">
-                        @error('password')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Campo de Confirmación de Contraseña -->
-                    <div class="flex flex-col items-center">
-                        <input required type="password" name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('password_confirmation') border-red-500 @enderror" id="password_confirmation" placeholder="Confirme su Contraseña">
-                        @error('password_confirmation')
-                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <!-- Mostrar Contraseñas -->
-                    <div class="flex items-center justify-center mt-2">
-                        <label class="flex items-center">
-                            <input type="checkbox" id="show-passwords" class="mr-2">
-                            <span class="text-xs text-gray-600">Mostrar Contraseñas</span>
-                        </label>
-                    </div>
+                    
 
                     <!-- Campo de Nombre -->
                     <div class="flex flex-col items-center">
@@ -145,6 +123,29 @@
                         @error('clasificacion')
                             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <!-- Campo de Contraseña -->
+                    <div class="flex flex-col items-center">
+                        <input type="password" maxlength="8" name="password" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" id="password" placeholder="Escriba su Contraseña">
+                        @error('password')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Campo de Confirmación de Contraseña -->
+                    <div class="flex flex-col items-center">
+                        <input required type="password" name="password_confirmation" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 @error('password_confirmation') border-red-500 @enderror" id="password_confirmation" placeholder="Confirme su Contraseña">
+                        @error('password_confirmation')
+                            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Mostrar Contraseñas -->
+                    <div class="flex items-center justify-center mt-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="show-passwords" class="mr-2">
+                            <span class="text-xs text-gray-600">Mostrar Contraseñas</span>
+                        </label>
                     </div>
 
                     <!-- Botón para Registrarse -->
