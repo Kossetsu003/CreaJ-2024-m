@@ -15,8 +15,8 @@
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold">
-             Mini <span class="text-orange-600"><b>Vendedores</b></span>
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+             Mini <span class="text-rose-400 font-bold">Vendedores</span>
         </h1>
         </a>
         <div class="flex gap-8">
@@ -33,7 +33,6 @@
                     Perfil
                 </a>
         </div>
-    </div>
     </div>
     <!-- Mobile Navbar -->
    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
@@ -78,7 +77,7 @@
             </div>
 
             <div class="space-y-4">
-                
+
 
 
                 <!--INICIO DE RESERVA-->
