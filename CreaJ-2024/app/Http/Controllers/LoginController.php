@@ -63,7 +63,17 @@ class LoginController extends Controller
     return redirect(route('UserProfileVista','user'))->with('success', '¡Registro exitoso!');
     }
 
-    public function LoginUser(Request $request){
+    public function LoginUser(Request $request)
+{
+    // Validar los campos de entrada
+    $request->validate([
+        'usuario' => 'required|string',
+        'password' => 'required|string',
+    ], [
+        'usuario.required' => 'El campo email es obligatorio.',
+        'password.required' => 'El campo contraseña es obligatorio.',
+    ]);
+
     $credentials = $request->only('usuario', 'password');
     $remember = $request->filled('remember');
 
@@ -91,9 +101,10 @@ class LoginController extends Controller
 
     // Si la autenticación falla
     return redirect('login')->withErrors([
-        'usuario' => 'Credenciales incorrectas. Inténtelo de nuevo.',
+        'usuario' => 'Datos inválidos. Inténtelo de nuevo.',
     ]);
 }
+
 
     protected function redirectUser($rol)
     {
