@@ -64,38 +64,46 @@ class LoginController extends Controller
     }
 
     //LOGIN USER
-public function LoginUser(Request $request)
-{
-    $credentials = $request->only('usuario', 'password');
-    $remember = $request->filled('remember');
-
-    // Intentar autenticar al usuario en la tabla `User`
-    if (Auth::attempt($credentials, $remember)) {
-        $request->session()->regenerate();
-        $user = Auth::user();
-        return $this->redirectUser($user->ROL);
+    public function LoginUser(Request $request)
+    {
+        $request->validate([
+            'usuario' => 'required|email',
+            'password' => 'required|min:6',
+        ], [
+            'usuario.required' => 'El campo de correo electrónico es obligatorio.',
+            'usuario.email' => 'Por favor, ingrese un correo electrónico válido.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña es incorrecta.',
+        ]);
+    
+        $credentials = $request->only('usuario', 'password');
+        $remember = $request->filled('remember');
+    
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            $user = Auth::user();
+            return $this->redirectUser($user->ROL);
+        }
+    
+        $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
+        if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
+            Auth::guard('vendedor')->login($vendedor, $remember);
+            $request->session()->regenerate();
+            return $this->redirectUser(3);
+        }
+    
+        $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
+        if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
+            Auth::guard('mercado')->login($mercado, $remember);
+            $request->session()->regenerate();
+            return $this->redirectUser(2);
+        }
+    
+        return redirect('login')->withErrors([
+            'usuario' => 'Correo no valido',
+        ]);
     }
-
-    // Si no es un usuario, intentar en las otras tablas según el rol
-    $vendedor = Vendedor::where('usuario', $credentials['usuario'])->first();
-    if ($vendedor && Hash::check($credentials['password'], $vendedor->password)) {
-        Auth::guard('vendedor')->login($vendedor, $remember);
-        $request->session()->regenerate();
-        return $this->redirectUser(3);
-    }
-
-    $mercado = MercadoLocal::where('usuario', $credentials['usuario'])->first();
-    if ($mercado && Hash::check($credentials['password'], $mercado->password)) {
-        Auth::guard('mercado')->login($mercado, $remember);
-        $request->session()->regenerate();
-        return $this->redirectUser(2);
-    }
-
-    // Si la autenticación falla
-    return redirect('login')->withErrors([
-        'usuario' => 'Credenciales incorrectas. Inténtelo de nuevo.',
-    ]);
-}
+    
 
 
     protected function redirectUser($rol)
