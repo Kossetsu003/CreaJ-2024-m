@@ -124,7 +124,10 @@
                     <div id="per-dollar-field" class="flex justify-center mt-4 hidden">
                         <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" id="quantity" name="quantity" step="1" placeholder="Cantidad por Dólar" value="{{ old('quantity') }}">
                     </div>
-               
+                    @error('quantity')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
                         <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
@@ -162,44 +165,42 @@
     </form>
 
     <script>
-        function togglePriceFields() {
-            var priceType = document.getElementById('price-type').value;
-            var fixedPriceField = document.getElementById('fixed-price-field');
-            var perDollarField = document.getElementById('per-dollar-field');
+    function togglePriceFields() {
+    var priceType = document.getElementById('price-type').value;
+    var fixedPriceField = document.getElementById('fixed-price-field');
+    var perDollarField = document.getElementById('per-dollar-field');
 
-            if (priceType === 'fixed') {
-                fixedPriceField.classList.remove('hidden');
-                perDollarField.classList.add('hidden');
-                document.querySelector('input[name="price"]').required = true;
-            } else {
-                fixedPriceField.classList.add('hidden');
-                perDollarField.classList.remove('hidden');
-                document.querySelector('input[name="price"]').required = false;
-            }
-        }
+    if (priceType === 'fixed') {
+        fixedPriceField.classList.remove('hidden');
+        perDollarField.classList.add('hidden');
+        document.querySelector('input[name="price"]').required = true;
+    } else {
+        fixedPriceField.classList.add('hidden');
+        perDollarField.classList.remove('hidden');
+        document.querySelector('input[name="price"]').required = false;
+    }
+}
 
-        function calculatePrice() {
+function calculatePrice() {
     var priceType = document.getElementById('price-type').value;
     if (priceType === 'per_dollar') {
         var quantity = document.getElementById('quantity').value;
-        console.log('Quantity:', quantity); // Verificar el valor de quantity
         if (quantity) {
             var calculatedPrice = 1 / quantity;
-            console.log('Calculated Price:', calculatedPrice); // Verificar el precio calculado
             document.querySelector('input[name="price"]').value = calculatedPrice.toFixed(2);
         }
     }
 }
 
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('image-preview');
-                output.src = reader.result;
-                output.classList.remove('hidden');
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
+function previewImage(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+        var output = document.getElementById('image-preview');
+        output.src = reader.result;
+        output.classList.remove('hidden');
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
     </script>
 
 

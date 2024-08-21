@@ -470,7 +470,6 @@ class VendedoresController extends Controller{
             // Si no tiene más items, elimina la Reservation
             $reservation->delete();
         }
-
         // Redirige a la vista de vendedores.reservas con un mensaje de éxito
         return redirect()->route('vendedores.reservas')->with('success', 'Reservation item deleted successfully.');
     }
