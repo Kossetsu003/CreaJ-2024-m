@@ -72,7 +72,7 @@
             </div>
         </div>
         
-        <div class="flex flex-col xl:flex-row justify-center items-center w-screen mx-auto">
+        <div class="flex flex-col xl:flex-row justify-center items-center w-screen">
 
             <!-- Contenedor Principal -->
 
