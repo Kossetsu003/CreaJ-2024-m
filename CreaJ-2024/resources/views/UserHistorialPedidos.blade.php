@@ -76,38 +76,9 @@
         @if ($reservation->estado == 'archivado')
             <div class="p-4 font-sans font-light border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                 <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Reserva:
-                    @if ($reservation->estado == 'enviado')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-amber-300 text-white rounded">
-                            Enviado
-                        </span>
-                    @elseif($reservation->estado == 'sin_existencias')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                            No hay Existencias
-                            {{ $reservation->sin_existencias }}
-                        </span>
-                    @elseif($reservation->estado == 'sin_espera')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                            Cancelado
-                        </span>
-                    @elseif($reservation->estado == 'en_espera')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                            Se está Esperando
-                        </span>
-                    @elseif($reservation->estado == 'en_entrega')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                            Ya lo puede Recoger
-                        </span>
-                    @elseif($reservation->estado == 'recibido')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
-                            Ya se entregó
-                        </span>
-                    @elseif($reservation->estado == 'sin_recibir')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                            No ha recibido el Producto
-                        </span>
-                    @elseif($reservation->estado == 'problemas')
-                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                            El Vendedor tiene Problemas
+                    @if ($reservation->estado == 'archivado')
+                        <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-gray-500 text-white rounded">
+                            Archivado
                         </span>
                     @endif
                 </h2>
@@ -121,38 +92,9 @@
                             <div>
                                 <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span class="font-bold">{{ $item->product->name }}</span> en {{ $item->product->vendedor->nombre_del_local }}</h2>
                                 <p> <span class="texts-sm md:text-[1.25rem] text-gray-600 mb-[8px] font-semibold">Estado del Producto:</span>
-                                    @if ($item->estado == 'enviado')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-amber-300 text-white rounded">
-                                            Enviado
-                                        </span>
-                                    @elseif($item->estado == 'sin_existencias')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                                            No hay Existencias
-                                            {{ $reservation->sin_existencias }}
-                                        </span>
-                                    @elseif($item->estado == 'sin_espera')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                                            Cancelado
-                                        </span>
-                                    @elseif($item->estado == 'en_espera')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                                            Se está Esperando
-                                        </span>
-                                    @elseif($item->estado == 'en_entrega')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                                            Ya lo puede Recoger
-                                        </span>
-                                    @elseif($item->estado == 'recibido')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
-                                            Ya lo Recibió
-                                        </span>
-                                    @elseif($item->estado == 'sin_recibir')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                                            No ha recibido el Producto
-                                        </span>
-                                    @elseif($item->estado == 'problemas')
-                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                                            El Vendedor tiene Problemas
+                                    @if ($item->estado == 'archivado')
+                                        <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-gray-500 text-white rounded">
+                                            Archivado
                                         </span>
                                     @endif
                                 </p>
@@ -201,6 +143,7 @@
             </div>
             <!-- FIN DE RESERVA -->
         @endif
+        Imprimir Recibo de Compra: 
     @endforeach
 @endif
 

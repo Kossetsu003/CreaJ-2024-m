@@ -13,8 +13,10 @@
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-red-500">Registrar vendedor</h1>
             </div>
+
+      
             <form method="POST" action="{{ route('mercados.guardarvendedor') }}" role="form" enctype="multipart/form-data">
-                @csrf{{ $mercado->id }}
+                @csrf
 
                 <input type="hidden" value="{{ $mercado->id }}" name="fk_mercado">
                 <div class="pb-[7rem] mt-10 space-y-4">

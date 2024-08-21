@@ -9,13 +9,62 @@
 </head>
 
 <body>
-    <div>
+    <!--DESKTOP NAVBAR-->
+
+    <div class="hidden md:flex p-4 bg-red-500 items-center justify-between shadow-md">
+        <a href="{{ route('mercados.index') }}">
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+             Mini <span class="text-white font-bold">Mercado</span>
+        </h1>
+        </a>
+        <div class="flex gap-8">
+             <a href="{{ route('mercados.index') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-200 text-white px-2 py-1">Hogar</a>
+           <a href="{{ route('mercados.listavendedores') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-200 text-white px-2 py-1">Vendedores</a>
+           <a href="{{ route('mercados.reservas') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-200 text-white px-2 py-1">Reservas</a>
+            <a href="{{ route('mercados.historial') }}"
+                class="font-semibold uppercase text-sm lg:text-base hover:text-gray-200 text-white px-2 py-1">Historial</a>
+            <a href="{{ route('mercados.perfil') }}"
+                class="font-semibold uppercase text-sm lg:text-base  text-white hover:text-black hover:bg-white border border-white px-2 py-1 rounded-md">
+                    Perfil
+                </a>
+        </div>
+    </div>
+    <!-- Mobile Navbar -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
+        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+            <div class="flex items-center">
+                <a href="{{ route('mercados.index') }}" class="bg-white rounded-full p-1">
+                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('mercados.listavendedores') }}">
+                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('mercados.reservas') }}">
+                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('mercados.perfil') }}">
+                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--END NAVBAR-->
+    <div class="mb-[5rem]">
         <div class="bg-red-500 h-36 w-full flex items-center justify-center">
             <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
 
 
-        <div class="flex justify-center mt-5">
+        <div class="flex justify-center my-5">
             <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
         </div>
         <div class="flex justify-center mt-2 ">
@@ -61,29 +110,8 @@
 
         </div>
 
-        <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center">
-            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-                <div class="flex items-center  ">
-                    <a href="{{ route('usuarios.index') }}"><img class="w-6"
-                            src="{{ asset('imgs/HomeIcon.png') }}" alt="User Icon"></a>
-                </div>
 
-                <div class="flex items-center">
-                    <a href="{{ route('usuarios.carrito') }}" class=" bg-white rounded-full p-[0.25rem] "><img class="w-6"
-                            src="{{ asset('imgs/CarritoSelectedIcon.png') }}" alt="User Icon"></a>
-                </div>
 
-                <div class="flex items-center">
-                    <a href="{{ route('usuarios.reservas') }}"><img class="w-6" src="{{ asset('imgs/FavIcon.png') }}"
-                            alt="User Icon"></a>
-                </div>
-                <div class="flex items-center">
-                    <a href="./UserEditarPerfil"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}"
-                            alt="User Icon"></a>
-                </div>
-            </div>
-
-        </div>
     </div>
 
 </body>
