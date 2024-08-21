@@ -72,7 +72,7 @@ use Illuminate\Support\Facades\Validator;
         }
 
         // Crear cliente si la validación pasa
-        $cliente = Cliente::create([
+        $cliente = User::create([
             'usuario' => $request->usuario,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,

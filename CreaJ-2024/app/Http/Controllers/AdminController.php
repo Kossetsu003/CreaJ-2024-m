@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Validator;
             $id = 1; // ID del cliente para obtener datos específicos
         $mercadoLocals = MercadoLocal::paginate(); // Obtener mercados locales paginados
         $vendedors = Vendedor::paginate(); // Obtener vendedores paginados
-        $clientes = Cliente::where('id', $id)->get(); // Obtener cliente específico
+        $clientes = User::where('id', $id)->get(); // Obtener cliente específico
 
         // Retornar la vista 'AdminHome' con los datos paginados y la variable 'i' para la paginación
         return view('AdminHome', compact('mercadoLocals', 'vendedors', 'clientes'))
@@ -375,7 +375,7 @@ use Illuminate\Support\Facades\Validator;
 
         public function eliminarclientes($id)
         {
-            Cliente::find($id)->delete();
+            User::find($id)->delete();
 
             return redirect()->route('admin.clientes')
                 ->with('success', 'Cliente deleted successfully');
