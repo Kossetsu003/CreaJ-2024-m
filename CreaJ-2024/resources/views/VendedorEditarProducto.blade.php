@@ -116,7 +116,7 @@
                     <div class="flex justify-center">
                         <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
                             <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
-                        <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                        <option class="font-bold text-xl text-gray-800" value="comida" {{ old('clasificacion') == 'comida' ? 'selected' : '' }}>Comedor</option>
                         <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
                         <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
                         <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>

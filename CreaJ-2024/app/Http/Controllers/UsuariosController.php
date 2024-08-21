@@ -247,7 +247,7 @@ use Illuminate\Support\Facades\Validator;
         ->with('items.product')
         ->get();
 
-        return view('UserEstadoReservas', compact('reservations'));
+        return view('UserHistorialPedidos', compact('reservations'));
     }
 
 

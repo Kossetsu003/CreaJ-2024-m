@@ -68,9 +68,9 @@
             </div>
 
             <div class="space-y-4">
-                @if ($reservations->isEmpty() || $reservations->every(fn($reservation) => $reservation->estado == 'archivado'))
+                @if ($reservations->isEmpty() ))
     <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Reservas Todavía</span>
-@else
+@elseif( $reservations->every(fn($reservation) => $reservation->estado == 'archivado'))
     <!-- INICIO DE RESERVA -->
     @foreach ($reservations as $reservation)
         @if ($reservation->estado == 'archivado')
