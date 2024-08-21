@@ -56,18 +56,17 @@
         </div>
     </div>
 
-    <form method="POST" action="{{ route('vendedores.guardarproducto')}}" enctype="multipart/form-data" onsubmit="calculatePrice()">
+    <form method="POST" action="{{ route('vendedores.guardarproducto') }}" enctype="multipart/form-data" onsubmit="calculatePrice()">
         @csrf
-        <!-- Campo oculto para fk_vendedors -->
         <input type="hidden" name="fk_vendedors" value="{{ $vendedor->id }}">
-
+    
         <section>
             <div class="w-72 h-auto mx-auto mt-16">
                 <div class="text-center">
                     <h1 class="text-3xl font-bold text-black">Registrar Producto</h1>
                     <h3 class="mt-5">Puesto de: <b>{{ $vendedor->nombre_del_local }}</b></h3>
                 </div>
-
+    
                 <div class="mt-5 space-y-4">
                     <!-- Imagen del Producto -->
                     <div class="flex justify-between">
@@ -77,66 +76,83 @@
                             <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                         </label>
                     </div>
-
+                    @error('imagen_referencia')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Contenedor de la vista previa -->
                     <div id="preview-container" class="mt-4">
                         <img id="image-preview" src="#" alt="Vista previa de la imagen" class="hidden w-[200px] h-[200px] object-cover rounded-[15px] mx-auto">
                     </div>
-
+    
                     <!-- Nombre del Producto -->
                     <div class="flex justify-center mt-4">
-                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" name="name" placeholder="Nombre del Producto" required>
+                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" name="name" placeholder="Nombre del Producto" value="{{ old('name') }}" >
                     </div>
-
+                    @error('name')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Descripción del Producto -->
                     <div class="flex justify-center">
-                        <textarea maxlength="200" class="border-1 rounded border w-80 h-16 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="text" name="description" placeholder="Descripción del Producto"></textarea>
+                        <textarea maxlength="200" class="border-1 rounded border w-80 h-16 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" name="description" placeholder="Descripción del Producto">{{ old('description') }}</textarea>
                     </div>
-
+                    @error('description')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Tipo de Precio -->
                     <div class="flex justify-center">
-                        <select id="price-type" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" onchange="togglePriceFields()">
-                            <option value="fixed">Precio Definido</option>
-                            <option value="per_dollar">Cantidad por Dólar</option>
+                        <select id="price-type" name="price_type" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" onchange="togglePriceFields()">
+                            <option value="fixed" {{ old('price_type') == 'fixed' ? 'selected' : '' }}>Precio Definido</option>
+                            <option value="per_dollar" {{ old('price_type') == 'per_dollar' ? 'selected' : '' }}>Cantidad por Dólar</option>
                         </select>
                     </div>
-
+                    @error('price_type')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Precio del Producto (Definido) -->
                     <div id="fixed-price-field" class="flex justify-center mt-4">
-                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" name="price" step="0.01" placeholder="Precio del Producto" required>
+                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" name="price" step="0.01" placeholder="Precio del Producto" value="{{ old('price') }}" >
                     </div>
-
+                    @error('price')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Cantidad por Dólar -->
                     <div id="per-dollar-field" class="flex justify-center mt-4 hidden">
-                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" id="quantity" step="1" placeholder="Cantidad por Dólar">
+                        <input class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400" type="number" id="quantity" name="quantity" step="1" placeholder="Cantidad por Dólar" value="{{ old('quantity') }}">
                     </div>
-
+               
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
-                            <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
-                        <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
-                        <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
-                        <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
-                        <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
-                        <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
-                        <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
-                        <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
-                        <option class="font-bold text-xl text-gray-800" value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
-                        <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
-                        <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
-                        <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
-                        <option class="font-bold text-xl text-gray-800" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
-
+                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
+                            <option class="font-bold text-xs text-white" value="">Escoga su Clasificacion</option>
+                            <option class="font-bold text-xl text-gray-800" value="comedor" {{ old('categoria') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                            <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('categoria') == 'ropa' ? 'selected' : '' }}>Ropa</option>
+                            <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('categoria') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
+                            <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('categoria') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
+                            <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('categoria') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
+                            <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('categoria') == 'carnes' ? 'selected' : '' }}>Carnes</option>
+                            <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('categoria') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
+                            <option class="font-bold text-xl text-gray-800" value="aves" {{ old('categoria') == 'aves' ? 'selected' : '' }}>Aves</option>
+                            <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('categoria') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
+                            <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
+                            <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
+                            <option class="font-bold text-xl text-gray-800" value="otros" {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
                         </select>
                     </div>
-
+                    @error('categoria')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+    
                     <!-- Estado del Producto -->
                     <div class="flex justify-center">
-                        <input type="hidden" class="border-1 rounded border w-80 h-9 pl-5 text-xs bg-gray-100 shadow-md border-gray-400 text-gray-400" name="estado" required value="Disponible">
+                        <input type="hidden" name="estado" value="Disponible">
                     </div>
                 </div>
-
+    
                 <!-- Botón para Guardar -->
                 <div class="flex justify-center mt-16">
                     <button class="bg-black w-72 h-10 text-white font-bold rounded-md">Guardar</button>
@@ -163,15 +179,17 @@
         }
 
         function calculatePrice() {
-            var priceType = document.getElementById('price-type').value;
-            if (priceType === 'per_dollar') {
-                var quantity = document.getElementById('quantity').value;
-                if (quantity) {
-                    var calculatedPrice = 1 / quantity;
-                    document.querySelector('input[name="price"]').value = calculatedPrice.toFixed(2);
-                }
-            }
+    var priceType = document.getElementById('price-type').value;
+    if (priceType === 'per_dollar') {
+        var quantity = document.getElementById('quantity').value;
+        console.log('Quantity:', quantity); // Verificar el valor de quantity
+        if (quantity) {
+            var calculatedPrice = 1 / quantity;
+            console.log('Calculated Price:', calculatedPrice); // Verificar el precio calculado
+            document.querySelector('input[name="price"]').value = calculatedPrice.toFixed(2);
         }
+    }
+}
 
         function previewImage(event) {
             var reader = new FileReader();
