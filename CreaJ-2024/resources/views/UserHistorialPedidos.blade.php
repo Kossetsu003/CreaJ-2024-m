@@ -68,8 +68,8 @@
             </div>
 
             <div class="space-y-4">
-                @if ($reservations->isEmpty() ))
-    <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Reservas Todavía</span>
+                @if ($reservations->isEmpty() )
+    <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Historial Todavía</span>
 @elseif( $reservations->every(fn($reservation) => $reservation->estado == 'archivado'))
     <!-- INICIO DE RESERVA -->
     @foreach ($reservations as $reservation)
@@ -143,7 +143,7 @@
             </div>
             <!-- FIN DE RESERVA -->
         @endif
-        Imprimir Recibo de Compra: 
+        Imprimir Recibo de Compra:
     @endforeach
 @endif
 

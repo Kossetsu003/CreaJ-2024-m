@@ -24,8 +24,8 @@ class LoginController extends Controller
             'required',
             'email',
             function ($attribute, $value, $fail) {
-                if (User::where('usuario', $value)->exists() || 
-                    Vendedor::where('usuario', $value)->exists() || 
+                if (User::where('usuario', $value)->exists() ||
+                    Vendedor::where('usuario', $value)->exists() ||
                     MercadoLocal::where('usuario', $value)->exists()) {
                     $fail('El nombre de usuario ya está en uso en otra tabla.');
                 }
@@ -60,7 +60,7 @@ class LoginController extends Controller
 
     Auth::login($user);
 
-    return redirect(route('UserProfileVista','user'))->with('success', '¡Registro exitoso!');
+    return redirect(route('usuarios.index','user'))->with('success', '¡Registro exitoso!');
     }
 
     public function LoginUser(Request $request)

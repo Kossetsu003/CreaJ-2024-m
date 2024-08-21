@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,14 @@
     <title>ProductoUser</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
+
 <body>
-        <!-- Desktop Navbar -->
+    <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
-            Mini <span class="text-rose-400 font-bold">Vendedores</span>
-        </h1>
+            <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+                Mini <span class="text-rose-400 font-bold">Vendedores</span>
+            </h1>
         </a>
         <div class="flex gap-8">
             <a href="{{ route('vendedores.index') }}"
@@ -27,15 +29,15 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
-                    Perfil
-                </a>
+                Perfil
+            </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
     <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('vendedores.index') }}" >
+                <a href="{{ route('vendedores.index') }}">
                     <img class="w-6" src="{{ asset('imgs/vendedor.home.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -51,7 +53,8 @@
             </div>
             <div class="flex items-center">
                 <a href="{{ route('vendedores.historial') }}">
-                    <img class="w-6" src="{{ asset('imgs/vendedor.historial.png') }}" alt="Favorites Icon" />
+                    <img class="w-6" src="{{ asset('imgs/mercado.historial.blancopng.png') }}"
+                        alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
@@ -65,8 +68,8 @@
 
     <div class="mx-auto mt-10 px-4 max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <img class="rounded-lg h-[25rem] object-cover w-full shadow-lg" src="{{ asset('imgs/'.$product->imagen_referencia) }}"
-            alt="{{ $product->imagen_referencia }}">
+            <img class="rounded-lg h-[25rem] object-cover w-full shadow-lg"
+                src="{{ asset('imgs/' . $product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="font-bold text-2xl lg:text-3xl text-gray-800">{{ $product->name }}</h2>
@@ -85,15 +88,18 @@
                     <p class="text-xl lg:text-2xl text-gray-900">${{ $product->price }}</p>
                 </div>
 
-                <a class="w-full bg-sky-300 hover:bg-sky-400 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase" href="{{ route('vendedores.editarproducto', $product->id) }}">
+                <a class="w-full bg-sky-300 hover:bg-sky-400 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase"
+                    href="{{ route('vendedores.editarproducto', $product->id) }}">
 
                     Editar
                 </a>
                 <form action="{{ route('vendedores.eliminarproducto', $product->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                <input type="submit" class="w-full bg-red-400 hover:bg-red-500 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase" value="ELIMINAR">
-            </form>
+                    <input type="submit"
+                        class="w-full bg-red-400 hover:bg-red-500 text-white text-lg font-bold py-3 rounded-lg  flex items-center justify-center my-4 uppercase"
+                        value="ELIMINAR">
+                </form>
             </div>
         </div>
 
@@ -103,17 +109,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product Card 1 -->
                 @foreach ($products as $product)
-                <a href="{{ route('vendedores.verproducto', $product->id) }} class="bg-white p-6 rounded-lg shadow-lg ">
-                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{$product->imagen_referencia}}">
+                    <a href="{{ route('vendedores.verproducto', $product->id) }} class="bg-white p-6 rounded-lg
+                        shadow-lg ">
+                    <img class="rounded-lg w-full mb-4" src="{{ asset('imgs/' . $product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
                     <h3 class="font-bold text-lg text-gray-800">{{ $product->name }}</h3>
                     <p class="text-gray-600 mb-4">                    <p class="text-gray-600 mb-4">{{ $product->vendedor->nombre_del_local }}. Precio: ${{ $product->price }}</p>
 
                 </a>
-                @endforeach
+ @endforeach
 
-                <!--End CARD-->
+                        <!--End CARD-->
             </div>
         </div>
     </div>
 </body>
+
 </html>

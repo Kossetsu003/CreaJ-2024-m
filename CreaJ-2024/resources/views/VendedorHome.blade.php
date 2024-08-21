@@ -10,15 +10,15 @@
 </head>
 
 <body>
-        <!-- Desktop Navbar -->
-        <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
+    <!-- Desktop Navbar -->
+    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
-        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
-            Mini <span class="text-rose-400 font-bold">Vendedores</span>
-        </h1>
+            <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+                Mini <span class="text-rose-400 font-bold">Vendedores</span>
+            </h1>
         </a>
         <div class="flex gap-8">
-             <a href="{{ route('vendedores.index') }}"
+            <a href="{{ route('vendedores.index') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mi Puesto</a>
             <a href="{{ route('vendedores.productos') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Productos</a>
@@ -28,15 +28,15 @@
                 class="font-semibold uppercase text-sm lg:text-base hover:text-gray-300 px-2 py-1">Mis Historial</a>
             <a href="{{ route('vendedor.perfil') }}"
                 class="font-semibold uppercase text-sm lg:text-base hover:text-white hover:bg-black border border-black px-2 py-1 rounded-md">
-                    Perfil
-                </a>
+                Perfil
+            </a>
         </div>
     </div>
     <!-- Mobile Navbar -->
     <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('vendedores.index') }}" >
+                <a href="{{ route('vendedores.index') }}">
                     <img class="w-6" src="{{ asset('imgs/vendedor.home.png') }}" alt="Home Icon" />
                 </a>
             </div>
@@ -52,7 +52,8 @@
             </div>
             <div class="flex items-center">
                 <a href="{{ route('vendedores.historial') }}">
-                    <img class="w-6" src="{{ asset('imgs/vendedor.historial.png') }}" alt="Favorites Icon" />
+                    <img class="w-6" src="{{ asset('imgs/mercado.historial.blancopng.png') }}"
+                        alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
@@ -64,95 +65,105 @@
     </div>
     <!-- fin del Mobile Navbar -->
 
-        <h1 class="md:hidden text-3xl md:text-4xl lg:text-5xl font-black pl-2 mb-6">
-            Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
-        </h1>
-        <div class="flex justify-between mt-5">
-            <div class="ml-[2%]">
-                <h1>Hola! Bienvenido &#x1F44B;</h1>
-                <h3 class="text-rose-500 font-bold">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
-            </div>
-            <div class="md:hidden mr-[5%] mt-4 rounded-full w-12 ">
-                <img class="rounded-full object-cover " src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">
-            </div>
+    <h1 class="md:hidden text-3xl md:text-4xl lg:text-5xl font-black pl-2 mb-6">
+        Mini <span class="text-orange-600  uppercase"><b>Vendedor</b></span>
+    </h1>
+    <div class="flex justify-between mt-5">
+        <div class="ml-[2%]">
+            <h1>Hola! Bienvenido &#x1F44B;</h1>
+            <h3 class="text-rose-500 font-bold">{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</h3>
         </div>
+        <div class="md:hidden mr-[5%] mt-4 rounded-full w-12 ">
+            <img class="rounded-full object-cover " src="{{ asset('imgs/' . $vendedor->imagen_de_referencia) }}"
+                alt="User Icon">
+        </div>
+    </div>
 
-        <div class="flex flex-col xl:flex-row justify-center items-center w-screen">
+    <div class="flex flex-col xl:flex-row justify-center items-center w-screen">
 
-            <!-- Contenedor Principal -->
-
-
-            <!-- Imagen -->
-            <div class="w-full md:w-auto md:flex-shrink-0 flex justify-center md:justify-start">
-                <img class="w-[10rem] h-[10rem] md:w-[52rem] md:h-[25rem] object-cover object-center rounded-full md:rounded-[25px] mx-auto" src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="Banner Image">
-            </div>
+        <!-- Contenedor Principal -->
 
 
-            <!-- Etiquetas -->
-            <div class="flex flex-col  justify-center items-center lg:items-start md:ml-8 mt-4 lg:mt-0 text-center lg:text-left">
-
-                <div class="font-bold text-[1.5rem] lg:text-[2rem] ">
-                    {{ $vendedor->nombre_del_local }}
-                </div>
-                <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
-                    Propietario: <span>{{ $vendedor->nombre}} {{ $vendedor->apellidos}}</span>
-                </div>
-                <div class="font-semibold text-[1rem] lg:text-[1.3rem] mt-2">
-                    Puesto #{{ $vendedor->numero_puesto}} - <span class=""> en {{ $mercadoLocal->nombre }}</span>
-                </div>
-                <!-- Añade más etiquetas aquí -->
-                <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
-                    Correo Electronico: <span>{{ $vendedor->usuario}}</span>
-                </div>
-
-                <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
-                    Clasificacion: <b class=" text-rose-400">{{$vendedor->clasificacion}}</b>
-                </div>
-                <div class="mt-4 md:mt-[2rem] xl:mt-[3rem]">
-                    <a href="{{ route('vendedores.editar',$vendedor->id) }}" class="lg:px-[2rem] lg:py-[1rem] lg:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-rose-400 rounded-md mt-2 hover:bg-rose-500" type="button">EDITAR MI PUESTO</a>
-                </div>
-
-            </div>
-
+        <!-- Imagen -->
+        <div class="w-full md:w-auto md:flex-shrink-0 flex justify-center md:justify-start">
+            <img class="w-[10rem] h-[10rem] md:w-[52rem] md:h-[25rem] object-cover object-center rounded-full md:rounded-[25px] mx-auto"
+                src="{{ asset('imgs/' . $vendedor->imagen_de_referencia) }}" alt="Banner Image">
         </div>
 
 
-        <div class="flex mt-16 justify-around w-[90%] mx-auto">
-            <a href="{{ route('vendedores.agregarproducto',  $vendedor->id) }}" class="btn btn-primary btn-sm float-right "  data-placement="left">
+        <!-- Etiquetas -->
+        <div
+            class="flex flex-col  justify-center items-center lg:items-start md:ml-8 mt-4 lg:mt-0 text-center lg:text-left">
 
-                <span class="flex items-center px-3 py-2 uppercase rounded-md font-bold">
-                    <img class="w-[3rem] mr-2" src="{{ asset('imgs/AddIcon.png') }}" alt="User Icon">
-                    Agregar Productos
-                </span>
-            </a>
+            <div class="font-bold text-[1.5rem] lg:text-[2rem] ">
+                {{ $vendedor->nombre_del_local }}
+            </div>
+            <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
+                Propietario: <span>{{ $vendedor->nombre }} {{ $vendedor->apellidos }}</span>
+            </div>
+            <div class="font-semibold text-[1rem] lg:text-[1.3rem] mt-2">
+                Puesto #{{ $vendedor->numero_puesto }} - <span class=""> en {{ $mercadoLocal->nombre }}</span>
+            </div>
+            <!-- Añade más etiquetas aquí -->
+            <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
+                Correo Electronico: <span>{{ $vendedor->usuario }}</span>
+            </div>
 
-
+            <div class="text-[1rem] lg:font-semibold  lg:text-[1.3rem] mt-2">
+                Clasificacion: <b class=" text-rose-400">{{ $vendedor->clasificacion }}</b>
+            </div>
+            <div class="mt-4 md:mt-[2rem] xl:mt-[3rem]">
+                <a href="{{ route('vendedores.editar', $vendedor->id) }}"
+                    class="lg:px-[2rem] lg:py-[1rem] lg:text-[1rem] px-4 py-3 text-sm font-medium text-white bg-rose-400 rounded-md mt-2 hover:bg-rose-500"
+                    type="button">EDITAR MI PUESTO</a>
+            </div>
 
         </div>
 
+    </div>
 
-        <!-- Fin Principal -->
+
+    <div class="flex mt-16 justify-around w-[90%] mx-auto">
+        <a href="{{ route('vendedores.agregarproducto', $vendedor->id) }}" class="btn btn-primary btn-sm float-right "
+            data-placement="left">
+
+            <span class="flex items-center px-3 py-2 uppercase rounded-md font-bold">
+                <img class="w-[3rem] mr-2" src="{{ asset('imgs/AddIcon.png') }}" alt="User Icon">
+                Agregar Productos
+            </span>
+        </a>
 
 
-        <!-- CARTAS -->
-        <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
-            @if ($products->isEmpty())
-                <p class="md:text-[1.75rem] text-[1.5rem] py-[18rem] font-semibold text-gray-600">No hay Productos en Venta</p>
-            @else
-                @foreach ($products as $product)
-                    <a href="{{ route('vendedores.verproducto', $product->id)}}" class="w-full sm:w-[48%] md:w-[25%] mb-8 p-4 hover:shadow-lg hover:ease-in-out rounded-md">
-                        <img class="w-full h-[300px] rounded-md overflow-hidden object-cover" src="{{ asset('imgs/'.$product->imagen_referencia) }}" alt="{{ $product->imagen_referencia }}">
-                        <div class="flex ">
-                            <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">{{ $product->name }}</h1>
-                        </div>
-                        <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
-                        <div class="flex justify-between">
-                            <h3>{{ $product->description }}</h3>
-                        </div>
-                    </a>
-                @endforeach
-            @endif
-        </div>
+
+    </div>
+
+
+    <!-- Fin Principal -->
+
+
+    <!-- CARTAS -->
+    <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
+        @if ($products->isEmpty())
+            <p class="md:text-[1.75rem] text-[1.5rem] py-[18rem] font-semibold text-gray-600">No hay Productos en Venta
+            </p>
+        @else
+            @foreach ($products as $product)
+                <a href="{{ route('vendedores.verproducto', $product->id) }}"
+                    class="w-full sm:w-[48%] md:w-[25%] mb-8 p-4 hover:shadow-lg hover:ease-in-out rounded-md">
+                    <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
+                        src="{{ asset('imgs/' . $product->imagen_referencia) }}"
+                        alt="{{ $product->imagen_referencia }}">
+                    <div class="flex ">
+                        <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">{{ $product->name }}</h1>
+                    </div>
+                    <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
+                    <div class="flex justify-between">
+                        <h3>{{ $product->description }}</h3>
+                    </div>
+                </a>
+            @endforeach
+        @endif
+    </div>
 
 
     <footer class="bg-[#292526] pb-16">

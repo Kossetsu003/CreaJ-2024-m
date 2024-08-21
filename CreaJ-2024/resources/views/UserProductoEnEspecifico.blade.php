@@ -114,7 +114,8 @@
                     </div>
                     <button type="submit"
                         class="w-full bg-gray-800 text-white text-lg font-bold py-3 rounded-lg hover:bg-gray-700 flex items-center justify-center">Agregar
-                        al carrito</button>
+                        al carrito
+                    </button>
 
     </form>
     </div>
