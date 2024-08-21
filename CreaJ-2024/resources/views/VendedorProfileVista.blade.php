@@ -61,7 +61,7 @@
     </div>
     <!-- fin del Mobile Navbar -->
     <div class="pb-[7rem]">
-       <div class="bg-rose-400 h-[160px] flex items-center justify-center">
+    <div class="bg-rose-400 h-[160px] flex items-center justify-center">
             <h3 class="font-bold text-center text-[4rem]">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
         <div class="flex justify-center mt-5">
