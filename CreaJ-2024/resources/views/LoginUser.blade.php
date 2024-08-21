@@ -41,19 +41,16 @@
                             <div class="text-red-500 text-sm mt-1">{{ $errors->first('usuario') }}</div>
                         @endif
                         <div class="flex justify-center mt-2">
-                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="password" name="password" id="contrasena" placeholder="Ingrese su contraseña">
+                            <input class="border rounded w-80 md:h-12 h-9 pl-5 md:text-[1rem] text-sm border-gray-400 bg-transparent" type="password" name="password"  id="password" placeholder="Ingrese su contraseña">
                         </div>
-                         <div class=" justify-center mt-2">
-                       <input
-  class="appearance-none h-5 w-5 border border-gray-500 rounded-sm checked:bg-purple-600 checked:border-purple-600 focus:outline-none"
-  type="checkbox"
-  id="show-passwords">
+                         <div class="flex items-center justify-center mt-2">
+                            <input
+                                class="checked:appearance-auto appearance-none h-5 w-5 border border-gray-500 rounded-sm checked:border-gray-700 focus:outline-none"
+                                type="checkbox"
+                                id="show-passwords">
+                            <span class="ml-2 pt-1 md:text-[1rem] text-sm text-gray-500">Mostrar Contraseña</span>
+                        </div>
 
-
-                            <input class="" type="checkbox" id="show-passwords" class="mr-2">
-                            <span class="md:text-[1rem] text-sm text-gray-500">Mostrar Contraseñas</span>
-                        </label>
-                    </div>
                         @if($errors->has('password'))
                             <div class="text-red-500 text-sm mt-1">{{ $errors->first('password') }}</div>
                         @endif
@@ -88,4 +85,12 @@
         </div>
     </div>
 </body>
+<script>
+    document.getElementById('show-passwords').addEventListener('change', function () {
+            const passwords = document.querySelectorAll('#password, #password_confirmation');
+            passwords.forEach(password => {
+                password.type = this.checked ? 'text' : 'password';
+            });
+        });
+</script>
 </html>
