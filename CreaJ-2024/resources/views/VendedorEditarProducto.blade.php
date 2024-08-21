@@ -120,10 +120,9 @@
 
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-<<<<<<< HEAD
                         <select name="categoria" id="categoria" class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400" required>
                             <option class=" font-sans font-medium text-[1rem] text-neutral-950 " value="null">Escoga su Clasificacion</option>
-                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="comedor" {{ old('clasificacion') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                        <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="comida" {{ old('clasificacion') == 'comida' ? 'selected' : '' }}>Comida</option>
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
@@ -135,22 +134,6 @@
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
                         <option class=" font-sans font-medium text-[1rem] text-neutral-950" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
-=======
-                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" required>
-                            <option class="font-bold text-xs text-white" value="null">Escoga su Clasificacion</option>
-                        <option class="font-bold text-xl text-gray-800" value="comida" {{ old('clasificacion') == 'comida' ? 'selected' : '' }}>Comedor</option>
-                        <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
-                        <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
-                        <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
-                        <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
-                        <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
-                        <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
-                        <option class="font-bold text-xl text-gray-800" value="aves" {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
-                        <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
-                        <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
-                        <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
-                        <option class="font-bold text-xl text-gray-800" value="otros" {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
->>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
 
                         </select>
                     </div>

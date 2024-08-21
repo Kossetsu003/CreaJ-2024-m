@@ -30,10 +30,6 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-<<<<<<< HEAD
-=======
-   
->>>>>>> 9147872f95ffa0e7490ef72395239ce48d9b5baf
     <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">

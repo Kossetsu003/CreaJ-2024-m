@@ -136,10 +136,9 @@
 
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-<<<<<<< HEAD
                         <select name="categoria" id="categoria" class="border  rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
                             <option class=" text-[1rem] text-black" value="">Escoga su Clasificacion</option>
-                            <option class="text-[1rem] text-black" value="comedor" {{ old('categoria') == 'comedor' ? 'selected' : '' }}>Comedor</option>
+                            <option class="text-[1rem] text-black" value="comida" {{ old('categoria') == 'comida' ? 'selected' : '' }}>Comida</option>
                             <option class="text-[1rem] text-black" value="ropa" {{ old('categoria') == 'ropa' ? 'selected' : '' }}>Ropa</option>
                             <option class="text-[1rem] text-black" value="granosbasicos" {{ old('categoria') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
                             <option class="text-[1rem] text-black" value="artesanias" {{ old('categoria') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
@@ -151,22 +150,6 @@
                             <option class="text-[1rem] text-black" value="frutasyverduras" {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
                             <option class="text-[1rem] text-black" value="emprendimiento" {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
                             <option class="text-[1rem] text-black" value="otros" {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
-=======
-                        <select name="categoria" id="categoria" class="border bg-gray-100 rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400" >
-                            <option class="font-bold text-xs text-white" value="">Escoga su Clasificacion</option>
-                            <option class="font-bold text-xl text-gray-800" value="comida" {{ old('categoria') == 'comida' ? 'selected' : '' }}>Comida</option>
-                            <option class="font-bold text-xl text-gray-800" value="ropa" {{ old('categoria') == 'ropa' ? 'selected' : '' }}>Ropa</option>
-                            <option class="font-bold text-xl text-gray-800" value="granosbasicos" {{ old('categoria') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
-                            <option class="font-bold text-xl text-gray-800" value="artesanias" {{ old('categoria') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
-                            <option class="font-bold text-xl text-gray-800" value="mariscos" {{ old('categoria') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
-                            <option class="font-bold text-xl text-gray-800" value="carnes" {{ old('categoria') == 'carnes' ? 'selected' : '' }}>Carnes</option>
-                            <option class="font-bold text-xl text-gray-800" value="lacteos" {{ old('categoria') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
-                            <option class="font-bold text-xl text-gray-800" value="aves" {{ old('categoria') == 'aves' ? 'selected' : '' }}>Aves</option>
-                            <option class="font-bold text-xl text-gray-800" value="plasticos" {{ old('categoria') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
-                            <option class="font-bold text-xl text-gray-800" value="frutasyverduras" {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras</option>
-                            <option class="font-bold text-xl text-gray-800" value="emprendimiento" {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
-                            <option class="font-bold text-xl text-gray-800" value="otros" {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
->>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
                         </select>
                     </div>
                     @error('categoria')

@@ -16,11 +16,7 @@
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
         <a href="{{ route('vendedores.index') }}">
         <h1 class="text-3xl md:text-4xl lg:text- font-bold">
-<<<<<<< HEAD
             Mini <span class="text-rose-400 font-bold">Vendedores</span>
-=======
-             Mini <span class="text-rose-400 font-bold">Vendedores</span>
->>>>>>> a4365266cae8e7e6adaf5a8babfd6bd7a3a19693
         </h1>
         </a>
         <div class="flex gap-8">
@@ -39,11 +35,7 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-<<<<<<< HEAD
 <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
-=======
-    <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
->>>>>>> 9147872f95ffa0e7490ef72395239ce48d9b5baf
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
                 <a href="{{ route('vendedores.index') }}" >
