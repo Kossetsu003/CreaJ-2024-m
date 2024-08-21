@@ -114,26 +114,26 @@
                 @endif
                 <!--FIN DE LA CARTA-->
                 <h2 class=" text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Total: ${{ $total }}</h2>
-                <form action="{{ route('usuarios.reservar') }}" method="POST">
-                    @csrf
-                    @if ($cartItems->isEmpty())
-                        <button
-                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
-                            type="button">Guardar Reserva</button>
-                    @elseif ($total < 5)
-                        <p class="text-xl text-justify w-60">El Pedido minimo para una reserva es de <b>$5.00</b>. Usted
-                            le faltan <b>${{ $restante = '5' - $total }}</b></p>
+               <form action="{{ route('usuarios.reservar') }}" method="POST">
+                @csrf
+                @if ($cartItems->isEmpty())
+                    <button
+                        class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
+                        type="button">Guardar Reserva</button>
+                @elseif ($total < 5)
+                    <p class="text-xl text-justify w-60">El Pedido minimo para una reserva es de <b>$5.00</b>. Usted
+                        le faltan <b>${{ $restante = '5' - $total }}</b></p>
 
-                        <button
-                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
-                            type="button">Guardar Reserva</button>
-                    @else
-                        <button
-                            class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-emerald-300 rounded-md ml-2 hover:bg-emerald-500"
-                            type="submit">Guardar Reserva</button>
-                    @endif
-                </form>
-            </div>
+                    <button
+                        class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-gray-500 rounded-md ml-2 hover:bg-gray-600"
+                        type="button">Guardar Reserva</button>
+                @else
+                    <button
+                        class="md:px-[2rem] md:py-[1rem] md:text-[1.5rem] px-4 py-3 text-sm font-medium text-white bg-emerald-300 rounded-md ml-2 hover:bg-emerald-500"
+                        type="submit">Guardar Reserva</button>
+                @endif
+            </form>
+        </div>
 
         </div>
 

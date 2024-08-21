@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf; 
 
 
 /**
@@ -169,6 +170,31 @@ use Illuminate\Support\Facades\Validator;
         return redirect()->route('usuarios.carrito')->with('success', 'Producto agregado al carrito correctamente.');
     }
 
+        public function generateReceipt($id)
+        {
+            // Obtener la reserva y los ítems relacionados con el vendedor y el mercado local
+            $reservation = Reservation::with('items.product.vendedor.mercadoLocal')->findOrFail($id);
+
+            // Obtener los mercados únicos relacionados con la reserva
+            $mercados = $reservation->items->map(function($item) {
+                return $item->product->vendedor->mercadoLocal;
+            })->unique('id');
+
+            $vendedor = $reservation->items->map(function($item) {
+                return $item->product->vendedor ;
+            })->unique('id');
+
+            // Generar el PDF
+            $pdf = Pdf::loadView('receipt', [
+                'reservation' => $reservation,
+                'mercados' => $mercados,
+                'vendedor' => $vendedor
+            ]);
+
+            return $pdf->download('recibo-reserva-'.$id.'.pdf');
+        }
+
+
     public function carrito()
     {
         try {
@@ -225,7 +251,7 @@ use Illuminate\Support\Facades\Validator;
 
             DB::commit();
 
-            return redirect()->route('usuarios.reservas')->with('success', 'Reserva creada con éxito.');
+            return redirect()->route('reservas.pdf', ['id' => $reservation->id]);
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', 'Error al crear la reserva: ' . $e->getMessage());

@@ -121,6 +121,8 @@ Route::post('/usuarios/publicarestadoreserva/{id}', [UsuariosController::class, 
 Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
 Route::post('/usuarios/store', [UsuariosController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios/historial', [UsuariosController::class, 'historial'])->name('usuarios.historial');
+Route::get('/usuarioas/reservas/pdf/{id}', [UsuariosController::class, 'generateReceipt'])->name('reservas.pdf');
+
 
 
 
