@@ -93,20 +93,35 @@
                     <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
                         <input type="hidden" name="clasificacion" value="todos">
                         <button type="submit" class="flex items-center lg:h-11 h-8 border px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px] bg-blue-300 border-blue-300 text-white font-bold">
-                            <img class="w-7" src="{{ asset('imgs/SelectBox.png') }}" alt="User Icon">
+
                             <span class="ml-1">Todos Los puestos</span>
                         </button>
                     </form>
 
                     <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
                         <input type="hidden" name="clasificacion" value="comedor">
-                        <button type="submit" class="flex items-center border text-black px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px]">
-                            <img class="w-5" src="{{ asset('imgs/FoodSelected.png') }}" alt="User Icon">
+                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
+
                             <span class="ml-1">Comedores</span>
                         </button>
                     </form>
 
                     <!-- Puedes agregar más botones de filtro aquí -->
+                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                        <input type="hidden" name="clasificacion" value="ropa">
+                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
+
+                            <span class="ml-1">Ropa</span>
+                        </button>
+                    </form>
+                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                        <input type="hidden" name="clasificacion" value="comedor">
+                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
+
+                            <span class="ml-1">Comedores</span>
+                        </button>
+                    </form>
+
                 </div>
             </div>
 
