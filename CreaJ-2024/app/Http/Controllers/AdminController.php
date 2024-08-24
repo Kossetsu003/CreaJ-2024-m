@@ -123,7 +123,7 @@ use Illuminate\Support\Facades\Validator;
             }
             $vendedors = $query->get(); // Obtener los vendedores filtrados
 
-            return view('AdminMercadoEspecifico', compact('mercadoLocal', 'vendedors'));
+            return view('AdminMercadoEspecifico', compact('mercadoLocal','query', 'vendedors'));
         }
 
         public function editarmercados($id)

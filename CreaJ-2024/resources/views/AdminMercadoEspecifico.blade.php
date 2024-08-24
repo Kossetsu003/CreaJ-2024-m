@@ -87,46 +87,98 @@
         <!--El titulo-->
 
         <!--BOTONES-->
-        <div class="flex mt-5 lg:mt-[40px]">
-            <div class="flex mt-5 lg:mt-[40px]">
-                <div class="flex mx-auto">
-                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
-                        <input type="hidden" name="clasificacion" value="todos">
-                        <button type="submit" class="flex items-center lg:h-11 h-8 border px-1 py-0.5 rounded-md mr-2 text-xs lg:text-[20px] bg-blue-300 border-blue-300 text-white font-bold">
+        <div class="flex flex-wrap mt-5 lg:mt-10">
+            <div class="flex flex-wrap my-auto">
+                <!-- Botón: Todos Los puestos -->
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="todos">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg font-semibold {{ request('clasificacion') == 'todos' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">TODOS LOS PUESTOS</span>
+                    </button>
+                </form>
 
-                            <span class="ml-1">Todos Los puestos</span>
-                        </button>
-                    </form>
+                <!-- Botón: Comedores -->
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="comedor">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'comedor' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Comedores</span>
+                    </button>
+                </form>
 
-                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
-                        <input type="hidden" name="clasificacion" value="comedor">
-                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
+                <!-- Botones adicionales -->
+                <!-- Agrega todos los botones de la misma manera, aquí solo se muestran algunos ejemplos -->
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="ropa">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'ropa' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Ropa</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="artesanias">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'artesanias' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Artesanias</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="granosbasicos">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'granosbasicos' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Granos Basicos</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="mariscos">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'mariscos' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Mariscos</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="carnes">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'carnes' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Carnes</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="lacteos">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'lacteos' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Lacteos</span>
+                    </button>
+                </form>
 
-                            <span class="ml-1">Comedores</span>
-                        </button>
-                    </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="aves">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'aves' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Aves</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="plasticos">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'plasticos' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Plasticos</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="frutasyverduras">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'frutasyverduras' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Frutas y Verduras</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="emprendimiento">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'emprendimiento' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Emprendimiento</span>
+                    </button>
+                </form>
+                <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
+                    <input type="hidden" name="clasificacion" value="otros">
+                    <button type="submit" class="flex items-center h-8 lg:h-11 border px-2 py-1 rounded-md mr-2 mb-2 text-xs lg:text-lg {{ request('clasificacion') == 'otros' ? 'bg-blue-300 border-blue-300 text-white font-bold' : 'bg-white hover:border-gray-600 border-gray-300 hover:font-semibold' }}">
+                        <span class="ml-1">Otros</span>
+                    </button>
+                </form>
 
-                    <!-- Puedes agregar más botones de filtro aquí -->
-                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
-                        <input type="hidden" name="clasificacion" value="ropa">
-                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
-
-                            <span class="ml-1">Ropa</span>
-                        </button>
-                    </form>
-                    <form action="{{ route('admin.vermercados', $mercadoLocal->id) }}" method="GET">
-                        <input type="hidden" name="clasificacion" value="comedor">
-                        <button type="submit" class="flex items-center border text-black px-2 py-1 rounded-md mr-2 text-xs lg:text-[20px]">
-
-                            <span class="ml-1">Comedores</span>
-                        </button>
-                    </form>
-
-                </div>
+                <!-- Continúa con el mismo patrón para los otros botones -->
             </div>
-
-
         </div>
+
         <!--FIN BOTONES-->
 
         <!--Comienzo de las cartas -->
@@ -137,6 +189,7 @@
                 <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Vendedores Inscritos</span>
             @else
             @foreach ($vendedors as $vendedor)
+           
             <a href="{{ route('admin.vervendedores',$vendedor->id) }}" class="w-[48%] mb-8 p-2">
                 <img class="w-full h-[250px] rounded-md overflow-hidden object-cover"
                     src="{{ asset('imgs/'.$vendedor->imagen_de_referencia) }}" alt="User Icon">

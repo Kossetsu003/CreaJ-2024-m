@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+    
     <!-- Desktop Navbar -->
 
     <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
@@ -138,3 +139,6 @@
     {!! $mercadoLocals->links() !!}
 </body>
 </html>
+
+
+
