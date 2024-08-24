@@ -102,7 +102,7 @@
 <script>
             function translatePage(language) {
     const elements = document.querySelectorAll('[data-translate]');
-    const apiKey = 'AIzaSyAEsUVPxIh2Ol850K6FH9HD96utZYNRplY';
+    const apiKey = '';
 
     // Diccionario de traducciones personalizadas
     const customTranslations = {
