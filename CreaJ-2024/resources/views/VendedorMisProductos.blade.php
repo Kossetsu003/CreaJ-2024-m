@@ -108,7 +108,7 @@
                                 <p class="my-4 md:text-[1.5rem] text-sm text-gray-600 mb-1"><span
                                         class="font-medium">Precio:</span> ${{ $producto->price }}</p>
                                 <p class="my-4 md:text-[1.5rem] text-sm text-gray-600 mb-1"><span
-                                        class="font-medium">Categoría:</span> {{ $producto->categoria }}</p>
+                                        class="font-medium">Categoría:</span> {{ $producto->clasificacion }}</p>
                                 <p class="my-4 md:text-[1.5rem] text-sm text-gray-600 mb-2"><span
                                         class="font-medium">Estado:</span> <span
                                         class="font-semibold text-green-500">{{ $producto->estado }}</span></p>

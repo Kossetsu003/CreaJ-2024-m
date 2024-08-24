@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <title>Producto Del puesto</title>
+    <title>Estado de Pedidos</title>
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
 <body>
+
+
     <!-- Desktop Navbar -->
     <div class="hidden md:flex p-4 items-center justify-between shadow-md">
         <a href="{{ route('mercados.index') }}">
@@ -33,84 +35,97 @@
         </div>
     </div>
     <!-- Mobile Navbar -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden">
-        <div class="bg-gray-900 rounded-2xl h-14 flex justify-around">
+    <div class="fixed bottom-0 left-0 right-0 p-4 md:hidden z-20 ">
+        <div class="bg-black rounded-2xl p-8 h-14 flex justify-around z-20">
             <div class="flex items-center">
                 <a href="{{ route('mercados.index') }}" class="bg-white rounded-full p-1">
-                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
+                    <img class="w-10" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('mercados.listavendedores') }}">
-                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
+                    <img class="w-10" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('mercados.reservas') }}">
-                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                    <img class="w-10" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
+                </a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('mercados.reservas') }}">
+                    <img class="w-10" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
                 <a href="{{ route('mercados.perfil') }}">
-                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                    <img class="w-10" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
     </div>
-    <div class="mt-14 w-full mx-auto md:text-[30px]">
+    <!-- INICIO BANNER -->
 
-        <div class="w-screen hidden md:block object-center">
-            <img class="w-[15rem] h-[15rem] object-cover object-center rounded-full mx-auto"
-                src="{{ asset('imgs/' . $vendedor->imagen_de_referencia) }}" alt="Banner Image">
-        </div>
-
-        <div class="flex md:justify-center pl-[0.5rem]  w-full mx-auto">
-            <!-- Contenedor Principal -->
-            <div>
-                <!-- TITULO -->
-                <div class="md:font-bold text-[2rem] md:text-[4rem] ">
-                    {{ $vendedor->nombre_del_local }}
-                </div>
-                <div class="md:text-center md:font-semibold font-bold">
-                    Puesto #{{ $vendedor->numero_puesto }} - <span
-                        class="md:font-bold">{{ $mercadoLocal->nombre }}</span>
-                </div>
+    <main class="p-4">
+        <div class="w-full bg-white p-8 rounded-lg shadow-lg">
+            <div class="text-center md:font-bold text-[2rem] md:text-[4rem] ">
+                Todos los Archivos
             </div>
-        </div>
 
-        <!-- Fin Principal -->
+            <div class="space-y-4">
 
 
-        <!-- CARTAS -->
-        <div class="flex flex-wrap justify-center mt-10 text-sm gap-4 md:gap-[50px]">
+                <!--INICIO DE RESERVA-->
+                @if ($reservations->isEmpty())
+                <span class="text-center justify-center flex text-[1.75rem] text-gray-600 my-[7rem]">No hay Reservas Todavía</span>
+@else
+    @foreach ($reservations as $reservation)
+        @if ($reservation->estado != 'entregado')
+            <div
+                class="p-4 border border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Reserva:
+                    <span
+                        class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
+                        @if ($reservation->estado == 'enviado')
+                            Recibido
+                        @endif
+                        {{ $reservation->estado }}
+                    </span>
+                </h2>
+                <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
+                    <span class="font-bold">Pedido Por</span> {{ $reservation->user->nombre }} {{ $reservation->user->apellido }}
+                </h2>
+                <p class="text-sm md:text-[1.5rem] text-gray-600 font-bold mb-[8px]">Total: ${{ $reservation->total }}</p>
 
-            @foreach ($products as $product)
-                <a href="{{ route('mercados.verproducto', $product->id) }}"
-                    class="w-full sm:w-[48%] md:w-[25%] mb-8 p-2 hover:shadow-lg hover:ease-in-out rounded-md">
-                    <img class="w-full h-[300px] rounded-md overflow-hidden object-cover"
-                        src="{{ asset('imgs/' . $product->imagen_referencia) }}"
-                        alt="{{ $product->imagen_referencia }}">
-                    <div class="flex ">
-                        <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
-                            {{ $product->name }}
-                        </h1>
-
-                    </div>
-                    <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
-                    <div class="flex justify-between">
-                        <h3>{{ $product->description }}</h3>
+                @foreach ($reservation->items as $item)
+                    <div
+                        class="my-2 p-4 border border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                         <div class="flex items-center">
-                            <h3 class="mr-2">4.2</h3>
-                            <img class="w-5" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
+                            <img src="{{ asset('imgs/' . $item->product->imagen_referencia) }}"
+                                alt="{{ $item->product->imagen_referencia }}"
+                                class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
+                            <div>
+                                <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
+                                    <span class="font-bold">{{ $item->product->name }} de <b>{{ $item->product->vendedor->nombre_del_local }}</b></h2>
+                                <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]"><b>Cantidad:</b> {{ $item->quantity }}</p>
+                                <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
+                                <p class="text-sm md:text-[1.5rem] text-gray-600 mb-[8px]"><b>Subtotal:</b> ${{ $item->subtotal }}</p>
+                            </div>
                         </div>
                     </div>
-                </a>
-            @endforeach
+                @endforeach
+            </div>
+        @endif
+    @endforeach
+@endif
 
+                <!--FIN DE SEGMENTO DE RESERVA-->
+
+
+            </div>
         </div>
-        <!-- FIN CARTAS -->
-    </div>
 
+    </main>
     <footer class="bg-[#292526] pb-16">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white p-12">
             <div class="hidden md:block">
@@ -126,7 +141,7 @@
                     locales.</p>
             </div>
             <div class="md:self-end md:justify-self-end pb-4">
-                <p class="font-black text-5xl mb-4">Mini <span class="text-blue-600">Shop</span></p>
+                <p class="font-black text-5xl mb-4">Mini <span class="text-red-600">Shop</span></p>
                 <div class="flex gap-2">
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                         <img width="18" class="invert" src="{{ asset('imgs/facebook.png') }}" alt="">
@@ -146,11 +161,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full h-[2px] bg-white"></div>
     </footer>
-
-
-
 </body>
 
 </html>

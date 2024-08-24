@@ -74,13 +74,13 @@
 
         <div class="hidden md:flex md:flex-col md:items-center md:justify-center md:w-[50%]">
             <div class="text-center mb-4">
-                <h3 class="font-bold text-3xl">Login Account</h3>
+                <h3 class="font-bold text-3xl">Inicia Sesion</h3>
             </div>
             <div class="flex justify-center">
                 <img class="md:w-[75%] mx-auto" src="{{ asset('imgs/imagenindex.png') }}" alt="Login Image">
             </div>
             <div>
-                <h3 class="font-bold text-xl">Welcome Back</h3>
+                <h3 class="font-bold text-xl">Bienvenido de Regreso</h3>
                 <h3 class="font-bold text-center text-xl">Mini Shop!</h3>
             </div>
         </div>

@@ -34,37 +34,23 @@
 
 
     <!-- Inicio de nav movil-->
-    <div class="bottom-bar fixed bottom-[5%] left-0 right-0 flex justify-center md:hidden">
-
-        <!--INICIO DE NAVBAR MOBIL-->
+    <div class="bottom-bar fixed bottom-[1%] left-0 right-0 z-[100] flex justify-center md:hidden">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
-            <<div class="flex items-center  ">
-                <a href="{{ route('admin.index') }}" class=" bg-white rounded-full p-[0.25rem] "><img
-                        class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="User Icon"></a>
-        </div>
+            <div class="flex items-center  ">
+                <a href="{{ route('admin.index') }}" ><img class="w-6" src="{{ asset('imgs/admin.home.nav.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('admin.vendedores') }}"><img class="w-6" src="{{ asset('imgs/admin.sellers.nav.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
+                <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/admin.users.nav.png') }}" alt="User Icon"></a>
+            </div>
+            <div class="flex items-center">
 
-        <div class="flex items-center">
-            <a href="{{ route('admin.vendedores') }}"><img class="w-6"
-                    src="{{ asset('imgs/VendedorIcon.png') }}" alt="User Icon"></a>
+                <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+            </div>
         </div>
-
-        <div class="flex items-center">
-            <a href="{{ route('admin.clientes') }}"><img class="w-6" src="{{ asset('imgs/ClienteIcon.png') }}"
-                    alt="User Icon"></a>
-        </div>
-        <div class="flex items-center">
-            <a href="./AdminEstadoPedidos"><img class="w-6" src="{{ asset('imgs/ReservasIcon.png') }}"
-                    alt="User Icon"></a>
-        </div>
-        <div class="flex items-center">
-            <?php $id = 1; ?>
-            <a href="{{ route('AdminProfileVista') }}"><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}"
-                    alt="User Icon"></a>
-
-        </div>
-    </div>
-
-    <!--FIN DE NAVBAR MOBIL-->
+        <!--FIN DE NAVBAR MOBIL-->
     </div>
 
 
@@ -124,7 +110,7 @@
                 <h3 class="font-bold mt-5">{{ $product->name }}</h3>
                 <h3 class="mb-2">{{ $product->vendedor->nombre_del_local }}</h3>
                 <div class="flex justify-between">
-                    <h3>{{ $product->categoria }}</h3>
+                    <h3>{{ $product->clasificacion }}</h3>
                     <div class="flex items-center">
                         <h3 class="mr-2">4.2</h3>
                         <img class="w-5 " src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -147,20 +133,21 @@
     <footer class="bg-[#292526] pb-16">
         <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white  p-12">
             <div>
-                <b>
-                    <h2>Contact Us</h2>
-                </b>
+                <b><b>
+                        <h2>Contact Us</h2>
+                    </b></b>
+
                 <p>Whatsapp: wa.me/50369565421</p>
                 <p>Correo Electronico: contacto@minishop.sv</p>
                 <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
+
             </div>
             <div>
                 <b>
-                    <b>
-                        <h2>Sobre nosotros</h2>
-                    </b>
+                    <h2>Sobre nosotros</h2>
                 </b>
-                <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el área
+                <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el
+                    área
                     metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
                     locales.</p>
             </div>
@@ -168,16 +155,19 @@
                 <p class="font-black text-5xl mb-4">Mini <span class="text-blue-600">Shop</span></p>
                 <div class="flex gap-2">
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
-                        <img width="18" class="invert" src="{{ asset('imgs/facebook.png') }}" alt="">
+                        <img width="18" class="invert" src="{{ asset('imgs/facebook.png') }}"
+                            alt="">
                     </div>
                     <div class="w-8 aspect-square  flex justify-center items-center bg-white rounded-full">
                         <img width="18" class="invert" src="{{ asset('imgs/google.png') }}" alt="">
                     </div>
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
-                        <img width="18" class="invert" src="{{ asset('imgs/linkedin.png') }}" alt="">
+                        <img width="18" class="invert" src="{{ asset('imgs/linkedin.png') }}"
+                            alt="">
                     </div>
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
-                        <img width="18" class="invert" src="{{ asset('imgs/twitter.png') }}" alt="">
+                        <img width="18" class="invert" src="{{ asset('imgs/twitter.png') }}"
+                            alt="">
                     </div>
                     <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
                         <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">

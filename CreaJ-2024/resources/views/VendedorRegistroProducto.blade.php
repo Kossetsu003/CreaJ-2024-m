@@ -157,37 +157,37 @@
 
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-                        <select name="categoria" id="categoria"
+                        <select name="clasificacion" id="clasificacion"
                             class="border  rounded border-gray-400 w-full h-9 pl-5 text-xs mt-2 text-gray-400">
                             <option class=" text-[1rem] text-black" value="">Escoga su Clasificacion</option>
                             <option class="text-[1rem] text-black" value="comida"
-                                {{ old('categoria') == 'comida' ? 'selected' : '' }}>Comida</option>
+                                {{ old('clasificacion') == 'comida' ? 'selected' : '' }}>Comida</option>
                             <option class="text-[1rem] text-black" value="ropa"
-                                {{ old('categoria') == 'ropa' ? 'selected' : '' }}>Ropa</option>
+                                {{ old('clasificacion') == 'ropa' ? 'selected' : '' }}>Ropa</option>
                             <option class="text-[1rem] text-black" value="granosbasicos"
-                                {{ old('categoria') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
+                                {{ old('clasificacion') == 'granosbasicos' ? 'selected' : '' }}>Granos Basicos</option>
                             <option class="text-[1rem] text-black" value="artesanias"
-                                {{ old('categoria') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
+                                {{ old('clasificacion') == 'artesanias' ? 'selected' : '' }}>Artesanias</option>
                             <option class="text-[1rem] text-black" value="mariscos"
-                                {{ old('categoria') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
+                                {{ old('clasificacion') == 'mariscos' ? 'selected' : '' }}>Mariscos</option>
                             <option class="text-[1rem] text-black" value="carnes"
-                                {{ old('categoria') == 'carnes' ? 'selected' : '' }}>Carnes</option>
+                                {{ old('clasificacion') == 'carnes' ? 'selected' : '' }}>Carnes</option>
                             <option class="text-[1rem] text-black" value="lacteos"
-                                {{ old('categoria') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
+                                {{ old('clasificacion') == 'lacteos' ? 'selected' : '' }}>Lacteos</option>
                             <option class="text-[1rem] text-black" value="aves"
-                                {{ old('categoria') == 'aves' ? 'selected' : '' }}>Aves</option>
+                                {{ old('clasificacion') == 'aves' ? 'selected' : '' }}>Aves</option>
                             <option class="text-[1rem] text-black" value="plasticos"
-                                {{ old('categoria') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
+                                {{ old('clasificacion') == 'plasticos' ? 'selected' : '' }}>Plasticos</option>
                             <option class="text-[1rem] text-black" value="frutasyverduras"
-                                {{ old('categoria') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras
+                                {{ old('clasificacion') == 'frutasyverduras' ? 'selected' : '' }}>Frutas Y Verduras
                             </option>
                             <option class="text-[1rem] text-black" value="emprendimiento"
-                                {{ old('categoria') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
+                                {{ old('clasificacion') == 'emprendimiento' ? 'selected' : '' }}>Emprendimiento</option>
                             <option class="text-[1rem] text-black" value="otros"
-                                {{ old('categoria') == 'otros' ? 'selected' : '' }}>Otros</option>
+                                {{ old('clasificacion') == 'otros' ? 'selected' : '' }}>Otros</option>
                         </select>
                     </div>
-                    @error('categoria')
+                    @error('clasificacion')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
 

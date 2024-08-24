@@ -38,7 +38,7 @@ class Product extends Model
          'description',
           'price',
           'fk_vendedors',
-           'categoria',
+           'clasificacion',
            'imagen_referencia',
            'estado'
         ];

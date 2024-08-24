@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2);
             $table->string('imagen_referencia')->nullable();
-            $table->string('categoria');
+            $table->string('clasificacion');
             $table->string('estado')->default('Disponible');
             $table->unsignedBigInteger('fk_vendedors');
             $table->foreign('fk_vendedors')->references('id')->on('vendedors')->onDelete('cascade');
@@ -32,7 +32,7 @@ return new class extends Migration
             'description' => 'Almuerzo de Lasagna, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
             'price' => 2.75,
             'imagen_referencia' => 'lasagna.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
+            'clasificacion' => 'comedor',
             'estado' => 'Disponible',
             'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
         ]);DB::table('products')->insert([
@@ -40,7 +40,7 @@ return new class extends Migration
             'description' => 'Almuerzo de Pollo en Salsa, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
             'price' => 2.75,
             'imagen_referencia' => 'polloensalsa.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
+            'clasificacion' => 'comedor',
             'estado' => 'Disponible',
             'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
         ]);DB::table('products')->insert([
@@ -48,7 +48,7 @@ return new class extends Migration
             'description' => 'Almuerzo de Carne Guisada, con dos acompaniamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
             'price' => 3.00,
             'imagen_referencia' => 'carneguisada.png',  // Suponiendo que tengas esta imagen en tu carpeta de imágenes
-            'categoria' => 'Comida',
+            'clasificacion' => 'comedor',
             'estado' => 'Disponible',
             'fk_vendedors' => 1,  // Asumiendo que el ID del vendedor es 1
         ]);
@@ -59,7 +59,7 @@ DB::table('products')->insert([
         'description' => 'Almuerzo de Lasagna, con dos acompañamientos que pueden ser arroz, casamiento, ensalada de coditos o fresa, incluye dos tortillas y fresco.',
         'price' => 2.75,
         'imagen_referencia' => 'lasagna.png',
-        'categoria' => 'Comida',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 1,  // Vendedor 1 del Mercado 1
     ],
@@ -68,7 +68,7 @@ DB::table('products')->insert([
         'description' => 'Pizza Margarita con salsa de tomate, mozzarella y albahaca.',
         'price' => 3.50,
         'imagen_referencia' => 'pizza_margarita.png',
-        'categoria' => 'Comida',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 1,
     ],
@@ -77,7 +77,7 @@ DB::table('products')->insert([
         'description' => 'Ensalada Caesar con pollo, lechuga, crutones y aderezo Caesar.',
         'price' => 2.25,
         'imagen_referencia' => 'ensalada_caesar.png',
-        'categoria' => 'Comida',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 1,
     ],
@@ -90,7 +90,7 @@ DB::table('products')->insert([
         'description' => 'Camisa de algodón azul, talla M.',
         'price' => 15.00,
         'imagen_referencia' => 'camisa_azul.png',
-        'categoria' => 'Ropa',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 2,  // Vendedor 2 del Mercado 1
     ],
@@ -99,7 +99,7 @@ DB::table('products')->insert([
         'description' => 'Zapatos de cuero negro, talla 42.',
         'price' => 40.00,
         'imagen_referencia' => 'zapatos_negros.png',
-        'categoria' => 'Calzado',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 2,
     ],
@@ -108,7 +108,7 @@ DB::table('products')->insert([
         'description' => 'Sombrero de paja beige, tamaño único.',
         'price' => 12.00,
         'imagen_referencia' => 'sombrero_beige.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 2,
     ],
@@ -121,7 +121,7 @@ DB::table('products')->insert([
         'description' => 'Cinta métrica de 5 metros.',
         'price' => 8.00,
         'imagen_referencia' => 'cinta_metrica.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 3,  // Vendedor 3 del Mercado 1
     ],
@@ -130,7 +130,7 @@ DB::table('products')->insert([
         'description' => 'Martillo de acero con mango de madera.',
         'price' => 10.00,
         'imagen_referencia' => 'martillo.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 3,
     ],
@@ -139,7 +139,7 @@ DB::table('products')->insert([
         'description' => 'Juego de destornilladores, incluye tamaños pequeños y grandes.',
         'price' => 6.00,
         'imagen_referencia' => 'destornillador.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 3,
     ],
@@ -152,7 +152,7 @@ DB::table('products')->insert([
         'description' => 'Pan recién horneado con ajo y perejil.',
         'price' => 1.50,
         'imagen_referencia' => 'pan_de_ajo.png',
-        'categoria' => 'Panadería',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 4,  // Vendedor 1 del Mercado 2
     ],
@@ -161,7 +161,7 @@ DB::table('products')->insert([
         'description' => 'Delicioso croissant de mantequilla.',
         'price' => 2.00,
         'imagen_referencia' => 'croissant.png',
-        'categoria' => 'Panadería',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 4,
     ],
@@ -170,7 +170,7 @@ DB::table('products')->insert([
         'description' => 'Baguette crujiente y dorada.',
         'price' => 1.75,
         'imagen_referencia' => 'baguette.png',
-        'categoria' => 'Panadería',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 4,
     ],
@@ -183,7 +183,7 @@ DB::table('products')->insert([
         'description' => 'Sandalias cómodas para verano, talla 38.',
         'price' => 25.00,
         'imagen_referencia' => 'sandalias_verano.png',
-        'categoria' => 'Calzado',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 5,  // Vendedor 2 del Mercado 2
     ],
@@ -192,7 +192,7 @@ DB::table('products')->insert([
         'description' => 'Cinturón de cuero negro, talla ajustable.',
         'price' => 20.00,
         'imagen_referencia' => 'cinturon_cuero.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 5,
     ],
@@ -201,7 +201,7 @@ DB::table('products')->insert([
         'description' => 'Bufanda de lana para el invierno.',
         'price' => 15.00,
         'imagen_referencia' => 'bufanda_lana.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'ropa',
         'estado' => 'Disponible',
         'fk_vendedors' => 5,
     ],
@@ -214,7 +214,7 @@ DB::table('products')->insert([
         'description' => 'Juego de brocas para taladro, diferentes tamaños.',
         'price' => 12.00,
         'imagen_referencia' => 'brocas_taladro.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 6,  // Vendedor 3 del Mercado 2
     ],
@@ -223,7 +223,7 @@ DB::table('products')->insert([
         'description' => 'Sierra de mano de alta calidad.',
         'price' => 18.00,
         'imagen_referencia' => 'sierra_mano.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 6,
     ],
@@ -232,7 +232,7 @@ DB::table('products')->insert([
         'description' => 'Llave inglesa ajustable.',
         'price' => 9.00,
         'imagen_referencia' => 'llave_inglesa.png',
-        'categoria' => 'Herramientas',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 6,
     ],
@@ -245,7 +245,7 @@ DB::table('products')->insert([
         'description' => 'Una emocionante novela de aventuras.',
         'price' => 10.00,
         'imagen_referencia' => 'novela_aventura.png',
-        'categoria' => 'Libros',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 7,  // Vendedor 1 del Mercado 3
     ],
@@ -254,7 +254,7 @@ DB::table('products')->insert([
         'description' => 'Manual de cocina con recetas tradicionales.',
         'price' => 15.00,
         'imagen_referencia' => 'manual_cocina.png',
-        'categoria' => 'Libros',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 7,
     ],
@@ -263,7 +263,7 @@ DB::table('products')->insert([
         'description' => 'Diccionario completo inglés-español.',
         'price' => 20.00,
         'imagen_referencia' => 'diccionario.png',
-        'categoria' => 'Libros',
+        'clasificacion' => 'otros',
         'estado' => 'Disponible',
         'fk_vendedors' => 7,
     ],
@@ -276,7 +276,7 @@ DB::table('products')->insert([
         'description' => 'Ensalada con aceite de oliva, aceitunas, y queso feta.',
         'price' => 3.00,
         'imagen_referencia' => 'ensalada_mediterranea.png',
-        'categoria' => 'Comida',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 8,  // Vendedor 2 del Mercado 3
     ],
@@ -285,7 +285,7 @@ DB::table('products')->insert([
         'description' => 'Bocadillo con vegetales frescos y hummus.',
         'price' => 2.50,
         'imagen_referencia' => 'bocadillo_vegetariano.png',
-        'categoria' => 'Comida',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 8,
     ],
@@ -294,7 +294,7 @@ DB::table('products')->insert([
         'description' => 'Smoothie fresco de frutas variadas.',
         'price' => 2.00,
         'imagen_referencia' => 'smoothie_frutas.png',
-        'categoria' => 'Bebidas',
+        'clasificacion' => 'comedor',
         'estado' => 'Disponible',
         'fk_vendedors' => 8,
     ],
@@ -307,7 +307,7 @@ DB::table('products')->insert([
         'description' => 'Bolso de mano elegante para mujeres.',
         'price' => 30.00,
         'imagen_referencia' => 'bolso_mano.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'emprendimiento',
         'estado' => 'Disponible',
         'fk_vendedors' => 9,  // Vendedor 3 del Mercado 3
     ],
@@ -316,7 +316,7 @@ DB::table('products')->insert([
         'description' => 'Reloj de pulsera clásico con correa de cuero.',
         'price' => 50.00,
         'imagen_referencia' => 'reloj_pulsera.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'emprendimiento',
         'estado' => 'Disponible',
         'fk_vendedors' => 9,
     ],
@@ -325,7 +325,7 @@ DB::table('products')->insert([
         'description' => 'Gafas de sol con protección UV.',
         'price' => 15.00,
         'imagen_referencia' => 'gafas_sol.png',
-        'categoria' => 'Accesorios',
+        'clasificacion' => 'emprendimiento',
         'estado' => 'Disponible',
         'fk_vendedors' => 9,
     ],

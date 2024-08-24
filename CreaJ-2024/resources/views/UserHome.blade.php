@@ -233,34 +233,7 @@
             </div>
             <div class="w-full h-[2px] bg-white"></div>
         </footer>
-        <!-- <div class="flex justify-center mt-5 flex-col items-center">
-
-                <a href="./UserPuestosVendedores" class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mb-4">
-                <div>
-                    <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoExCuartel.jpg') }}" alt="User Icon">
-                    <div class="text-center mt-2">
-                        <h1 class="text-sm font-bold">Mercado Ex-Cuartel</h1>
-                        <h3 class="w-[85%] mx-auto text-xs text-justify pb-5">El mercado está ubicado en la 1a. C. Ote., San Salvador, y su horario de atención es de lunes a viernes de 07:30 a 17:00, los sábados de 07:30 a 16:00 y los domingos de 07:30 a 14:00.</h3>
-                    </div>
-                </div>
-            </a>
-
-                <div class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mt-5">
-                    <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoSanMiguelito.jpg') }}" alt="User Icon">
-                    <div class="text-center mt-2">
-                        <h1 class="text-sm font-bold">MercadoSan Miguelito</h1>
-                        <h3 class="w-[85%] mx-auto text-xs text-justify pb-5">El Mercado San Miguelito es uno de los mercados más emblemáticos y concurridos de San Salvador, conocido por su gran variedad de productos y especialmente por sus arreglos florales y decoraciones para celebraciones</h3>
-                    </div>
-                </div>
-
-                <div class="w-[80%] bg-gray-50 rounded-md border border-gray-200 mt-5">
-                    <img class="w-[100%] rounded-t-lg" src="{{ asset('imgs/MercadoCentral.jpeg') }}" alt="User Icon">
-                    <div class="text-center mt-2">
-                        <h1 class="text-sm font-bold">Mercado Central</h1>
-                        <h3 class="w-[85%] mx-auto text-xs text-justify pb-5">Es un sitio emblemático para los habitantes de San Salvador y un punto de interés turístico para quienes desean experimentar la cultura local y encontrar productos únicos de El Salvador</h3>
-                    </div>
-                </div>
-            </div> -->
+        
     </div>
 
 </body>

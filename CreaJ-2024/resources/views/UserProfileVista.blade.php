@@ -99,21 +99,23 @@
     </div>
 
     <div class="w-[50%] mx-auto m-16">
-        <div class=" mx-auto flex items-center">
+        <a href="{{ route('usuarios.index')}}"  class=" mx-auto flex items-center mt-10">
+            <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
+            <h3 class="flex-grow text-left font-bold ml-5">Hogar</h3> <!-- Alineado a la derecha -->
+        </a>
+
+        <a href="{{route('usuarios.historial')}}" class=" mx-auto flex items-center">
             <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
             <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
-        </div>
+        </a>
 
-        <div class=" mx-auto flex items-center mt-10">
+        <a href="{{ route('usuarios.reservas')}}" class=" mx-auto flex items-center mt-10">
             <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
             <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
-        </div>
+        </a>
 
 
-        <div class=" mx-auto flex items-center mt-10">
-            <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-            <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
-        </div>
+
 
         <form action="{{ route('logout') }}" method="GET">
             @csrf

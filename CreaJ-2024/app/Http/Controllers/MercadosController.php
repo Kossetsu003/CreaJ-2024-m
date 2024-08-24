@@ -384,7 +384,7 @@ public function historial()
     }])
     ->get();
 
-    return view('MercadoEstadoReservas', compact('reservations', 'id'));
+    return view('MercadoHistorialReservas', compact('reservations', 'id'));
 }
 
 

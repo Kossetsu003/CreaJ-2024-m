@@ -9,6 +9,24 @@
 </head>
 <body>
     <section>
+        <div class="bottom-bar fixed bottom-[1%] left-0 right-0 z-[100] flex justify-center md:hidden">
+            <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around ">
+                <div class="flex items-center  ">
+                    <a href="{{ route('admin.index') }}" ><img class="w-6" src="{{ asset('imgs/admin.home.nav.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+                    <a href="{{ route('admin.vendedores') }}"><img class="w-6" src="{{ asset('imgs/admin.sellers.nav.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+                    <a href="{{ route('admin.clientes') }}" ><img class="w-6" src="{{ asset('imgs/admin.users.nav.png') }}" alt="User Icon"></a>
+                </div>
+                <div class="flex items-center">
+
+                    <a href="{{ route('AdminProfileVista')}}"  ><img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="User Icon"></a>
+                </div>
+            </div>
+            <!--FIN DE NAVBAR MOBIL-->
+        </div>
         <div class="w-72 h-auto mx-auto">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-purple-500">Registrar vendedor</h1>

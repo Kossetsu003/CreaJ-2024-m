@@ -148,7 +148,7 @@
 
                     <!-- Categoría del Producto -->
                     <div class="flex justify-center">
-                        <select name="categoria" id="categoria"
+                        <select name="clasificacion" id="clasificacion"
                             class="border-[1px] bg-gray-100 rounded bg-transparent w-full h-9 pl-5 text-[0.8rem] mt-2 text-gray-400"
                             required>
                             <option class=" font-sans font-medium text-[1rem] text-neutral-950 " value="null">Escoga

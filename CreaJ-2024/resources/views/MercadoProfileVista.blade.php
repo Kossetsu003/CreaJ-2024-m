@@ -60,12 +60,12 @@
     <!--END NAVBAR-->
     <div class="mb-[5rem]">
         <div class="bg-red-500 h-36 w-full flex items-center justify-center">
-            <h3 class="text-3xl font-bold">Mini<span class="text-white ml-2">Shop</span></h3>
+            <h3 class="text-3xl font-bold md:hidden">Mini<span class="text-white ml-2">Shop</span></h3>
         </div>
 
 
         <div class="flex justify-center my-5">
-            <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+            <img class="w-40 h-40 bg-white rounded-full shadow-md  " src="{{ asset('imgs/'.$mercadoLocal->imagen_referencia) }}" alt="User Icon">
         </div>
         <div class="flex justify-center mt-2 ">
             <img class="w-3 h-3 ml-1" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -76,27 +76,31 @@
             <h3 class="text-[10px]"> <span class="ml-2">5.0</span></h3>
         </div>
         <div class="text-center mt-3">
-            <h3 class="text-xs">{{ $mercadoLocal->municipio }}</h3>
-            <h3 class="font-bold">{{ $mercadoLocal->nombre }}</h3>
-            <h3 class="text-xs">{{ $mercadoLocal->usuario }}</h3>
+            <h3 class="text-xs md:text-[1rem]">{{ $mercadoLocal->municipio }}</h3>
+            <h3 class="font-bold md:text-[1.5rem]">{{ $mercadoLocal->nombre }}</h3>
+            <h3 class="text-xs md:text-[1rem]">{{ $mercadoLocal->usuario }}</h3>
         </div>
 
         <div class="w-[50%] mx-auto mt-16">
-            <div class=" mx-auto flex items-center">
-                <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
-            </div>
+            <a href="{{ route('mercados.agregarvendedor')}}" class=" mx-auto flex items-center">
+                <img class="w-5" src="{{ asset('imgs/mercado.agregar.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-3">Agregar Vendedores</h3> <!-- Alineado a la derecha -->
+            </a>
 
-            <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
+            <a href="{{ route('mercados.listavendedores')}}" class=" mx-auto flex items-center mt-10">
+                <img class="w-5" src="{{ asset('imgs/mercado.vendedores.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Listado de Vendedores</h3> <!-- Alineado a la derecha -->
             </div>
+            <a href="{{ route('mercados.reservas')}}" class=" mx-auto flex items-center mt-10">
+                <img class="w-5" src="{{ asset('imgs/mercado.reservas.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Reservas de Vendedores</h3> <!-- Alineado a la derecha -->
+            </a>
 
 
-            <div class=" mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-                <h3 class="flex-grow text-left font-bold ml-5">Mi Buzon</h3> <!-- Alineado a la derecha -->
-            </div>
+            <a href="{{ route('mercados.historial')}}" class=" mx-auto flex items-center mt-10">
+                <img class="w-5" src="{{ asset('imgs/mercado.historial.png') }}" alt="User Icon">
+                <h3 class="flex-grow text-left font-bold ml-5">Historial de Compras</h3> <!-- Alineado a la derecha -->
+            </a>
 
 
             <form action="{{ route('logout') }}" method="GET">
@@ -113,6 +117,42 @@
 
 
     </div>
+    <footer class="bg-[#292526] pb-16">
+        <div class="flex flex-col gap-6 md:gap-0 md:grid grid-cols-3 text-white p-12">
+            <div class="hidden md:block">
+                <h2 class="font-bold">Contact Us</h2>
+                <p>Whatsapp: wa.me/50369565421</p>
+                <p>Correo Electronico: contacto@minishop.sv</p>
+                <p>Dirección: Calle Ruben Dario &, 3 Avenida Sur, San Salvador</p>
+            </div>
+            <div class="hidden md:block">
+                <h2 class="font-bold">Sobre nosotros</h2>
+                <p>Somos un equipo de desarrollo web dedicado a apoyar a los vendedores locales y municipales en el área
+                    metropolitana de San Salvador, brindando soluciones tecnológicas para fortalecer los mercados
+                    locales.</p>
+            </div>
+            <div class="md:self-end md:justify-self-end pb-4">
+                <p class="font-black text-5xl mb-4">Mini <span class="text-red-600">Shop</span></p>
+                <div class="flex gap-2">
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
+                        <img width="18" class="invert" src="{{ asset('imgs/facebook.png') }}" alt="">
+                    </div>
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
+                        <img width="18" class="invert" src="{{ asset('imgs/google.png') }}" alt="">
+                    </div>
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
+                        <img width="18" class="invert" src="{{ asset('imgs/linkedin.png') }}" alt="">
+                    </div>
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
+                        <img width="18" class="invert" src="{{ asset('imgs/twitter.png') }}" alt="">
+                    </div>
+                    <div class="w-8 aspect-square flex justify-center items-center bg-white rounded-full">
+                        <img width="18" src="{{ asset('imgs/youtube.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

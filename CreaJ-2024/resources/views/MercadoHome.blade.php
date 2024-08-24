@@ -98,14 +98,14 @@
         </div>
 
 
-        <!--CATEGORIAS-->
+        <!--clasificacionS-->
 
         <div class="md:text-center pt-[3rem] md:font-semibold font-bold">
             TODOS LOS PUESTOS:
         </div>
 
 
-        <!--FIN DE CATEGORIAS-->
+        <!--FIN DE clasificacionS-->
 
 
 

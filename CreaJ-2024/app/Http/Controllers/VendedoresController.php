@@ -199,7 +199,7 @@ class VendedoresController extends Controller{
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:200',
             'imagen_referencia' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'categoria' => 'required|string',
+            'clasificacion' => 'required|string',
         ];
 
         // Definir mensajes de error personalizados
@@ -207,7 +207,7 @@ class VendedoresController extends Controller{
             'name.required' => 'Campo obligatorio',
             'description.required' => 'Campo obligatorio',
             'imagen_referencia.required' => 'Campo obligatorio',
-            'categoria.required' => 'Campo obligatorio',
+            'clasificacion.required' => 'Campo obligatorio',
         ];
 
         // Validar los datos del formulario
@@ -216,7 +216,7 @@ class VendedoresController extends Controller{
         // Manejar la imagen del producto
         if ($request->hasFile('imagen_referencia')) {
             $nombreProducto = str_replace(' ', '_', strtolower($request->input('name')));
-            $clasificacion = str_replace(' ', '_', strtolower($request->input('categoria')));
+            $clasificacion = str_replace(' ', '_', strtolower($request->input('clasificacion')));
             $imageName = "{$nombreProducto}_{$clasificacion}.png";
 
             $path = $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
@@ -243,7 +243,7 @@ class VendedoresController extends Controller{
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'price' => $price,
-            'categoria' => $request->input('categoria'),
+            'clasificacion' => $request->input('clasificacion'),
             'estado' => 'Disponible',
             'fk_vendedors' => $vendedor->id,
             'imagen_referencia' => $imageName,
@@ -288,7 +288,7 @@ class VendedoresController extends Controller{
             'price' => 'nullable|numeric|required_if:price_type,fixed',
             'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
             'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'categoria' => 'required|string',
+            'clasificacion' => 'required|string',
             'estado' => 'nullable|string',
         ]);
 
@@ -307,7 +307,7 @@ class VendedoresController extends Controller{
             }
 
             // Crear el nombre de la imagen basado en el nombre y la categoría
-            $imageName = $request->input('name') . '_' . $request->input('categoria') . '.png';
+            $imageName = $request->input('name') . '_' . $request->input('clasificacion') . '.png';
             $imagePath = 'imgs/' . $imageName;
 
             $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
@@ -328,7 +328,7 @@ class VendedoresController extends Controller{
             $producto->quantity_per_dollar = $request->input('quantity_per_dollar');
         }
 
-        $producto->categoria = $request->input('categoria');
+        $producto->clasificacion = $request->input('clasificacion');
         $producto->estado = $request->input('estado', 'disponible');
 
         $producto->save();

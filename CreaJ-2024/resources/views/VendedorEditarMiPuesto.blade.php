@@ -39,7 +39,7 @@
 
                 <div class="bg-neutral-700 w-[75%] max-w-sm mx-auto mt-5 p-4 text-center rounded-md">
                     <div class="text-white">
-                        Cambiar Categoria
+                        Cambiar clasificacion
                     </div>
                     <ul class="text-white list-none">
                         <li class="my-2">Comida</li>

@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\DomPDF\Facade\Pdf; 
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 /**
@@ -90,18 +90,26 @@ use Barryvdh\DomPDF\Facade\Pdf;
     }
 
     //VER MERCADO Y SUS PUESTOS
-    public function mercado($id)
-    {
-        // Buscar el mercado local por ID
-        $mercadoLocal = MercadoLocal::find($id);
+    public function mercado($id, Request $request)
+{
+    // Buscar el mercado local por ID
+    $mercadoLocal = MercadoLocal::find($id);
 
-        // Obtener los vendedores con fk_mercado igual al ID del mercado local con paginación
-        $vendedors = Vendedor::where('fk_mercado', $id)->paginate();
+    // Filtrar vendedores según la clasificación si se proporciona, de lo contrario obtener todos con paginación
+    $query = Vendedor::where('fk_mercado', $id);
 
-        // Retornar la vista con ambos datos
-        return view('UserPuestosVendedores', compact('mercadoLocal', 'vendedors'))
-            ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
+    if ($request->has('clasificacion') && $request->clasificacion != 'todos') {
+        $query->where('clasificacion', $request->clasificacion);
     }
+
+    // Obtener los vendedores filtrados con paginación
+    $vendedors = $query->paginate();
+
+    // Retornar la vista con ambos datos
+    return view('UserPuestosVendedores', compact('mercadoLocal', 'vendedors'))
+        ->with('i', (request()->input('page', 1) - 1) * $vendedors->perPage());
+}
+
 
     //VER VENDEDOR Y SUS PRODUCTOS
     public function vendedor($id)
@@ -129,7 +137,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
         // Obtener otros 3 productos de la misma categoría que no sean el actual
         $products = Product::where('id', '!=', $id)
-        ->where('categoria', $product->categoria)
+        ->where('clasificacion', $product->clasificacion)
         ->take(3)
             ->get();
         $vendedor = $product->vendedor;
