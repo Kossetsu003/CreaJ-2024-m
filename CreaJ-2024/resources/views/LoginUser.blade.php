@@ -100,13 +100,7 @@
         });
 </script>
 <script>
-    function changeLanguage(language) {
-            localStorage.setItem('language', language);
-            translatePage(language);
-        }
-
-        // Función para traducir la página
-        function translatePage(language) {
+            function translatePage(language) {
     const elements = document.querySelectorAll('[data-translate]');
     const apiKey = 'AIzaSyAEsUVPxIh2Ol850K6FH9HD96utZYNRplY';
 
@@ -114,7 +108,7 @@
     const customTranslations = {
         'Registro': {
             'en': 'Sign Up',
-            // Agrega más idiomas aquí según sea necesario
+            'fr': 'S\'inscrire' // Agrega más idiomas aquí según sea necesario
         }
     };
 
@@ -127,14 +121,15 @@
             element.innerText = customTranslations[text][language];
         } else {
             // Realizar la traducción con la API de Google Translate
-            fetch(https:translation.googleapis.com/language/translate/v2?key=${apiKey}, {
+            fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     q: text,
-                    target: language
+                    target: language,
+                    format: 'text'
                 })
             })
             .then(response => response.json())
@@ -146,36 +141,5 @@
     });
 }
 
-
-        // Al cargar la página, verifica si hay un idioma guardado y aplica la traducción
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedLanguage = localStorage.getItem('language');
-            if (savedLanguage) {
-                document.getElementById('languageSelector').value = savedLanguage;
-                translatePage(savedLanguage);
-            }
-        });
-
-        // Código para el menú desplegable
-        const menuButtons = [
-            { button: 'menu1-button', menu: 'menu1' },
-            { button: 'menu2-button', menu: 'menu2' },
-            { button: 'menu3-button', menu: 'menu3' }
-        ];
-
-        menuButtons.forEach(({ button, menu }) => {
-            const menuButton = document.getElementById(button);
-            const menuElement = document.getElementById(menu);
-
-            menuButton.addEventListener('click', function () {
-                menuElement.classList.toggle('hidden');
-            });
-
-            document.addEventListener('click', function (e) {
-                if (!menuButton.contains(e.target) && !menuElement.contains(e.target)) {
-                    menuElement.classList.add('hidden');
-                }
-            });
-        });
-        </script>
+</script>
 </html>
