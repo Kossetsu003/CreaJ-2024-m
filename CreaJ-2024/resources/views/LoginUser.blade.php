@@ -11,6 +11,11 @@
     <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 <body>
+    <select name='select' id="languageSelector" onchange="changeLanguage(this.value)" class="bg-gray-700 text-white rounded p-2">
+        <option value="es" selected>Español</option>
+        <option value="en" >English</option>
+        <option value="fr">Français</option>
+</select>
     <div class="md:flex h-screen">
         <div class="pt-7 md:bg-[#BDD7FF] md:w-[50%] md:flex md:flex-col md:justify-center">
             <div class="login pl-5">
@@ -94,4 +99,83 @@
             });
         });
 </script>
+<script>
+    function changeLanguage(language) {
+            localStorage.setItem('language', language);
+            translatePage(language);
+        }
+
+        // Función para traducir la página
+        function translatePage(language) {
+    const elements = document.querySelectorAll('[data-translate]');
+    const apiKey = 'AIzaSyAEsUVPxIh2Ol850K6FH9HD96utZYNRplY';
+
+    // Diccionario de traducciones personalizadas
+    const customTranslations = {
+        'Registro': {
+            'en': 'Sign Up',
+            // Agrega más idiomas aquí según sea necesario
+        }
+    };
+
+    elements.forEach(element => {
+        let text = element.innerText;
+
+        // Verificar si el texto tiene una traducción personalizada
+        if (customTranslations[text] && customTranslations[text][language]) {
+            // Usar la traducción personalizada
+            element.innerText = customTranslations[text][language];
+        } else {
+            // Realizar la traducción con la API de Google Translate
+            fetch(https:translation.googleapis.com/language/translate/v2?key=${apiKey}, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    q: text,
+                    target: language
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                element.innerText = data.data.translations[0].translatedText;
+            })
+            .catch(error => console.error('Error al traducir:', error));
+        }
+    });
+}
+
+
+        // Al cargar la página, verifica si hay un idioma guardado y aplica la traducción
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage) {
+                document.getElementById('languageSelector').value = savedLanguage;
+                translatePage(savedLanguage);
+            }
+        });
+
+        // Código para el menú desplegable
+        const menuButtons = [
+            { button: 'menu1-button', menu: 'menu1' },
+            { button: 'menu2-button', menu: 'menu2' },
+            { button: 'menu3-button', menu: 'menu3' }
+        ];
+
+        menuButtons.forEach(({ button, menu }) => {
+            const menuButton = document.getElementById(button);
+            const menuElement = document.getElementById(menu);
+
+            menuButton.addEventListener('click', function () {
+                menuElement.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!menuButton.contains(e.target) && !menuElement.contains(e.target)) {
+                    menuElement.classList.add('hidden');
+                }
+            });
+        });
+        </script>
 </html>
