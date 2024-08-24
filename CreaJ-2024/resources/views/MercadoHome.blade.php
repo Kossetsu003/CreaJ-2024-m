@@ -36,29 +36,29 @@
     <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
         <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
             <div class="flex items-center">
-                <a href="{{ route('mercados.index') }}"
-                    <img class="w-6" src="{{ asset('imgs/vendedor.home.png') }}" alt="Home Icon" />
+                <a href="{{ route('mercados.index') }}">
+                    <img class="w-6" src="{{ asset('imgs/mercado.home.nav.png') }}" alt="Home Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('mercados.listavendedores') }}"
-                    <img class="w-6" src="{{ asset('imgs/vendedor.productos.png') }}" alt="Cart Icon" />
+                <a href="{{ route('mercados.listavendedores') }}">
+                    <img class="w-6" src="{{ asset('imgs/mercado.vendedores.nav.png') }}" alt="Cart Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('vendedores.reservas') }}">
-                    <img class="w-6" src="{{ asset('imgs/vendedor.reservas.png') }}" alt="Favorites Icon" />
+                <a href="{{ route('mercados.reservas') }}">
+                    <img class="w-6" src="{{ asset('imgs/mercado.reservas.nav.png') }}" alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('vendedores.historial') }}">
-                    <img class="w-6" src="{{ asset('imgs/mercado.historial.blancopng.png') }}"
+                <a href="{{ route('mercados.historial') }}">
+                    <img class="w-6" src="{{ asset('imgs/mercado.historial.nav.png') }}"
                         alt="Favorites Icon" />
                 </a>
             </div>
             <div class="flex items-center">
-                <a href="{{ route('vendedor.perfil') }}">
-                    <img class="w-6" src="{{ asset('imgs/vendedor.perfil.png') }}" alt="Profile Icon" />
+                <a href="{{ route('mercados.perfil') }}">
+                    <img class="w-6" src="{{ asset('imgs/mercado.perfil.nav.png') }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
