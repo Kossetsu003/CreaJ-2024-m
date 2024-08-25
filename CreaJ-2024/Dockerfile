@@ -14,8 +14,6 @@ FROM richarvey/nginx-php-fpm:latest
 
 COPY --from=build-stage /app /var/www/html
 
-
-
 # Image config
 ENV SKIP_COMPOSER 1
 ENV WEBROOT /var/www/html/public
