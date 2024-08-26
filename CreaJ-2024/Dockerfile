@@ -1,39 +1,32 @@
-# Use PHP with Apache as the base image
-FROM php:8.2-apache as web
+FROM node:22 AS build-stage
 
-# Install Additional System Dependencies
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    zip
+WORKDIR /app
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY package*.json ./
 
-# Enable Apache mod_rewrite for URL rewriting
-RUN a2enmod rewrite
+RUN npm install
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql zip
+COPY . .
 
-# Configure Apache DocumentRoot to point to Laravel's public directory
-# and update Apache configuration files
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+RUN npm run build
 
-# Copy the application code
-COPY . /var/www/html
+FROM richarvey/nginx-php-fpm:latest
 
-# Set the working directory
-WORKDIR /var/www/html
+COPY --from=build-stage /app /var/www/html
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Image config
+ENV SKIP_COMPOSER 1
+ENV WEBROOT /var/www/html/public
+ENV PHP_ERRORS_STDERR 1
+ENV RUN_SCRIPTS 1
+ENV REAL_IP_HEADER 1
 
-# Install project dependencies
-RUN composer install
+# Laravel config
+ENV APP_ENV production
+ENV APP_DEBUG false
+ENV LOG_CHANNEL stderr
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
-CMD ["php","artisan","serve","--host=0.0.0.0"]
+CMD ["/start.sh"]
