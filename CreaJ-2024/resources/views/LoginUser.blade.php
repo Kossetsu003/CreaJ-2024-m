@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
+                    <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop! HOLA</h3>
                 </div>
             </div>
 
