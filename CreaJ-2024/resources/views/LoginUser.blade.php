@@ -27,8 +27,8 @@
                 </div>
             </div>
 
-            <form action="{{ route('login') }}" method="POST">
-     
+            <form action="{{ route('login') }}" method="POST">HOLA
+                    @csrf
                 <div class="w-72 h-96 mt-10 mx-auto">
                     <div class="text-center">
                         <h1 class="text-6xl font-bold">Mini<span class="text-[#3679F5] ml-3 font-bold">Shop</span></h1>
