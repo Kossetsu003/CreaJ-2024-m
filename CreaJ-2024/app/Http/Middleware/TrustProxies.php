@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    protected $proxies = '*'; // Acepta todas las IPs de proxies. Puedes especificar IPs si lo prefieres.
 
     /**
      * The headers that should be used to detect proxies.
