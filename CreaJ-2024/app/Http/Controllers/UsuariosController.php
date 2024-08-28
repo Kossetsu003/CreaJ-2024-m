@@ -436,6 +436,26 @@ use Barryvdh\DomPDF\Facade\Pdf;
             }
         }
 
+        public function eliminarcarrito(Product $product){
+            {
+                $cartItem = Cart::where('fk_product', $product->id)
+                                ->where('fk_user', Auth::id())
+                                ->first();
+
+                if ($cartItem) {
+                    if ($cartItem->quantity > 1) {
+                        $cartItem->quantity--;
+                        $cartItem->subtotal = $cartItem->quantity * $cartItem->product->price;
+                        $cartItem->save();
+                    } else {
+                        $cartItem->delete();
+                    }
+                }
+
+                return redirect()->route('cart.index')->with('success', 'Producto eliminado del carrito correctamente.');
+            }
+        }
+
 
  }
 

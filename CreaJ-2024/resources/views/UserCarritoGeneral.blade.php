@@ -100,7 +100,7 @@
                             </div>
                             <!--BOTNOES-->
                             <div class="flex">
-                                <form action="{{ route('cart.remove', $cartItem->fk_product) }}" method="POST">
+                                <form action="{{ route('usuarios.eliminarcarrito', $cartItem->fk_product) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
