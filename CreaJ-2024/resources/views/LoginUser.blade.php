@@ -23,11 +23,11 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop! HOLA</h3>
+                    <h3 class="text-xs font-bold">¡Bienvenidos a MiniShop!</h3>
                 </div>
             </div>
 
-            <form action="{{ route('login') }}" method="POST">HOLA
+            <form action="{{ route('login') }}" method="POST">
                     @csrf
                 <div class="w-72 h-96 mt-10 mx-auto">
                     <div class="text-center">
@@ -52,7 +52,8 @@
                             <input
                                 class="checked:appearance-auto appearance-none h-5 w-5 border border-gray-500 rounded-sm checked:border-gray-700 focus:outline-none"
                                 type="checkbox"
-                                id="show-passwords">
+                                id="show-passwords"
+                                maxlength="8">
                             <span class="ml-2 pt-1 md:text-[1rem] text-sm text-gray-500">Mostrar Contraseña</span>
                         </div>
                     </div>

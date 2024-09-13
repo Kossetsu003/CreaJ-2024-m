@@ -213,7 +213,7 @@
                                                 </div>
                                             </form>
                                         @elseif($reservation->estado == 'sin_recibir')
-                                            <h3>HOLAA</h3>
+                                          
                                             <h2 class="text-xl font-bold mb-4 text-center">El Cliente No ha Recibido el
                                                 Paquete ¿Hay problemas?</h2>
                                             <form id="form-{{ $item->id }}"
