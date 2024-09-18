@@ -59,28 +59,24 @@
 
 
             <div>
-                @foreach ($clientes as $cliente)
-                <div class="mt-[5%] mx-auto md:ml-[15rem] ml-[1rem] md:mr-[15rem] mr-[1rem] flex shadow-lg ">
-                    <img class="w-28 rounded-lg h-28" src="{{ asset('imgs\AguacateQuintal.jpg') }}" alt="User Icon">
-                    <div class="ml-2 ">
-                        <h3 class="text-sm font-bold">Vendedor :{{ $cliente->nombre }} {{ $cliente->apellido }}</h3>
-                        <h3 class="text-xs ">Con Correo Electronico : {{ $cliente->usuario }}</h3>
-                        <h3 class="text-xs ">Numero de Telefono : {{ $cliente->telefono }}</h3>
-                        <div class="mt-1 mr-5 gap-2 mb-2 ">
-                            <form action="{{ route('admin.eliminarclientes',$cliente->id) }}" method="POST">
+            @foreach ($clientes as $cliente)
+    <div class="mt-5 mx-auto flex shadow-lg max-w-md md:max-w-xl">
+        <img class="w-28 h-28 rounded-lg" src="{{ asset('imgs/AguacateQuintal.jpg') }}" alt="User Icon">
+        <div class="ml-4 flex-1">
+            <h3 class="text-sm font-bold">Vendedor: {{ $cliente->nombre }} {{ $cliente->apellido }}</h3>
+            <h3 class="text-xs">Correo Electrónico: {{ $cliente->usuario }}</h3>
+            <h3 class="text-xs">Número de Teléfono: {{ $cliente->telefono }}</h3>
+            <div class="mt-2">
+                <form action="{{ route('admin.eliminarclientes', $cliente->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger bg-red-500 text-white text-xs px-3 py-2 rounded">Eliminar Usuario</button>
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
 
-                                @csrf
-                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm bg-red-500 text-white text-xs px-3 py-2 rounded">Eliminar Usuario</button>
-                            </form>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-                @endforeach
 
 
 

@@ -366,12 +366,14 @@ use Illuminate\Support\Facades\Validator;
 
         /**CLIENTES */
         public function clientes()
-        {
-            $clientes = User::paginate();
+{
+    // Filtrar usuarios excluyendo el que tiene ID 1
+    $clientes = User::where('id', '!=', 1)->paginate();
 
-        return view('AdminListadoClientes', compact('clientes'))
-            ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
-        }
+    return view('AdminListadoClientes', compact('clientes'))
+        ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+}
+
 
         public function eliminarclientes($id)
         {
