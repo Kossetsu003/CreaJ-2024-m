@@ -279,62 +279,68 @@ class VendedoresController extends Controller{
     }
 
     public function actualizarproducto(ProductRequest $request, $id)
-    {
-        // Validación de los datos del formulario
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:200',
-            'price_type' => 'required|string|in:fixed,per_dollar',
-            'price' => 'nullable|numeric|required_if:price_type,fixed',
-            'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
-            'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'clasificacion' => 'required|string',
-            'estado' => 'nullable|string',
-        ]);
+{
+    // Validación de los datos del formulario
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string|max:200',
+        'price_type' => 'required|string|in:fixed,per_dollar',
+        'price' => 'nullable|numeric|required_if:price_type,fixed',
+        'quantity_per_dollar' => 'nullable|integer|required_if:price_type,per_dollar',
+        'imagen_referencia' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        'clasificacion' => 'required|string',
+        'estado' => 'nullable|string',
+    ]);
 
-        $producto = Product::findOrFail($id);
+    $producto = Product::findOrFail($id);
 
-        // Verificar si el vendedor autenticado es el propietario del producto
-        if ($producto->fk_vendedors != Auth::guard('vendedor')->id()) {
-            return redirect()->back()->with('error', 'No tienes permiso para actualizar este producto.');
+    // Verificar si el vendedor autenticado es el propietario del producto
+    if ($producto->fk_vendedors != Auth::guard('vendedor')->id()) {
+        return redirect()->back()->with('error', 'No tienes permiso para actualizar este producto.');
+    }
+
+    // Manejo de la imagen
+    if ($request->hasFile('imagen_referencia')) {
+        // Eliminar la imagen anterior si existe
+        if ($producto->imagen_referencia) {
+            Storage::disk('public')->delete('imgs/' . $producto->imagen_referencia);
         }
 
-        // Manejo de la imagen
-        if ($request->hasFile('imagen_referencia')) {
-            // Eliminar la imagen anterior si existe
-            if ($producto->imagen_referencia) {
-                Storage::disk('public')->delete('imgs/' . $producto->imagen_referencia);
-            }
-
+        try {
             // Crear el nombre de la imagen basado en el nombre y la categoría
             $imageName = $request->input('name') . '_' . $request->input('clasificacion') . '.png';
-            $imagePath = 'imgs/' . $imageName;
-
             $request->file('imagen_referencia')->move(public_path('imgs'), $imageName);
 
             $producto->imagen_referencia = $imageName;
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al subir la imagen: ' . $e->getMessage());
         }
-
-        // Actualizar los campos del producto
-        $producto->name = $request->input('name');
-        $producto->description = $request->input('description');
-        $producto->price_type = $request->input('price_type');
-
-        if ($producto->price_type === 'fixed') {
-            $producto->price = $request->input('price');
-            $producto->quantity_per_dollar = null;
-        } else {
-            $producto->price = null;
-            $producto->quantity_per_dollar = $request->input('quantity_per_dollar');
-        }
-
-        $producto->clasificacion = $request->input('clasificacion');
-        $producto->estado = $request->input('estado', 'disponible');
-
-        $producto->save();
-
-        return redirect()->route('vendedores.productos')->with('success', 'Producto actualizado exitosamente.');
     }
+
+    // Actualizar los campos del producto
+    $producto->name = $request->input('name');
+    $producto->description = $request->input('description');
+    $producto->price_type = $request->input('price_type');
+
+    if ($producto->price_type === 'fixed') {
+        $producto->price = $request->input('price');
+        $producto->quantity_per_dollar = null;
+    } else {
+        $producto->price = null;
+        $producto->quantity_per_dollar = $request->input('quantity_per_dollar');
+    }
+
+    $producto->clasificacion = $request->input('clasificacion');
+    $producto->estado = $request->input('estado', 'disponible');
+
+    // Guardar cambios
+    if (!$producto->save()) {
+        return redirect()->back()->with('error', 'Error al actualizar el producto.');
+    }
+
+    return redirect()->route('vendedores.productos')->with('success', 'Producto actualizado exitosamente.');
+}
+
 
     public function eliminarproducto($id)
     {

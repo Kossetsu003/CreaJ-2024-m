@@ -80,14 +80,23 @@
                             class=" font-medium">{{ $vendedor->nombre_del_local }}</span></h3>
                 </div>
 
+                @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+
+
                 <div class="mt-5 space-y-4">
                     <!-- Imagen del Producto -->
                     <div class="flex justify-between">
                         <label for="file-input"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs  shadow-md bg-transparent flex items-center relative">
                             <span class="text-gray-600">Imagen del Producto</span>
-                            <input id="file-input" type="file" name="imagen_referencia" class="hidden"
-                                onchange="previewImage(event)">
+                            <input id="file-input" type="file" name="imagen_referencia" class="hidden" 
+       accept="image/*" onchange="previewImage(event)">
+
                             <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover"
                                 style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
                         </label>

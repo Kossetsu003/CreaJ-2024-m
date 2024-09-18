@@ -83,6 +83,11 @@
             <div class="text-center md:font-semibold text-[2rem] md:text-[4rem]">
                 Mis Productos
             </div>
+            @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
             <div class="space-y-4 flex flex-col items-center justify-center">
                 @if ($productos->isEmpty())

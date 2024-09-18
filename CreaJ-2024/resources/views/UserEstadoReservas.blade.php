@@ -76,7 +76,10 @@
 
     @if ($reservation->estado != 'archivado')
         <div class="p-4 font-sans font-light border-gray-200 rounded-lg justify-between md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
-        <a href="{{ route('viewReceipt', $reservation->id) }}" target="_blank" class="btn btn-primary">
+        <a href="{{ route('viewReceipt', $reservation->id) }}" target="_blank" class="inline-flex items-center px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-150 ease-in-out rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+    Ver Recibo
+</a>
+
     Ver Recibo
 </a>
 
