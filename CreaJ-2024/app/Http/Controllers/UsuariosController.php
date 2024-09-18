@@ -178,6 +178,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
         return redirect()->route('usuarios.carrito')->with('success', 'Producto agregado al carrito correctamente.');
     }
 
+    /**
+     * IMPRIMIR RECIBO
+     */
         public function generateReceipt($id)
         {
             // Obtener la reserva y los ítems relacionados con el vendedor y el mercado local
@@ -201,6 +204,36 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
             return $pdf->download('recibo-reserva-'.$id.'.pdf');
         }
+
+        /**
+         * ABRIR RECIBO
+         */
+        public function viewReceipt($id)
+{
+    // Obtener la reserva y los ítems relacionados con el vendedor y el mercado local
+    $reservation = Reservation::with('items.product.vendedor.mercadoLocal')->findOrFail($id);
+
+    // Obtener los mercados únicos relacionados con la reserva
+    $mercados = $reservation->items->map(function($item) {
+        return $item->product->vendedor->mercadoLocal;
+    })->unique('id');
+
+    // Obtener los vendedores únicos
+    $vendedor = $reservation->items->map(function($item) {
+        return $item->product->vendedor;
+    })->unique('id');
+
+    // Generar el PDF
+    $pdf = Pdf::loadView('receipt', [
+        'reservation' => $reservation,
+        'mercados' => $mercados,
+        'vendedor' => $vendedor
+    ]);
+
+    // Abrir el PDF en una nueva página
+    return $pdf->stream('recibo-reserva-' . $id . '.pdf');
+}
+
 
 
     public function carrito()

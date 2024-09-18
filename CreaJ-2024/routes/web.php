@@ -123,6 +123,7 @@ Route::post('/usuarios/store', [UsuariosController::class, 'store'])->name('usua
 Route::get('/usuarios/historial', [UsuariosController::class, 'historial'])->name('usuarios.historial');
 Route::get('/usuarios/reservas/pdf/{id}', [UsuariosController::class, 'generateReceipt'])->name('reservas.pdf');
 Route::get('/usuarios/eliminarcarrito/{product}', [UsuariosController::class, 'eliminarcarrito'])->name('usuarios.eliminarcarrito');
+Route::get('/receipt/{id}', [UsuariosController::class, 'viewReceipt'])->name('viewReceipt');
 
 
 
