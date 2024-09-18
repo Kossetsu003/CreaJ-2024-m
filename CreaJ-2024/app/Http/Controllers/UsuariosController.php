@@ -452,7 +452,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
                     }
                 }
 
-                return redirect()->route('cart.index')->with('success', 'Producto eliminado del carrito correctamente.');
+                return redirect()->route('usuarios.carrito')->with('success', 'Producto eliminado del carrito correctamente.');
             }
         }
 
