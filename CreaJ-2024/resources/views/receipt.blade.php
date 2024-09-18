@@ -67,7 +67,9 @@
     <div class="container">
         <!-- Encabezado con el logo del proyecto -->
         <div class="header">
-            <img src="{{ public_path('imgs/your-logo.png') }}" alt="Logo">
+        <h1 class="text-3xl md:text-4xl lg:text- font-bold">
+             Mini <span class="text-violet-600 font-bold">Shop</span>
+        </h1>
             <h1>Recibo de Compra</h1>
         </div>
 
