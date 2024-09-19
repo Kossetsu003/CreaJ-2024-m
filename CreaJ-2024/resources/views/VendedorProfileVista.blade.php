@@ -88,7 +88,7 @@
         <div class="w-[50%] mx-auto mt-16">
             <a href="{{ route('vendedores.agregarproducto', $vendedor->id) }}">
                 <div class=" mx-auto flex items-center mt-10">
-                    <img class="w-5" src="{{ asset('imgs/AddSelectedICon.png') }}" alt="User Icon">
+                    <img class="w-5" src="{{ asset('imgs/AddSelectedIcon.png') }}" alt="User Icon">
                     <h3 class="flex-grow text-left font-bold ml-5">Agregar Productos</h3> <!-- Alineado a la derecha -->
                 </div>
             </a>
