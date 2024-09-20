@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
     <title>Registrar Usuario</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
                     <h2 class="font-bold">Registrar Cuenta</h2>
                 </div>
                 <div class="icon">
-                    <img class="w-4 ml-2" src="../imgs/usuario.png" alt="User Icon">
+                    <img class="w-4 ml-2" src="../imgs/non-img.png" alt="User Icon">
                 </div>
             </div>
             <h3 class="text-xs font-bold">¡Bienvenido a MiniShop!</h3>

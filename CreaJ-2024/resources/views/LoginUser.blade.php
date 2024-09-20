@@ -8,7 +8,7 @@
     <meta http-equiv="expires" content="0">
     @vite('resources/css/app.css')
     <title>Inicia Sesion con Nosotros</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
 </head>
 <body>
     <div class="md:flex h-screen">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>Editar Producto Vendedor</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -94,7 +94,7 @@
                         <label for="file-input"
                             class="border-1 rounded border w-80 h-9 pl-5 text-xs  shadow-md bg-transparent flex items-center relative">
                             <span class="text-gray-600">Imagen del Producto</span>
-                            <input id="file-input" type="file" name="imagen_referencia" class="hidden" 
+                            <input id="file-input" type="file" name="imagen_referencia" class="hidden"
        accept="image/*" onchange="previewImage(event)">
 
                             <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover"

@@ -122,9 +122,10 @@ Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usu
 Route::post('/usuarios/store', [UsuariosController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios/historial', [UsuariosController::class, 'historial'])->name('usuarios.historial');
 Route::get('/usuarios/reservas/pdf/{id}', [UsuariosController::class, 'generateReceipt'])->name('reservas.pdf');
-Route::get('/usuarios/eliminarcarrito/{product}', [UsuariosController::class, 'eliminarcarrito'])->name('usuarios.eliminarcarrito');
-Route::get('/receipt/{id}', [UsuariosController::class, 'viewReceipt'])->name('viewReceipt');
-
+Route::get('/usuarios/eliminarcarrito/{product}', [UsuariosController::class, 'eliminarcarrito'])->name('usuarios.eliminarcarrito')->middleware('check.user.session');
+Route::get('/receipt/{id}', [UsuariosController::class, 'viewReceipt'])->name('viewReceipt')->middleware('check.user.session');
+Route::get('/usuarios/editar/{id}', [UsuariosController::class, 'editar'])->name('usuarios.editar')->middleware('check.user.session');
+Route::post('/usuarios/actualizar/{id}', [UsuariosController::class, 'actualizar'])->name('usuarios.actualizar')->middleware('check.user.session');
 
 
 

@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedDouble('ROL')->nullable()->default(4);
+            $table->string('imagen_perfil')->nullable()->default("non-img.png");
             $table->string('usuario')->unique();
             $table->string('password');
             $table->string('nombre')->nullable();

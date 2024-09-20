@@ -13,13 +13,13 @@ use App\Models\Reservation;
 use App\Models\ReservationItem;
 //request
 use Illuminate\Http\Request;
-use App\Http\Request\UserRequest;
+use App\Http\Requests\UserRequest;
 use App\Http\Requests\ClienteRequest;
-use App\Http\Request\MercadoLocalRequest;
-use App\Http\Request\VendedorRequest;
-use App\Http\Request\CartRequest;
-use App\Http\Request\ReservationRequest;
-use App\Http\Request\ProductRequest;
+use App\Http\Requests\MercadoLocalRequest;
+use App\Http\Requests\VendedorRequest;
+use App\Http\Requests\CartRequest;
+use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ProductRequest;
 
 
 use Illuminate\Support\Facades\Session;
@@ -55,6 +55,83 @@ use Barryvdh\DomPDF\Facade\Pdf;
         return view('RegistroUser', compact('cliente'));
 
     }
+    public function editar($id)
+    {
+        // Verificar si el vendedor autenticado puede editar este registro
+        if (Auth::user()->id == $id) {
+            $cliente = User::find($id);
+
+            return view('UserEditarPerfil', compact('cliente'));
+        }
+
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
+    }
+
+    public function actualizar(Request $request, $id)
+{
+    // Validación de los campos
+    $request->validate([
+        'password' => 'nullable|string|min:8|confirmed',
+        'nombre' => 'required|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'telefono' => 'nullable|string|max:15',
+        'sexo' => 'nullable|string|in:Masculino,Femenino',
+        'imagen_perfil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'usuario' => 'required|string|email|max:255|unique:users,usuario,' . $id, // Asegura la unicidad del usuario (correo)
+        'ROL' => 'required|in:4', // Asegura que el ROL sea uno de los permitidos
+    ]);
+
+    // Verificar si el usuario autenticado puede actualizar este registro
+    if (Auth::id() != $id && Auth::user()->ROL != 1) {
+        return redirect()->route('login')->with('error', 'Acceso no autorizado');
+    }
+
+    // Encontrar el usuario por ID
+    $user = User::findOrFail($id);
+
+    // Actualizar los campos
+    $user->usuario = $request->input('usuario');
+    $user->ROL = $request->input('ROL');
+
+    // Si la contraseña se envía, actualiza, de lo contrario, deja la existente
+    if ($request->filled('password')) {
+        $user->password = bcrypt($request->input('password'));
+    }
+
+    // Actualizar los demás campos
+    $user->nombre = $request->input('nombre');
+    $user->apellido = $request->input('apellido');
+    $user->telefono = $request->input('telefono');
+    $user->sexo = $request->input('sexo');
+
+    // Manejar la imagen de perfil
+    if ($request->hasFile('imagen_perfil')) {
+        // Guardar la nueva imagen
+        $imageName = time() . '.' . $request->imagen_perfil->extension();
+        $request->imagen_perfil->move(public_path('imgs'), $imageName);
+
+        // Eliminar la imagen anterior si existe
+        if ($user->imagen_perfil && $user->imagen_perfil != 'non-img.png' && file_exists(public_path('imgs/' . $user->imagen_perfil))) {
+            unlink(public_path('imgs/' . $user->imagen_perfil));
+        }
+
+        // Actualizar la referencia de la imagen de perfil en la base de datos
+        $user->imagen_perfil = $imageName;
+    }
+
+    // Guardar los cambios en la base de datos
+    $user->save();
+
+    // Redireccionar o devolver una respuesta
+    return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
+}
+
+
+
+
+    /**
+     * FUNCIONES DEL USUARIO
+     */
     public function store(ClienteRequest $request){
         $validator = Validator::make($request->all(), [
             'usuario' => 'required|email|unique:clientes',

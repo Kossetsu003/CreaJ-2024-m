@@ -28,6 +28,7 @@ class ClienteRequest extends FormRequest
 			'apellido' => 'string',
             'telefono' => 'nullable|string',
 			'sexo' => 'string',
+            'imagen_perfil'=>'string|nullable',
         ];
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>Registrar Vendedor</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
 </head>
 <body>
     <section>

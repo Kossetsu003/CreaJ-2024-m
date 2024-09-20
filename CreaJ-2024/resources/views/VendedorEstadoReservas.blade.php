@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
     <title>Estado de Pedidos</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -213,7 +213,7 @@
                                                 </div>
                                             </form>
                                         @elseif($reservation->estado == 'sin_recibir')
-                                          
+
                                             <h2 class="text-xl font-bold mb-4 text-center">El Cliente No ha Recibido el
                                                 Paquete ¿Hay problemas?</h2>
                                             <form id="form-{{ $item->id }}"

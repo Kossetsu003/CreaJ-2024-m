@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>Inicio</title>
-    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('imgs/logo.png') }}" type="image/x-icon">
 </head>
 
 <body class="">
@@ -55,6 +55,7 @@
             <div class="flex items-center">
                 <a href="{{ route('UserProfileVista') }}">
                     <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
+                    <img class="w-6" src="{{ asset('imgs/' . Auth::user()->imagen_de_referencia) }}" alt="Profile Icon" />
                 </a>
             </div>
         </div>
@@ -70,7 +71,7 @@
                     {{ Auth::user()->apellido }}</h3>
             </div>
             <div class="mr-[3%] mt-4">
-                <img class=" rounded-full w-12" src="{{ asset('imgs/PerfilJuana.jpg') }}" alt="User Icon">
+                <img class=" rounded-full w-12 h-12" src="{{ asset('imgs/'.Auth::user()->imagen_perfil) }}" alt="{{ Auth::user()->imagen_perfil }}">
             </div>
         </div>
 
@@ -233,7 +234,7 @@
             </div>
             <div class="w-full h-[2px] bg-white"></div>
         </footer>
-        
+
     </div>
 
 </body>

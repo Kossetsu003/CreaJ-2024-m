@@ -70,7 +70,7 @@
         <h3 class="font-bold text-center text-4xl">Mini<span class="text-white ml-2">Shop</span></h3>
     </div>
     <div class="flex justify-center mt-5">
-        <img class="w-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/usuario.png') }}" alt="User Icon">
+        <img class="w-20 h-20 bg-white rounded-full shadow-md  " src="{{ asset('imgs/'.Auth::user()->imagen_perfil) }}" alt="User Icon">
     </div>
     <div class="flex justify-center mt-2 ">
         <img class="w-3 h-3 ml-1" src="{{ asset('imgs/estrella.png') }}" alt="User Icon">
@@ -87,9 +87,9 @@
 
         <div class="text-center mt-3">
             @auth
-                <div> {{ Auth::user()->nombre }}
+                <div><span class="font-semibold text-lg">Usuario : </span> {{ Auth::user()->nombre }}
                     {{ Auth::user()->apellido }} </div>
-                <div> {{ Auth::user()->telefono }} </div>
+                <div> <span class="font-semibold text-lg">Correo Electronico :</span><br> {{ Auth::user()->usuario }} </div>
             @endauth
         </div>
 
@@ -98,36 +98,39 @@
 
     </div>
 
-    <div class="w-[50%] mx-auto m-16">
-        <a href="{{ route('usuarios.index')}}"  class=" mx-auto flex items-center mt-10">
-            <img class="w-5" src="{{ asset('imgs/megaphone.png') }}" alt="User Icon">
-            <h3 class="flex-grow text-left font-bold ml-5">Hogar</h3> <!-- Alineado a la derecha -->
+    <div class="w-1/2 mx-auto my-16"> <!-- Uso de 'my-16' en lugar de 'm-16' para un margen vertical más claro -->
+        <a href="{{ route('usuarios.editar', Auth::user()->id ) }}" class="flex items-center mt-10">
+            <img class="w-7" src="{{ asset('imgs/EditSelectedIcon.png') }}" alt="Estado Icon">
+            <h3 class="flex-grow text-left font-bold ml-5">Editar mi Perfil</h3>
+        </a>
+        <!-- Enlace a Hogar -->
+        <a href="{{ route('usuarios.index') }}" class="flex items-center mt-10">
+            <img class="w-7" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Hogar Icon">
+            <h3 class="flex-grow text-left font-bold ml-5">Hogar</h3>
         </a>
 
-        <a href="{{route('usuarios.historial')}}" class=" mx-auto flex items-center">
-            <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="User Icon">
-            <h3 class="flex-grow text-left font-bold ml-3">Historial De pedidos</h3> <!-- Alineado a la derecha -->
+        <!-- Enlace a Historial de Pedidos -->
+        <a href="{{ route('usuarios.historial') }}" class="flex items-center mt-10">
+            <img class="w-5" src="{{ asset('imgs/heart.png') }}" alt="Historial Icon">
+            <h3 class="flex-grow text-left font-bold ml-3">Historial de Pedidos</h3>
         </a>
 
-        <a href="{{ route('usuarios.reservas')}}" class=" mx-auto flex items-center mt-10">
-            <img class="w-5" src="{{ asset('imgs/credit-card.png') }}" alt="User Icon">
-            <h3 class="flex-grow text-left font-bold ml-5">Estado De pedidos</h3> <!-- Alineado a la derecha -->
+        <!-- Enlace a Estado de Pedidos -->
+        <a href="{{ route('usuarios.reservas') }}" class="flex items-center mt-10">
+            <img class="w-7" src="{{ asset('imgs/ReservasSelectedIcon.png') }}" alt="Estado Icon">
+            <h3 class="flex-grow text-left font-bold ml-5">Estado de Pedidos</h3>
         </a>
 
-
-
-
-        <form action="{{ route('logout') }}" method="GET">
+        <!-- Botón para Cerrar Cuenta -->
+        <form action="{{ route('logout') }}" method="GET" class="mt-10">
             @csrf
-            <div class="mx-auto flex items-center mt-10">
-                <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="User Icon">
+            <div class="flex items-center">
+                <img class="w-5" src="{{ asset('imgs/tuerca.png') }}" alt="Cerrar Cuenta Icon">
                 <button type="submit" class="flex-grow text-left font-bold ml-5">Cerrar Cuenta</button>
-                <!-- Alineado a la derecha -->
             </div>
         </form>
-
-
     </div>
+
 
     </div>
     <footer class="bg-[#292526] pb-16 pt-[6rem] ">

@@ -2,144 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <title>Editar Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/app.css')
+    <title>EDITAR USUARIO</title>
+    <link rel="shortcut icon" href="{{ asset('imgs/MiCarritoUser.png') }}" type="image/x-icon">
 </head>
 
-<body class="bg-gray-100 mb-24 md:mb-0">
-    <!-- Desktop Navbar -->
-    <div class="hidden md:flex p-4 bg-white items-center justify-between shadow-md">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black">MiniShop</h1>
-        <div class="flex gap-8">
-            <a href="{{ route('usuarios.index') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Hogar</a>
-            <a href="{{ route('usuarios.carrito') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Carrito</a>
-            <a href="{{ route('usuarios.reservas') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Reservas</a>
-            <a href="{{ route('UserProfileVista') }}"
-                class="font-bold uppercase text-sm lg:text-base hover:text-gray-300">Perfil</a>
-        </div>
-    </div>
+<body>
 
-    <!-- Mobile Navbar -->
-   <div class="bottom-bar fixed bottom-[2%] left-0 right-0 md:hidden flex justify-center">
-        <div class="bg-gray-900 rounded-2xl w-64 h-14 flex justify-around">
-            <div class="flex items-center">
-                <a href="{{ route('usuarios.index') }}" class="bg-white rounded-full p-1">
-                    <img class="w-6" src="{{ asset('imgs/HomeSelectedIcon.png') }}" alt="Home Icon" />
-                </a>
-            </div>
-            <div class="flex items-center">
-                <a href="{{ route('usuarios.carrito') }}">
-                    <img class="w-6" src="{{ asset('imgs/CarritoIcon.png') }}" alt="Cart Icon" />
-                </a>
-            </div>
-            <div class="flex items-center">
-                <a href="{{ route('usuarios.reservas') }}">
-                    <img class="w-6" src="{{ asset('imgs/FavIcon.png') }}" alt="Favorites Icon" />
-                </a>
-            </div>
-            <div class="flex items-center">
-                <a href="{{ route('UserProfileVista') }}">
-                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Section -->
-    <section class="flex justify-center md:mt-4 p-4 sm:px-6 lg:px-8">
-        <div class="w-full max-w-4xl bg-white p-4 md:p-8 rounded-lg shadow-md">
-            <div class="text-center mb-2">
-                <h1 class="text-3xl font-bold text-gray-800">Editar <span class="text-purple-500">Perfil</span></h1>
+    <section>
+        <div class="w-72 h-auto mx-auto">
+            <div class="text-center pt-[3rem]">
+                <h1 class="text-[1.8rem] font-bold text-rose-400">EDITAR USUARIO</h1>
+                <h1 class="text-[1.5rem] font-semibold">{{ old('nombre', $cliente?->nombre) }}</h1>
             </div>
 
-            <form method="POST" role="form" enctype="multipart/form-data">
-                {{ method_field('PATCH') }}
-                @csrf
+            <form method="POST" action="{{ route('usuarios.actualizar', ['id' => $cliente->id]) }}" role="form" enctype="multipart/form-data">
+                <div class="pb-[7rem] mt-10 space-y-4">
+                    <input type="hidden" name="id" value="{{ $cliente->id }}">
+                    @csrf
 
-                <input type="hidden" name="ROL" value="4" id="r_o_l"
-                    class="form-control @error('ROL') is-invalid @enderror">
-
-                <!-- Información Personal -->
-                <div class="mb-6">
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Información Personal</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="nombre" class="block text-sm font-medium text-gray-700">Nombres</label>
-                            <input required type="text" name="nombre" id="nombre" placeholder="Nombres"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('nombre') is-invalid @enderror">
+                    @if ($errors->any())
+                        <div class="bg-orange-500 text-white p-2 rounded mt-1 text-sm text-center">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
+                    @endif
 
-                        <div>
-                            <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido</label>
-                            <input required type="text" name="apellido" id="apellido" placeholder="Apellido"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('apellido') is-invalid @enderror">
-                        </div>
-
-                        <div>
-                            <label for="telefono" class="block text-sm font-medium text-gray-700">Número de
-                                Teléfono</label>
-                            <input required type="text" name="telefono" id="telefono"
-                                placeholder="Número de Teléfono"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('telefono') is-invalid @enderror">
-                        </div>
-
-                        <div>
-                            <label for="sexo" class="block text-sm font-medium text-gray-700">Género</label>
-                            <select name="sexo" id="sexo"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm text-gray-500 focus:ring focus:ring-purple-200 form-control @error('sexo') is-invalid @enderror"
-                                required>
-                                <option value="" disabled selected>Escoga su Género</option>
-                                <option value="Masc">Masculino</option>
-                                <option value="Fem">Femenino</option>
-                            </select>
-                        </div>
+                    <!-- Imagen de perfil -->
+                    <div class="flex justify-between">
+                        <label for="imagen_perfil" class="border-1 rounded border w-80 h-9 pl-5 text-xs shadow-md border-gray-400 flex items-center relative cursor-pointer">
+                            <span id="file-name" class="text-gray-400 text-xs">Imagen de Perfil</span>
+                            <input required type="file" accept=".png, .jpg, .jpeg" name="imagen_perfil" class="hidden" id="imagen_perfil">
+                            {!! $errors->first('imagen_perfil', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                            <span class="rounded-lg w-5 h-5 absolute right-2 top-2 bg-cover" style="background-image: url('{{ asset('imgs/files2.svg') }}');"></span>
+                        </label>
                     </div>
-                </div>
 
-                <!-- Información de Acceso -->
-                <div>
-                    <h2 class="text-2xl font-semibold text-gray-700 mb-4">Información de Acceso</h2>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="usuario" class="block text-sm font-medium text-gray-700">Correo
-                                Electrónico</label>
-                            <input required type="email" name="usuario" id="usuario"
-                                placeholder="Correo Electrónico"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('usuario') is-invalid @enderror">
+                    <!-- Vista previa de la imagen -->
+                    @if ($cliente?->imagen_perfil )
+                        <div class="mt-4">
+                           <div class="relative justify-center">
+                            <p class="text-gray-400 text-[1rem] text-center m-3">Imagen actual:</p><br>
+                            <center>
+                                <img id="img-preview" class=" max-w max-h-xs rounded-md border" src="{{ asset('imgs/' . $cliente?->imagen_perfil) }}" alt="Imagen del Usuario">
+                            </center>
+                           </div>
                         </div>
+                    @else
+                        <div class="mt-4">
+                            <p class="text-gray-400 text-xs text-center">No hay imagen actual.</p>
+                        </div>
+                    @endif
 
-                        <div>
-                            <label for="contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
-                            <input required type="password" maxlength="8" name="contrasena" id="contrasena"
-                                placeholder="Contraseña"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control @error('contrasena') is-invalid @enderror">
-                        </div>
-
-                        <div>
-                            <label for="confirmar_contrasena"
-                                class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-                            <input required type="password" maxlength="8" name="confirmar_contrasena" id="confirmar_contrasena"
-                                placeholder="Confirmar Contraseña"
-                                class="border rounded-lg border-gray-300 w-full h-10 pl-4 text-sm focus:ring focus:ring-purple-200 form-control">
-                        </div>
+                    <!-- Usuario (correo electrónico) -->
+                    <div class="flex justify-center">
+                        <input required type="email" name="usuario"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs shadow-md text-gray-400 border-gray-400 form-control @error('usuario') is-invalid @enderror"
+                            value="{{ old('usuario', $cliente?->usuario) }}" id="usuario"
+                            placeholder="Escriba el correo electrónico">
+                        {!! $errors->first('usuario', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
                     </div>
-                </div>
 
-                <div class="flex justify-center py-6">
-                    <button type="submit"
-                        class="bg-purple-500 w-full h-12 flex items-center justify-center rounded-lg text-sm font-semibold text-white shadow-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50">
-                        Actualizar Perfil
-                    </button>
+                    <!-- Contraseña -->
+                    <div class="flex justify-center">
+                        <input type="password" maxlength="8" name="password"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs shadow-md border-gray-400 form-control @error('password') is-invalid @enderror"
+                            value="{{ old('password') }}" id="password"
+                            placeholder="Escriba su Contraseña">
+                        {!! $errors->first('password', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Confirmación de contraseña -->
+                    <div class="flex justify-center">
+                        <input type="password" maxlength="8" required name="password_confirmation"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs shadow-md border-gray-400 form-control @error('password_confirmation') is-invalid @enderror"
+                            value="{{ old('password_confirmation') }}" id="password_confirmation"
+                            placeholder="Confirme su Contraseña">
+                        {!! $errors->first('password_confirmation', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Mostrar contraseñas -->
+                    <div class="flex justify-center mt-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="show-passwords" class="mr-2">
+                            <span class="text-xs text-gray-600">Mostrar Contraseñas</span>
+                        </label>
+                    </div>
+
+                    <!-- Nombre del usuario -->
+                    <div class="flex justify-center">
+                        <input required type="text" name="nombre"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs text-gray-400 shadow-md border-gray-400 form-control @error('nombre') is-invalid @enderror"
+                            value="{{ old('nombre', $cliente?->nombre) }}" id="nombre"
+                            placeholder="Escriba el Nombre del Usuario">
+                        {!! $errors->first('nombre', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Apellido del usuario -->
+                    <div class="flex justify-center">
+                        <input required type="text" name="apellido"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs text-gray-400 shadow-md border-gray-400 form-control @error('apellido') is-invalid @enderror"
+                            value="{{ old('apellido', $cliente?->apellido) }}" id="apellido"
+                            placeholder="Escriba el Apellido del Usuario">
+                        {!! $errors->first('apellido', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Teléfono del usuario -->
+                    <div class="flex justify-center">
+                        <input type="text" name="telefono"
+                            class="border-1 rounded border w-80 h-9 pl-5 text-xs shadow-md border-gray-400 form-control @error('telefono') is-invalid @enderror text-gray-400"
+                            value="{{ old('telefono', $cliente?->telefono) }}" id="telefono"
+                            placeholder="Digite el Teléfono del Usuario">
+                        {!! $errors->first('telefono', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Sexo del usuario -->
+                    <div class="flex justify-center">
+                        <select name="sexo"
+                            class="border-1 rounded border border-gray-400 text-gray-400 w-80 h-9 pl-5 text-xs shadow-md form-control @error('sexo') is-invalid @enderror"
+                            id="sexo">
+                            <option value="" disabled selected>Seleccione el sexo</option>
+                            <option value="Masculino" {{ old('sexo', $cliente?->sexo) == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                            <option value="Femenino" {{ old('sexo', $cliente?->sexo) == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                        </select>
+                        {!! $errors->first('sexo', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                    </div>
+
+                    <!-- Rol del usuario -->
+                    <div class="flex justify-center">
+                        <input type="hidden" name="ROL" value="4">
+                    </div>
+
+                    <!-- Botón de Actualizar -->
+                    <div class="flex justify-center mt-8">
+                        <button class="btn btn-primary bg-rose-400 hover:bg-rose-500 w-72 h-12 text-white font-bold rounded-md">Actualizar Usuario</button>
+                    </div>
+                </form>
+
+                <!-- Botón de Cancelar -->
+                <div class="flex justify-center mt-4">
+                    <a href="{{ route('usuarios.index')}}" class="bg-slate-400 hover:bg-slate-500 text-white font-bold rounded-md py-[0.80rem] px-[3.7rem]">Cancelar Actualización</a>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('imagen_perfil').addEventListener('change', function (e) {
+            const preview = document.getElementById('img-preview');
+            const file = e.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    preview.src = reader.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('show-passwords').addEventListener('change', function () {
+            const passwords = document.querySelectorAll('#password, #password_confirmation');
+            passwords.forEach(password => {
+                password.type = this.checked ? 'text' : 'password';
+            });
+        });
+    </script>
+
 </body>
 
 </html>

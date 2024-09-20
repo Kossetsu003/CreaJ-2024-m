@@ -44,7 +44,7 @@ class LoginController extends Controller
             },
         ],
         'sexo' => 'required|in:Masc,Fem',
-        'password' => 'required|min:8|',
+        'password' => 'required|min:8|confirmed',
     ]);
 
     // Crear un nuevo usuario si la validación pasa

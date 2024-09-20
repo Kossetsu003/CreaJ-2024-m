@@ -24,6 +24,7 @@ class User extends Authenticatable
         'apellido',
         'telefono',
         'sexo',
+        'imagen_perfil',
     ];
 
     /**
@@ -44,7 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function user(){
         return $this->hasMany(Reservation::class, 'fk_user');
     }
