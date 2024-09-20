@@ -54,7 +54,6 @@
             </div>
             <div class="flex items-center">
                 <a href="{{ route('UserProfileVista') }}">
-                    <img class="w-6" src="{{ asset('imgs/UserIcon.png') }}" alt="Profile Icon" />
                     <img class="w-6" src="{{ asset('imgs/' . Auth::user()->imagen_de_referencia) }}" alt="Profile Icon" />
                 </a>
             </div>
