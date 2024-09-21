@@ -76,7 +76,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
         'apellido' => 'required|string|max:255',
         'telefono' => 'nullable|string|max:15',
         'sexo' => 'nullable|string|in:Masculino,Femenino',
-        'imagen_perfil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'imagen_perfil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         'usuario' => 'required|string|email|max:255|unique:users,usuario,' . $id, // Asegura la unicidad del usuario (correo)
         'ROL' => 'required|in:4', // Asegura que el ROL sea uno de los permitidos
     ]);

@@ -80,8 +80,6 @@
     Ver Recibo
 </a>
 
-    Ver Recibo
-</a>
 
             <h2 class="text-lg md:text-[2rem] font-bold text-gray-800 mb-[12px]">Reserva:
                 @if ($reservation->estado == 'enviado')
@@ -123,48 +121,49 @@
 
             @foreach ($reservation->items as $item)
                 <!-- INICIO DE CARTA -->
-                <div class="my-2 p-4  border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
+                <<div class="my-2 p-4 border-gray-200 rounded-lg flex flex-col justify-between gap-2 md:flex-row md:items-center transition duration-300 hover:bg-gray-50">
                     <div class="flex items-center">
                         <img src="{{ asset('imgs/'. $item->product->imagen_referencia) }}" alt="{{  $item->product->imagen_referencia }}" class="object-cover w-16 h-16 md:w-[10rem] md:h-[10rem] rounded-md mr-4">
                         <div>
-
-
-                            <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]"><span class="font-bold">{{ $item->product->name }}</span> en {{ $item->product->vendedor->nombre_del_local }}</h2>
-                            <p> <span class="texts-sm md:text-[1.25rem] text-gray-600 mb-[8px] font-semibold">Estado del Producto:</span>
+                            <h2 class="text-lg md:text-[2rem] font-semibold text-gray-800 mb-[12px]">
+                                <span class="font-bold">{{ $item->product->name }}</span> en {{ $item->product->vendedor->nombre_del_local }}
+                            </h2>
+                            <p>
+                                <span class="texts-sm md:text-[1.25rem] text-gray-600 mb-[8px] font-semibold">Estado del Producto:</span>
                                 @if ($item->estado == 'enviado')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-amber-300 text-white rounded">
-                       Enviado
-                    </span>
-                @elseif($item->estado == 'sin_existencias')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                        No hay Existencias
-                        {{ $item->sin_existencias }}
-                    </span>
-                @elseif($item->estado == 'sin_espera')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
-                       Cancelado
-                    </span>
-                @elseif($item->estado == 'en_espera')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                        Se está Esperando
-                    </span>
-                @elseif($item->estado == 'en_entrega')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                        Ya lo puede Recoger
-                    </span>
-                @elseif($item->estado == 'recibido' || $item->estado == 'archivado')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
-                        Ya lo Recibió
-                    </span>
-                @elseif($item->estado == 'sin_recibir')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                       No ha recibido el Producto
-                    </span>
-                @elseif($item->estado == 'problemas')
-                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
-                        El Vendedor tiene Problemas
-                    </span>
-                @endif
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[0.5rem] md:px-[0.5rem] text-s md:text-[16px] font-semibold bg-amber-300 text-white rounded">
+                                        Enviado
+                                    </span>
+                                @elseif($item->estado == 'sin_existencias')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
+                                        No hay Existencias
+                                        {{ $item->sin_existencias }}
+                                    </span>
+                                @elseif($item->estado == 'sin_espera')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-red-200 text-red-800 rounded">
+                                        Cancelado
+                                    </span>
+                                @elseif($item->estado == 'en_espera')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
+                                        Se está Esperando
+                                    </span>
+                                @elseif($item->estado == 'en_entrega')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
+                                        Ya lo puede Recoger
+                                    </span>
+                                @elseif($item->estado == 'recibido' || $item->estado == 'archivado')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-green-200 text-green-800 rounded">
+                                        Ya lo Recibió
+                                    </span>
+                                @elseif($item->estado == 'sin_recibir')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
+                                        No ha recibido el Producto
+                                    </span>
+                                @elseif($item->estado == 'problemas')
+                                    <span class="px-2 uppercase w-fit py-0.5 md:py-[1rem] md:px-[2rem] text-s md:text-[1rem] font-semibold bg-orange-200 text-orange-800 rounded">
+                                        El Vendedor tiene Problemas
+                                    </span>
+                                @endif
                             </p>
                             <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]"><b>Cantidad:</b> {{ $item->quantity }}</p>
                             <p class="text-sm md:text-[1.25rem] text-gray-600 mb-[8px]"><b>Precio (c/u):</b> ${{ $item->precio }}</p>
@@ -195,7 +194,7 @@
 
                                 <div class="flex justify-between">
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'recibido')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
-                                       Recibido
+                                        Recibido
                                     </button>
 
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'sin_recibir')" class="mx-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
@@ -203,9 +202,7 @@
                                     </button>
                                 </div>
                             </form>
-
-
-@elseif($item->estado == 'problemas')
+                        @elseif($item->estado == 'problemas')
                             <h2 class="text-xl font-bold mb-4 text-center">El Vendedor {{ $item->vendedor->nombre }} tiene problemas con su producto. ¿Desea Esperar?</h2>
                             <form id="form-{{ $item->id }}" action="{{ route('usuarios.publicarestadoreserva', $item->id) }}" method="POST">
                                 @csrf
@@ -213,7 +210,7 @@
 
                                 <div class="flex justify-between">
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'en_espera')" class="bg-green-500 hover:bg-green-700 mx-4 text-white font-bold py-2 px-4 rounded">
-                                       Voy a Esperar
+                                        Voy a Esperar
                                     </button>
 
                                     <button type="button" onclick="setEstado('{{ $item->id }}', 'sin_espera')" class="mx-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
@@ -221,13 +218,10 @@
                                     </button>
                                 </div>
                             </form>
-
-
-
                         @endif
                     </div>
                 </div>
-                <!-- FIN DE CARTA -->
+
             @endforeach
         </div>
     @else

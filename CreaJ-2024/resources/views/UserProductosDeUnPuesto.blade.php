@@ -94,9 +94,7 @@
                         <h1 class="font-bold uppercase text-2xl mt-5 m-[1rem]">
                             {{ $product->name }}
                         </h1>
-                        <button class=" text-red-700 rounded text-[1rem] z-10">
-                            Agregar
-                        </button>
+                       
                     </div>
                     <h3 class="mb-2 text-xl">${{ $product->price }}</h3>
                     <div class="flex justify-between">
