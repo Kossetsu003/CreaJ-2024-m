@@ -259,28 +259,32 @@ use Barryvdh\DomPDF\Facade\Pdf;
      * IMPRIMIR RECIBO
      */
         public function generateReceipt($id)
-        {
-            // Obtener la reserva y los ítems relacionados con el vendedor y el mercado local
-            $reservation = Reservation::with('items.product.vendedor.mercadoLocal')->findOrFail($id);
+{
+    // Obtener la reserva y los ítems relacionados con el vendedor y el mercado local
+    $reservation = Reservation::with('items.product.vendedor.mercadoLocal')->findOrFail($id);
 
-            // Obtener los mercados únicos relacionados con la reserva
-            $mercados = $reservation->items->map(function($item) {
-                return $item->product->vendedor->mercadoLocal;
-            })->unique('id');
+    // Obtener los mercados únicos relacionados con la reserva
+    $mercados = $reservation->items->map(function($item) {
+        return $item->product->vendedor->mercadoLocal;
+    })->unique('id');
 
-            $vendedor = $reservation->items->map(function($item) {
-                return $item->product->vendedor ;
-            })->unique('id');
+    $vendedor = $reservation->items->map(function($item) {
+        return $item->product->vendedor;
+    })->unique('id');
 
-            // Generar el PDF
-            $pdf = Pdf::loadView('receipt', [
-                'reservation' => $reservation,
-                'mercados' => $mercados,
-                'vendedor' => $vendedor
-            ]);
+    // Generar el PDF
+    $pdf = Pdf::loadView('receipt', [
+        'reservation' => $reservation,
+        'mercados' => $mercados,
+        'vendedor' => $vendedor
+    ]);
 
-            return $pdf->download('recibo-reserva-'.$id.'.pdf');
-        }
+    // Descargar el PDF
+    $pdf->download('recibo-reserva-'.$id.'.pdf');
+
+    // Redirigir a la vista usuarios.reservas
+    return redirect()->route('usuarios.reservas');
+}
 
         /**
          * ABRIR RECIBO
